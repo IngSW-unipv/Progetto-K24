@@ -13,46 +13,49 @@ import DataBase.TorneoDao;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
 
-public class CreaTorneoController implements ActionListener {
+public class CreaTorneoController {
 
 	private CreaTorneoView view;
 
 	public CreaTorneoController() {
 		this.view = new CreaTorneoView();
-		view.getCreaTorneo().addActionListener(this);
+		view.getCreaTorneo().addActionListener(listenercreazione);
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	ActionListener listenercreazione = new ActionListener() {
 
-		if (e.getSource() == view.getCreaTorneo()) {
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
 
-			Date date = null;
-			try {
-				date = dateFormat.parse(view.getDatafineText().getText());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+			if (e.getSource() == view.getCreaTorneo()) {
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+				Date date = null;
+				try {
+					date = dateFormat.parse(view.getDatafineText().getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				Date date_ = null;
+				try {
+					date_ = dateFormat.parse(view.getDatainzioText().getText());
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
+				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
+				UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
+
+				utente.creazionetorneo(view.getNomeText().getText(), "", "gioco1", date, date_,
+						view.getVisibilitaText().getText());
+
 			}
-			Date date_ = null;
-			try {
-				date_ = dateFormat.parse(view.getDatainzioText().getText());
-			} catch (ParseException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
-			// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
-			UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
-
-			utente.creazionetorneo( view.getNomeText().getText(),"", "gioco1", date, date_,
-					view.getVisibilitaText().getText());
 
 		}
-
-	}
+	};
 
 }

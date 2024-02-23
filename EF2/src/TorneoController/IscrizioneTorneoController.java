@@ -9,30 +9,31 @@ import java.util.Date;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
 
-public class IscrizioneTorneoController  implements ActionListener{
+public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
 
 	public IscrizioneTorneoController() {
 		this.view = new IscrizioneTorneoView();
-		view.getIscrivitiTorneo().addActionListener(this);
+		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+	ActionListener listeneriscrizione = new ActionListener() {
 
-		if (e.getSource() == view.getIscrivitiTorneo()) {
-			
-			UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
 
-			utente.iscrizionetorneo(utente.getEmail(),view.getName());
+			if (e.getSource() == view.getIscrivitiTorneo()) {
+				// da togliere
+				UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
+
+				utente.iscrizionetorneo(utente.getEmail(), view.getName());
+
+			}
 
 		}
+	};
 
-	}
-
-	
-	
 }
