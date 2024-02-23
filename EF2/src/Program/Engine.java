@@ -21,16 +21,14 @@ public class Engine {
 
 		 // BigFrame frame=new BigFrame();
 
-		IscrizioneTorneoController c = new IscrizioneTorneoController();
+		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
 		//CreaTorneoController c = new CreaTorneoController();
 		// Minesweeper m=new Minesweeper();
 
-		// MinesweeperView view =new MinesweeperView();
 
-		// MinesweeperModel module=new MinesweeperModel();
 
-		// MinesweeperController ctrl = new MinesweeperController(view,module);
+		 MinesweeperController ctrl = new MinesweeperController();
 
 		// Schemautente f=new Schemautente(id,fd,fg,fz);
 
