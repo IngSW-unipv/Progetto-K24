@@ -25,7 +25,7 @@ public class LoginModel {
 	public UtenteAutenticato istanziautente( String userName, String email, String password ) {
 		
 		
-		ut.getInstance(userName,email,password);
+		ut=UtenteAutenticato.getInstance(userName,email,password);
 		
 		return ut;
 		

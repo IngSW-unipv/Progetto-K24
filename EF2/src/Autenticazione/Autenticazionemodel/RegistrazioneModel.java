@@ -61,9 +61,9 @@ public class RegistrazioneModel {
 	public boolean isPasswordUguali(String password1, String password2) {
 		return password1.equals(password2);
 	}
-	public void istanciateuser(UtenteAutenticato utente) {
+	public UtenteAutenticato istanciateuser(String nome, String emailutente,String password) {
 		
-	    utente.getInstance("","" , "");
+	    return UtenteAutenticato.getInstance(nome,emailutente,password);
 		
 	}
 	

@@ -19,7 +19,7 @@ public class Engine {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		 // BigFrame frame=new BigFrame();
+		BigFrame frame=new BigFrame();
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
@@ -28,7 +28,7 @@ public class Engine {
 
 
 
-		 MinesweeperController ctrl = new MinesweeperController();
+        //MinesweeperController ctrl = new MinesweeperController();
 
 		// Schemautente f=new Schemautente(id,fd,fg,fz);
 

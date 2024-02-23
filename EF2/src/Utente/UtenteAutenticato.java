@@ -35,11 +35,13 @@ public class UtenteAutenticato extends Utente {
 		dao.updateSchemaUtente(utente);
 	}
 
-	public void registrazioneCredenziali(int id, String username, String email, String password) throws SQLException {
+	public void registrazioneCredenziali( UtenteAutenticato u,String username, String email, String password) throws SQLException {
 
+		
 		dao = new UtenteDao();
-		dao.insertSchemaUtente(new UtenteAutenticato(username, email, password));
-
+		dao.insertSchemaUtente(u);
+        
+		
 	}
 
 	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {

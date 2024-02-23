@@ -60,7 +60,7 @@ getLoginButton().addActionListener(this);
 			registrazioneModel = new RegistrazioneModel(); //li devo istanziare dentro l'if altrimenti se istanzio sia registraiozne che login fuori dal'if mi apre tutto a prescindere
 	        registrazioneView = new RegistrazioneView();
 			dispose();
-			new RegistrationController1(registrazioneModel, registrazioneView);
+			new RegistrazioneController(registrazioneModel, registrazioneView);
 		}
 		if(e.getSource()==loginButton) {
 	         loginModel=new LoginModel();

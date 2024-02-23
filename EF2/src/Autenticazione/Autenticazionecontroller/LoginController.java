@@ -62,7 +62,7 @@ public class LoginController implements ActionListener {
 					view.getErroreText().setForeground(Color.green);
 					view.getErroreText().setText("ACCESSO CORRETTO");
                     utente =model.istanziautente( view.getUsernameText().getText(),
-				     view.getEmailText().getText(),view.getPasswordText().getText());                 
+				    view.getEmailText().getText(),view.getPasswordText().getText());                 
 				} else {
 					view.getErroreText().setForeground(Color.red);
 					view.getErroreText().setText("USERNAME O PASSWORD ERRATI");

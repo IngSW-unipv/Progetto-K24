@@ -154,6 +154,7 @@ public class UtenteDao implements IUtenteDao {
 		{
 			String query="INSERT INTO utenti(email,username,pswrd) VALUES(?,?,?)";
 			st1 = conn.prepareStatement(query);
+			System.out.println(f.getEmail());
 			st1.setString(1,f.getEmail() );
 			st1.setString(2,f.getUsername());
 			st1.setString(3,f.getHashedPassword());

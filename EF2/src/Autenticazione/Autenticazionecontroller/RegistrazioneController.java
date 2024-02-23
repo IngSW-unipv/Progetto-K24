@@ -40,7 +40,7 @@ public class RegistrazioneController implements ActionListener {
 		view.getRegistratiButton().addActionListener(this);
 		view.getAccediButton().addActionListener(this);
 
-		model.istanciateuser(utente);
+		
 	}
 	// fine costruttore
 
@@ -81,9 +81,14 @@ public class RegistrazioneController implements ActionListener {
 																			// requisiti
 							if (model.isPasswordValida(password1)) {
 								// utente =new UtenteAutenticato();
-								try {
-									utente.registrazioneCredenziali(34, view.getNomeText().getText(),
+								try {						
+									utente = model.istanciateuser(view.getNomeText().getText(),
 											view.getPassword1Text().getText(), view.getEmailText().getText());
+									
+									System.out.println(utente);
+									utente.registrazioneCredenziali( utente,view.getNomeText().getText(),
+											view.getPassword1Text().getText(), view.getEmailText().getText());
+									
 								} catch (SQLException e1) {
 									// TODO Auto-generated catch block
 									e1.printStackTrace();
