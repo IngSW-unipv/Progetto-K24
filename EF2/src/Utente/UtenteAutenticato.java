@@ -14,15 +14,23 @@ public class UtenteAutenticato extends Utente {
 
 	private UtenteDao dao;
 	private TorneoDao daot;
+	private static UtenteAutenticato instance;
 
-	public UtenteAutenticato(int id, String userName, String email, String password) {
-		super(id, userName, email, password);
+	private UtenteAutenticato(String userName, String email, String password) {
+		super(userName, email, password);
+
+	}
+
+	public static synchronized UtenteAutenticato getInstance(String userName, String email, String passwor) {
+		if (instance == null)
+			instance = new UtenteAutenticato(userName, email, passwor);
+		return instance;
 
 	}
 
 	public void cambiausername(UtenteAutenticato utente, String nomeNuovo, String email) {
 
-		utente = new UtenteAutenticato(0, nomeNuovo, email, "");
+		utente = new UtenteAutenticato(nomeNuovo, email, "");
 		dao = new UtenteDao();
 		dao.updateSchemaUtente(utente);
 	}
@@ -30,12 +38,12 @@ public class UtenteAutenticato extends Utente {
 	public void registrazioneCredenziali(int id, String username, String email, String password) throws SQLException {
 
 		dao = new UtenteDao();
-		dao.insertSchemaUtente(new UtenteAutenticato(id, username, email, password));
+		dao.insertSchemaUtente(new UtenteAutenticato(username, email, password));
 
 	}
 
 	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
-		utente = new UtenteAutenticato(id, username, email, password);
+		utente = new UtenteAutenticato(username, email, password);
 		dao = new UtenteDao();
 		dao.eliminaSchemaUtente(utente);
 
@@ -44,8 +52,8 @@ public class UtenteAutenticato extends Utente {
 	public void istanziatorneo(String nometorneo) {
 
 		daot = new TorneoDao();
-		var list =daot.selecttuplebytorneo(nometorneo);
-		Torneo Torneo = new Torneo(list.get(0),list.get(1),list.get(2),list.get(3),list.get(4),list.get(5));
+		var list = daot.selecttuplebytorneo(nometorneo);
+		Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5));
 
 	}
 
@@ -74,12 +82,13 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void iscrizionetorneo(String emailutente,String nometorneo) {
+	public void iscrizionetorneo(String emailutente, String nometorneo) {
 
 		daot = new TorneoDao();
 
 		try {
-			if ((!(daot.selectbytorneo(nometorneo).contains(emailutente)) &&daot.elencatorneo().contains(nometorneo)) ) {
+			if ((!(daot.selectbytorneo(nometorneo).contains(emailutente))
+					&& daot.elencatorneo().contains(nometorneo))) {
 				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
@@ -87,12 +96,12 @@ public class UtenteAutenticato extends Utente {
 		}
 	}
 
-	public void disiscrizionetorneo(String emailutente,String nometorneo) {
+	public void disiscrizionetorneo(String emailutente, String nometorneo) {
 
 		daot = new TorneoDao();
 		try {
-			if(daot.selectbytorneo(nometorneo).contains(emailutente))
-			daot.deletepartecipante(emailutente);
+			if (daot.selectbytorneo(nometorneo).contains(emailutente))
+				daot.deletepartecipante(emailutente);
 		}
 
 		catch (Exception e) {

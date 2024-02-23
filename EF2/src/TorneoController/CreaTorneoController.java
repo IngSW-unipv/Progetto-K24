@@ -16,7 +16,8 @@ import Utente.UtenteAutenticato;
 public class CreaTorneoController {
 
 	private CreaTorneoView view;
-
+    private UtenteAutenticato utente;
+	
 	public CreaTorneoController() {
 		this.view = new CreaTorneoView();
 		view.getCreaTorneo().addActionListener(listenercreazione);
@@ -48,8 +49,8 @@ public class CreaTorneoController {
 				}
 				// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
 				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
-				UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
-
+				
+                utente.getInstance(null, null, null);
 				utente.creazionetorneo(view.getNomeText().getText(), "", "gioco1", date, date_,
 						view.getVisibilitaText().getText());
 

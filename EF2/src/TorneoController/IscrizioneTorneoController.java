@@ -6,13 +6,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Autenticazionecontroller.LoginController;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
 
 public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
-
+    private UtenteAutenticato utente;
+    private LoginController logincontroller;
 	public IscrizioneTorneoController() {
 		this.view = new IscrizioneTorneoView();
 		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);
@@ -27,8 +29,7 @@ public class IscrizioneTorneoController {
 
 			if (e.getSource() == view.getIscrivitiTorneo()) {
 				// da togliere
-				UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
-
+				utente =logincontroller.getUtente();
 				utente.iscrizionetorneo(utente.getEmail(), view.getName());
 
 			}

@@ -13,12 +13,13 @@ import Autenticazionemodel.RegistrazioneModel;
 import Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
+import Utente.UtenteAutenticato;
 
 public class LoginController implements ActionListener {
 
 	private RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
-
+    private UtenteAutenticato utente;
 	private LoginModel model;
 	private LoginView view;
 
@@ -60,7 +61,8 @@ public class LoginController implements ActionListener {
 				{
 					view.getErroreText().setForeground(Color.green);
 					view.getErroreText().setText("ACCESSO CORRETTO");
-
+                    utente =model.istanziautente( view.getUsernameText().getText(),
+				     view.getEmailText().getText(),view.getPasswordText().getText());                 
 				} else {
 					view.getErroreText().setForeground(Color.red);
 					view.getErroreText().setText("USERNAME O PASSWORD ERRATI");
@@ -70,6 +72,14 @@ public class LoginController implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	public UtenteAutenticato getUtente() {
+		return utente;
+	}
+
+	public void setUtente(UtenteAutenticato utente) {
+		this.utente = utente;
 	}
 
 }

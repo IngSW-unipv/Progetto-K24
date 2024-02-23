@@ -107,6 +107,8 @@ public class LoginView extends JFrame {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 	
 	//fine getters and setters
 

@@ -27,9 +27,9 @@ public class UtenteDao implements IUtenteDao {
 
 
 	@Override
-	public ArrayList<UtenteAutenticato> selectAll()
+	public ArrayList<String> selectAll()
 	{
-		ArrayList<UtenteAutenticato> result = new ArrayList<>();
+		ArrayList<String> result = new ArrayList<>();
 
 		conn=DBconnection.startConnection(conn,schema);
 		Statement st1;
@@ -38,14 +38,20 @@ public class UtenteDao implements IUtenteDao {
 		try
 		{
 			st1 = conn.createStatement();
-			String query="select * from utente1 ";
+			String query="select * from utenti ";
 			rs1=st1.executeQuery(query);
 
 			while(rs1.next())
 			{
-				UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
 
-				result.add(f);
+				
+				result.add(rs1.getString(1));
+				result.add(rs1.getString(2));
+				result.add(rs1.getString(3));
+				
+				
+				
 			}
 		}catch (Exception e){e.printStackTrace();}
 
@@ -63,7 +69,7 @@ public class UtenteDao implements IUtenteDao {
 
 		try
 		{
-			String query="SELECT COUNT(username and pswrd) FROM utente1 WHERE username = ? AND pswrd = ?";
+			String query="SELECT COUNT(username and pswrd) FROM utenti WHERE username = ? AND pswrd = ?";
 			
 			
 
@@ -98,7 +104,7 @@ public class UtenteDao implements IUtenteDao {
        boolean esito =true;
 		try
 		{
-			String query="SELECT COUNT(email and pswrd ) FROM utente1 WHERE email = ? AND pswrd = ?";
+			String query="SELECT COUNT(email and pswrd ) FROM utenti WHERE email = ? AND pswrd = ?";
 			
 
 			st1 = conn.prepareStatement(query);
@@ -146,12 +152,11 @@ public class UtenteDao implements IUtenteDao {
 
 		try
 		{
-			String query="INSERT INTO utente1(ut_id,email,username,pswrd) VALUES(?,?,?,?)";
+			String query="INSERT INTO utenti(email,username,pswrd) VALUES(?,?,?)";
 			st1 = conn.prepareStatement(query);
-			st1.setInt(1, f.getId());
-			st1.setString(2,f.getEmail() );
-			st1.setString(3,f.getUsername());
-			st1.setString(4,f.getHashedPassword());
+			st1.setString(1,f.getEmail() );
+			st1.setString(2,f.getUsername());
+			st1.setString(3,f.getHashedPassword());
 			
 			st1.executeUpdate();
 
@@ -177,7 +182,7 @@ public class UtenteDao implements IUtenteDao {
 
 		try
 		{
-			String query="Delete from utente1 where email = ?";
+			String query="Delete from utenti where email = ?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1,f.getEmail());	
 			st1.executeUpdate();
@@ -211,7 +216,7 @@ public class UtenteDao implements IUtenteDao {
 		try
 		{
 			
-			String query="update utente1 set username=?,pswrd=? where email=?";//"+f.getId()+","+f.getemail()+","+f.getUsername()+","+f.getpassword()+");";
+			String query="update utenti set username=?,pswrd=? where email=?";//"+f.getId()+","+f.getemail()+","+f.getUsername()+","+f.getpassword()+");";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getUsername());	
 			st1.setString(1, f.getEmail());

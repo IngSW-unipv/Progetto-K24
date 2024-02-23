@@ -63,7 +63,7 @@ public class RegistrazioneModel {
 	}
 	public void istanciateuser(UtenteAutenticato utente) {
 		
-	    utente =new UtenteAutenticato(0,"","","");
+	    utente.getInstance("","" , "");
 		
 	}
 	

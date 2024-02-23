@@ -30,8 +30,8 @@ public class RegistrationController1{
 	private RegistrazioneView view;
 	private LoginModel loginModel;
 	private LoginView loginView;
-	private UtenteAutenticato utente =new UtenteAutenticato(0,"","","");
-    public RegistrationController1(RegistrazioneModel model, RegistrazioneView view) {
+	
+	public RegistrationController1(RegistrazioneModel model, RegistrazioneView view) {
         this.model = model;
         this.view = view;
         addListeners();
@@ -86,7 +86,7 @@ public class RegistrationController1{
             		view.getErroreLabel().setForeground(Color.green);
                     view.getErroreLabel().setText("ACCESSO CORRETTO");
                     try {
-						utente.registrazioneCredenziali(34, view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getText());
+						//utente.registrazioneCredenziali(34, view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getText());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
