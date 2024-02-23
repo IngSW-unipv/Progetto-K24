@@ -74,13 +74,13 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void iscrizionetorneo(String emailutente,String nometorneo ,int punteggio) {
+	public void iscrizionetorneo(String emailutente,String nometorneo) {
 
 		daot = new TorneoDao();
 
 		try {
 			if ((!(daot.selectbytorneo(nometorneo).contains(emailutente)) &&daot.elencatorneo().contains(nometorneo)) ) {
-				daot.insertpartecipante(emailutente, nometorneo, punteggio);
+				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
