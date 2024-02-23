@@ -24,20 +24,20 @@ public class UtenteAutenticato extends Utente {
 
 		utente = new UtenteAutenticato(0, nomeNuovo, email, "");
 		dao = new UtenteDao();
-		dao.UpdateSchemautente(utente);
+		dao.updateSchemaUtente(utente);
 	}
 
-	public void registrazionecredenziali(int id, String username, String email, String password) throws SQLException {
+	public void registrazioneCredenziali(int id, String username, String email, String password) throws SQLException {
 
 		dao = new UtenteDao();
-		dao.insertSchemautente(new UtenteAutenticato(id, username, email, password));
+		dao.insertSchemaUtente(new UtenteAutenticato(id, username, email, password));
 
 	}
 
 	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
 		utente = new UtenteAutenticato(id, username, email, password);
 		dao = new UtenteDao();
-		dao.eliminaSchemautente(utente);
+		dao.eliminaSchemaUtente(utente);
 
 	}
 
@@ -116,14 +116,3 @@ public class UtenteAutenticato extends Utente {
 	}
 
 }
-
-//amicizia
-//giochi preferiti
-//iscrizione tornei
-//creazione tornei
-
-//Queste necessitano di un collegamento al database
-//disiscrizione
-//cambio credenziali
-
-// Chiedere al prof se ha senso usare questo pattern per utente.

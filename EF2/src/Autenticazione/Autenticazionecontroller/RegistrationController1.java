@@ -86,7 +86,7 @@ public class RegistrationController1{
             		view.getErroreLabel().setForeground(Color.green);
                     view.getErroreLabel().setText("ACCESSO CORRETTO");
                     try {
-						utente.registrazionecredenziali(34, view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getText());
+						utente.registrazioneCredenziali(34, view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getText());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

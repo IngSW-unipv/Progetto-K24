@@ -82,7 +82,7 @@ public class RegistrazioneController implements ActionListener {
 							if (model.isPasswordValida(password1)) {
 								// utente =new UtenteAutenticato();
 								try {
-									utente.registrazionecredenziali(34, view.getNomeText().getText(),
+									utente.registrazioneCredenziali(34, view.getNomeText().getText(),
 											view.getPassword1Text().getText(), view.getEmailText().getText());
 								} catch (SQLException e1) {
 									// TODO Auto-generated catch block
