@@ -10,6 +10,7 @@ import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
 import TorneoController.CreaTorneoController;
+import TorneoController.IscrizioneTorneoController;
 import TorneoView.CreaTorneoView;
 import ViewMine.Minesweeper;
 
@@ -18,8 +19,10 @@ public class Engine {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		 BigFrame frame=new BigFrame();
+		 // BigFrame frame=new BigFrame();
 
+		IscrizioneTorneoController c = new IscrizioneTorneoController();
+		
 		//CreaTorneoController c = new CreaTorneoController();
 		// Minesweeper m=new Minesweeper();
 

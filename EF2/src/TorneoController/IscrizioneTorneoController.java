@@ -27,7 +27,7 @@ public class IscrizioneTorneoController  implements ActionListener{
 			
 			UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
 
-			utente.iscrizionetorneo(utente.getEmail(),view.getName(), 0);
+			utente.iscrizionetorneo(utente.getEmail(),view.getName());
 
 		}
 

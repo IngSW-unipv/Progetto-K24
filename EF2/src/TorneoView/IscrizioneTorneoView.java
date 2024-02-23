@@ -55,13 +55,13 @@ public class IscrizioneTorneoView extends JFrame {
 		nomeLabel.setBounds(200, 30, 100, 25);
 		nomeText.setBounds(300, 30, 100, 25);
 		
-		datainizioLabel.setBounds(200, 165, 100, 25);
-		datainzioText.setBounds(300, 165, 100, 25);
+		datainizioLabel.setBounds(200, 80, 100, 25);
+		datainzioText.setBounds(300, 80, 100, 25);
 
-		datafineLabel.setBounds(200, 210, 100, 25);
-		datafineText.setBounds(300, 210, 100, 25);
+		datafineLabel.setBounds(200, 110, 100, 25);
+		datafineText.setBounds(300, 110, 100, 25);
 
-		IscrivitiTorneo.setBounds(200, 290, 150, 25);
+		IscrivitiTorneo.setBounds(200, 170, 150, 25);
 
 		
 		// aggiungo i label al pannello
