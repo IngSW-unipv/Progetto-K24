@@ -74,7 +74,7 @@ public class UtenteDao implements IUtenteDao {
 
 			while(rs1.next())
 			{
-				//Schemautente f=new Schemautente(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+				//SchemaUtente f=new SchemaUtente(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
 
 				//result.add(f);
 				
@@ -137,7 +137,7 @@ public class UtenteDao implements IUtenteDao {
 		
 	}
 
-	public boolean insertSchemautente(UtenteAutenticato f)throws SQLException {
+	public boolean insertSchemaUtente(UtenteAutenticato f)throws SQLException {
 
 		conn=DBconnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -168,7 +168,7 @@ public class UtenteDao implements IUtenteDao {
 
 	}
 	
-	public boolean eliminaSchemautente(UtenteAutenticato f) {
+	public boolean eliminaSchemaUtente(UtenteAutenticato f) {
 
 		conn=DBconnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -201,7 +201,7 @@ public class UtenteDao implements IUtenteDao {
 		
 	}
     
-	public boolean UpdateSchemautente(UtenteAutenticato f) {
+	public boolean updateSchemaUtente(UtenteAutenticato f) {
 	
 		conn=DBconnection.startConnection(conn,schema);
 		PreparedStatement st1;
@@ -226,14 +226,5 @@ public class UtenteDao implements IUtenteDao {
 		return esito;
 		
 	}
-	
-	
-	@Override
-	public boolean insertSchemaUtente(UtenteAutenticato f) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	
 	
 }
