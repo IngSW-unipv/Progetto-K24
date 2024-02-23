@@ -1,4 +1,4 @@
-package Autenticazionecontroller;
+package Autenticazione.Autenticazionecontroller;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -8,22 +8,22 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import Autenticazionemodel.LoginModel;
-import Autenticazionemodel.RegistrazioneModel;
-import Autenticazioneview.LoginView;
-import Autenticazioneview.RegistrazioneView;
+import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
 
 public class LoginController implements ActionListener {
 
-	private RegistrazioneModel registrazioneModel;
+	private Autenticazione.Autenticazionemodel.RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
     private UtenteAutenticato utente;
-	private LoginModel model;
-	private LoginView view;
+	private Autenticazione.Autenticazionemodel.LoginModel model;
+	private Autenticazione.Autenticazioneview.LoginView view;
 
-	public LoginController(LoginModel model, LoginView view) {
+	public LoginController(Autenticazione.Autenticazionemodel.LoginModel model, Autenticazione.Autenticazioneview.LoginView view) {
 		this.model = model;
 		this.view = view;
 

@@ -1,4 +1,4 @@
-package Autenticazionecontroller;
+package Autenticazione.Autenticazionecontroller;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -12,10 +12,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import Autenticazionemodel.LoginModel;
-import Autenticazionemodel.RegistrazioneModel;
-import Autenticazioneview.LoginView;
-import Autenticazioneview.RegistrazioneView;
+import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
 

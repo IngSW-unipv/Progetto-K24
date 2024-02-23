@@ -1,4 +1,4 @@
-package Autenticazionemodel;
+package Autenticazione.Autenticazionemodel;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

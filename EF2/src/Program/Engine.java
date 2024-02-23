@@ -2,10 +2,10 @@ package Program;
 
 import java.util.ArrayList;
 
-import Autenticazionecontroller.RegistrazioneController;
-import Autenticazionemodel.RegistrazioneModel;
-import Autenticazioneview.BigFrame;
-import Autenticazioneview.RegistrazioneView;
+import Autenticazione.Autenticazionecontroller.RegistrazioneController;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.BigFrame;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
@@ -19,11 +19,11 @@ public class Engine {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		BigFrame frame=new BigFrame();
+		//BigFrame frame=new BigFrame();
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		//CreaTorneoController c = new CreaTorneoController();
+		CreaTorneoController c = new CreaTorneoController();
 		// Minesweeper m=new Minesweeper();
 
 

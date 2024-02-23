@@ -1,4 +1,4 @@
-package Autenticazioneview;
+package Autenticazione.Autenticazioneview;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;

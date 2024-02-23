@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Autenticazionecontroller.LoginController;
+import Autenticazione.Autenticazionecontroller.LoginController;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
 
@@ -14,7 +14,7 @@ public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
     private UtenteAutenticato utente;
-    private LoginController logincontroller;
+    private Autenticazione.Autenticazionecontroller.LoginController logincontroller;
 	public IscrizioneTorneoController() {
 		this.view = new IscrizioneTorneoView();
 		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);

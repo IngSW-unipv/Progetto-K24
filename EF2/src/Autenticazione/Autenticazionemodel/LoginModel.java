@@ -1,4 +1,4 @@
-package Autenticazionemodel;
+package Autenticazione.Autenticazionemodel;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
