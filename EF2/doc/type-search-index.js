@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"DataBase","l":"DBconnection"},{"p":"DataBase","l":"Engine"},{"p":"DataBase","l":"ISchemaDao"},{"p":"DataBase","l":"SchemaDao"},{"p":"DataBase","l":"SchemaFacade"},{"p":"DataBase","l":"Schemautente"}];updateSearchResults();
