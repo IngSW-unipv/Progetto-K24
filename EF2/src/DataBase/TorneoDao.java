@@ -41,8 +41,6 @@ public class TorneoDao implements ITorneoDao {
 
 			st1.executeUpdate();
 			System.out.println("insert succesful");
-			
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -76,7 +74,6 @@ public class TorneoDao implements ITorneoDao {
 			st1.setString(6, gioco);
 
 			st1.executeUpdate();
-			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -201,9 +198,6 @@ public class TorneoDao implements ITorneoDao {
 
 	}
 
-	
-	
-	
 	@Override
 	public ArrayList<String> selectbytorneo(String nometorneo) {
 		// TODO Auto-generated method stub
@@ -215,9 +209,9 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select emailUtente from partecipazioni where nometorneo="+"'"+nometorneo+"'";
+			String query = "select emailUtente from partecipazioni where nometorneo=" + "'" + nometorneo + "'";
 			st1 = conn.prepareStatement(query);
-			//st1.setString(1, nometorneo);
+			// st1.setString(1, nometorneo);
 			// st1.executeUpdate();
 
 			rs1 = st1.executeQuery(query);
@@ -237,7 +231,7 @@ public class TorneoDao implements ITorneoDao {
 
 	@Override
 	public ArrayList<String> selecttuplebytorneo(String nometorneo) {
-		
+
 		ArrayList<String> result = new ArrayList<>();
 
 		conn = DBconnection.startConnection(conn, schema);
