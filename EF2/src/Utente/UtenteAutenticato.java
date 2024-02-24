@@ -28,7 +28,7 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void cambiausername(UtenteAutenticato utente, String nomeNuovo, String email) {
+	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
 
 		utente = new UtenteAutenticato(nomeNuovo, email, "");
 		dao = new UtenteDao();
@@ -51,7 +51,7 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void istanziatorneo(String nometorneo) {
+	public void istanziaTorneo(String nometorneo) {
 
 		daot = new TorneoDao();
 		var list = daot.selecttuplebytorneo(nometorneo);
@@ -59,7 +59,7 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void creazionetorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
+	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_, String visibilità) {
 
 		TorneoDao daot = new TorneoDao();
@@ -70,21 +70,18 @@ public class UtenteAutenticato extends Utente {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			creazionecontrollertorneo();
+			creazioneControllerTorneo();
 
 		}
-		// CreaTorneoView v=new CreaTorneoView();
-		// CreaTorneoController c=new CreaTorneoController(v);
-
 	}
 
-	public void creazionecontrollertorneo() {
+	public void creazioneControllerTorneo() {
 
 		CreaTorneoController c = new CreaTorneoController();
 
 	}
 
-	public void iscrizionetorneo(String emailutente, String nometorneo) {
+	public void iscrizioneTorneo(String emailutente, String nometorneo) { //manca controllo che il torneo sia iniziato e non finito
 
 		daot = new TorneoDao();
 
@@ -100,7 +97,7 @@ public class UtenteAutenticato extends Utente {
 		}
 	}
 
-	public void disiscrizionetorneo(String emailutente, String nometorneo) {
+	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
 		daot = new TorneoDao();
 		try {
@@ -115,14 +112,14 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminatorneo(String nometorneo) {
+	public void eliminaTorneo(String nometorneo) { // va aggiunto un controllo che a eliminare il torneo può essere solo il creatore
 
 		daot = new TorneoDao();
 		daot.deleteTorneo(nometorneo);
 
 	}
 
-	public void visualizzalista() {
+	public void visualizzaLista() {
 		daot = new TorneoDao();
 		daot.selectbyuser();
 
