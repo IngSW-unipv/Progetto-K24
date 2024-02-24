@@ -13,6 +13,7 @@ import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
+import Index.IndexController;
 import Utente.UtenteAutenticato;
 import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 
@@ -65,7 +66,11 @@ public class LoginController  {
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO");
                         utente =model.istanziautente( view.getUsernameText().getText(),
-    				    view.getEmailText().getText(),view.getPasswordText().getText());                 
+    				    view.getUsernameText().getText(),view.getPasswordText().getText()); 
+                        
+                        IndexController c=new IndexController();
+                        
+                        
     				} else {
     					view.getErroreText().setForeground(Color.red);
     					view.getErroreText().setText("USERNAME O PASSWORD ERRATI");

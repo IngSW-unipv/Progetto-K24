@@ -7,6 +7,7 @@ import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.BigFrameController;
 import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Index.IndexController;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
@@ -22,11 +23,13 @@ public class Engine {
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		CreaTorneoController c = new CreaTorneoController();
+		
+		
+		//CreaTorneoController c = new CreaTorneoController();
 		
         //MinesweeperController ctrl = new MinesweeperController();
       
-        //BigFrameController c=new BigFrameController();
+        BigFrameController c=new BigFrameController();
 		
 	}
 

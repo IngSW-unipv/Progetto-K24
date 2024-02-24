@@ -32,7 +32,7 @@ public class IscrizioneTorneoController {
 			if (e.getSource() == view.getIscrivitiTorneo()) {
 				// da togliere
 				utente =loginmodel.istanziautente("Abramo",  "12345","Abramo@gmail.com");//logincontroller.getUtente();
-				utente.iscrizionetorneo(utente.getEmail(), view.getNomeText().getText());
+				utente.iscrizioneTorneo(utente.getEmail(), view.getNomeText().getText());
 
 			}
 

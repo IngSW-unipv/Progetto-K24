@@ -53,7 +53,7 @@ public class CreaTorneoController {
 				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
 				
                 utente=logincontroller.istanziautente("Abramo", "Abramo@gmail.com", "12345");
-				utente.creazionetorneo(view.getNomeText().getText(), utente.getUsername(), "gioco1", date, date_,
+				utente.creazioneTorneo(view.getNomeText().getText(), utente.getUsername(), "gioco1", date, date_,
 						view.getVisibilitaText().getText());
 
 			}

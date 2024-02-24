@@ -35,7 +35,7 @@ public class LoginModel {
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
 		// String file = "C:\\Users\\azera\\Desktop\\file.txt";
 
-		ut.getInstance(usernameInput, usernameInput, passwordInput);
+		ut=UtenteAutenticato.getInstance(usernameInput, usernameInput, passwordInput);
 
 		// BufferedReader br = new BufferedReader(new FileReader(file));
 		// ArrayList<Schemautente> st = null;

@@ -55,14 +55,14 @@ public class UtenteAutenticato extends Utente {
 
 		daot = new TorneoDao();
 		var list = daot.selecttuplebytorneo(nometorneo);
-		Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5));
+		//Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5));
 
 	}
 
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_, String visibilità) {
 
-		TorneoDao daot = new TorneoDao();
+		 daot = new TorneoDao();
 		try {
 			if (!(daot.elencatorneo().contains(nometorneo))) {
 				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_, visibilità);

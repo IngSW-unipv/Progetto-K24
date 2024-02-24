@@ -4,9 +4,12 @@ package Index;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import iii.unipv.projects.ef2.controller.*;
-import iii.unipv.projects.ef2.model.*;
-import iii.unipv.projects.ef2.view.*;
+import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
+import TorneoController.CreaTorneoController;
+import TorneoController.IscrizioneTorneoController;
 
 
 
@@ -56,14 +59,14 @@ public class IndexController {
 		view.getCreaTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	new creaTorneoController();
+		    	new CreaTorneoController();
 			}
 		});
 		
 		view.getIscrivitiTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	new iscrizioneTorneoController();
+		    	new IscrizioneTorneoController();
 			}
 		});
 		
