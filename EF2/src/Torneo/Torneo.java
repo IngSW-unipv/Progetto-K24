@@ -25,7 +25,7 @@ public class Torneo {
 	}
 
 	public void modificaPunteggio(int nuovoPunteggio) {
-		/* riceve nuovo punteggio, va a modificare il punteggio precedente dell'utente chiamante e del torneo corrente
+		/* riceve nuovo punteggio, va a modificare il punteggio precedente dell'utente chiamante e del torneo corrente (come ottiene email utente chiamante?)
 		 * 
 		 */
 	}
@@ -35,7 +35,7 @@ public class Torneo {
 	}
 	public void nuovaPartita() {
 	/* inizializza controller (tramite il model del gioco?) che farà partire il gioco. raggiunta la fine del gioco, 
-	 * si ottiene il valore del punteggio e lo si usa chiamando verificaPunteggio
+	 * si ottiene il valore del punteggio e lo si usa chiamando verificaPunteggio (come faccio a dare al gioco un modo di restituire il suo punteggio al torneo?)
 	
 	*/
 	}
