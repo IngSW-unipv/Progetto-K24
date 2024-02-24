@@ -1,4 +1,4 @@
-package Autenticazioneview;
+package Autenticazione.Autenticazioneview;
 
 import java.awt.FlowLayout;
 import java.awt.Panel;
