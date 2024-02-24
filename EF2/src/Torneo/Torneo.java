@@ -7,7 +7,7 @@ import java.util.List;
 import Gestione.IGame;
 
 public class Torneo {
-	private String nome;
+	private String nomeTorneo;
 	private IGame gioco;
 
 	public Torneo(IGame gioco, String nome) {
@@ -40,7 +40,7 @@ public class Torneo {
 	*/
 	}
 	public void stampaClassifica() {
-		/* chiama metodo del dao che elenca tutti i giocatori di questo torneo e i loro punteggi, li mette in una mappa epoi li ordina per punteggio */
+		/* chiama metodo del dao che elenca tutti i giocatori di questo torneo e i loro punteggi, li mette in una mappa e poi li ordina per punteggio */
 	}
 	
 	
