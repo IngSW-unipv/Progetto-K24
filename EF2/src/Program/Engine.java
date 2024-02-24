@@ -22,11 +22,11 @@ public class Engine {
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		//CreaTorneoController c = new CreaTorneoController();
+		CreaTorneoController c = new CreaTorneoController();
 		
         //MinesweeperController ctrl = new MinesweeperController();
       
-        BigFrameController c=new BigFrameController();
+        //BigFrameController c=new BigFrameController();
 		
 	}
 
