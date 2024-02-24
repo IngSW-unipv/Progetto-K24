@@ -21,9 +21,9 @@ public class Engine {
 
 		//BigFrame frame=new BigFrame();
 
-		//IscrizioneTorneoController c = new IscrizioneTorneoController();
+		IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		CreaTorneoController c = new CreaTorneoController();
+		//CreaTorneoController c = new CreaTorneoController();
 		// Minesweeper m=new Minesweeper();
 
 

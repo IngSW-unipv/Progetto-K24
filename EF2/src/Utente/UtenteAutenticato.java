@@ -89,8 +89,10 @@ public class UtenteAutenticato extends Utente {
 		daot = new TorneoDao();
 
 		try {
-			if ((!(daot.selectbytorneo(nometorneo).contains(emailutente))
-					&& daot.elencatorneo().contains(nometorneo))) {
+			if (true) {      
+				
+				//(!(daot.selectbytorneo(nometorneo).contains(emailutente))&& daot.elencatorneo().contains(nometorneo))
+				
 				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
