@@ -12,7 +12,7 @@ import Minesweeper.MinesweeperView.MinesweeperView;
 import TorneoController.CreaTorneoController;
 import TorneoController.IscrizioneTorneoController;
 import TorneoView.CreaTorneoView;
-import ViewMine.Minesweeper;
+
 
 public class Engine {
 
@@ -24,20 +24,10 @@ public class Engine {
 		IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
 		//CreaTorneoController c = new CreaTorneoController();
-		// Minesweeper m=new Minesweeper();
-
-
-
+		
         //MinesweeperController ctrl = new MinesweeperController();
 
-		// Schemautente f=new Schemautente(id,fd,fg,fz);
-
-		// SchemaDao sdao=new SchemaDao();
-		// sdao.insertSchemautente(f);
-		// var res=sdao.selectAll();
-
-		// System.out.println(res.toString());
-
+		
 	}
 
 }
