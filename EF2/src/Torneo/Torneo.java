@@ -42,4 +42,7 @@ public class Torneo {
 	public void stampaClassifica() {
 		/* chiama metodo del dao che elenca tutti i giocatori di questo torneo e i loro punteggi, li mette in una mappa epoi li ordina per punteggio */
 	}
+	
+	
+	
 }

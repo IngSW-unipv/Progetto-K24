@@ -1,4 +1,4 @@
-package Autenticazioneview;
+package Autenticazione.Autenticazioneview;
 
 import java.awt.FlowLayout;
 import java.awt.Panel;
@@ -9,11 +9,11 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import Autenticazionecontroller.LoginController;
-import Autenticazionecontroller.RegistrationController1;
-import Autenticazionecontroller.RegistrazioneController;
-import Autenticazionemodel.LoginModel;
-import Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazionecontroller.LoginController;
+import Autenticazione.Autenticazionecontroller.RegistrationController1;
+import Autenticazione.Autenticazionecontroller.RegistrazioneController;
+import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 
 public class BigFrame extends JFrame implements ActionListener{
 
@@ -60,7 +60,7 @@ getLoginButton().addActionListener(this);
 			registrazioneModel = new RegistrazioneModel(); //li devo istanziare dentro l'if altrimenti se istanzio sia registraiozne che login fuori dal'if mi apre tutto a prescindere
 	        registrazioneView = new RegistrazioneView();
 			dispose();
-			new RegistrationController1(registrazioneModel, registrazioneView);
+			new RegistrazioneController(registrazioneModel, registrazioneView);
 		}
 		if(e.getSource()==loginButton) {
 	         loginModel=new LoginModel();

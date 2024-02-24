@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
+import Autenticazione.Autenticazionecontroller.LoginController;
+import Autenticazione.Autenticazionemodel.LoginModel;
 import DataBase.TorneoDao;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
@@ -16,11 +18,12 @@ import Utente.UtenteAutenticato;
 public class CreaTorneoController {
 
 	private CreaTorneoView view;
-
+    private UtenteAutenticato utente;
+	private LoginModel logincontroller;
 	public CreaTorneoController() {
 		this.view = new CreaTorneoView();
 		view.getCreaTorneo().addActionListener(listenercreazione);
-
+        logincontroller=new LoginModel();
 	}
 
 	ActionListener listenercreazione = new ActionListener() {
@@ -48,9 +51,9 @@ public class CreaTorneoController {
 				}
 				// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
 				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
-				UtenteAutenticato utente = new UtenteAutenticato(0, "", "", "");
-
-				utente.creazionetorneo(view.getNomeText().getText(), "", "gioco1", date, date_,
+				
+                utente=logincontroller.istanziautente("Abramo", "Abramo@gmail.com", "12345");
+				utente.creazionetorneo(view.getNomeText().getText(), utente.getUsername(), "gioco1", date, date_,
 						view.getVisibilitaText().getText());
 
 			}

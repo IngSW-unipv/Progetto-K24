@@ -33,14 +33,16 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = true;
 
 		try {
-			String query = "INSERT INTO partecipazioni (emailutente,nometorneo,punteggio ) VALUES(?,?,?)";
+			String query = "INSERT INTO partecipazioni (emailUtente,nometorneo,punteggio ) VALUES(?,?,?)";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, emailutente);
 			st1.setString(2, nometorneo);
 			st1.setInt(3, punteggio);
 
-			DBconnection.closeConnection(conn);
-			return esito;
+			st1.executeUpdate();
+			System.out.println("insert succesful");
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -73,8 +75,8 @@ public class TorneoDao implements ITorneoDao {
 			st1.setDate(5, sqlDate_);
 			st1.setString(6, gioco);
 
-			DBconnection.closeConnection(conn);
-			return esito;
+			st1.executeUpdate();
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -213,9 +215,9 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select emailUtente from partecipazioni where nometorneo=?";
+			String query = "select emailUtente from partecipazioni where nometorneo="+"'"+nometorneo+"'";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1, nometorneo);
+			//st1.setString(1, nometorneo);
 			// st1.executeUpdate();
 
 			rs1 = st1.executeQuery(query);

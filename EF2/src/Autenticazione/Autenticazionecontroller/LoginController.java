@@ -1,4 +1,4 @@
-package Autenticazionecontroller;
+package Autenticazione.Autenticazionecontroller;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -8,21 +8,22 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 
-import Autenticazionemodel.LoginModel;
-import Autenticazionemodel.RegistrazioneModel;
-import Autenticazioneview.LoginView;
-import Autenticazioneview.RegistrazioneView;
+import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
+import Utente.UtenteAutenticato;
 
 public class LoginController implements ActionListener {
 
-	private RegistrazioneModel registrazioneModel;
+	private Autenticazione.Autenticazionemodel.RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
+    private UtenteAutenticato utente;
+	private Autenticazione.Autenticazionemodel.LoginModel model;
+	private Autenticazione.Autenticazioneview.LoginView view;
 
-	private LoginModel model;
-	private LoginView view;
-
-	public LoginController(LoginModel model, LoginView view) {
+	public LoginController(Autenticazione.Autenticazionemodel.LoginModel model, Autenticazione.Autenticazioneview.LoginView view) {
 		this.model = model;
 		this.view = view;
 
@@ -60,7 +61,8 @@ public class LoginController implements ActionListener {
 				{
 					view.getErroreText().setForeground(Color.green);
 					view.getErroreText().setText("ACCESSO CORRETTO");
-
+                    utente =model.istanziautente( view.getUsernameText().getText(),
+				    view.getEmailText().getText(),view.getPasswordText().getText());                 
 				} else {
 					view.getErroreText().setForeground(Color.red);
 					view.getErroreText().setText("USERNAME O PASSWORD ERRATI");
@@ -70,6 +72,14 @@ public class LoginController implements ActionListener {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+	public UtenteAutenticato getUtente() {
+		return utente;
+	}
+
+	public void setUtente(UtenteAutenticato utente) {
+		this.utente = utente;
 	}
 
 }

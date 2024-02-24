@@ -1,4 +1,4 @@
-package Autenticazionemodel;
+package Autenticazione.Autenticazionemodel;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -22,10 +22,20 @@ public class LoginModel {
 	}
 	// fine costruttore
 
+	public UtenteAutenticato istanziautente( String userName, String email, String password ) {
+		
+		
+		ut=UtenteAutenticato.getInstance(userName,email,password);
+		
+		return ut;
+		
+		
+	}
+	
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
 		// String file = "C:\\Users\\azera\\Desktop\\file.txt";
 
-		ut = new UtenteAutenticato(34, "", usernameInput, passwordInput);
+		ut.getInstance(usernameInput, usernameInput, passwordInput);
 
 		// BufferedReader br = new BufferedReader(new FileReader(file));
 		// ArrayList<Schemautente> st = null;

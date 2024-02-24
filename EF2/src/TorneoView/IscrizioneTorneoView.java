@@ -22,16 +22,12 @@ public class IscrizioneTorneoView extends JFrame {
 		this.nomeText = nomeText;
 	}
 
-	public void setVisibilitaText(JTextField visibilitaText) {
-		this.visibilitaText = visibilitaText;
-	}
-
+	
 	private JLabel datainizioLabel = new JLabel("DATA INIZIO: ");
 	private JLabel datafineLabel = new JLabel("DATA FINE: ");
 	private JLabel nomeLabel = new JLabel("NOME TORNEO: ");
 	
 	private JTextField nomeText = new JTextField();
-	private JTextField visibilitaText = new JTextField();
 	
 	
 	private JTextField datainzioText = new JTextField();
@@ -69,7 +65,6 @@ public class IscrizioneTorneoView extends JFrame {
 		panel.add(datainizioLabel);
 		panel.add(datafineLabel);
 		panel.add(nomeText);
-		panel.add(visibilitaText);
 		panel.add(datainzioText);
 		panel.add(datafineText);
 		panel.add(IscrivitiTorneo);
@@ -113,8 +108,6 @@ public class IscrizioneTorneoView extends JFrame {
 		this.nomeLabel = nomeLabel;
 	}
 
-	
-	
 	public JTextField getDatainzioText() {
 		return datainzioText;
 	}
@@ -139,16 +132,8 @@ public class IscrizioneTorneoView extends JFrame {
 		IscrivitiTorneo = creaTorneo;
 	}
 
-	public JTextField getVisibilitaText() {
-		return visibilitaText;
-	}
-
 	public JTextField getNomeText() {
 		return nomeText;
 	}
 
-	public JTextField getCognomeText() {
-		return visibilitaText;
-	}	
-	
 }

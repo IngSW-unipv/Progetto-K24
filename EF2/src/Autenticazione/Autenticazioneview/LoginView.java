@@ -1,4 +1,4 @@
-package Autenticazioneview;
+package Autenticazione.Autenticazioneview;
 
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -107,6 +107,8 @@ public class LoginView extends JFrame {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
 	
 	//fine getters and setters
 
