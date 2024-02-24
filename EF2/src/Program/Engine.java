@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.BigFrame;
 import Autenticazione.Autenticazioneview.BigFrameController;
 import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
@@ -20,8 +19,6 @@ public class Engine {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		

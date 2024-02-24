@@ -14,9 +14,9 @@ import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
-import iii.unipv.projects.ef2.controller.RegistrazioneController;
+import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 
-public class LoginController implements ActionListener {
+public class LoginController  {
 
 	private Autenticazione.Autenticazionemodel.RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
