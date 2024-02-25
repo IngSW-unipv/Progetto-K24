@@ -46,7 +46,7 @@ public class CreaTorneoView extends JFrame {
 		// lavoro sul frame
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		add(panel);

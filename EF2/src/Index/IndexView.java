@@ -24,6 +24,8 @@ public class IndexView extends JFrame{
     private JButton eliminaButton;
     private JButton creaTorneo;
     private JButton iscrivitiTorneo;
+    private JButton EliminaTorneo;
+    private JButton disiscrivitiTorneo;
     // Dimensioni fisse per i bottoni del centerPanel
     private static final int BUTTON_WIDTH = 150;
     private static final int BUTTON_HEIGHT = 150;
@@ -41,10 +43,11 @@ public class IndexView extends JFrame{
     	eliminaButton = new JButton("Elimina account");
     	creaTorneo = new JButton("Crea Torneo");
     	iscrivitiTorneo = new JButton("Iscriviti a Torneo");
-    	
+    	EliminaTorneo = new JButton("Elimina Torneo");
+    	disiscrivitiTorneo = new JButton("Disiscriviti Torneo");
     	
     	setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLocation(0, 0);
 
         // panelLayout
@@ -58,17 +61,22 @@ public class IndexView extends JFrame{
 
         setButtonProperties(creaTorneo);
         setButtonProperties(iscrivitiTorneo);
-
+        setButtonProperties(EliminaTorneo);
+        setButtonProperties(disiscrivitiTorneo);
         // Imposta l'allineamento orizzontale dei bottoni nel leftPanel
         creaTorneo.setAlignmentX(CENTER_ALIGNMENT);
         iscrivitiTorneo.setAlignmentX(CENTER_ALIGNMENT);
-
+        EliminaTorneo.setAlignmentX(CENTER_ALIGNMENT);
+        disiscrivitiTorneo.setAlignmentX(CENTER_ALIGNMENT);
         // Aggiungi spazio tra i bottoni nel leftPanel
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
         leftPanel.add(creaTorneo);
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
         leftPanel.add(iscrivitiTorneo);
-
+        leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
+        leftPanel.add(EliminaTorneo);
+        leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
+        leftPanel.add(disiscrivitiTorneo);
         // topPanel
         topPanel.setPreferredSize(
                 new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width, (Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
@@ -85,8 +93,8 @@ public class IndexView extends JFrame{
         centerPanel.setBackground(new Color(144, 238, 144));
 
         // Aggiungi bottoni al centerPanel
-        addCenterButton(new ImageIcon("C:/Users/azera/Downloads/istockphoto-1019489342-612x612.jpg")); //ricorda di modificare
-        addCenterButton(new ImageIcon("C:/Users/azera/Downloads/expert.png"));
+        addCenterButton("Minesweeper",new ImageIcon("/documentazione_progetto/minesweeper.jpeg")); //ricorda di modificare
+        addCenterButton("Tris",new ImageIcon("/documentazione_progetto/tris.jpeg"));
         
         // add
         add(panelLayout);
@@ -99,10 +107,12 @@ public class IndexView extends JFrame{
     	
     
     // Metodo per aggiungere bottoni al centerPanel con dimensioni fisse
-    private void addCenterButton(ImageIcon imageIcon) {
-        JButton button = new JButton(resizeIcon(imageIcon, BUTTON_WIDTH, BUTTON_HEIGHT));
+    private void addCenterButton(String name,ImageIcon imageIcon) {
+        JButton button = new JButton(name,resizeIcon(imageIcon, BUTTON_WIDTH, BUTTON_HEIGHT));
         setButtonProperties(button);
+        button.setSize(100, 100);
         centerPanel.add(button);
+        
     }
 
     // Metodo per ridimensionare l'icona mantenendo le proporzioni
@@ -120,6 +130,26 @@ public class IndexView extends JFrame{
 
 	public JButton getCreaTorneo() {
 		return creaTorneo;
+	}
+
+
+	public JButton getEliminaTorneo() {
+		return EliminaTorneo;
+	}
+
+
+	public void setEliminaTorneo(JButton eliminaTorneo) {
+		EliminaTorneo = eliminaTorneo;
+	}
+
+
+	public JButton getDisiscrivitiTorneo() {
+		return disiscrivitiTorneo;
+	}
+
+
+	public void setDisiscrivitiTorneo(JButton disiscrivitiTorneo) {
+		this.disiscrivitiTorneo = disiscrivitiTorneo;
 	}
 
 

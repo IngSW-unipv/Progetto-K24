@@ -9,11 +9,9 @@ import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import TorneoController.CreaTorneoController;
+import TorneoController.DisiscrizioneTorneoController;
+import TorneoController.EliminaTorneoController;
 import TorneoController.IscrizioneTorneoController;
-
-
-
-
 
 public class IndexController {
 
@@ -27,6 +25,7 @@ public class IndexController {
 	private LoginView loginView;
 	
 	public IndexController() {
+		
 		this.model=new IndexModel();
 		this.view=new IndexView();
 		addListeners();
@@ -67,6 +66,21 @@ public class IndexController {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	new IscrizioneTorneoController();
+			}
+		});
+		
+		
+		view.getDisiscrivitiTorneo().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	new DisiscrizioneTorneoController();
+			}
+		});
+		
+		view.getEliminaTorneo().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	new EliminaTorneoController();
 			}
 		});
 		

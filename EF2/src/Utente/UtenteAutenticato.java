@@ -16,61 +16,53 @@ public class UtenteAutenticato extends Utente {
 	private TorneoDao daot;
 	private static UtenteAutenticato instance;
 
-	private UtenteAutenticato(String userName, String email, String password) {
+	// costruttore da istanziare per utetne vuoto
+
+	public UtenteAutenticato() {
+
+		super("", "", "");
+
+		
+	}
+
+	public UtenteAutenticato(String userName, String email, String password) {
 		super(userName, email, password);
-
+		daot = SingletonGestione.getInstance().getTorneodao();
+		dao = SingletonGestione.getInstance().getUtentedao();
 	}
 
-	public static synchronized UtenteAutenticato getInstance(String userName, String email, String passwor) {
-		if (instance == null)
-			instance = new UtenteAutenticato(userName, email, passwor);
-		return instance;
-
-	}
-
-	public void registrazioneCredenziali( UtenteAutenticato u,String username, String email, String password) throws SQLException {
-
-		
-		dao = new UtenteDao();
-		dao.insertSchemaUtente(u);
-        
-		
-	}
+	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
 	
-	// Come quello sotto è stato modifcato con un this
-	//Ne serve uno nuovo per cambiare la password? Ma poi come si fa dall'interfaccia grafica a capire quale va cambiato
-	public void cambiaUsername(String nomeNuovo) {
-		setUsername(nomeNuovo);
-		dao = new UtenteDao();
-		dao.updateSchemaUtente(this);
+		 utente=SingletonGestione.getInstance().getUtente();
+
+		dao.updateSchemaUtente(utente);
 	}
 
-	/*  PRIMA ERA COSì, IO LI CAMBIEREI TUTTI CON THIS ANZICHE IL PASSAGGIO DI TUTTI I PARAMTERI PER LA CREAZIONE
-	 * 	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
+	public void registrazioneCredenziali(UtenteAutenticato u, String username, String email, String password)
+			throws SQLException {
+
+		dao.insertSchemaUtente(u);
+
+	}
+
+	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
 		utente = new UtenteAutenticato(username, email, password);
-		dao = new UtenteDao();
-		dao.eliminaSchemaUtente(utente);
 
-	}
-	 */
-	public void eliminaAccount() {
-		dao = new UtenteDao();
-		dao.eliminaSchemaUtente(this);
+		dao.eliminaSchemaUtente(utente);
 
 	}
 
 	public void istanziaTorneo(String nometorneo) {
 
-		daot = new TorneoDao();
 		var list = daot.selecttuplebytorneo(nometorneo);
-		//Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2), list.get(3), list.get(4), list.get(5));
+		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
+		// list.get(3), list.get(4), list.get(5));
 
 	}
 
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_, String visibilità) {
 
-		 daot = new TorneoDao();
 		try {
 			if (!(daot.elencatorneo().contains(nometorneo))) {
 				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_, visibilità);
@@ -89,15 +81,15 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void iscrizioneTorneo(String emailutente, String nometorneo) { //manca controllo che il torneo sia iniziato e non finito
-
-		daot = new TorneoDao();
+	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
+																			// e non finito
 
 		try {
-			if (true) {      
-				
-				//(!(daot.selectbytorneo(nometorneo).contains(emailutente))&& daot.elencatorneo().contains(nometorneo))
-				
+			if (true) {
+
+				// (!(daot.selectbytorneo(nometorneo).contains(emailutente))&&
+				// daot.elencatorneo().contains(nometorneo))
+
 				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
@@ -107,7 +99,6 @@ public class UtenteAutenticato extends Utente {
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
-		daot = new TorneoDao();
 		try {
 			if (daot.selectbytorneo(nometorneo).contains(emailutente))
 				daot.deletepartecipante(emailutente);
@@ -120,17 +111,17 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaTorneo(String nometorneo) { // va aggiunto un controllo che a eliminare il torneo può essere solo il creatore
+	public void eliminaTorneo(String nometorneo) { // va aggiunto un controllo che a eliminare il torneo può essere solo
+													// il creatore
 
-		daot = new TorneoDao();
 		daot.deleteTorneo(nometorneo);
 
 	}
 
 	public void visualizzaLista() {
-		daot = new TorneoDao();
+
 		daot.selectbyuser();
 
 	}
-	
+
 }

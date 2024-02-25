@@ -14,20 +14,18 @@ import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Index.IndexController;
+import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 
 public class LoginController  {
 
-	private Autenticazione.Autenticazionemodel.RegistrazioneModel registrazioneModel;
-	private RegistrazioneView registrazioneView;
-    private UtenteAutenticato utente;
-	private Autenticazione.Autenticazionemodel.LoginModel model;
-	private Autenticazione.Autenticazioneview.LoginView view;
+	private LoginModel model;
+	private LoginView view;
 
-	public LoginController(Autenticazione.Autenticazionemodel.LoginModel model, Autenticazione.Autenticazioneview.LoginView view) {
-		this.model = model;
-		this.view = view;
+	public LoginController() {
+		this.model = new LoginModel();
+		this.view = new LoginView();
         addListeners();
 	}
 
@@ -48,9 +46,8 @@ public class LoginController  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.dispose();
-                registrazioneModel = new RegistrazioneModel();
-                registrazioneView = new RegistrazioneView();
-                new RegistrazioneController(registrazioneModel, registrazioneView);
+              
+                new RegistrazioneController();
             }
         });
 
@@ -64,10 +61,8 @@ public class LoginController  {
     				if (model.verificaCredenziali(passwordString, view.getUsernameText().getText())) // view.getUsernameText().getText()
     				{
     					view.getErroreText().setForeground(Color.green);
-    					view.getErroreText().setText("ACCESSO CORRETTO");
-                        utente =model.istanziautente( view.getUsernameText().getText(),
-    				    view.getUsernameText().getText(),view.getPasswordText().getText()); 
-                        
+    					view.getErroreText().setText("ACCESSO CORRETTO"); 
+    					model.istanziautente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getText());
                         IndexController c=new IndexController();
                         
                         
@@ -84,12 +79,14 @@ public class LoginController  {
         });
     }
 
-	public UtenteAutenticato getUtente() {
-		return utente;
+
+	public Autenticazione.Autenticazionemodel.LoginModel getModel() {
+		return model;
 	}
 
-	public void setUtente(UtenteAutenticato utente) {
-		this.utente = utente;
+
+	public void setModel(Autenticazione.Autenticazionemodel.LoginModel model) {
+		this.model = model;
 	}
 
 }

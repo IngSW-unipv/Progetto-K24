@@ -15,24 +15,12 @@ public class DisiscrizioneTorneoView extends JFrame{
 	public void setNomeText(JTextField nomeText) {
 		this.nomeText = nomeText;
 	}
-
-	public void setVisibilitaText(JTextField visibilitaText) {
-		this.visibilitaText = visibilitaText;
-	}
-
-	private JLabel datainizioLabel = new JLabel("DATA INIZIO: ");
-	private JLabel datafineLabel = new JLabel("DATA FINE: ");
+	
 	private JLabel nomeLabel = new JLabel("NOME TORNEO: ");
 	
 	private JTextField nomeText = new JTextField();
-	private JTextField visibilitaText = new JTextField();
 	
-	
-	private JTextField datainzioText = new JTextField();
-	private JTextField datafineText = new JTextField();
 	private JButton  DisiscrizioneTorneo = new JButton(" Disiscrizione Torneo");
-
-	
 
 	// inizio costruttore
 	public DisiscrizioneTorneoView() {
@@ -40,7 +28,7 @@ public class DisiscrizioneTorneoView extends JFrame{
 		// lavoro sul frame
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		add(panel);
@@ -48,24 +36,15 @@ public class DisiscrizioneTorneoView extends JFrame{
 		// setto le dimensioni e le posizioni dei label
 		nomeLabel.setBounds(200, 30, 100, 25);
 		nomeText.setBounds(300, 30, 100, 25);
-		
-		datainizioLabel.setBounds(200, 165, 100, 25);
-		datainzioText.setBounds(300, 165, 100, 25);
-
-		datafineLabel.setBounds(200, 210, 100, 25);
-		datafineText.setBounds(300, 210, 100, 25);
 
 		DisiscrizioneTorneo.setBounds(200, 290, 150, 25);
 
 		
 		// aggiungo i label al pannello
 		panel.add(nomeLabel);
-		panel.add(datainizioLabel);
-		panel.add(datafineLabel);
+		
 		panel.add(nomeText);
-		panel.add(visibilitaText);
-		panel.add(datainzioText);
-		panel.add(datafineText);
+		
 		panel.add(DisiscrizioneTorneo);
 
 		// rendo il frame e il label visibili
@@ -83,22 +62,7 @@ public class DisiscrizioneTorneoView extends JFrame{
 		this.panel = panel;
 	}
 
-	public JLabel getDatainizioLabel() {
-		return datainizioLabel;
-	}
-
-	public void setDatainizioLabel(JLabel datainizioLabel) {
-		this.datainizioLabel = datainizioLabel;
-	}
-
-	public JLabel getDatafineLabel() {
-		return datafineLabel;
-	}
-
-	public void setDatafineLabel(JLabel datafineLabel) {
-		this.datafineLabel = datafineLabel;
-	}
-
+	
 	public JLabel getNomeLabel() {
 		return nomeLabel;
 	}
@@ -108,23 +72,6 @@ public class DisiscrizioneTorneoView extends JFrame{
 	}
 
 	
-	
-	public JTextField getDatainzioText() {
-		return datainzioText;
-	}
-
-	public void setDatainzioText(JTextField datainzioText) {
-		this.datainzioText = datainzioText;
-	}
-
-	public JTextField getDatafineText() {
-		return datafineText;
-	}
-
-	public void setDatafineText(JTextField datafineText) {
-		this.datafineText = datafineText;
-	}
-
 	public JButton getDisiscrizioneTorneo() {
 		return DisiscrizioneTorneo;
 	}
@@ -133,17 +80,8 @@ public class DisiscrizioneTorneoView extends JFrame{
 		DisiscrizioneTorneo = creaTorneo;
 	}
 
-	public JTextField getVisibilitaText() {
-		return visibilitaText;
-	}
-
 	public JTextField getNomeText() {
 		return nomeText;
 	}
-
-	public JTextField getCognomeText() {
-		return visibilitaText;
-	}	
-	
 	
 }

@@ -9,18 +9,17 @@ import java.util.Date;
 import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazione.Autenticazionemodel.LoginModel;
 import TorneoView.IscrizioneTorneoView;
+import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
-    private UtenteAutenticato utente;
-    private LoginController logincontroller;
-    private LoginModel loginmodel;
+	private UtenteAutenticato utente;
+
 	public IscrizioneTorneoController() {
 		this.view = new IscrizioneTorneoView();
 		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);
-        loginmodel=new LoginModel();
 	}
 
 	ActionListener listeneriscrizione = new ActionListener() {
@@ -30,8 +29,8 @@ public class IscrizioneTorneoController {
 			// TODO Auto-generated method stub
 
 			if (e.getSource() == view.getIscrivitiTorneo()) {
-				// da togliere
-				utente =loginmodel.istanziautente("Abramo",  "12345","Abramo@gmail.com");//logincontroller.getUtente();
+
+				utente = SingletonGestione.getInstance().getUtente();
 				utente.iscrizioneTorneo(utente.getEmail(), view.getNomeText().getText());
 
 			}

@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import DataBase.UtenteDao;
+import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class LoginModel {
@@ -24,8 +25,10 @@ public class LoginModel {
 
 	public UtenteAutenticato istanziautente( String userName, String email, String password ) {
 		
+		 SingletonGestione.getInstance().setUtente(new UtenteAutenticato());
+		ut=SingletonGestione.getInstance().getUtente();
 		
-		ut=UtenteAutenticato.getInstance(userName,email,password);
+		
 		
 		return ut;
 		
@@ -33,9 +36,8 @@ public class LoginModel {
 	}
 	
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
-		// String file = "C:\\Users\\azera\\Desktop\\file.txt";
-
-		ut=UtenteAutenticato.getInstance(usernameInput, usernameInput, passwordInput);
+		
+		ut=new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
 
 		// BufferedReader br = new BufferedReader(new FileReader(file));
 		// ArrayList<Schemautente> st = null;
@@ -58,6 +60,14 @@ public class LoginModel {
 			return false;
 		}
 
+	}
+
+	public UtenteAutenticato getUt() {
+		return ut;
+	}
+
+	public void setUt(UtenteAutenticato ut) {
+		this.ut = ut;
 	}
 
 }

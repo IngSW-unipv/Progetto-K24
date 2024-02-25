@@ -28,14 +28,13 @@ public class RegistrazioneController{
 	private char[] password;
 	private RegistrazioneModel model;
 	private RegistrazioneView view;
-	private LoginModel loginModel;
-	private LoginView loginView;
+
 	private UtenteAutenticato utente;
 
 	
-	public RegistrazioneController(RegistrazioneModel model, RegistrazioneView view) {
-        this.model = model;
-        this.view = view;
+	public RegistrazioneController() {
+        this.model = new RegistrazioneModel();
+        this.view = new RegistrazioneView();
         addListeners();
     }
 
@@ -54,10 +53,9 @@ public class RegistrazioneController{
     private class AccediButtonListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            loginModel =null;// new LoginModel();
-            loginView =null;// new LoginView();
+            
             view.dispose();
-            new LoginController(loginModel, loginView);
+            new LoginController();
         }
     }
 
@@ -89,7 +87,7 @@ public class RegistrazioneController{
             		view.getErroreLabel().setForeground(Color.green);
                     view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
                     
-                    utente = model.istanciateuser(view.getNomeText().getText(),
+                    utente = model.istanziautente(view.getNomeText().getText(),
 							view.getPassword1Text().getText(), view.getEmailText().getText());
 					
 					

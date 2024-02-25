@@ -34,9 +34,7 @@ public class BigFrameController{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	view.dispose();
-				registrazioneModel = new RegistrazioneModel(); //li devo istanziare dentro l'if altrimenti se istanzio sia registraiozne che login fuori dal'if mi apre tutto a prescindere
-		        registrazioneView = new RegistrazioneView();
-				new RegistrazioneController(registrazioneModel, registrazioneView);
+				new RegistrazioneController();
 			}
 		});
 		
@@ -44,9 +42,8 @@ public class BigFrameController{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        view.dispose();
-		    	loginModel=new LoginModel();
-		        loginView=new LoginView();
-		        new LoginController(loginModel, loginView);
+		    	
+		        new LoginController();
 			}
 		});
 	}	

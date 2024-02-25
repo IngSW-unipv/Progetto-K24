@@ -13,17 +13,18 @@ import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazione.Autenticazionemodel.LoginModel;
 import DataBase.TorneoDao;
 import TorneoView.CreaTorneoView;
+import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class CreaTorneoController {
 
 	private CreaTorneoView view;
     private UtenteAutenticato utente;
-	private LoginModel logincontroller;
+
 	public CreaTorneoController() {
 		this.view = new CreaTorneoView();
 		view.getCreaTorneo().addActionListener(listenercreazione);
-        logincontroller=new LoginModel();
+		
 	}
 
 	ActionListener listenercreazione = new ActionListener() {
@@ -52,7 +53,12 @@ public class CreaTorneoController {
 				// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
 				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
 				
-                utente=logincontroller.istanziautente("Abramo", "Abramo@gmail.com", "12345");
+                utente=SingletonGestione.getInstance().getUtente();
+                
+                System.out.println(utente.getEmail());
+                System.out.println(utente.getUsername());
+                System.out.println(utente.getHashedPassword());
+                
 				utente.creazioneTorneo(view.getNomeText().getText(), utente.getUsername(), "gioco1", date, date_,
 						view.getVisibilitaText().getText());
 
