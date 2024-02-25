@@ -12,7 +12,7 @@ public class Torneo {
 
 	public Torneo(IGame gioco, String nome) {
 	        this.gioco = gioco;
-	        this.nome = nome;
+	        this.nomeTorneo = nome;
 	  
 	    }
 

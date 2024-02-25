@@ -53,6 +53,10 @@ public abstract class Utente {
 		return userName;
 
 	}
+	
+	public void setUsername(String u) {
+		this.userName = u;
+	}
 
 	public String getEmail() {
 		return email;

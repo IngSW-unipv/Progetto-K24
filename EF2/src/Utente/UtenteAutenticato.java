@@ -28,13 +28,6 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
-
-		utente = new UtenteAutenticato(nomeNuovo, email, "");
-		dao = new UtenteDao();
-		dao.updateSchemaUtente(utente);
-	}
-
 	public void registrazioneCredenziali( UtenteAutenticato u,String username, String email, String password) throws SQLException {
 
 		
@@ -43,11 +36,26 @@ public class UtenteAutenticato extends Utente {
         
 		
 	}
+	
+	// Come quello sotto è stato modifcato con un this
+	//Ne serve uno nuovo per cambiare la password? Ma poi come si fa dall'interfaccia grafica a capire quale va cambiato
+	public void cambiaUsername(String nomeNuovo) {
+		setUsername(nomeNuovo);
+		dao = new UtenteDao();
+		dao.updateSchemaUtente(this);
+	}
 
-	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
+	/*  PRIMA ERA COSì, IO LI CAMBIEREI TUTTI CON THIS ANZICHE IL PASSAGGIO DI TUTTI I PARAMTERI PER LA CREAZIONE
+	 * 	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
 		utente = new UtenteAutenticato(username, email, password);
 		dao = new UtenteDao();
 		dao.eliminaSchemaUtente(utente);
+
+	}
+	 */
+	public void eliminaAccount() {
+		dao = new UtenteDao();
+		dao.eliminaSchemaUtente(this);
 
 	}
 
@@ -124,5 +132,5 @@ public class UtenteAutenticato extends Utente {
 		daot.selectbyuser();
 
 	}
-
+	
 }

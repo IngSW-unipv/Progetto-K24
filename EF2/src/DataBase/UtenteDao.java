@@ -200,6 +200,7 @@ public class UtenteDao implements IUtenteDao {
 		return esito;
 
 	}
+	
 	public void Arraylist(UtenteAutenticato utente) {
 		
 		utentelist = new ArrayList<UtenteAutenticato>();
