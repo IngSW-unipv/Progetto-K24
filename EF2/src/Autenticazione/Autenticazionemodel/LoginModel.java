@@ -23,21 +23,18 @@ public class LoginModel {
 	}
 	// fine costruttore
 
-	public UtenteAutenticato istanziautente( String userName, String email, String password ) {
-		
-		 SingletonGestione.getInstance().setUtente(new UtenteAutenticato());
-		ut=SingletonGestione.getInstance().getUtente();
-		
-		
-		
+	public UtenteAutenticato istanziautente(String userName, String email, String password) {
+
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato());
+		ut = SingletonGestione.getInstance().getUtente();
+
 		return ut;
-		
-		
+
 	}
-	
+
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
-		
-		ut=new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
+
+		ut = new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
 
 		// BufferedReader br = new BufferedReader(new FileReader(file));
 		// ArrayList<Schemautente> st = null;

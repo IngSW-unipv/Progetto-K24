@@ -34,7 +34,7 @@ public class EliminaTorneoController {
 				
 				utente=SingletonGestione.getInstance().getUtente();
 				
-				utente.eliminaTorneo(view.getName());
+				utente.eliminaTorneo(view.getNomeText().getText(),utente.getUsername());
 
 			}
 

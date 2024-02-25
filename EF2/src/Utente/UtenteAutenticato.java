@@ -61,12 +61,15 @@ public class UtenteAutenticato extends Utente {
 	}
 
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
-			java.util.Date date_, String visibilità) {
+			java.util.Date date_) {
 
+		daot=new TorneoDao();
+		
 		try {
-			if (!(daot.elencatorneo().contains(nometorneo))) {
-				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_, visibilità);
-				System.out.println(daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_, visibilità));
+			if (daot.elencatorneo(nometorneo)) 
+					{
+				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,14 +85,12 @@ public class UtenteAutenticato extends Utente {
 	}
 
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
-																			// e non finito
-
+			
+		
+		daot=new TorneoDao();
 		try {
-			if (true) {
-
-				// (!(daot.selectbytorneo(nometorneo).contains(emailutente))&&
-				// daot.elencatorneo().contains(nometorneo))
-
+			if (true )//(!(daot.selectbytorneo(nometorneo).contains(emailutente))&&daot.elencatorneo().contains(nometorneo))) 
+			{
 				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
@@ -111,10 +112,12 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaTorneo(String nometorneo) { // va aggiunto un controllo che a eliminare il torneo può essere solo
-													// il creatore
-
-		daot.deleteTorneo(nometorneo);
+	public void eliminaTorneo(String nometorneo,String nomeutente) { // va aggiunto un controllo che a eliminare il torneo può essere solo
+				
+		
+		// il creatore
+        if(SingletonGestione.getInstance().getTorneodao().isCreatore(nomeutente))
+        	SingletonGestione.getInstance().getTorneodao().deleteTorneo(nometorneo);
 
 	}
 

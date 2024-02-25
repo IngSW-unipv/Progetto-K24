@@ -19,12 +19,20 @@ import Utente.UtenteAutenticato;
 public class CreaTorneoController {
 
 	private CreaTorneoView view;
-    private UtenteAutenticato utente;
+	private UtenteAutenticato utente;
+    private boolean istrue;
+	public boolean isIstrue() {
+		return istrue;
+	}
+
+	public void setIstrue(boolean istrue) {
+		this.istrue = istrue;
+	}
 
 	public CreaTorneoController() {
 		this.view = new CreaTorneoView();
 		view.getCreaTorneo().addActionListener(listenercreazione);
-		
+
 	}
 
 	ActionListener listenercreazione = new ActionListener() {
@@ -50,18 +58,19 @@ public class CreaTorneoController {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
-				// LocalDate date_ = LocalDate.parse(view.getDatafineText().getText());
-				// LocalDate date = LocalDate.parse(view.getDatainzioText().getText());
-				
-                utente=SingletonGestione.getInstance().getUtente();
-                
-                System.out.println(utente.getEmail());
-                System.out.println(utente.getUsername());
-                System.out.println(utente.getHashedPassword());
-                
-				utente.creazioneTorneo(view.getNomeText().getText(), utente.getUsername(), "gioco1", date, date_,
-						view.getVisibilitaText().getText());
 
+				SingletonGestione.getInstance();
+				utente = SingletonGestione.getInstance().getUtente();
+
+				System.out.println(utente.getEmail());
+				System.out.println(utente.getUsername());
+				System.out.println(utente.getHashedPassword());
+                
+				//utente=new UtenteAutenticato("","","");
+				
+				utente.creazioneTorneo(view.getNomeText().getText(), utente.getUsername(), view.getComboText(), date, date_);
+                istrue=true;
+				
 			}
 
 		}

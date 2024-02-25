@@ -9,7 +9,7 @@ import java.time.LocalDate;
 
 public interface ITorneoDao {
 
-	public boolean insertTorneo(String nometorneo, String nome, String gioco, Date date, Date date_, String visibilità);
+	public boolean insertTorneo(String nometorneo, String nome, String gioco, Date date, Date date_);
 
 	public boolean insertpartecipante(String emailutente,String nometorneo,int punteggio);
 	
@@ -21,12 +21,14 @@ public interface ITorneoDao {
 	
 	public ArrayList<String> selecttuplebytorneo(String nometorneo);
 	
-	public ArrayList<String> elencatorneo();
+	public boolean elencatorneo(String nomeutente);
 
 	public void modificapunteggiobyuser();
 
 	public ArrayList<String> selectbyuser();
 
 	boolean selectbyuser(String id, String emailUtente);
+
+	boolean isCreatore(String nomeutente);
 
 }

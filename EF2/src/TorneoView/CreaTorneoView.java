@@ -22,24 +22,18 @@ public class CreaTorneoView extends JFrame {
 		this.nomeText = nomeText;
 	}
 
-	public void setVisibilitaText(JTextField visibilitaText) {
-		this.visibilitaText = visibilitaText;
-	}
-
 	private JLabel datainizioLabel = new JLabel("DATA INIZIO: ");
 	private JLabel datafineLabel = new JLabel("DATA FINE: ");
 	private JLabel nomeLabel = new JLabel("NOME TORNEO: ");
-	private JLabel visibilitaLabel = new JLabel("VISIBILITA: ");
 	private JTextField nomeText = new JTextField();
-	private JTextField visibilitaText = new JTextField();
 	private JLabel GiocoLabel = new JLabel("GIOCO: ");
 	private JTextField GiocoText = new JTextField();
 	private JTextField datainzioText = new JTextField();
 	private JTextField datafineText = new JTextField();
 	private JButton CreaTorneo = new JButton("Crea Torneo");
-
 	private JLabel erroreLabel = new JLabel();
-
+    private String[] options = { "Minesweeper 1", "Snake 2" };
+    private JComboBox<String> comboBox = new JComboBox<>(options);
 	// inizio costruttore
 	public CreaTorneoView() {
 		panel.setLayout(null);
@@ -52,18 +46,13 @@ public class CreaTorneoView extends JFrame {
 		add(panel);
 
 		// Creazione e aggiunta della JComboBox al pannello
-		String[] options = { "Minesweeper 1", "Snake 2" };
-		JComboBox<String> comboBox = new JComboBox<>(options);
+		
+		
 		comboBox.setBounds(300, 120, 100, 25);
-		var name = comboBox.toString();
-		panel.add(comboBox);
 
 		// setto le dimensioni e le posizioni dei label
 		nomeLabel.setBounds(200, 30, 100, 25);
 		nomeText.setBounds(300, 30, 100, 25);
-
-		visibilitaLabel.setBounds(200, 75, 100, 25);
-		visibilitaText.setBounds(300, 75, 100, 25);
 
 		GiocoLabel.setBounds(200, 120, 100, 25);
 		// GiocoText.setBounds(300, 120, 100, 25);
@@ -81,17 +70,15 @@ public class CreaTorneoView extends JFrame {
 
 		// aggiungo i label al pannello
 		panel.add(nomeLabel);
-		panel.add(visibilitaLabel);
 		panel.add(GiocoLabel);
 		panel.add(datainizioLabel);
 		panel.add(datafineLabel);
 		panel.add(nomeText);
-		panel.add(visibilitaText);
 		panel.add(GiocoText);
 		panel.add(datainzioText);
 		panel.add(datafineText);
 		panel.add(CreaTorneo);
-
+        panel.add(comboBox);
 		panel.add(erroreLabel);
 
 		// rendo il frame e il label visibili
@@ -100,6 +87,14 @@ public class CreaTorneoView extends JFrame {
 	// fine costruttore
 
 	// getters e setters vari
+
+	public JComboBox<String> getComboBox() {
+		return comboBox;
+	}
+
+	public void setComboBox(JComboBox<String> comboBox) {
+		this.comboBox = comboBox;
+	}
 
 	public JPanel getPanel() {
 		return panel;
@@ -133,14 +128,6 @@ public class CreaTorneoView extends JFrame {
 		this.nomeLabel = nomeLabel;
 	}
 
-	public JLabel getVisibilitaLabel() {
-		return visibilitaLabel;
-	}
-
-	public void setVisibilitaLabel(JLabel visibilitaLabel) {
-		this.visibilitaLabel = visibilitaLabel;
-	}
-
 	public JTextField getDatainzioText() {
 		return datainzioText;
 	}
@@ -165,16 +152,8 @@ public class CreaTorneoView extends JFrame {
 		CreaTorneo = creaTorneo;
 	}
 
-	public JTextField getVisibilitaText() {
-		return visibilitaText;
-	}
-
 	public JTextField getNomeText() {
 		return nomeText;
-	}
-
-	public JTextField getCognomeText() {
-		return visibilitaText;
 	}
 
 	public void setErroreLabel(JLabel erroreLabel) {
@@ -187,7 +166,7 @@ public class CreaTorneoView extends JFrame {
 
 	public String getComboText() {
 
-		return getName();
+		return (String) comboBox.getSelectedItem();
 
 	}
 

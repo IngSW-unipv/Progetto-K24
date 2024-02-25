@@ -31,6 +31,7 @@ public class IscrizioneTorneoController {
 			if (e.getSource() == view.getIscrivitiTorneo()) {
 
 				utente = SingletonGestione.getInstance().getUtente();
+				SingletonGestione.getInstance();
 				utente.iscrizioneTorneo(utente.getEmail(), view.getNomeText().getText());
 
 			}

@@ -16,6 +16,7 @@ public class TorneoDao implements ITorneoDao {
 
 	private Connection conn;
 	private String schema;
+	private int count;
 
 	public TorneoDao() {
 
@@ -53,8 +54,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean insertTorneo(String nometorneo, String nome, String gioco, Date date, Date date_,
-			String visibilità) {
+	public boolean insertTorneo(String nometorneo, String nome, String gioco, Date date, Date date_) {
 		// TODO Auto-generated method stub
 
 		conn = DBconnection.startConnection(conn, schema);
@@ -64,14 +64,13 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = true;
 
 		try {
-			String query = "INSERT INTO tornei (nometorneo,visibilita,creatore ,datainizio ,datafine ,gioco ) VALUES(?,?,?,?,?,?)";
+			String query = "INSERT INTO tornei (nometorneo,creatore ,datainizio ,datafine ,gioco ) VALUES(?,?,?,?,?)";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, nometorneo);
-			st1.setString(2, visibilità);
-			st1.setString(3, nome);
-			st1.setDate(4, sqlDate);
-			st1.setDate(5, sqlDate_);
-			st1.setString(6, gioco);
+			st1.setString(2, nome);
+			st1.setDate(3, sqlDate);
+			st1.setDate(4, sqlDate_);
+			st1.setString(5, gioco);
 
 			st1.executeUpdate();
 
@@ -94,7 +93,7 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = true;
 
 		try {
-			String query = "Delete * from tornei where nometorneo = ?";
+			String query = "Delete from tornei where nometorneo =? ";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, nometorneo);
 			st1.executeUpdate();
@@ -110,30 +109,82 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public ArrayList<String> elencatorneo() {
+	public boolean isCreatore(String nomeutente) {
 		// TODO Auto-generated method stub
-		ArrayList<String> result = new ArrayList<>();
-
 		conn = DBconnection.startConnection(conn, schema);
-		Statement st1;
+		PreparedStatement st1;
+
 		ResultSet rs1;
 
+		boolean esito = false;
+
 		try {
-			st1 = conn.createStatement();
-			String query = "select nometorneo from tornei where visibilita='public'  ";
-			rs1 = st1.executeQuery(query);
+			String query = "Select COUNT(creatore) from tornei where creatore =? ";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, nomeutente);
+			rs1 = st1.executeQuery();
 
 			while (rs1.next()) {
+				count = rs1.getInt(1);
 
-				result.add(rs1.getString(query));
+				if (count == 1) {
+
+					esito = false;
+
+				} else {
+					esito = true;
+				}
+
 			}
-		} catch (Exception e) {
+		}
+
+		catch (Exception e) {
 			e.printStackTrace();
+			esito = true;
 		}
 
 		DBconnection.closeConnection(conn);
-		return result;
+		return esito;
 
+	}
+
+	@Override
+	public boolean elencatorneo(String nometorneo) {
+		// TODO Auto-generated method stub
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+
+		ResultSet rs1;
+
+		boolean esito = false;
+
+		try {
+			String query = "Select COUNT(nometorneo) from tornei where nometorneo =? ";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, nometorneo);
+			rs1 = st1.executeQuery();
+
+			while (rs1.next()) {
+				count = rs1.getInt(1);
+
+				if (count == 1) {
+
+					esito = false;
+
+				} else {
+					esito = true;
+				}
+
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+			esito = true;
+		}
+
+		DBconnection.closeConnection(conn);
+		return esito;
 	}
 
 	@Override

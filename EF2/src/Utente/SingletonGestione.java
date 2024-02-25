@@ -20,23 +20,7 @@ public class SingletonGestione {
 		utentedao=new UtenteDao();
 		torneodao=new TorneoDao();
 	}
-
-	public UtenteDao getUtentedao() {
-		return utentedao;
-	}
-
-	public void setUtentedao(UtenteDao utentedao) {
-		this.utentedao = utentedao;
-	}
-
-	public TorneoDao getTorneodao() {
-		return torneodao;
-	}
-
-	public void setTorneodao(TorneoDao torneodao) {
-		this.torneodao = torneodao;
-	}
-
+	
 	// Metodo pubblico per ottenere l'istanza Singleton
 	public static SingletonGestione getInstance() {
 		if (instance == null) {
@@ -53,6 +37,21 @@ public class SingletonGestione {
 		this.utente = utente;
 	}
 	
-	
+	public UtenteDao getUtentedao() {
+		return utentedao;
+	}
+
+	public void setUtentedao(UtenteDao utentedao) {
+		this.utentedao = utentedao;
+	}
+
+	public TorneoDao getTorneodao() {
+		return torneodao;
+	}
+
+	public void setTorneodao(TorneoDao torneodao) {
+		this.torneodao = torneodao;
+	}
+
 
 }
