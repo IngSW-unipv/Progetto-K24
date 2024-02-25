@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class LoginView extends JFrame {
 
-	private JLabel usernameLabel = new JLabel("USERNAME: ");
+	private JLabel usernameLabel = new JLabel("EMAIL: ");
 	private JLabel passwordLabel = new JLabel("PASSWORD: ");
 	private JTextField usernameText = new JTextField();
 	private JPasswordField passwordText = new JPasswordField();
