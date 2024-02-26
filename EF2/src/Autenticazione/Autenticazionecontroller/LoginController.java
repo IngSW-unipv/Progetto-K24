@@ -58,7 +58,7 @@ public class LoginController  {
     			String passwordString = new String(password);
     			
     			try {
-    				if (model.verificaCredenziali( view.getUsernameText().getText(),passwordString)) // view.getUsernameText().getText()
+    				if (model.verificaCredenziali( view.getUsernameText().getText(),passwordString))
     				{
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
