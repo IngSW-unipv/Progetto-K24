@@ -3,20 +3,11 @@ package Autenticazione.Autenticazionecontroller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import javax.swing.JFrame;
-
 import Autenticazione.Autenticazionemodel.LoginModel;
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
-import Autenticazione.Autenticazioneview.RegistrazioneView;
-import DataBase.UtenteDao;
 import Index.IndexController;
-import Utente.SingletonGestione;
-import Utente.UtenteAutenticato;
-import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 
 public class LoginController  {
 
