@@ -15,10 +15,8 @@ public interface ITorneoDao {
 	
 	public boolean deleteTorneo(String nometorneo);
 
-	public boolean deletepartecipante(String emailutente);
-	
-	public ArrayList<String> selectbytorneo(String nometorneo);
-	
+	public boolean deletePartecipante(String emailutente);
+		
 	public ArrayList<String> selectAllByTorneo(String nometorneo);
 	
 	public boolean ricercaIscritto(String nometorneo,String emailutente);
@@ -29,8 +27,10 @@ public interface ITorneoDao {
 
 	public ArrayList<String> selectbyuser();
 
-	boolean selectbyuser(String id, String emailUtente);
+	public boolean selectbyuser(String id, String emailUtente);
 
-	boolean isCreatore(String nomeutente);
+	public boolean isCreatore(String nomeutente);
+	
+	public boolean selezionaUtenteTorneo(String nomeUtente);
 
 }
