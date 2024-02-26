@@ -21,9 +21,9 @@ public abstract class Utente {
 	 * @param password La password sotto forma di stringa
 	 * @param email    La email asscoiata all'utente
 	 */
-	public Utente( String userName, char[] password, String email) {
+	public Utente( String userName, String password, String email) {
 		this.userName = userName;
-		this.password = new Password(password);
+		this.password = new Password(password.toCharArray());
 		this.email = email;
 		
 	}

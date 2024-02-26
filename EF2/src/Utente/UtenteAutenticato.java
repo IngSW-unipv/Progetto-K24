@@ -20,12 +20,14 @@ public class UtenteAutenticato extends Utente {
 	// costruttore da istanziare per utetne vuoto
 
 	public UtenteAutenticato() {
-		super("", null, "");
+
+		super("", "", "");
+
 		
 	}
 
-	public UtenteAutenticato(String userName, char[] password, String email) {
-		super(userName, password, email);
+	public UtenteAutenticato(String userName, String email, String password) {
+		super(userName, email, password);
 		daot = SingletonGestione.getInstance().getTorneodao();
 		dao = SingletonGestione.getInstance().getUtentedao();
 	}
@@ -45,8 +47,8 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaAccount(UtenteAutenticato utente,  String username, char[] password,String email) {
-		utente = new UtenteAutenticato(username, password, email);
+	public void eliminaAccount(UtenteAutenticato utente,  String username, String email, String password) {
+		utente = new UtenteAutenticato(username, email, password);
 
 		dao.eliminaSchemaUtente(utente);
 
