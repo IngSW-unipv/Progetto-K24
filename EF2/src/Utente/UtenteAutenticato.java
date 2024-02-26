@@ -122,7 +122,7 @@ public class UtenteAutenticato extends Utente {
 		
 		daot=new TorneoDao();
 		try {
-			if (true )//(!(daot.selectbytorneo(nometorneo).contains(emailutente))&&daot.elencatorneo().contains(nometorneo))) 
+			if (daot.selezionaUtenteTorneo(emailutente)) 
 			{
 				daot.insertpartecipante(emailutente, nometorneo, 0);
 			}
@@ -133,9 +133,11 @@ public class UtenteAutenticato extends Utente {
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
+		daot=new TorneoDao();
+		
 		try {
-			if (daot.selectbytorneo(nometorneo).contains(emailutente))
-				daot.deletepartecipante(emailutente);
+			if (daot.selezionaUtenteTorneo(emailutente))
+				daot.deletePartecipante(emailutente);
 		}
 
 		catch (Exception e) {

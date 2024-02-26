@@ -272,7 +272,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean deletepartecipante(String emailutente) {
+	public boolean deletePartecipante(String emailutente) {
 		// TODO Auto-generated method stub
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -280,7 +280,7 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = true;
 
 		try {
-			String query = "Delete * from partecipazioni where emailutente = ?";
+			String query = "Delete from partecipazioni where emailutente = ?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, emailutente);
 			st1.executeUpdate();
@@ -296,9 +296,9 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public ArrayList<String> selectbytorneo(String nometorneo) {
+	public boolean selezionaUtenteTorneo(String nomeUtente) {
 		// TODO Auto-generated method stub
-		ArrayList<String> result = new ArrayList<>();
+		boolean esito =true;
 
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -306,23 +306,30 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select emailUtente from partecipazioni where nometorneo=" + "'" + nometorneo + "'";
+			String query = "select COUNT(emailUtente) from partecipazioni where emailUtente=?";
 			st1 = conn.prepareStatement(query);
-			// st1.setString(1, nometorneo);
-			// st1.executeUpdate();
-
-			rs1 = st1.executeQuery(query);
+			st1.setString(1, nomeUtente);
+			rs1 = st1.executeQuery();
 
 			while (rs1.next()) {
+				count = rs1.getInt(1);
 
-				result.add(rs1.getString(query));
+				if (count == 1) {
+
+					esito = true;
+
+				} else {
+					esito = false;
+				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			esito=false;
 		}
 
 		DBconnection.closeConnection(conn);
-		return result;
+		return esito;
 
 	}
 
