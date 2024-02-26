@@ -33,6 +33,8 @@ public class ModificaAccountController {
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
 				//Chiama effettivamente il model per cambiare i dati
+				model.modificaAccount(view.getUsernameText().getText());
+				
 			}
 		});
 	}

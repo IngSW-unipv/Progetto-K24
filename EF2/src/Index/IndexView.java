@@ -106,7 +106,27 @@ public class IndexView extends JFrame{
     }
     	
     
-    // Metodo per aggiungere bottoni al centerPanel con dimensioni fisse
+    public JButton getModificaButton() {
+		return modificaButton;
+	}
+
+
+	public void setModificaButton(JButton modificaButton) {
+		this.modificaButton = modificaButton;
+	}
+
+
+	public JButton getEliminaButton() {
+		return eliminaButton;
+	}
+
+
+	public void setEliminaButton(JButton eliminaButton) {
+		this.eliminaButton = eliminaButton;
+	}
+
+
+	// Metodo per aggiungere bottoni al centerPanel con dimensioni fisse
     private void addCenterButton(String name,ImageIcon imageIcon) {
         JButton button = new JButton(name,resizeIcon(imageIcon, BUTTON_WIDTH, BUTTON_HEIGHT));
         setButtonProperties(button);

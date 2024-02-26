@@ -9,7 +9,7 @@ import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import GestioneAccount.ModificaAccountView;
 import GestioneAccount.EliminaAccountController;
-import GestioneAccount.ModificaAccount.ModificaAccountController;
+
 import Index.IndexController;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
@@ -26,13 +26,13 @@ public class Engine {
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		EliminaAccountController m = new EliminaAccountController();
-		GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController();
+		
+		//
 		//CreaTorneoController c = new CreaTorneoController();
 		
         //MinesweeperController ctrl = new MinesweeperController();
       
-        //BigFrameController c=new BigFrameController();
+        BigFrameController c=new BigFrameController();
 		
 	}
 

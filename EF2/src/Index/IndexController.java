@@ -8,6 +8,7 @@ import Autenticazione.Autenticazionemodel.LoginModel;
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import GestioneAccount.EliminaAccountController;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
@@ -35,25 +36,19 @@ public class IndexController {
 		
 		
 		//modifica account ed elimina account
-	/*	view.getRegistrazioneButton().addActionListener(new ActionListener() {
+		view.getEliminaButton().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	view.dispose();
-				registrazioneModel = new RegistrazioneModel(); //li devo istanziare dentro l'if altrimenti se istanzio sia registraiozne che login fuori dal'if mi apre tutto a prescindere
-		        registrazioneView = new RegistrazioneView();
-				new RegistrazioneController(registrazioneModel, registrazioneView);
+		    	EliminaAccountController m = new EliminaAccountController();
 			}
 		});
 		
-		view.getLoginButton().addActionListener(new ActionListener() {
+		view.getModificaButton().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		        view.dispose();
-		    	loginModel=new LoginModel();
-		        loginView=new LoginView();
-		        new LoginController(loginModel, loginView);
+		    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController();
 			}
-		});*/
+		});
 		
 		view.getCreaTorneo().addActionListener(new ActionListener() {
 		    @Override

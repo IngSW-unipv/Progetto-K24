@@ -271,10 +271,10 @@ public class UtenteDao implements IUtenteDao {
 		try
 		{
 			
-			String query="update utenti set username=?,pswrd=? where email=?";//"+f.getId()+","+f.getemail()+","+f.getUsername()+","+f.getpassword()+");";
+			String query="update utenti set username=? where email=?";//"+f.getId()+","+f.getemail()+","+f.getUsername()+","+f.getpassword()+");";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getUsername());	
-			st1.setString(1, f.getEmail());
+			st1.setString(2, f.getEmail());
 			st1.executeUpdate();
 			
 		}catch (Exception e){
