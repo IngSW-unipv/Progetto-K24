@@ -19,7 +19,7 @@ import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Utente.UtenteAutenticato;
 
-public class RegistrazioneController{
+public class RegistrazioneController {
 
 	private String username;
 	private String nome;
@@ -31,146 +31,116 @@ public class RegistrazioneController{
 
 	private UtenteAutenticato utente;
 
-	
 	public RegistrazioneController() {
-        this.model = new RegistrazioneModel();
-        this.view = new RegistrazioneView();
-        addListeners();
-    }
+		this.model = new RegistrazioneModel();
+		this.view = new RegistrazioneView();
+		addListeners();
+	}
 
-    private void addListeners() {
-    	try {
-        view.getAccediButton().addActionListener(new AccediButtonListener());
-        view.getPasswordsCheckBox().addActionListener(new PasswordsCheckBoxListener());
-        view.getRegistratiButton().addActionListener(new RegistratiButtonListener());
-    	}
-    	catch (Exception e1) {
-    		e1.printStackTrace();
-    		System.out.print("exceptionAbramo");
-    	}
-    }
+	private void addListeners() {
 
-    private class AccediButtonListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            
-            view.dispose();
-            new LoginController();
-        }
-    }
+		try {
+			view.getAccediButton().addActionListener(new AccediButtonListener());
+			view.getPasswordsCheckBox().addActionListener(new PasswordsCheckBoxListener());
+			view.getRegistratiButton().addActionListener(new RegistratiButtonListener());
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+	}
 
-    private class PasswordsCheckBoxListener implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (view.isPasswordsCheckBoxSelected()) {
-                view.setPasswordFieldsEchochar((char) 0);
-            } else {
-                view.setPasswordFieldsEchochar('•');
-            }
-        }
-    }
-
-     class RegistratiButtonListener implements ActionListener {
-        @SuppressWarnings("deprecation")
+	private class AccediButtonListener implements ActionListener {
 		@Override
-        public void actionPerformed(ActionEvent e) {
-           char[] passwordChars1 = view.getPassword1Text().getPassword();
-            //String password1 = new String(passwordChars1);
-            char[] passwordChars2 = view.getPassword2Text().getPassword();
-            //String password2 = new String(passwordChars2);
+		public void actionPerformed(ActionEvent e) {
 
-            if (model.isNomeCognomeValido(view.getNomeText().getText()) &&
-                   model.isNomeCognomeValido(view.getCognomeText().getText())&&
-                   model.isEmailValida(view.getEmailText().getText()) &&
-                    model.isPasswordUguali(passwordChars1, passwordChars2) &&
-                    model.isPasswordValida(passwordChars1)
-            		) {
-            		view.getErroreLabel().setForeground(Color.green);
-                    view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
-                    
-                    utente = model.istanziautente(view.getNomeText().getText(),
-							view.getEmailText().getText(), view.getPassword1Text().getPassword());
-					
-					
-					try {
-						utente.registrazioneCredenziali( utente,view.getNomeText().getText(),
-							view.getEmailText().getText(),	view.getPassword1Text().getPassword().toString() );
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-            		
-            } else {
-            	view.getErroreLabel().setForeground(Color.red);
-                view.getErroreLabel().setText("Errore nei dati inseriti.");
-            }
-           
-        	   
-           
-        }
-    }
+			view.dispose();
+			new LoginController();
+		}
+	}
 
-  //getters and setters
-  	public String getUsername() {
-  		return username;
-  	}
+	private class PasswordsCheckBoxListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (view.isPasswordsCheckBoxSelected()) {
+				view.setPasswordFieldsEchochar((char) 0);
+			} else {
+				view.setPasswordFieldsEchochar('•');
+			}
+		}
+	}
 
+	class RegistratiButtonListener implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			char[] passwordChars1 = view.getPassword1Text().getPassword();
+			char[] passwordChars2 = view.getPassword2Text().getPassword();
 
+			if (model.isNomeCognomeValido(view.getNomeText().getText())
+					&& model.isNomeCognomeValido(view.getCognomeText().getText())
+					&& model.isEmailValida(view.getEmailText().getText())
+					&& model.isPasswordUguali(passwordChars1, passwordChars2)
+					&& model.isPasswordValida(passwordChars1)) {
 
-  	public void setUsername(String username) {
-  		this.username = username;
-  	}
+				view.getErroreLabel().setForeground(Color.green);
+				view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
 
+				utente = model.istanziautente(view.getNomeText().getText(), view.getEmailText().getText(),
+						view.getPassword1Text().getPassword());
 
+				try {
+					utente.registrazioneCredenziali(utente, view.getNomeText().getText(), view.getEmailText().getText(),
+							view.getPassword1Text().getPassword().toString());
+				} catch (SQLException e1) {
+					view.getErroreLabel().setText("Errore nella registrazione, riprova");
+					e1.printStackTrace();
+				}
 
-  	public String getNome() {
-  		return nome;
-  	}
+			} else {
+				view.getErroreLabel().setForeground(Color.red);
+				view.getErroreLabel().setText("Errore nei dati inseriti.");
+			}
 
+		}
+	}
 
+	// getters and setters
+	public String getUsername() {
+		return username;
+	}
 
-  	public void setNome(String nome) {
-  		this.nome = nome;
-  	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 
+	public String getNome() {
+		return nome;
+	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 
-  	public String getCognome() {
-  		return cognome;
-  	}
+	public String getCognome() {
+		return cognome;
+	}
 
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
 
+	public String getEmail() {
+		return email;
+	}
 
-  	public void setCognome(String cognome) {
-  		this.cognome = cognome;
-  	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
+	public char[] getPassword() {
+		return password;
+	}
 
-
-  	public String getEmail() {
-  		return email;
-  	}
-
-
-
-  	public void setEmail(String email) {
-  		this.email = email;
-  	}
-
-
-
-  	public char[] getPassword() {
-  		return password;
-  	}
-
-
-
-  	public void setPassword(char[] password) {
-  		this.password = password;
-  	}
-
-
-   
-	
+	public void setPassword(char[] password) {
+		this.password = password;
+	}
 
 }

@@ -61,8 +61,8 @@ public class RegistrazioneModel {
 	}
 
 	public UtenteAutenticato istanziautente(String nome, String emailutente, char[] password) {
-		String password_0=new String(password);
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password_0));
+		String pswd=new String(password);
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, pswd));
 		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
 		return utente;
 	}
