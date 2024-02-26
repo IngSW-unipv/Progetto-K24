@@ -1,10 +1,10 @@
 package Autenticazione.Autenticazioneview;
 
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -14,60 +14,86 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class LoginView extends JFrame {
-
-	private JLabel usernameLabel = new JLabel("EMAIL: ");
-	private JLabel passwordLabel = new JLabel("PASSWORD: ");
-	private JTextField usernameText = new JTextField();
-	private JPasswordField passwordText = new JPasswordField();
-	private JButton loginButton = new JButton("Login");
-	private JLabel registratiLabel = new JLabel("Non sei ancora registrato? clicca su questo bottone:");
-	private JButton registratiButton = new JButton("Registrati");
-	private JCheckBox passwordsCheckBox = new JCheckBox("Mostra password");
-	private JLabel erroreText = new JLabel();
 	
-	// costruttore
-	public LoginView() {
-		JPanel panel = new JPanel();
-		panel.setLayout(null);
+	private static final long serialVersionUID = 1L;
+	//elementi usati
+	private JLabel usernameLabel;
+	private JLabel passwordLabel;
+	private JTextField usernameText;
+	private JPasswordField passwordText;
+	private JButton loginButton;
+	private JLabel registratiLabel;
+	private JButton registratiButton;
+	private JCheckBox passwordsCheckBox;
+	private JLabel erroreText;
+	
 
-		// lavoro sul frame
+	//costruttore
+	public LoginView() {
+
+		//definizione elementi usati
+		this.usernameLabel = new JLabel("EMAIL: ");
+		this.passwordLabel = new JLabel("PASSWORD: ");
+		this.usernameText = new JTextField();
+		this.passwordText = new JPasswordField();
+		this.loginButton = new JButton("Login");
+		this.registratiLabel = new JLabel("Non sei ancora registrato? clicca su questo bottone:");
+		this.registratiButton = new JButton("Registrati");
+		this.passwordsCheckBox = new JCheckBox("Mostra password");
+		this.erroreText = new JLabel();		
+		this.usernameText.setColumns(10); //setto la dimensione delle colonne dello usernameText e passwordText
+		this.passwordText.setColumns(10);
+		//fine definizione elementi usati
+
+
+		
+		JPanel panel = new JPanel(new GridBagLayout());
+		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
+				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
-				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
+		GridBagConstraints c = new GridBagConstraints();
 		add(panel);
 
-		// setto le dimensioni e le posizioni dei label
-		usernameLabel.setBounds(200, 50, 100, 30);
-		passwordLabel.setBounds(200, 150, 100, 30);
-		usernameText.setBounds(300, 50, 100, 30);
-		passwordText.setBounds(300, 150, 100, 30);
-		usernameText.setSize(150, 30);
-		passwordText.setSize(150, 30);
-		loginButton.setBounds(200, 240, 100, 30);
-		registratiLabel.setBounds(200, 270, 300, 30);
-		registratiButton.setBounds(500, 270, 100, 30);
-		passwordsCheckBox.setBounds(480, 150, 150, 30);
-		erroreText.setBounds(200,  195, 500, 35);
-		
-		// aggiungo i label al pannello
-		panel.add(usernameLabel);
-		panel.add(passwordLabel);
-		panel.add(usernameText);
-		panel.add(passwordText);
-		panel.add(loginButton);
-		panel.add(registratiLabel);
-		panel.add(registratiButton);
-		panel.add(passwordsCheckBox);
-		panel.add(erroreText);
-		// fine label
+		c.insets = new Insets(10, 5, 10, 5); // top padding, left padding, bottom padding, right padding
 
-		// fine eyeCheckBox
+		c.gridx = 0;
+		c.gridy = 0;
+		panel.add(usernameLabel, c);
 
-		// rendo il frame e il label visibili
+		c.gridx = 1;
+		panel.add(usernameText, c);
+
+		c.gridx = 0;
+		c.gridy = 1;
+		panel.add(passwordLabel, c);
+
+		c.gridx = 1;
+		panel.add(passwordText, c);
+
+		c.gridx = 0;
+		c.gridy = 2;
+		panel.add(loginButton, c);
+
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 2; 
+		panel.add(registratiLabel, c);
+
+		c.gridx = 2;
+		c.gridwidth = 1;
+		panel.add(registratiButton, c);
+
+		c.gridx = 2;
+		c.gridy = 1;
+		panel.add(passwordsCheckBox, c);
+
+		c.gridx = 1;
+		c.gridy = 5;
+		panel.add(erroreText, c);
+
 		setVisible(true);
-		// fine costruttore
 	}
 
 	// getters and setters
@@ -103,14 +129,8 @@ public class LoginView extends JFrame {
 		return passwordText;
 	}
 
-	public JTextField getEmailText() {
-		// TODO Auto-generated method stub
-		return null;
+	public void setErroreText(JLabel erroreText) {
+		this.erroreText = erroreText;
 	}
-
-	
-	
 	//fine getters and setters
-
-
 }
