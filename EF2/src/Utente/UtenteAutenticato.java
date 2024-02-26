@@ -97,9 +97,9 @@ public class UtenteAutenticato extends Utente {
 		daot=new TorneoDao();
 		
 		try {
-			if (daot.ricercaTorneo(nometorneo)) 
+			if (SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)) 
 					{
-				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
+				SingletonGestione.getInstance().getTorneodao().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
 				
 			}
 		} catch (Exception e) {
@@ -120,9 +120,9 @@ public class UtenteAutenticato extends Utente {
 		
 		daot=new TorneoDao();
 		try {
-			if (daot.selezionaUtenteTorneo(emailutente)) 
+			if (SingletonGestione.getInstance().getTorneodao().ricercaCreatore(emailutente)) 
 			{
-				daot.insertpartecipante(emailutente, nometorneo, 0);
+				SingletonGestione.getInstance().getTorneodao().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -134,8 +134,8 @@ public class UtenteAutenticato extends Utente {
 		daot=new TorneoDao();
 		
 		try {
-			if (daot.selezionaUtenteTorneo(emailutente))
-				daot.deletePartecipante(emailutente);
+			if (!(SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)))
+				SingletonGestione.getInstance().getTorneodao().deletePartecipante(emailutente);
 		}
 
 		catch (Exception e) {
@@ -149,7 +149,7 @@ public class UtenteAutenticato extends Utente {
 				
 		
 		// il creatore
-        if(SingletonGestione.getInstance().getTorneodao().isCreatore(nomeutente))
+        if(SingletonGestione.getInstance().getTorneodao().ricercaCreatore(nomeutente))
         	SingletonGestione.getInstance().getTorneodao().deleteTorneo(nometorneo);
 
 	}

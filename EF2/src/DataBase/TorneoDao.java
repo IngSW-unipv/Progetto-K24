@@ -109,7 +109,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean isCreatore(String nomeutente) {
+	public boolean ricercaCreatore(String nomeutente) {
 		// TODO Auto-generated method stub
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -296,7 +296,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean selezionaUtenteTorneo(String nomeUtente) {
+	public boolean selezionaUtenteTorneo(String emailUtente) {
 		// TODO Auto-generated method stub
 		boolean esito =true;
 
@@ -306,9 +306,9 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select COUNT(emailUtente) from partecipazioni where emailUtente=?";
+			String query = "select COUNT(creatore) from tornei where creatore=?";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1, nomeUtente);
+			st1.setString(1, emailUtente);
 			rs1 = st1.executeQuery();
 
 			while (rs1.next()) {

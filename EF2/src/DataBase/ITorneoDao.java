@@ -29,8 +29,8 @@ public interface ITorneoDao {
 
 	public boolean selectbyuser(String id, String emailUtente);
 
-	public boolean isCreatore(String nomeutente);
+	public boolean ricercaCreatore(String nomeutente);
 	
-	public boolean selezionaUtenteTorneo(String nomeUtente);
+	public boolean selezionaUtenteTorneo(String emailUtente);
 
 }
