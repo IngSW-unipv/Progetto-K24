@@ -75,24 +75,26 @@ public class RegistrazioneController{
 		@Override
         public void actionPerformed(ActionEvent e) {
            char[] passwordChars1 = view.getPassword1Text().getPassword();
-            String password1 = new String(passwordChars1);
+            //String password1 = new String(passwordChars1);
             char[] passwordChars2 = view.getPassword2Text().getPassword();
-            String password2 = new String(passwordChars2);
+            //String password2 = new String(passwordChars2);
 
             if (model.isNomeCognomeValido(view.getNomeText().getText()) &&
-                    model.isNomeCognomeValido(view.getCognomeText().getText()) &&
-                    model.isEmailValida(view.getEmailText().getText()) &&
-                    model.isPasswordUguali(password1, password2) &&
-                    model.isPasswordValida(password1)) {
+                   model.isNomeCognomeValido(view.getCognomeText().getText())&&
+                   model.isEmailValida(view.getEmailText().getText()) &&
+                    model.isPasswordUguali(passwordChars1, passwordChars2) &&
+                    model.isPasswordValida(passwordChars1)
+            		) {
             		view.getErroreLabel().setForeground(Color.green);
                     view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
                     
-                    utente = model.istanziautente(view.getNomeText().getText(),view.getEmailText().getText(),
-							view.getPassword1Text().getPassword());
+                    utente = model.istanziautente(view.getNomeText().getText(),
+							view.getEmailText().getText(), view.getPassword1Text().getPassword());
 					
 					
 					try {
-						utente.registrazioneCredenziali( utente,view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getPassword());
+						utente.registrazioneCredenziali( utente,view.getNomeText().getText(),
+							view.getEmailText().getText(),	view.getPassword1Text().getPassword().toString() );
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

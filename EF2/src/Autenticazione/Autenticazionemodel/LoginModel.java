@@ -11,19 +11,19 @@ import Utente.UtenteAutenticato;
 
 public class LoginModel {
 
-	private UtenteDao dao;
+	
 	private UtenteAutenticato ut;
 
 	// costruttore
 	public LoginModel() {
 //nothing
-		dao = new UtenteDao();
+		
 	}
 	// fine costruttore
 
 	public UtenteAutenticato istanziautente(String userName, String email, String password) {
 
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato());
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName,email,password));
 		ut = SingletonGestione.getInstance().getUtente();
 
 		return ut;
@@ -32,24 +32,19 @@ public class LoginModel {
 
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
 
-		ut = new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
+		
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(usernameInput, usernameInput, passwordInput));
+		
+		ut =SingletonGestione.getInstance().getUtente();
 
 
 		System.out.println(passwordInput);
 		System.out.println(usernameInput);
-		// System.out.println(ut.getPassword());
-		// System.out.println(ut.getHashedPassword());
-		// System.out.println(ut.checkPassword(passwordInput));
+	
 
-		if (dao.selectByEmailUser(ut)) {
-			return true;
+	    return SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 
-		} else
-
-		{
-			return false;
-		}
-
+		
 	}
 
 	public UtenteAutenticato getUt() {

@@ -13,21 +13,21 @@ import TorneoView.CreaTorneoView;
 
 public class UtenteAutenticato extends Utente {
 
-	private UtenteDao dao;
-	private TorneoDao daot;
-	private static UtenteAutenticato instance;
+	
+	
 
 	// costruttore da istanziare per utetne vuoto
 
 	public UtenteAutenticato() {
-		super("", null, "");
+
+		super("", "", "");
+
 		
 	}
 
-	public UtenteAutenticato(String userName, char[] password, String email) {
-		super(userName, password, email);
-		daot = SingletonGestione.getInstance().getTorneodao();
-		dao = SingletonGestione.getInstance().getUtentedao();
+	public UtenteAutenticato(String userName, String email, String password) {
+		super(userName, email, password);
+		
 	}
 
 	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
@@ -35,48 +35,48 @@ public class UtenteAutenticato extends Utente {
 		
 		 utente=SingletonGestione.getInstance().getUtente();
 
-		dao.updateSchemaUtente(utente);
+		 SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(utente);
 	}
 
 	public void registrazioneCredenziali(UtenteAutenticato u, String username, String email, String password)
 			throws SQLException {
 
-		dao.insertSchemaUtente(u);
+		SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
 
 	}
 
-	public void eliminaAccount(UtenteAutenticato utente,  String username, char[] password,String email) {
-		utente = new UtenteAutenticato(username, password, email);
+	public void eliminaAccount(UtenteAutenticato utente,  String username, String email, String password) {
+		utente = new UtenteAutenticato(username, email, password);
 
-		dao.eliminaSchemaUtente(utente);
+		SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(utente);
 
 	}
 	
 	public boolean ricercaUtente(String email) {
 		
 
-		return dao.selectByEmail(email);
+		return SingletonGestione.getInstance().getUtentedao().selectByEmail(email);
 
 	}
 	
     public boolean ricercaTorneo(String nometorneo) {
 		
 
-		return daot.ricercaTorneo(nometorneo);
+		return SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo);
 
 	}
     
     public boolean ricercaIscritto(String nometorneo,String emailUtente) {
 		
 
-		return daot.ricercaIscritto(nometorneo,emailUtente);
+		return SingletonGestione.getInstance().getTorneodao().ricercaIscritto(nometorneo,emailUtente);
 
 	}
     
     
     public  ArrayList<String> ricercaDatiTorneo(String nometorneo) {
 
-		return daot.selectAllByTorneo(nometorneo);
+		return SingletonGestione.getInstance().getTorneodao().selectAllByTorneo(nometorneo);
 		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
 		// list.get(3), list.get(4), list.get(5));
 
@@ -85,7 +85,7 @@ public class UtenteAutenticato extends Utente {
 
 	public void istanziaTorneo(String nometorneo) {
 
-		var list = daot.selectAllByTorneo(nometorneo);
+		var list = SingletonGestione.getInstance().getTorneodao().selectAllByTorneo(nometorneo);
 		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
 		// list.get(3), list.get(4), list.get(5));
 
@@ -94,7 +94,7 @@ public class UtenteAutenticato extends Utente {
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_) {
 
-		daot=new TorneoDao();
+		
 		
 		try {
 			if (SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)) 
@@ -118,7 +118,7 @@ public class UtenteAutenticato extends Utente {
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
 			
 		
-		daot=new TorneoDao();
+	
 		try {
 			if (SingletonGestione.getInstance().getTorneodao().ricercaCreatore(emailutente)) 
 			{
@@ -131,7 +131,6 @@ public class UtenteAutenticato extends Utente {
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
-		daot=new TorneoDao();
 		
 		try {
 			if (!(SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)))
@@ -156,7 +155,7 @@ public class UtenteAutenticato extends Utente {
 
 	public void visualizzaLista() {
 
-		daot.selectbyuser();
+		SingletonGestione.getInstance().getTorneodao().selectbyuser();
 
 	}
 

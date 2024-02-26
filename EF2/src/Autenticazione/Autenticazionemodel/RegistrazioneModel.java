@@ -38,7 +38,8 @@ public class RegistrazioneModel {
 	}
 
 	// verifica se la password rispetta determinati requisiti
-	public boolean isPasswordValida(String password) {
+	public boolean isPasswordValida(char[] passwordChars) {
+		String password=new String(passwordChars);
 		Matcher uppercaseMatcher = UPPERCASE_PATTERN.matcher(password);
 		Matcher lowercaseMatcher = LOWERCASE_PATTERN.matcher(password);
 		Matcher specialcharMatcher = SPECIALCHAR_PATTERN.matcher(password);
@@ -60,12 +61,19 @@ public class RegistrazioneModel {
 
 	// verifica se le due password inserite sono uguali
 	public boolean isPasswordUguali(char[] password1, char[] password2) {
-		return password1.equals(password2);
+		
+		String password_0=new String(password1);
+		String password_1=new String(password2);
+		
+		return password_0.equals(password_1);
+		
 	}
 
-	public UtenteAutenticato istanziautente(String nome, char[] password, String emailutente) {
+	public UtenteAutenticato istanziautente(String nome, String emailutente, char[] password) {
 
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, password,emailutente));
+		String password_0=new String(password);
+		
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password_0));
 
 		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
 

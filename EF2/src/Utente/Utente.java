@@ -12,7 +12,7 @@ public abstract class Utente {
 	private String userName;
 	private Password password;
 	private String email;
-	private int id;
+
 
 	/**
 	 * Costruttore della classe
@@ -21,10 +21,11 @@ public abstract class Utente {
 	 * @param password La password sotto forma di stringa
 	 * @param email    La email asscoiata all'utente
 	 */
-	public Utente( String userName, char[] password, String email) {
+	public Utente( String userName,   String email,String password) {
 		this.userName = userName;
-		this.password = new Password(password);
 		this.email = email;
+		this.password = new Password(password.toCharArray());
+		
 		
 	}
 

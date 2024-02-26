@@ -58,11 +58,11 @@ public class LoginController  {
     			String passwordString = new String(password);
     			
     			try {
-    				if (model.verificaCredenziali(passwordString, view.getUsernameText().getText())) // view.getUsernameText().getText()
+    				if (model.verificaCredenziali( view.getUsernameText().getText(),passwordString)) // view.getUsernameText().getText()
     				{
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
-    					model.istanziautente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getText());
+    					model.istanziautente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
                         IndexController c=new IndexController();
                         
                         
