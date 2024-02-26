@@ -11,8 +11,6 @@ import Utente.UtenteAutenticato;
 
 public class LoginModel {
 
-	// private static final String FILE_PATH =
-	// "C:\\Users\\azera\\Desktop\\file.txt";
 	private UtenteDao dao;
 	private UtenteAutenticato ut;
 
@@ -36,11 +34,6 @@ public class LoginModel {
 
 		ut = new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
 
-		// BufferedReader br = new BufferedReader(new FileReader(file));
-		// ArrayList<Schemautente> st = null;
-		// while ( st ==dao.selectByUsername(ut) ) {dao.count>0 ||
-		// String[] parole = st.split(", ");
-		// dao.selectByUsername(ut);
 
 		System.out.println(passwordInput);
 		System.out.println(usernameInput);
