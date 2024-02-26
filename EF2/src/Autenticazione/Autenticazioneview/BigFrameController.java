@@ -42,7 +42,6 @@ public class BigFrameController{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        view.dispose();
-		    	
 		        new LoginController();
 			}
 		});
