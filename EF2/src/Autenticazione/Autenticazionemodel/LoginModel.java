@@ -23,7 +23,7 @@ public class LoginModel {
 
 	public UtenteAutenticato istanziautente(String userName, String email, String password) {
 
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato());
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName,email,password));
 		ut = SingletonGestione.getInstance().getUtente();
 
 		return ut;
@@ -32,7 +32,10 @@ public class LoginModel {
 
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
 
-		ut = new UtenteAutenticato(usernameInput, usernameInput, passwordInput);
+		
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(usernameInput, usernameInput, passwordInput));
+		
+		ut =SingletonGestione.getInstance().getUtente();
 
 
 		System.out.println(passwordInput);

@@ -21,9 +21,6 @@ public class CreaTorneoController {
 	private CreaTorneoView view;
 	private UtenteAutenticato utente;
     private boolean istrue;
-	public boolean isIstrue() {
-		return istrue;
-	}
 
 	public void setIstrue(boolean istrue) {
 		this.istrue = istrue;
@@ -66,10 +63,10 @@ public class CreaTorneoController {
 				System.out.println(utente.getUsername());
 				System.out.println(utente.getHashedPassword());
                 
-				//utente=new UtenteAutenticato("","","");
 				
-				utente.creazioneTorneo(view.getNomeText().getText(), utente.getUsername(), view.getComboText(), date, date_);
-                istrue=true;
+				
+				utente.creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
+                
 				
 			}
 
