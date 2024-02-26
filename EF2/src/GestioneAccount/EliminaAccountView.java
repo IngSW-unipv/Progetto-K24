@@ -10,18 +10,16 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class ModificaAccountView extends JFrame{
-	private JLabel istruzioniLabel = new JLabel("Inserisci il nuovo username e la tua attuale password per confermare:");
-	private JLabel newUsernameLabel = new JLabel("Nuovo username: ");
+public class EliminaAccountView extends JFrame{
+	private JLabel istruzioniLabel = new JLabel("Se vuoi confermare l'operazione inserisci la password:");
 	private JLabel passwordLabel = new JLabel("Password: ");
-	private JTextField usernameText = new JTextField();
 	private JPasswordField passwordText = new JPasswordField();
-	private JButton modificaButton = new JButton("Modifica");
+	private JButton eliminaButton = new JButton("Elimina");
 	private JCheckBox passwordCheckBox = new JCheckBox("Mostra password");
 	private JLabel erroreText = new JLabel();
 	
 	// costruttore
-	public ModificaAccountView() {
+	public EliminaAccountView() {
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 
@@ -35,23 +33,18 @@ public class ModificaAccountView extends JFrame{
 
 		//Impostazione dimensioni e posizioni nel pannello
 		istruzioniLabel.setBounds(160, 15, 400, 30);
-		newUsernameLabel.setBounds(180, 100, 120, 30);
-		passwordLabel.setBounds(200, 150, 100, 30);
-		usernameText.setBounds(300, 100, 100, 30);
-		passwordText.setBounds(300, 150, 100, 30);
-		usernameText.setSize(150, 30);
+		passwordLabel.setBounds(200, 120, 100, 30);
+		passwordText.setBounds(300, 120, 100, 30);
 		passwordText.setSize(150, 30);
-		modificaButton.setBounds(200, 240, 100, 30);
-		passwordCheckBox.setBounds(480, 150, 150, 30);
+		eliminaButton.setBounds(200, 240, 100, 30);
+		passwordCheckBox.setBounds(480, 120, 150, 30);
 		erroreText.setBounds(200,  195, 500, 35);
 		
 		//Aggiunta delle label al pannello
 		panel.add(istruzioniLabel);
-		panel.add(newUsernameLabel);
 		panel.add(passwordLabel);
-		panel.add(usernameText);
 		panel.add(passwordText);
-		panel.add(modificaButton);
+		panel.add(eliminaButton);
 		panel.add(passwordCheckBox);
 		panel.add(erroreText);
 
@@ -72,16 +65,12 @@ public class ModificaAccountView extends JFrame{
 	}
 	
 
-	public JButton getModificaButton() {
-		return modificaButton;
+	public JButton getEliminaButton() {
+		return eliminaButton;
 	}
 
 	public JLabel getErroreText() {
 		return erroreText;
-	}
-
-	public JTextField getUsernameText() {
-		return usernameText;
 	}
 
 	public JPasswordField getPasswordText() {
@@ -91,4 +80,5 @@ public class ModificaAccountView extends JFrame{
 	public void setErroreText(JLabel erroreText) {
 		this.erroreText = erroreText;
 	}
+
 }

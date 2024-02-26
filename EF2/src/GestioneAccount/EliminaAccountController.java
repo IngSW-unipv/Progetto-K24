@@ -3,16 +3,13 @@ package GestioneAccount;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import GestioneAccount.ModificaAccountView;
-import Utente.UtenteAutenticato;
-
-public class ModificaAccountController {
-	private ModificaAccountModel model;
-	private ModificaAccountView view;
+public class EliminaAccountController {
+	private EliminaAccountModel model;
+	private EliminaAccountView view;
 	
-	public ModificaAccountController() {
-		this.model = new ModificaAccountModel();
-		this.view = new ModificaAccountView();
+	public EliminaAccountController() {
+		this.model = new EliminaAccountModel();
+		this.view = new EliminaAccountView();
 		addListeners();
 	}
 	
@@ -28,7 +25,7 @@ public class ModificaAccountController {
             }
         });
 		
-		view.getModificaButton().addActionListener(new ActionListener() {
+		view.getEliminaButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
