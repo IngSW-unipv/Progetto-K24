@@ -72,12 +72,4 @@ public class RegistrazioneModel {
 		return utente;
 	}
 
-	// crea lo username
-	public String usernameString(String email) {
-		char delimitatore = '@';
-		int numCaratteri = email.indexOf(delimitatore);
-		String nomeUtente = email.substring(0, numCaratteri);
-		return nomeUtente;
-	}
-
 }
