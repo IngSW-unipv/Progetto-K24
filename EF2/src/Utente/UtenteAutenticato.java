@@ -13,9 +13,6 @@ import TorneoView.CreaTorneoView;
 
 public class UtenteAutenticato extends Utente {
 
-	
-	
-
 	// costruttore da istanziare per utetne vuoto
 
 	public UtenteAutenticato() {
@@ -30,12 +27,9 @@ public class UtenteAutenticato extends Utente {
 		
 	}
 
-	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
-	
-		
-		 utente=SingletonGestione.getInstance().getUtente();
-
-		 SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(utente);
+	public void cambiaUsername(String newUsername) {
+		 this.setUsername(newUsername);
+		 SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(this);
 	}
 
 	public void registrazioneCredenziali(UtenteAutenticato u, String username, String email, String password)
@@ -45,11 +39,8 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaAccount(UtenteAutenticato utente,  String username, String email, String password) {
-		utente = new UtenteAutenticato(username, email, password);
-
-		SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(utente);
-
+	public void eliminaAccount() {
+		SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(this);
 	}
 	
 	public boolean ricercaUtente(String email) {

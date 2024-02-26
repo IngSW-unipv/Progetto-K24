@@ -1,7 +1,5 @@
 package Utente;
 
-import DataBase.Password;
-
 /**
  * La classe astratta utente si occupa di definire i dati dell'utente in
  * un'unica classe. Tali dati vengono estratti dalla registrazione di ciascun
