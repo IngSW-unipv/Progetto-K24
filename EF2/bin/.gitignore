@@ -1,5 +1,6 @@
 /bin/
-/module-info.class
+/.gitignore
+/.project
 /Autenticazione/
 /DataBase/
 /Gestione/
@@ -10,3 +11,5 @@
 /TorneoController/
 /TorneoView/
 /Utente/
+/module-info.class
+/Test/

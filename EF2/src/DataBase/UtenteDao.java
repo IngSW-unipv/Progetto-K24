@@ -143,6 +143,59 @@ public class UtenteDao implements IUtenteDao {
 		
 	}
 
+	public boolean selectByEmail(String email)
+	{
+		
+		conn=DBconnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+       boolean esito =true;
+		try
+		{
+			String query="SELECT COUNT(email) FROM utenti WHERE email = ?";
+			
+
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, email);
+			
+			rs1=st1.executeQuery();
+
+			while(rs1.next())
+			{
+				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+
+				//result.add(f);
+				
+				count = rs1.getInt(1);
+				//System.out.println(Input.getPassword().toString());
+				//System.out.println(f.getPassword().toString());
+				if(	count== 1 ) {
+				esito=true;
+			}else {
+				
+				esito= false;
+			}
+			}
+			
+			
+			
+		}catch (Exception e)
+		{
+			e.printStackTrace();
+			esito= false;
+		}
+           
+		DBconnection.closeConnection(conn);
+		
+		return esito;
+		
+	}
+
+	
+	
+	
+	
+	
 	public boolean insertSchemaUtente(UtenteAutenticato f)throws SQLException {
 
 		conn=DBconnection.startConnection(conn,schema);

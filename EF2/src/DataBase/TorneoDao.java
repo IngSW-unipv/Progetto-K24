@@ -148,8 +148,11 @@ public class TorneoDao implements ITorneoDao {
 
 	}
 
+	
+	//modifica nome
+	
 	@Override
-	public boolean elencatorneo(String nometorneo) {
+	public boolean ricercaTorneo(String nometorneo) {
 		// TODO Auto-generated method stub
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -187,6 +190,49 @@ public class TorneoDao implements ITorneoDao {
 		return esito;
 	}
 
+	
+	@Override
+	public boolean ricercaIscritto(String nometorneo,String emailUtente) {
+		// TODO Auto-generated method stub
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+
+		ResultSet rs1;
+
+		boolean esito = true;
+
+		try {
+			String query = "Select COUNT(nometorneo and emailUtente) from partecipazioni where nometorneo =? and emailUtente= ?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, nometorneo);
+			st1.setString(2, emailUtente);
+			rs1 = st1.executeQuery();
+
+			while (rs1.next()) {
+				count = rs1.getInt(1);
+
+				if (count == 1) {
+
+					esito = true;
+
+				} else {
+					esito = false;
+				}
+
+			}
+		}
+
+		catch (Exception e) {
+			e.printStackTrace();
+			esito = false;
+		}
+
+		DBconnection.closeConnection(conn);
+		return esito;
+	}
+
+	
+	
 	@Override
 	public void modificapunteggiobyuser() {
 		// TODO Auto-generated method stub
@@ -281,7 +327,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public ArrayList<String> selecttuplebytorneo(String nometorneo) {
+	public ArrayList<String> selectAllByTorneo(String nometorneo) {
 
 		ArrayList<String> result = new ArrayList<>();
 

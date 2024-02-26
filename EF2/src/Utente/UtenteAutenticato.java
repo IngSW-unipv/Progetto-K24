@@ -3,6 +3,7 @@ package Utente;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import DataBase.TorneoDao;
 import DataBase.UtenteDao;
@@ -33,6 +34,7 @@ public class UtenteAutenticato extends Utente {
 
 	public void cambiaUsername(UtenteAutenticato utente, String nomeNuovo, String email) {
 	
+		
 		 utente=SingletonGestione.getInstance().getUtente();
 
 		dao.updateSchemaUtente(utente);
@@ -45,16 +47,47 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaAccount(UtenteAutenticato utente, int id, String username, String email, String password) {
+	public void eliminaAccount(UtenteAutenticato utente,  String username, String email, String password) {
 		utente = new UtenteAutenticato(username, email, password);
 
 		dao.eliminaSchemaUtente(utente);
 
 	}
+	
+	public boolean ricercaUtente(String email) {
+		
+
+		return dao.selectByEmail(email);
+
+	}
+	
+    public boolean ricercaTorneo(String nometorneo) {
+		
+
+		return daot.ricercaTorneo(nometorneo);
+
+	}
+    
+    public boolean ricercaIscritto(String nometorneo,String emailUtente) {
+		
+
+		return daot.ricercaIscritto(nometorneo,emailUtente);
+
+	}
+    
+    
+    public  ArrayList<String> ricercaDatiTorneo(String nometorneo) {
+
+		return daot.selectAllByTorneo(nometorneo);
+		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
+		// list.get(3), list.get(4), list.get(5));
+
+	}
+    
 
 	public void istanziaTorneo(String nometorneo) {
 
-		var list = daot.selecttuplebytorneo(nometorneo);
+		var list = daot.selectAllByTorneo(nometorneo);
 		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
 		// list.get(3), list.get(4), list.get(5));
 
@@ -66,7 +99,7 @@ public class UtenteAutenticato extends Utente {
 		daot=new TorneoDao();
 		
 		try {
-			if (daot.elencatorneo(nometorneo)) 
+			if (daot.ricercaTorneo(nometorneo)) 
 					{
 				daot.insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
 				

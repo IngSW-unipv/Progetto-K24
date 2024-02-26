@@ -19,9 +19,11 @@ public interface ITorneoDao {
 	
 	public ArrayList<String> selectbytorneo(String nometorneo);
 	
-	public ArrayList<String> selecttuplebytorneo(String nometorneo);
+	public ArrayList<String> selectAllByTorneo(String nometorneo);
 	
-	public boolean elencatorneo(String nomeutente);
+	public boolean ricercaIscritto(String nometorneo,String emailutente);
+	
+	public boolean ricercaTorneo(String nomeutente);
 
 	public void modificapunteggiobyuser();
 
