@@ -11,13 +11,13 @@ import Utente.UtenteAutenticato;
 
 public class LoginModel {
 
-	private UtenteDao dao;
+	
 	private UtenteAutenticato ut;
 
 	// costruttore
 	public LoginModel() {
 //nothing
-		dao = new UtenteDao();
+		
 	}
 	// fine costruttore
 
@@ -40,19 +40,11 @@ public class LoginModel {
 
 		System.out.println(passwordInput);
 		System.out.println(usernameInput);
-		// System.out.println(ut.getPassword());
-		// System.out.println(ut.getHashedPassword());
-		// System.out.println(ut.checkPassword(passwordInput));
+	
 
-		if (dao.selectByEmailUser(ut)) {
-			return true;
+	    return SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 
-		} else
-
-		{
-			return false;
-		}
-
+		
 	}
 
 	public UtenteAutenticato getUt() {
