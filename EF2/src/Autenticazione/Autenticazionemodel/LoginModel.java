@@ -25,16 +25,10 @@ public class LoginModel {
 	}
 
 	public boolean verificaCredenziali(String usernameInput, String passwordInput) throws IOException {
-
 		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(usernameInput, usernameInput, passwordInput));
-
 		ut = SingletonGestione.getInstance().getUtente();
-
-		System.out.println(passwordInput);
-		System.out.println(usernameInput);
-
+		
 		return SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
-
 	}
 
 	public UtenteAutenticato getUt() {
