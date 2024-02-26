@@ -1,8 +1,9 @@
 package Autenticazione.Autenticazioneview;
 
-import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Toolkit;
-
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -14,152 +15,169 @@ import javax.swing.JTextField;
 
 public class RegistrazioneView extends JFrame {
 
-	// aggiungo i label
-	private JPanel panel = new JPanel();
-	public void setNomeText(JTextField nomeText) {
-		this.nomeText = nomeText;
-	}
+    //elementi usati
+    private JLabel nomeLabel;
+    private JLabel cognomeLabel;
+    private JLabel emailLabel;
+    private JLabel password1Label;
+    private JLabel password2Label;
+    private JTextField nomeText;
+    private JTextField cognomeText;
+    private JTextField emailText;
+    private JPasswordField password1Text;
+    private JPasswordField password2Text;
+    private JButton registratiButton;
+    private JLabel accediLabel;
+    private JButton accediButton;
+    private JCheckBox passwordsCheckBox;
+    private JLabel erroreLabel;
 
-	public void setCognomeText(JTextField cognomeText) {
-		this.cognomeText = cognomeText;
-	}
+    //costruttore
+    public RegistrazioneView() {
 
-	public void setEmailText(JTextField emailText) {
-		this.emailText = emailText;
-	}
+        //definizione elementi usati
+        this.nomeLabel = new JLabel("Nome: ");
+        this.cognomeLabel = new JLabel("Cognome: ");
+        this.emailLabel = new JLabel("Email: ");
+        this.password1Label = new JLabel("Password: ");
+        this.password2Label = new JLabel("Conferma Password: ");
+        this.nomeText = new JTextField();
+        this.cognomeText = new JTextField();
+        this.emailText = new JTextField();
+        this.password1Text = new JPasswordField();
+        this.password2Text = new JPasswordField();
+        this.registratiButton = new JButton("Registrati");
+        this.accediLabel = new JLabel("Sei già registrato? Clicca su questo bottone:");
+        this.accediButton = new JButton("Accedi");
+        this.passwordsCheckBox = new JCheckBox("Mostra password");
+        this.erroreLabel = new JLabel();
+        this.nomeText.setColumns(20); // Imposta la dimensione delle colonne
+        this.cognomeText.setColumns(20);
+        this.emailText.setColumns(20);
+        this.password1Text.setColumns(20);
+        this.password2Text.setColumns(20);
 
-	private JLabel password1Label = new JLabel("PASSWORD: ");
-	private JLabel password2Label = new JLabel("PASSWORD: ");
-	private JLabel nomeLabel = new JLabel("NOME: ");
-	private JLabel cognomeLabel = new JLabel("COGNOME: ");
-	private JTextField nomeText = new JTextField();
-	private JTextField cognomeText = new JTextField();
-	private JPasswordField password1Text = new JPasswordField();
-	private JPasswordField password2Text = new JPasswordField();
-	private JButton registratiButton = new JButton("Registrati");
-	private JLabel accediLabel = new JLabel("Sei già registrato? Clicca su questo bottone:");
-	private JButton accediButton = new JButton("Accedi");
-	private JCheckBox passwordsCheckBox = new JCheckBox("Mostra password");
-	private JLabel emailLabel=new JLabel("EMAIL: ");
-	private JTextField emailText= new JTextField();
-	private JLabel erroreLabel=new JLabel ();
-	
-	// inizio costruttore
-	public RegistrazioneView() {
-		panel.setLayout(null);
-		// lavoro sul frame
-		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
-				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
-				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
-		add(panel);
+        JPanel panel = new JPanel(new GridBagLayout());
+        setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 4);
+        setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
+                Toolkit.getDefaultToolkit().getScreenSize().height / 2);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GridBagConstraints c = new GridBagConstraints();
+        add(panel);
 
-		// setto le dimensioni e le posizioni dei label
-		nomeLabel.setBounds(200, 30, 100, 25);
-		nomeText.setBounds(300, 30, 100, 25);
+        c.insets = new Insets(10, 5, 10, 5);
 
-		cognomeLabel.setBounds(200, 75, 100, 25);
-		cognomeText.setBounds(300, 75, 100, 25);
-		
-		emailLabel.setBounds(200, 120, 100, 25);
-		emailText.setBounds(300, 120, 100, 20);
-		
-		password1Label.setBounds(200, 165, 100, 25);
-		password1Text.setBounds(300, 165, 100, 25);
+        c.gridx = 0;
+        c.gridy = 0;
+        panel.add(nomeLabel, c);
 
-		password2Label.setBounds(200, 210, 100, 25);
-		password2Text.setBounds(300, 210, 100, 25);
+        c.gridx = 1;
+        panel.add(nomeText, c);
 
-		registratiButton.setBounds(200, 290, 90, 25);
-		accediLabel.setBounds(200, 320, 250, 25);
-		accediButton.setBounds(470, 320, 90, 25);
-		passwordsCheckBox.setBounds(410, 165, 150, 25);
-		
-		erroreLabel.setBounds(200,  240,  500,  50);
-		erroreLabel.setForeground(Color.RED);
+        c.gridx = 0;
+        c.gridy = 1;
+        panel.add(cognomeLabel, c);
 
-		// aggiungo i label al pannello
-		panel.add(nomeLabel);
-		panel.add(cognomeLabel);
-		panel.add(emailLabel);
-		panel.add(emailText);
-		panel.add(password1Label);
-		panel.add(password2Label);
-		panel.add(nomeText);
-		panel.add(cognomeText);
-		panel.add(password1Text);
-		panel.add(password2Text);
-		panel.add(registratiButton);
-		panel.add(accediLabel);
-		panel.add(accediButton);
-		panel.add(passwordsCheckBox);
-		panel.add(erroreLabel);
-		//accediButton.addActionListener(e->{
-			//frame.dispose();
-		//});
-		// fine label
+        c.gridx = 1;
+        panel.add(cognomeText, c);
 
-		// rendo il frame e il label visibili
-		setVisible(true);
-	}
-	// fine costruttore
+        c.gridx = 0;
+        c.gridy = 2;
+        panel.add(emailLabel, c);
 
-	//ritorna vero se la checkBox è selezionata
-	public boolean isPasswordsCheckBoxSelected() {
-		return passwordsCheckBox.isSelected();
-	}
+        c.gridx = 1;
+        panel.add(emailText, c);
 
-	//gestisce la password, modificando i caratteri che si vedono,
-	//nel controller è gestita in modo che se la checkBox è selezionata allora la password compare
-	//altrimenti compaiono dei punti
-	public void setPasswordFieldsEchochar(char echoChar) {
-		password1Text.setEchoChar(echoChar);
-		password2Text.setEchoChar(echoChar);
-	}
+        c.gridx = 0;
+        c.gridy = 3;
+        panel.add(password1Label, c);
 
-	//ritorna la passwordsCheckBox, è un getter
-	public JCheckBox getPasswordsCheckBox() {
-		return passwordsCheckBox;
-	}
+        c.gridx = 1;
+        panel.add(password1Text, c);
 
-	//getters e setters vari
-	public JPasswordField getPassword1Text() {
-		return password1Text;
-	}
+        c.gridx = 0;
+        c.gridy = 4;
+        panel.add(password2Label, c);
 
-	public JPasswordField getPassword2Text() {
-		return password2Text;
-	}
-	
-	public JButton getRegistratiButton() {
-		return registratiButton;
-	}
-	
-	public JTextField getNomeText() {
-		return nomeText;
-	}
+        c.gridx = 1;
+        panel.add(password2Text, c);
 
-	public JTextField getCognomeText() {
-		return cognomeText;	
-	}
-	
-	public JTextField getEmailText() {
-		return emailText;
-	}
-	
-	public void setErroreLabel(JLabel erroreLabel) {
-		this.erroreLabel = erroreLabel;
-	}
-	
-	public JLabel getErroreLabel() {
-		return erroreLabel;
-	}
-	
-	public JButton getAccediButton() {
-		return accediButton;
-	}
-	
-	//fine getters e setters vari
+        c.gridx = 2;
+        c.gridy = 3;
+        panel.add(passwordsCheckBox, c);
 
+        c.gridx = 0;
+        c.gridy = 5;
+        c.gridwidth = 2;
+        panel.add(registratiButton, c);
+
+        c.gridx = 0;
+        c.gridy = 6;
+        c.gridwidth = 2;
+        panel.add(accediLabel, c);
+
+        c.gridx = 2;
+        c.gridy = 6;
+        c.gridwidth = 1;
+        panel.add(accediButton, c);
+
+        c.gridx = 1;
+        c.gridy = 7;
+        panel.add(erroreLabel, c);
+
+        setVisible(true);
+    
+    }
+
+   
+
+    public boolean isPasswordsCheckBoxSelected() {
+        return passwordsCheckBox.isSelected();
+    }
+
+    public void setPasswordFieldsEchochar(char echoChar) {
+        password1Text.setEchoChar(echoChar);
+        password2Text.setEchoChar(echoChar);
+    }
+
+    public JCheckBox getPasswordsCheckBox() {
+        return passwordsCheckBox;
+    }
+
+    public JPasswordField getPassword1Text() {
+        return password1Text;
+    }
+
+    public JPasswordField getPassword2Text() {
+        return password2Text;
+    }
+
+    public JButton getRegistratiButton() {
+        return registratiButton;
+    }
+
+    public JTextField getNomeText() {
+        return nomeText;
+    }
+
+    public JTextField getCognomeText() {
+        return cognomeText;
+    }
+
+    public JTextField getEmailText() {
+        return emailText;
+    }
+
+    public void setErroreLabel(JLabel erroreLabel) {
+        this.erroreLabel = erroreLabel;
+    }
+
+    public JLabel getErroreLabel() {
+        return erroreLabel;
+    }
+
+    public JButton getAccediButton() {
+        return accediButton;
+    }
 }
