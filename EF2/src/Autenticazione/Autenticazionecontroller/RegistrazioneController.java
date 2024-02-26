@@ -87,13 +87,12 @@ public class RegistrazioneController{
             		view.getErroreLabel().setForeground(Color.green);
                     view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
                     
-                    utente = model.istanziautente(view.getNomeText().getText(),
-							view.getPassword1Text().getText(), view.getEmailText().getText());
+                    utente = model.istanziautente(view.getNomeText().getText(),view.getEmailText().getText(),
+							view.getPassword1Text().getPassword());
 					
 					
 					try {
-						utente.registrazioneCredenziali( utente,view.getNomeText().getText(),
-								view.getPassword1Text().getText(), view.getEmailText().getText());
+						utente.registrazioneCredenziali( utente,view.getNomeText().getText(), view.getEmailText().getText(), view.getPassword1Text().getPassword());
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

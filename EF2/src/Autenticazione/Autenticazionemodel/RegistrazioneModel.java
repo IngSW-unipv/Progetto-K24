@@ -59,13 +59,13 @@ public class RegistrazioneModel {
 	}
 
 	// verifica se le due password inserite sono uguali
-	public boolean isPasswordUguali(String password1, String password2) {
+	public boolean isPasswordUguali(char[] password1, char[] password2) {
 		return password1.equals(password2);
 	}
 
-	public UtenteAutenticato istanziautente(String nome, String emailutente, String password) {
+	public UtenteAutenticato istanziautente(String nome, char[] password, String emailutente) {
 
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password));
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, password,emailutente));
 
 		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
 
