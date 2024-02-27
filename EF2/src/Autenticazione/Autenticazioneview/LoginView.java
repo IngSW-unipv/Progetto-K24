@@ -26,7 +26,7 @@ public class LoginView extends JFrame {
 	private JButton registratiButton;
 	private JCheckBox passwordsCheckBox;
 	private JLabel erroreText;
-	
+	GridBagConstraints c;
 
 	//costruttore
 	public LoginView() {
@@ -43,6 +43,7 @@ public class LoginView extends JFrame {
 		this.erroreText = new JLabel();		
 		this.usernameText.setColumns(10); //setto la dimensione delle colonne dello usernameText e passwordText
 		this.passwordText.setColumns(10);
+		c = new GridBagConstraints();
 		//fine definizione elementi usati
 
 
@@ -52,8 +53,8 @@ public class LoginView extends JFrame {
 				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		GridBagConstraints c = new GridBagConstraints();
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		
 		add(panel);
 
 		c.insets = new Insets(10, 5, 10, 5); // top padding, left padding, bottom padding, right padding

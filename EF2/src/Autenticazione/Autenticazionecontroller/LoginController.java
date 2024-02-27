@@ -46,13 +46,13 @@ public class LoginController  {
             public void actionPerformed(ActionEvent e) {
             	char[] password = view.getPasswordText().getPassword();
     			String passwordString = new String(password);
-    			
+    			System.out.print(passwordString);
     			try {
     				if (model.verificaCredenziali( view.getUsernameText().getText(),passwordString))
     				{
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
-    					model.istanziautente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
+    					model.istanziaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
                         new IndexController();
                         
                         

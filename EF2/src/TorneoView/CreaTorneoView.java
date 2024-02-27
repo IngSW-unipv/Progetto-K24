@@ -51,8 +51,8 @@ public class CreaTorneoView extends JFrame {
 		comboBox.setBounds(300, 120, 100, 25);
 
 		// setto le dimensioni e le posizioni dei label
-		nomeLabel.setBounds(200, 30, 100, 25);
-		nomeText.setBounds(300, 30, 100, 25);
+		nomeLabel.setBounds(200, 80, 100, 25);
+		nomeText.setBounds(300, 80, 100, 25);
 
 		GiocoLabel.setBounds(200, 120, 100, 25);
 		// GiocoText.setBounds(300, 120, 100, 25);

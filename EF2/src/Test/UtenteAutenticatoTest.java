@@ -24,7 +24,7 @@ public class UtenteAutenticatoTest {
     public void testCambiaUsername() {
         String nuovoNome = "nuovoNome";
         String nuovaEmail = "nuovaEmail@example.com";
-        utente.cambiaUsername(utente, nuovoNome, nuovaEmail);
+        utente.cambiaUsername(nuovoNome);
         assertEquals(nuovoNome, utente.getUsername());
         assertEquals(nuovaEmail, utente.getEmail());
     }
@@ -47,7 +47,7 @@ public class UtenteAutenticatoTest {
         String username = "test";
         String email = "test@example.com";
         String password = "password";
-        utente.eliminaAccount(utente, username, email, password);
+        utente.eliminaAccount();
         
         
         assertTrue(!(utente.ricercaUtente(email))); 

@@ -25,7 +25,7 @@ public interface ITorneoDao {
 
 	public void modificapunteggiobyuser();
 
-	public ArrayList<String> selectbyuser();
+	public ArrayList<String> selezionalistatorneo();
 
 	public boolean selectbyuser(String id, String emailUtente);
 

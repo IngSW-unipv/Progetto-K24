@@ -36,66 +36,82 @@ public class RegistrazioneController {
 		this.view = new RegistrazioneView();
 		addListeners();
 	}
-	
-	
-	
-	//tutti i listeners
+
+	// tutti i listeners
 	private void addListeners() {
 		view.getAccediButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	view.dispose();
-    			new LoginController();
-            }
-        });
-		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				view.dispose();
+				new LoginController();
+			}
+		});
+
 		view.getPasswordsCheckBox().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	if (view.isPasswordsCheckBoxSelected()) {
-    				view.setPasswordFieldsEchochar((char) 0);
-    			} else {
-    				view.setPasswordFieldsEchochar('•');
-    			}
-            }
-        });
-		
-		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (view.isPasswordsCheckBoxSelected()) {
+					view.setPasswordFieldsEchochar((char) 0);
+				} else {
+					view.setPasswordFieldsEchochar('•');
+				}
+			}
+		});
+
 		view.getRegistratiButton().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            	char[] passwordChars1 = view.getPassword1Text().getPassword();
-    			char[] passwordChars2 = view.getPassword2Text().getPassword();
+			@SuppressWarnings("deprecation")
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				char[] passwordChars1 = view.getPassword1Text().getPassword();
+				char[] passwordChars2 = view.getPassword2Text().getPassword();
+				String paswrd = new String(passwordChars1);
 
-    			if (model.isNomeCognomeValido(view.getNomeText().getText())
-    					&& model.isNomeCognomeValido(view.getCognomeText().getText())
-    					&& model.isEmailValida(view.getEmailText().getText())
-    					&& model.isPasswordUguali(passwordChars1, passwordChars2)
-    					&& model.isPasswordValida(passwordChars1)) {
+				if (model.isNomeCognomeValido(view.getNomeText().getText())
+						&& model.isNomeCognomeValido(view.getCognomeText().getText())
+						&& model.isEmailValida(view.getEmailText().getText())
+						&& model.isPasswordUguali(passwordChars1, passwordChars2)
+						&& model.isPasswordValida(passwordChars1)
+						 ) {
 
-    				view.getErroreLabel().setForeground(Color.green);
-    				view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
+					if(model.isEmailEsistente(view.getEmailText().getText()))
+					{
+					view.getErroreLabel().setForeground(Color.green);
+					view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
 
-    				utente = model.istanziautente(view.getNomeText().getText(), view.getEmailText().getText(),
-    						view.getPassword1Text().getPassword());
+					// utente = model.istanziautente(view.getNomeText().getText(),
+					// view.getEmailText().getText(),
+					// view.getPassword1Text().getPassword());
 
-    				try {
-    					utente.registrazioneCredenziali(utente, view.getNomeText().getText(), view.getEmailText().getText(),
-    							view.getPassword1Text().getPassword().toString());
-    				} catch (SQLException e1) {
-    					view.getErroreLabel().setText("Errore nella registrazione, riprova");
-    					e1.printStackTrace();
-    				}
+					try {
 
-    			} else {
-    				view.getErroreLabel().setForeground(Color.red);
-    				view.getErroreLabel().setText("Errore nei dati inseriti.");
-    			}
+						utente = model.istanziautente(view.getUsernameText().getText(), view.getEmailText().getText(),
+								paswrd);
 
-            }
-        });
+						System.out.println(paswrd);
+
+						model.registrazioneCredenziali(utente);
+						// utente.registrazioneCredenziali(utente, view.getNomeText().getText(),
+						// view.getEmailText().getText(),
+						// view.getPassword1Text().getPassword().toString());
+					} catch (SQLException e1) {
+						view.getErroreLabel().setText("Errore nella registrazione, riprova");
+						e1.printStackTrace();
+					}
+					
+				}
+					else{
+					view.getErroreLabel().setForeground(Color.red);
+					view.getErroreLabel().setText("Email esistente.");
+				}
+
+				} else {
+					view.getErroreLabel().setForeground(Color.red);
+					view.getErroreLabel().setText("Errore nei dati inseriti.");
+				}
+
+			}
+		});
 	}
-	
 
 	// getters and setters
 	public String getUsername() {

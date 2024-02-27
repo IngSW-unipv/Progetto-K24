@@ -1,5 +1,6 @@
 package Autenticazione.Autenticazionemodel;
 
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -58,6 +59,33 @@ public class RegistrazioneModel {
 		
 		return pswd1.equals(pswd2);
 		
+	}
+	
+	public boolean isEmailEsistente(String email) {
+		
+	System.out.print(!(SingletonGestione.getInstance().getUtentedao().selectByEmail(email)));	
+		
+		
+	return !(SingletonGestione.getInstance().getUtentedao().selectByEmail(email));
+		
+		
+		
+	}
+	
+	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
+		
+		
+		SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
+		
+	}
+	
+	public UtenteAutenticato istanziautente(String nome, String emailutente, String password) {
+
+		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password));
+
+		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
+
+		return utente;
 	}
 	
 

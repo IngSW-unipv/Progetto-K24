@@ -95,52 +95,46 @@ public class UtenteDao implements IUtenteDao {
 	//selecttorneo by user
 	
 	
-	public boolean selectByEmailUser(UtenteAutenticato Input)
-	{
-		
-		conn=DBconnection.startConnection(conn,schema);
+	public boolean selectByEmailUser(UtenteAutenticato Input) {
+
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
 		ResultSet rs1;
-       boolean esito =true;
-		try
-		{
-			String query="SELECT COUNT(email and pswrd ) FROM utenti WHERE email = ? AND pswrd = ?";
-			
+		boolean esito = true;
+		try {
+			String query = "SELECT COUNT(email and pswrd ) FROM utenti WHERE email = ? AND pswrd = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, Input.getEmail());
 			st1.setString(2, Input.getHashedPassword());
-			rs1=st1.executeQuery();
+			rs1 = st1.executeQuery();
 
-			while(rs1.next())
-			{
-				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+			while (rs1.next()) {
+				// UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1),
+				// rs1.getString(2),rs1.getString(3),rs1.getString(4));
 
-				//result.add(f);
-				
+				// result.add(f);
+
 				count = rs1.getInt(1);
-				//System.out.println(Input.getPassword().toString());
-				//System.out.println(f.getPassword().toString());
-				if(	count== 1 ) {
-				esito=true;
-			}else {
-				
-				esito= false;
+				// System.out.println(Input.getPassword().toString());
+				// System.out.println(f.getPassword().toString());
+				if (count == 1) {
+					esito = true;
+				} else {
+
+					esito = false;
+				}
 			}
-			}
-			
-			
-			
-		}catch (Exception e)
-		{
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito= false;
+			esito = false;
 		}
-           
+
 		DBconnection.closeConnection(conn);
-		
+
 		return esito;
-		
+
 	}
 
 	public boolean selectByEmail(String email)
@@ -170,6 +164,7 @@ public class UtenteDao implements IUtenteDao {
 				//System.out.println(Input.getPassword().toString());
 				//System.out.println(f.getPassword().toString());
 				if(	count== 1 ) {
+					
 				esito=true;
 			}else {
 				
@@ -271,7 +266,7 @@ public class UtenteDao implements IUtenteDao {
 		try
 		{
 			
-			String query="update utenti set username=? where email=?";//"+f.getId()+","+f.getemail()+","+f.getUsername()+","+f.getpassword()+");";
+			String query="update utenti set username=? where email=?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getUsername());	
 			st1.setString(2, f.getEmail());

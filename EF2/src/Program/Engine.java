@@ -26,13 +26,13 @@ public class Engine {
 
 		//IscrizioneTorneoController c = new IscrizioneTorneoController();
 		
-		IndexController i = new IndexController();
+		//IndexController i = new IndexController();
 		//
 		//CreaTorneoController c = new CreaTorneoController();
 		
         //MinesweeperController ctrl = new MinesweeperController();
       
-        //BigFrameController c=new BigFrameController();
+        BigFrameController c=new BigFrameController();
 		
 	}
 

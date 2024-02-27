@@ -71,7 +71,7 @@ public class RegistrazioneView extends JFrame {
         GridBagConstraints c = new GridBagConstraints();
         add(panel);
 
-        c.insets = new Insets(10, 5, 10, 5);
+        c.insets = new Insets(0, 10, 10, 10);
 
         c.gridx = 0;
         c.gridy = 0;
@@ -92,6 +92,7 @@ public class RegistrazioneView extends JFrame {
         panel.add(usernameLabel, c);
 
         c.gridx = 1;
+        c.gridy=2;
         panel.add(usernameText, c);
 
         c.gridx = 0;
@@ -102,17 +103,19 @@ public class RegistrazioneView extends JFrame {
         panel.add(emailText, c);
 
         c.gridx = 0;
-        c.gridy = 4; // Corrected gridy for password1Label
+        c.gridy = 4;
         panel.add(password1Label, c);
 
         c.gridx = 1;
+        c.gridy=4;
         panel.add(password1Text, c);
 
         c.gridx = 0;
-        c.gridy = 5; // Increment gridy for password2Label
+        c.gridy = 5;
         panel.add(password2Label, c);
 
         c.gridx = 1;
+        c.gridy = 5;
         panel.add(password2Text, c);
 
         c.gridx = 2;

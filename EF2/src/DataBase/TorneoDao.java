@@ -266,10 +266,35 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public ArrayList<String> selectbyuser() {
+	public ArrayList<String> selezionalistatorneo() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<String> result = new ArrayList<>();
+
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+
+		try {
+
+			String query = "select nometorneo from tornei";
+			st1 = conn.prepareStatement(query);
+			
+			// st1.executeUpdate();
+
+			rs1 = st1.executeQuery(query);
+
+			while (rs1.next()) {
+
+				result.add(rs1.getString(query));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		DBconnection.closeConnection(conn);
+		return result;
 	}
+	
 
 	@Override
 	public boolean deletePartecipante(String emailutente) {

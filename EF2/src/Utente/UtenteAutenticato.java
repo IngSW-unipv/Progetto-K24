@@ -146,7 +146,7 @@ public class UtenteAutenticato extends Utente {
 
 	public void visualizzaLista() {
 
-		SingletonGestione.getInstance().getTorneodao().selectbyuser();
+	//	SingletonGestione.getInstance().getTorneodao().selectbyuser();
 
 	}
 

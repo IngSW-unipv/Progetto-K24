@@ -25,19 +25,19 @@ public class EliminaTorneoView extends JFrame{
 	public EliminaTorneoView() {
 		panel.setLayout(null);
 		// lavoro sul frame
-		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
-				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
+		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
+				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		add(panel);
 
 		// setto le dimensioni e le posizioni dei label
-		nomeLabel.setBounds(200, 30, 100, 25);
-		nomeText.setBounds(300, 30, 100, 25);
+		nomeLabel.setBounds(50, 30, 100, 25);
+		nomeText.setBounds(160, 30, 100, 25);
 		
 		
-		EliminaTorneo.setBounds(200, 290, 150, 25);
+		EliminaTorneo.setBounds(80, 110, 150, 25);
 
 		
 		// aggiungo i label al pannello
