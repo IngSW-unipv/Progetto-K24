@@ -285,7 +285,7 @@ public class TorneoDao implements ITorneoDao {
 
 			while (rs1.next()) {
 
-				result.add(rs1.getString(query));
+				result.add(rs1.getString("nometorneo"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
