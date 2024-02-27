@@ -13,10 +13,16 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+/**
+ * Classe LoginView che estende JFrame e implementa la view per il login
+ * Il login è implementato seguendo il pattern MVC
+ */
+
 public class LoginView extends JFrame {
 	
 	private static final long serialVersionUID = 1L;
-	//elementi usati
+	
+	// elementi UI
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
 	private JTextField usernameText;
@@ -28,10 +34,9 @@ public class LoginView extends JFrame {
 	private JLabel erroreText;
 	GridBagConstraints c;
 
-	//costruttore
 	public LoginView() {
 
-		//definizione elementi usati
+		//inizializzazione elementi UI
 		this.usernameLabel = new JLabel("EMAIL: ");
 		this.passwordLabel = new JLabel("PASSWORD: ");
 		this.usernameText = new JTextField();
@@ -40,24 +45,21 @@ public class LoginView extends JFrame {
 		this.registratiLabel = new JLabel("Non sei ancora registrato? clicca su questo bottone:");
 		this.registratiButton = new JButton("Registrati");
 		this.passwordsCheckBox = new JCheckBox("Mostra password");
-		this.erroreText = new JLabel();		
-		this.usernameText.setColumns(10); //setto la dimensione delle colonne dello usernameText e passwordText
+		this.erroreText = new JLabel();
+		this.usernameText.setColumns(10); // setto la dimensione delle colonne dello usernameText e passwordText
 		this.passwordText.setColumns(10);
 		c = new GridBagConstraints();
-		//fine definizione elementi usati
 
-
-		
 		JPanel panel = new JPanel(new GridBagLayout());
 		setLocation(Toolkit.getDefaultToolkit().getScreenSize().width / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 4);
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		
+
 		add(panel);
 
-		c.insets = new Insets(10, 5, 10, 5); // top padding, left padding, bottom padding, right padding
+		c.insets = new Insets(10, 5, 10, 5);
 
 		c.gridx = 0;
 		c.gridy = 0;
@@ -79,7 +81,7 @@ public class LoginView extends JFrame {
 
 		c.gridx = 0;
 		c.gridy = 3;
-		c.gridwidth = 2; 
+		c.gridwidth = 2;
 		panel.add(registratiLabel, c);
 
 		c.gridx = 2;
@@ -105,7 +107,7 @@ public class LoginView extends JFrame {
 	public boolean isPasswordsCheckBoxSelected() {
 		return passwordsCheckBox.isSelected();
 	}
-	
+
 	public void setPasswordFieldsEchochar(char echoChar) {
 		passwordText.setEchoChar(echoChar);
 	}
@@ -133,5 +135,4 @@ public class LoginView extends JFrame {
 	public void setErroreText(JLabel erroreText) {
 		this.erroreText = erroreText;
 	}
-	//fine getters and setters
 }

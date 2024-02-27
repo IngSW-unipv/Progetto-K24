@@ -4,36 +4,32 @@ import java.io.IOException;
 import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
+/*
+ * Classe model per il login
+ * essa contiene alcuni metodi che, insieme alla view e al controller, implementa il login seguendo il pattern MVC
+ */
 public class LoginModel {
 
 	private UtenteAutenticato ut;
 
-	// costruttore
 	public LoginModel() {
-//nothing
-
+		//nothing
 	}
-	// fine costruttore
 
+	///metodo per istanziare l'utente quando si autentica
 	public UtenteAutenticato istanziaUtente(String userName, String email, String password) {
-
 		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName, email, password));
 		ut = SingletonGestione.getInstance().getUtente();
-
 		return ut;
-
 	}
 
+	//verifica che le credenziali inserite siano corrette
 	public boolean verificaCredenziali(String emailInput, String passwordInput) throws IOException {
-		
 		ut = istanziaUtente(emailInput,emailInput,passwordInput);
-		System.out.println(emailInput);
-		System.out.println(ut.getHashedPassword());
-        System.out.println(passwordInput);
-		System.out.println(SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut));
 		return SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 	}
 
+	//getter and setters
 	public UtenteAutenticato getUt() {
 		return ut;
 	}
@@ -41,5 +37,4 @@ public class LoginModel {
 	public void setUt(UtenteAutenticato ut) {
 		this.ut = ut;
 	}
-
 }
