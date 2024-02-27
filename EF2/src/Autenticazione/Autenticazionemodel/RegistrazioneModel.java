@@ -59,20 +59,6 @@ public class RegistrazioneModel {
 		return pswd1.equals(pswd2);
 		
 	}
-
-	public UtenteAutenticato istanziautente(String nome, String emailutente, char[] password) {
-		String pswd=new String(password);
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, pswd));
-		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
-		return utente;
-	}
 	
-	//crea lo username
-	public String usernameString(String email) {
-		char delimitatore='@';
-		int numCaratteri=email.indexOf(delimitatore);
-		String nomeUtente=email.substring(0, numCaratteri);
-		return nomeUtente;
-	}
 
 }

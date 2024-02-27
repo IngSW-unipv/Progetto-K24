@@ -18,6 +18,8 @@ public class RegistrazioneView extends JFrame {
     //elementi usati
     private JLabel nomeLabel;
     private JLabel cognomeLabel;
+    private JLabel usernameLabel;
+    private JTextField usernameText;
     private JLabel emailLabel;
     private JLabel password1Label;
     private JLabel password2Label;
@@ -38,6 +40,8 @@ public class RegistrazioneView extends JFrame {
         //definizione elementi usati
         this.nomeLabel = new JLabel("Nome: ");
         this.cognomeLabel = new JLabel("Cognome: ");
+        this.usernameLabel = new JLabel("Username: ");
+        this.usernameText = new JTextField();
         this.emailLabel = new JLabel("Email: ");
         this.password1Label = new JLabel("Password: ");
         this.password2Label = new JLabel("Conferma Password: ");
@@ -53,6 +57,7 @@ public class RegistrazioneView extends JFrame {
         this.erroreLabel = new JLabel();
         this.nomeText.setColumns(20); // Imposta la dimensione delle colonne
         this.cognomeText.setColumns(20);
+        this.usernameText.setColumns(20);
         this.emailText.setColumns(20);
         this.password1Text.setColumns(20);
         this.password2Text.setColumns(20);
@@ -84,6 +89,13 @@ public class RegistrazioneView extends JFrame {
 
         c.gridx = 0;
         c.gridy = 2;
+        panel.add(usernameLabel, c);
+
+        c.gridx = 1;
+        panel.add(usernameText, c);
+
+        c.gridx = 0;
+        c.gridy = 3;
         panel.add(emailLabel, c);
 
         c.gridx = 1;
@@ -132,7 +144,13 @@ public class RegistrazioneView extends JFrame {
 
    
 
-    public boolean isPasswordsCheckBoxSelected() {
+    public JTextField getUsernameText() {
+		return usernameText;
+	}
+
+
+
+	public boolean isPasswordsCheckBoxSelected() {
         return passwordsCheckBox.isSelected();
     }
 
