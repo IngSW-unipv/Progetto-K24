@@ -102,40 +102,40 @@ public class RegistrazioneView extends JFrame {
         panel.add(emailText, c);
 
         c.gridx = 0;
-        c.gridy = 3;
+        c.gridy = 4; // Corrected gridy for password1Label
         panel.add(password1Label, c);
 
         c.gridx = 1;
         panel.add(password1Text, c);
 
         c.gridx = 0;
-        c.gridy = 4;
+        c.gridy = 5; // Increment gridy for password2Label
         panel.add(password2Label, c);
 
         c.gridx = 1;
         panel.add(password2Text, c);
 
         c.gridx = 2;
-        c.gridy = 3;
+        c.gridy = 4;
         panel.add(passwordsCheckBox, c);
 
         c.gridx = 0;
-        c.gridy = 5;
+        c.gridy = 6;
         c.gridwidth = 2;
         panel.add(registratiButton, c);
 
         c.gridx = 0;
-        c.gridy = 6;
+        c.gridy = 7;
         c.gridwidth = 2;
         panel.add(accediLabel, c);
 
         c.gridx = 2;
-        c.gridy = 6;
+        c.gridy = 7;
         c.gridwidth = 1;
         panel.add(accediButton, c);
 
         c.gridx = 1;
-        c.gridy = 7;
+        c.gridy = 8;
         panel.add(erroreLabel, c);
 
         setVisible(true);
