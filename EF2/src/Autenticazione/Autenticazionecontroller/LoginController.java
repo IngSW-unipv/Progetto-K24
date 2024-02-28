@@ -20,7 +20,7 @@ public class LoginController  {
 	private LoginView view;
 
 	public LoginController(LoginModel model, LoginView view) {
-		this.model = model);
+		this.model = model;
 		this.view = view;
         addListeners();
 	}

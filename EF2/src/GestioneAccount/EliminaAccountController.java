@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import Utente.SingletonGestione;
 
 public class EliminaAccountController {
-	private EliminaAccountModel model;
+	private GestioneAccountModel model;
 	private EliminaAccountView view;
 
-	public EliminaAccountController(EliminaAccountModel model, EliminaAccountView view) {
+	public EliminaAccountController(GestioneAccountModel model, EliminaAccountView view) {
 		this.model = model;
 		this.view = view;
 		addListeners();

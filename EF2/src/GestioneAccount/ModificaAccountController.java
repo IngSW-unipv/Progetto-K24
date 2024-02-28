@@ -7,10 +7,10 @@ import GestioneAccount.ModificaAccountView;
 import Utente.UtenteAutenticato;
 
 public class ModificaAccountController {
-	private ModificaAccountModel model;
+	private GestioneAccountModel model;
 	private ModificaAccountView view;
 	
-	public ModificaAccountController(ModificaAccountModel model, ModificaAccountView view) {
+	public ModificaAccountController(GestioneAccountModel model, ModificaAccountView view) {
 		this.model = model;
 		this.view = view;
 		addListeners();
