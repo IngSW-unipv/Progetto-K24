@@ -22,11 +22,12 @@ public class DisiscrizioneTorneoController {
 	public DisiscrizioneTorneoController(DisiscrizioneTorneoView view){
 		
 		this.view = view;
-		view.getDisiscrizioneTorneo().addActionListener(listenerdisiscrizione);
+		addListeners();
 		//modelcontroller=new LoginController();
 	}
 	
-	ActionListener listenerdisiscrizione = new ActionListener() {
+	private void addListeners() {
+	view.getDisiscrizioneTorneo().addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -40,6 +41,6 @@ public class DisiscrizioneTorneoController {
 			}
 
 		}
-	};
-	
+	});
+	}
 }

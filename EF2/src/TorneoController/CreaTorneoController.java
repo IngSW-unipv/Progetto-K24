@@ -28,15 +28,13 @@ public class CreaTorneoController {
 
 	public CreaTorneoController(CreaTorneoView view) {
 		this.view = view;
-		view.getCreaTorneo().addActionListener(listenercreazione);
-
+		addListeners();
 	}
-
-	ActionListener listenercreazione = new ActionListener() {
-
+	
+	private void addListeners() {
+		view.getCreaTorneo().addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
 
 			if (e.getSource() == view.getCreaTorneo()) {
 				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -45,14 +43,12 @@ public class CreaTorneoController {
 				try {
 					date = dateFormat.parse(view.getDatafineText().getText());
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 				Date date_ = null;
 				try {
 					date_ = dateFormat.parse(view.getDatainzioText().getText());
 				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
 					e1.printStackTrace();
 				}
 
@@ -66,11 +62,9 @@ public class CreaTorneoController {
 				
 				
 				utente.creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
-                
 				
+				}
 			}
-
-		}
-	};
-
+	    });
+	}
 }

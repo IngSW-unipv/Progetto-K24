@@ -19,10 +19,11 @@ public class IscrizioneTorneoController {
 
 	public IscrizioneTorneoController(IscrizioneTorneoView view) {
 		this.view = view;
-		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);
+		addListeners();
 	}
-
-	ActionListener listeneriscrizione = new ActionListener() {
+	
+	private void addListeners() {
+		view.getIscrivitiTorneo().addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -37,6 +38,6 @@ public class IscrizioneTorneoController {
 			}
 
 		}
-	};
-
+	});
+	}
 }

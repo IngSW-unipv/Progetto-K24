@@ -21,10 +21,11 @@ public class EliminaTorneoController {
 		
 		
 		this.view = view;
-		view.getEliminaTorneo().addActionListener(listenerelimina);
+		addListeners();
 	}
 	
-	ActionListener listenerelimina = new ActionListener() {
+	private void addListeners() {
+		view.getEliminaTorneo().addActionListener(new ActionListener() {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -39,7 +40,7 @@ public class EliminaTorneoController {
 			}
 
 		}
-	};
+	});
 	
-	
+	}
 }
