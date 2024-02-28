@@ -62,7 +62,7 @@ public class LoginController  {
                         
     				} else {
     					view.getErroreText().setForeground(Color.red);
-    					view.getErroreText().setText("USERNAME O PASSWORD ERRATI");
+    					view.getErroreText().setText("EMAIL O PASSWORD ERRATI");
     				}
     			} catch (IOException e1) {
     				view.getErroreText().setText("Errore, riprova a registrarti");
