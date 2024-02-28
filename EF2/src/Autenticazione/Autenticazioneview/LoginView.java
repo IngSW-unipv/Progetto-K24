@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 /**
  * Classe LoginView che estende JFrame e implementa la view per il login
- * Il login è implementato seguendo il pattern MVC
+ * Il login è implementato seguendo l'architettura MVC
  */
 
 public class LoginView extends JFrame {
