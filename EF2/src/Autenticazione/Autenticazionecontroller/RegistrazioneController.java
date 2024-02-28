@@ -3,21 +3,15 @@ package Autenticazione.Autenticazionecontroller;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
-import Autenticazione.Autenticazionemodel.LoginModel;
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Utente.UtenteAutenticato;
+/*
+ * RegistrazioneController è la classe che completa, insieme a RegistrazioneModel e RegistrazioneView,
+ * il caso d'uso del login,seguendo il pattern MVC
+ */
 
 public class RegistrazioneController {
 
@@ -59,7 +53,6 @@ public class RegistrazioneController {
 		});
 
 		view.getRegistratiButton().addActionListener(new ActionListener() {
-			@SuppressWarnings("deprecation")
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				char[] passwordChars1 = view.getPassword1Text().getPassword();
@@ -68,41 +61,36 @@ public class RegistrazioneController {
 
 				if (model.isNomeCognomeValido(view.getNomeText().getText())
 						&& model.isNomeCognomeValido(view.getCognomeText().getText())
+						&& model.isUsernameValido(view.getUsernameText().getText())
 						&& model.isEmailValida(view.getEmailText().getText())
 						&& model.isPasswordUguali(passwordChars1, passwordChars2)
-						&& model.isPasswordValida(passwordChars1)
-						 ) {
+						&& model.isPasswordValida(passwordChars1)) {
 
-					if(model.isEmailEsistente(view.getEmailText().getText()))
-					{
-					view.getErroreLabel().setForeground(Color.green);
-					view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
+					if (model.isEmailInesistente(view.getEmailText().getText())) {
+						view.getErroreLabel().setForeground(Color.green);
+						view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
 
-					// utente = model.istanziautente(view.getNomeText().getText(),
-					// view.getEmailText().getText(),
-					// view.getPassword1Text().getPassword());
-
-					try {
-
-						utente = model.istanziautente(view.getUsernameText().getText(), view.getEmailText().getText(),
-								paswrd);
-
-						System.out.println(paswrd);
-
-						model.registrazioneCredenziali(utente);
-						// utente.registrazioneCredenziali(utente, view.getNomeText().getText(),
+						// utente = model.istanziautente(view.getNomeText().getText(),
 						// view.getEmailText().getText(),
-						// view.getPassword1Text().getPassword().toString());
-					} catch (SQLException e1) {
-						view.getErroreLabel().setText("Errore nella registrazione, riprova");
-						e1.printStackTrace();
+						// view.getPassword1Text().getPassword());
+
+						try {
+
+							utente = model.istanziautente(view.getUsernameText().getText(),
+									view.getEmailText().getText(), paswrd);
+							model.registrazioneCredenziali(utente);
+							// utente.registrazioneCredenziali(utente, view.getNomeText().getText(),
+							// view.getEmailText().getText(),
+							// view.getPassword1Text().getPassword().toString());
+						} catch (SQLException e1) {
+							view.getErroreLabel().setText("Errore nella registrazione, riprova");
+							e1.printStackTrace();
+						}
+
+					} else {
+						view.getErroreLabel().setForeground(Color.red);
+						view.getErroreLabel().setText("Email già esistente.");
 					}
-					
-				}
-					else{
-					view.getErroreLabel().setForeground(Color.red);
-					view.getErroreLabel().setText("Email esistente.");
-				}
 
 				} else {
 					view.getErroreLabel().setForeground(Color.red);

@@ -67,7 +67,7 @@ public class RegistrazioneModel {
 	}
 
 	// verifica se la mail è già presente nel database
-	public boolean isEmailEsistente(String email) {
+	public boolean isEmailInesistente(String email) {
 		return !(SingletonGestione.getInstance().getUtentedao().selectByEmail(email));
 	}
 
