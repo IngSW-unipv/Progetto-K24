@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Supplier;
 
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
@@ -55,26 +58,30 @@ public class RegistrazioneController {
 		view.getRegistratiButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				char[] passwordChars1 = view.getPassword1Text().getPassword();
-				char[] passwordChars2 = view.getPassword2Text().getPassword();
+				Map<Integer, Supplier<String>> errorMessages = new HashMap<>();
+		        errorMessages.put(RegistrazioneModel.getNomeNonValido(), () -> "Nome non valido.");
+		        errorMessages.put(RegistrazioneModel.getCognomeNonValido(), () -> "Cognome non valido.");
+		        errorMessages.put(RegistrazioneModel.getUsernameNonValido(), () -> "Username non valido.");
+		        errorMessages.put(RegistrazioneModel.getEmailNonValida(), () -> "Email non valida.");
+		        errorMessages.put(RegistrazioneModel.getPasswordNonUguali(), () -> "Password diverse");
+		        errorMessages.put(RegistrazioneModel.getPasswordNonValida(), () -> "Password non valida.");
+		        errorMessages.put(RegistrazioneModel.getTuttoCorretto(), () -> "Registrazione eseguita");
+		        char[] passwordChars1 = view.getPassword1Text().getPassword();
+		        char[] passwordChars2 = view.getPassword2Text().getPassword();
 				String paswrd = new String(passwordChars1);
 
-				if (model.isNomeCognomeValido(view.getNomeText().getText())
-						&& model.isNomeCognomeValido(view.getCognomeText().getText())
-						&& model.isUsernameValido(view.getUsernameText().getText())
-						&& model.isEmailValida(view.getEmailText().getText())
-						&& model.isPasswordUguali(passwordChars1, passwordChars2)
-						&& model.isPasswordValida(passwordChars1)) {
+		        
+		        int validationResult = model.validaDati(view.getNomeText().getText(),
+		                view.getCognomeText().getText(),
+		                view.getUsernameText().getText(),
+		                view.getEmailText().getText(),
+		                passwordChars1,
+		                passwordChars2);
+		        String errore = errorMessages.get(validationResult).get(); // Directly call get()
 
-					if (model.isEmailInesistente(view.getEmailText().getText())) {
-						view.getErroreLabel().setForeground(Color.green);
-						view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
-
-						// utente = model.istanziautente(view.getNomeText().getText(),
-						// view.getEmailText().getText(),
-						// view.getPassword1Text().getPassword());
-
-						try {
+		        if (errore=="Registrazione eseguita") {
+		        	if (model.isEmailInesistente(view.getEmailText().getText())) {
+		        		try {
 
 							utente = model.istanziautente(view.getUsernameText().getText(),
 									view.getEmailText().getText(), paswrd);
@@ -86,17 +93,18 @@ public class RegistrazioneController {
 							view.getErroreLabel().setText("Errore nella registrazione, riprova");
 							e1.printStackTrace();
 						}
+						view.getErroreLabel().setForeground(Color.green);
+						view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
 
 					} else {
 						view.getErroreLabel().setForeground(Color.red);
 						view.getErroreLabel().setText("Email già esistente.");
 					}
-
-				} else {
-					view.getErroreLabel().setForeground(Color.red);
-					view.getErroreLabel().setText("Errore nei dati inseriti.");
-				}
-
+		        }
+		        else {
+		        	view.getErroreLabel().setForeground(Color.RED);
+			        view.getErroreLabel().setText(errore);
+		        }
 			}
 		});
 	}

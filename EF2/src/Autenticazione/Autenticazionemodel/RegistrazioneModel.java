@@ -20,6 +20,13 @@ public class RegistrazioneModel {
 	private static final Pattern NUMBER_PATTERN = Pattern.compile(".*[1-9].*"); // almeno un numero
 	private static final Pattern EMAIL_PATTERN = Pattern
 			.compile("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"); // pattern per la mail
+	public static final int NOME_NON_VALIDO = 1;
+	public static final int COGNOME_NON_VALIDO =2;
+	static final int USERNAME_NON_VALIDO = 3;
+	static final int EMAIL_NON_VALIDA = 4;
+	static final int PASSWORD_NON_UGUALI = 5;
+	static final int PASSWORD_NON_VALIDA = 6;
+	static final int TUTTO_CORRETTO = 7;
 	
 	
 	public RegistrazioneModel() {
@@ -82,5 +89,59 @@ public class RegistrazioneModel {
 		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
 		return utente;
 	}
+	
+	//metodo che verifica se i dati inseriti sono corretti, esso restituisce un intero in funzione dell'errore presente
+	public int validaDati(String nome, String cognome, String username, String email, char[] passwordChars1, char[] passwordChars2) {
+        if (!isNomeCognomeValido(nome)) {
+            return NOME_NON_VALIDO;
+        } else if (!isNomeCognomeValido(cognome)) {
+            return COGNOME_NON_VALIDO;
+        } else if (!isUsernameValido(username)) {
+            return USERNAME_NON_VALIDO;
+        } else if (!isEmailValida(email)) {
+            return EMAIL_NON_VALIDA;
+        } else if (!isPasswordUguali(passwordChars1, passwordChars2)) {
+            return PASSWORD_NON_UGUALI;
+        } else if (!isPasswordValida(passwordChars1)) {
+            return PASSWORD_NON_VALIDA;
+        } else {
+            return TUTTO_CORRETTO; // Nessun errore
+        }
+    }
 
+	//getters and setters
+	
+	public static int getNomeNonValido() {
+		return NOME_NON_VALIDO;
+	}
+
+
+	public static int getUsernameNonValido() {
+		return USERNAME_NON_VALIDO;
+	}
+
+
+	public static int getCognomeNonValido() {
+		return COGNOME_NON_VALIDO;
+	}
+
+
+	public static int getEmailNonValida() {
+		return EMAIL_NON_VALIDA;
+	}
+
+
+	public static int getPasswordNonUguali() {
+		return PASSWORD_NON_UGUALI;
+	}
+
+
+	public static int getPasswordNonValida() {
+		return PASSWORD_NON_VALIDA;
+	}
+
+
+	public static int getTuttoCorretto() {
+		return TUTTO_CORRETTO;
+	}	
 }
