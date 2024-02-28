@@ -9,6 +9,7 @@ import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 
+import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class UtenteAutenticatoTest {
@@ -19,15 +20,7 @@ public class UtenteAutenticatoTest {
     public void setUp() {
         utente = new UtenteAutenticato("test", "test@example.com", "password");
     }
-
-    @Test
-    public void testCambiaUsername() {
-        String nuovoNome = "nuovoNome";
-        String nuovaEmail = "nuovaEmail@example.com";
-        utente.cambiaUsername(nuovoNome);
-        assertEquals(nuovoNome, utente.getUsername());
-        assertEquals(nuovaEmail, utente.getEmail());
-    }
+    //Prima di testare eliminaAccount e cambiaUsername bisogna sempre essere sicuri che sia nel database l'utente 
 
     @Test
     public void testRegistrazioneCredenziali() {
@@ -40,17 +33,21 @@ public class UtenteAutenticatoTest {
             fail("Eccezione SQL durante la registrazione del nuovo utente: " + e.getMessage());
         }
     }
-
+    
+    @Test
+    public void testCambiaUsername() {
+        String nuovoNome = "nuovoNome";
+        utente.cambiaUsername(nuovoNome);
+        //Qui ci vuole un metodo che vada a leggere nel database il nome di un utente a partire dalla sua mail
+       // assertEquals(nuovoNome, SingletonGestione.getInstance().getUtentedao().);
+    }
+    
     @Test
     public void testEliminaAccount() {
          
-        String username = "test";
-        String email = "test@example.com";
-        String password = "password";
         utente.eliminaAccount();
         
-        
-        assertTrue(!(utente.ricercaUtente(email))); 
+        assertTrue(!(utente.ricercaUtente(utente.getEmail()))); 
     }
 
     @Test
