@@ -28,9 +28,9 @@ public class RegistrazioneController {
 
 	private UtenteAutenticato utente;
 
-	public RegistrazioneController() {
-		this.model = new RegistrazioneModel();
-		this.view = new RegistrazioneView();
+	public RegistrazioneController(RegistrazioneModel model, RegistrazioneView view) {
+		this.model = model;
+		this.view = view;
 		addListeners();
 	}
 

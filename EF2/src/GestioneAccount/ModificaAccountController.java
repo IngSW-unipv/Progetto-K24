@@ -10,9 +10,9 @@ public class ModificaAccountController {
 	private ModificaAccountModel model;
 	private ModificaAccountView view;
 	
-	public ModificaAccountController() {
-		this.model = new ModificaAccountModel();
-		this.view = new ModificaAccountView();
+	public ModificaAccountController(ModificaAccountModel model, ModificaAccountView view) {
+		this.model = model;
+		this.view = view;
 		addListeners();
 	}
 	

@@ -19,9 +19,9 @@ public class DisiscrizioneTorneoController {
 	private UtenteAutenticato utente;
 	private LoginModel loginmodel;
 	
-	public DisiscrizioneTorneoController(){
+	public DisiscrizioneTorneoController(DisiscrizioneTorneoView view){
 		
-		this.view = new DisiscrizioneTorneoView();
+		this.view = view;
 		view.getDisiscrizioneTorneo().addActionListener(listenerdisiscrizione);
 		//modelcontroller=new LoginController();
 	}

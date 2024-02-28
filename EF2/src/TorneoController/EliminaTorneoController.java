@@ -17,10 +17,10 @@ public class EliminaTorneoController {
 	private UtenteAutenticato utente;
 	
 
-	public EliminaTorneoController(){
+	public EliminaTorneoController(EliminaTorneoView view){
 		
 		
-		this.view = new EliminaTorneoView();
+		this.view = view;
 		view.getEliminaTorneo().addActionListener(listenerelimina);
 	}
 	

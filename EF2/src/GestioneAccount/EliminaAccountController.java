@@ -9,9 +9,9 @@ public class EliminaAccountController {
 	private EliminaAccountModel model;
 	private EliminaAccountView view;
 
-	public EliminaAccountController() {
-		this.model = new EliminaAccountModel();
-		this.view = new EliminaAccountView();
+	public EliminaAccountController(EliminaAccountModel model, EliminaAccountView view) {
+		this.model = model;
+		this.view = view;
 		addListeners();
 	}
 

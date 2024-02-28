@@ -17,8 +17,8 @@ public class IscrizioneTorneoController {
 	private IscrizioneTorneoView view;
 	private UtenteAutenticato utente;
 
-	public IscrizioneTorneoController() {
-		this.view = new IscrizioneTorneoView();
+	public IscrizioneTorneoController(IscrizioneTorneoView view) {
+		this.view = view;
 		view.getIscrivitiTorneo().addActionListener(listeneriscrizione);
 	}
 

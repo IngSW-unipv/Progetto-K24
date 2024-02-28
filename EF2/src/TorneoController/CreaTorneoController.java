@@ -26,8 +26,8 @@ public class CreaTorneoController {
 		this.istrue = istrue;
 	}
 
-	public CreaTorneoController() {
-		this.view = new CreaTorneoView();
+	public CreaTorneoController(CreaTorneoView view) {
+		this.view = view;
 		view.getCreaTorneo().addActionListener(listenercreazione);
 
 	}

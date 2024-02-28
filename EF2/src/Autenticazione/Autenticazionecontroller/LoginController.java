@@ -19,9 +19,9 @@ public class LoginController  {
 	private LoginModel model;
 	private LoginView view;
 
-	public LoginController() {
-		this.model = new LoginModel();
-		this.view = new LoginView();
+	public LoginController(LoginModel model, LoginView view) {
+		this.model = model);
+		this.view = view;
         addListeners();
 	}
 
