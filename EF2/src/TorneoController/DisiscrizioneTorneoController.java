@@ -10,7 +10,7 @@ import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazione.Autenticazionemodel.LoginModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
-import Utente.SingletonGestione;
+
 import Utente.UtenteAutenticato;
 
 public class DisiscrizioneTorneoController {
@@ -35,8 +35,8 @@ public class DisiscrizioneTorneoController {
 
 			if (e.getSource() == view.getDisiscrizioneTorneo()) {
 			
-                utente =SingletonGestione.getInstance().getUtente();
-				utente.disiscrizioneTorneo( utente.getEmail(),view.getNomeText().getText());
+                
+				UtenteAutenticato.getIstance().disiscrizioneTorneo( utente.getEmail(),view.getNomeText().getText());
 
 			}
 

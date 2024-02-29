@@ -3,7 +3,7 @@ package GestioneAccount;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Utente.SingletonGestione;
+
 
 public class EliminaAccountController {
 	private GestioneAccountModel model;

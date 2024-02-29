@@ -8,7 +8,6 @@ import java.util.Date;
 
 import TorneoView.CreaTorneoView;
 import TorneoView.EliminaTorneoView;
-import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class EliminaTorneoController {
@@ -33,9 +32,8 @@ public class EliminaTorneoController {
 
 			if (e.getSource() == view.getEliminaTorneo()) {
 				
-				utente=SingletonGestione.getInstance().getUtente();
 				
-				utente.eliminaTorneo(view.getNomeText().getText(),utente.getUsername());
+				UtenteAutenticato.getIstance().eliminaTorneo(view.getNomeText().getText(),utente.getUsername());
 
 			}
 

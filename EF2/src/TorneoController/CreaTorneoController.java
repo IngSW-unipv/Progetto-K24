@@ -13,7 +13,6 @@ import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazione.Autenticazionemodel.LoginModel;
 import DataBase.TorneoDao;
 import TorneoView.CreaTorneoView;
-import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 public class CreaTorneoController {
@@ -52,8 +51,7 @@ public class CreaTorneoController {
 					e1.printStackTrace();
 				}
 
-				SingletonGestione.getInstance();
-				utente = SingletonGestione.getInstance().getUtente();
+				
 
 				System.out.println(utente.getEmail());
 				System.out.println(utente.getUsername());
@@ -61,7 +59,7 @@ public class CreaTorneoController {
                 
 				
 				
-				utente.creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
+				UtenteAutenticato.getIstance().creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
 				
 				}
 			}
