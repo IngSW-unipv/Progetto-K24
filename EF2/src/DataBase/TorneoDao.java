@@ -3,7 +3,6 @@ package DataBase;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
-import Torneo.Torneo;
 import Utente.UtenteAutenticato;
 
 import java.sql.PreparedStatement;

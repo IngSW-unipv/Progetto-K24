@@ -1,7 +1,4 @@
 /bin/
-/.classpath
-/.gitignore
-/.project
 /Autenticazione/
 /Autenticazionemodel/
 /DataBase/
@@ -9,10 +6,10 @@
 /GestioneAccount/
 /Index/
 /Minesweeper/
+/module-info.class
 /Program/
 /Test/
 /Torneo/
 /TorneoController/
 /TorneoView/
 /Utente/
-/module-info.class

@@ -12,6 +12,7 @@ import java.util.Locale;
 import Autenticazione.Autenticazionecontroller.LoginController;
 
 import DataBase.TorneoDao;
+import Torneo.TorneoModel;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
 
@@ -19,50 +20,29 @@ public class CreaTorneoController {
 
 	private CreaTorneoView view;
 	private UtenteAutenticato utente;
-    private boolean istrue;
+	private boolean istrue;
+	private TorneoModel model;
 
 	public void setIstrue(boolean istrue) {
 		this.istrue = istrue;
 	}
 
-	public CreaTorneoController(CreaTorneoView view) {
+	public CreaTorneoController(CreaTorneoView view, TorneoModel model) {
 		this.view = view;
+		this.model = model;
 		addListeners();
 	}
-	
+
 	private void addListeners() {
 		view.getCreaTorneo().addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
+			@Override
+			public void actionPerformed(ActionEvent e) {
 
-			if (e.getSource() == view.getCreaTorneo()) {
-				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+				model.creaTorneo(view.getNomeText().getText(), UtenteAutenticato.getInstance().getEmail(), view.getComboText(),
+						view.getDatainzioText().getText(), view.getDatafineText().getText());
 
-				Date date = null;
-				try {
-					date = dateFormat.parse(view.getDatafineText().getText());
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
-				Date date_ = null;
-				try {
-					date_ = dateFormat.parse(view.getDatainzioText().getText());
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
-
-				
-
-				System.out.println(utente.getEmail());
-				System.out.println(utente.getUsername());
-				System.out.println(utente.getHashedPassword());
-                
-				
-				
-				UtenteAutenticato.getInstance().creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
-				
-				}
 			}
-	    });
+		});
 	}
+
 }

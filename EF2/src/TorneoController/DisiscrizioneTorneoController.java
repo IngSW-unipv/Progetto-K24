@@ -8,6 +8,7 @@ import java.util.Date;
 
 import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazionemodel.GestioneAccountModel;
+import Torneo.TorneoModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
 
@@ -18,29 +19,31 @@ public class DisiscrizioneTorneoController {
 	private DisiscrizioneTorneoView view;
 	private UtenteAutenticato utente;
 	private GestioneAccountModel loginmodel;
-	
-	public DisiscrizioneTorneoController(DisiscrizioneTorneoView view){
-		
+	private TorneoModel model;
+
+	public DisiscrizioneTorneoController(DisiscrizioneTorneoView view, TorneoModel model) {
+
 		this.view = view;
+		this.model = model;
 		addListeners();
-		//modelcontroller=new LoginController();
+		// modelcontroller=new LoginController();
 	}
-	
+
 	private void addListeners() {
-	view.getDisiscrizioneTorneo().addActionListener(new ActionListener() {
+		view.getDisiscrizioneTorneo().addActionListener(new ActionListener() {
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
 
-			if (e.getSource() == view.getDisiscrizioneTorneo()) {
-			
-                
-				UtenteAutenticato.getInstance().disiscrizioneTorneo( utente.getEmail(),view.getNomeText().getText());
+				if (e.getSource() == view.getDisiscrizioneTorneo()) {
+
+					
+					model.DisiscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText());
+
+				}
 
 			}
-
-		}
-	});
+		});
 	}
 }
