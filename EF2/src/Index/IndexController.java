@@ -57,14 +57,14 @@ public class IndexController {
 		view.getCreaTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	model.Creatorneocontroller();
+		    	model.creaTorneoontroller();
 			}
 		});
 		
 		view.getIscrivitiTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	model.Iscrivititorneocontroller();
+		    	model.iscrivitiTorneocontroller();
 			}
 		});
 		
@@ -72,14 +72,14 @@ public class IndexController {
 		view.getDisiscrivitiTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	model.Disiscrivititorneocontroller();
+		    	model.disiscrivitiTorneocontroller();
 			}
 		});
 		
 		view.getEliminaTorneo().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	model.Eliminatorneocontroller();
+		    	model.eliminatorneoController();
 			}
 		});
 		

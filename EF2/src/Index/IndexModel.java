@@ -1,5 +1,6 @@
 package Index;
 
+import Torneo.TorneoModel;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
@@ -19,35 +20,35 @@ public class IndexModel {
 	 private DisiscrizioneTorneoView disiscrizione;
 	 private IscrizioneTorneoView iscrizioneview;
 	 private CreaTorneoView creatorneoview;
+	 private TorneoModel model=new TorneoModel();
 	 
 	 
-	 
-	public void Eliminatorneocontroller() {
+	public void eliminatorneoController() {
 
 		eliminaview=new EliminaTorneoView();
 		
-		eliminatorneocontroller=new EliminaTorneoController(eliminaview);
+		eliminatorneocontroller=new EliminaTorneoController(eliminaview,model);
 		
 	}
 
-	public void Disiscrivititorneocontroller() {
+	public void disiscrivitiTorneocontroller() {
 
 		disiscrizione=new DisiscrizioneTorneoView();
 		
-        disicrizionetorneocontroller=new DisiscrizioneTorneoController(disiscrizione);
+        disicrizionetorneocontroller=new DisiscrizioneTorneoController(disiscrizione,model);
 	}
 
-	public void Iscrivititorneocontroller() {
+	public void iscrivitiTorneocontroller() {
 
 		iscrizioneview=new IscrizioneTorneoView();
-        iscrizionetorneocontroller=new IscrizioneTorneoController(iscrizioneview);
+        iscrizionetorneocontroller=new IscrizioneTorneoController(iscrizioneview,model);
 	}
 
-	public void Creatorneocontroller() {
+	public void creaTorneoontroller() {
 
 		
 		creatorneoview=new CreaTorneoView();
-		creatorneocontroller=new CreaTorneoController(creatorneoview);
+		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
 	}
 
 }

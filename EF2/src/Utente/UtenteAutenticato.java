@@ -4,10 +4,8 @@ import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-
 import DataBase.TorneoDao;
 import DataBase.UtenteDao;
-import Torneo.Torneo;
 import TorneoController.CreaTorneoController;
 import TorneoView.CreaTorneoView;
 

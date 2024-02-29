@@ -7,7 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import Autenticazione.Autenticazionecontroller.LoginController;
-
+import Torneo.TorneoModel;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
 
@@ -15,9 +15,10 @@ public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
 	private UtenteAutenticato utente;
-
-	public IscrizioneTorneoController(IscrizioneTorneoView view) {
+	private TorneoModel model;
+	public IscrizioneTorneoController(IscrizioneTorneoView view, TorneoModel model) {
 		this.view = view;
+		this.model=model;
 		addListeners();
 	}
 	
@@ -30,8 +31,9 @@ public class IscrizioneTorneoController {
 
 			if (e.getSource() == view.getIscrivitiTorneo()) {
 
-				UtenteAutenticato.getInstance().iscrizioneTorneo(utente.getEmail(), view.getNomeText().getText());
-
+				
+				model.IscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText() );
+				
 			}
 
 		}

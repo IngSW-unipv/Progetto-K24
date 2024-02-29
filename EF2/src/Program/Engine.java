@@ -34,16 +34,13 @@ public class Engine {
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
-		EliminaAccountView v = new EliminaAccountView();
-		GestioneAccountModel m = new GestioneAccountModel();
-		EliminaAccountController c = new EliminaAccountController(m, v);
-		ModificaAccountView v1 = new ModificaAccountView();
-		ModificaAccountController c1 = new ModificaAccountController(m, v1);
-		//BigFrameModel model = new BigFrameModel();
+	
+		
+		BigFrameModel model = new BigFrameModel();
 
-		//BigFrameView view = new BigFrameView();
+		BigFrameView view = new BigFrameView();
 
-		//BigFrameController c = new BigFrameController(view, model);
+		BigFrameController c = new BigFrameController(view, model);
 
 	}
 

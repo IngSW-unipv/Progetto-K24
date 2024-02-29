@@ -56,7 +56,7 @@ public class EliminaAccountController {
     					view.getErroreText().setText("Eliminazione dell'account avvenuta con successo"); 
     					model.eliminaAccount();
     					view.dispose();
-    					new BigFrameController(new BigFrameModel(), new BigFrameView());
+    					new BigFrameController(new BigFrameView(), new BigFrameModel());
                         
     				} else {
     					view.getErroreText().setForeground(Color.red);
