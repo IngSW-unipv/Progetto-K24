@@ -13,16 +13,26 @@ import Utente.UtenteAutenticato;
 
 public class UtenteDao implements IUtenteDao {
 
-	
+	private static UtenteDao istance ;
 	private String schema;
 	private Connection conn;
 	private ArrayList<UtenteAutenticato> utentelist;
     public int count;
 	
-	public UtenteDao() {
+	private UtenteDao() {
 		super();
 		this.schema = "prova";
        
+	}
+	
+	public static UtenteDao getIstance() {
+
+		if (istance == null) {
+
+			istance = new UtenteDao();
+
+		}
+		return istance;
 	}
 
 

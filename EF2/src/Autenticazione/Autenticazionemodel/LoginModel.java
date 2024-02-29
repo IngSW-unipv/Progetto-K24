@@ -1,6 +1,12 @@
 package Autenticazione.Autenticazionemodel;
 
 import java.io.IOException;
+
+import DataBase.UtenteDao;
+import Index.IndexController;
+import Index.IndexModel;
+import Index.IndexView;
+import Utente.FactoryGestioneUtente;
 import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
@@ -13,23 +19,40 @@ public class LoginModel {
 	private UtenteAutenticato ut;
 
 	public LoginModel() {
-		//nothing
+		// nothing
+
 	}
 
-	///metodo per istanziare l'utente quando si autentica
-	public UtenteAutenticato istanziaUtente(String userName, String email, String password) {
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName, email, password));
-		ut = SingletonGestione.getInstance().getUtente();
-		return ut;
+	/// metodo per istanziare l'utente quando si autentica
+	public void istanziaUtente(String userName, String email, String password) {
+		// SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName,
+		// email, password));
+		UtenteAutenticato.getIstance().setEmail(email);
+		UtenteAutenticato.getIstance().setPassword(password);
+
+		// ut = SingletonGestione.getInstance().getUtente();
+		
 	}
 
-	//verifica che le credenziali inserite siano corrette
+	public void indexController() {
+
+		new IndexController(new IndexModel(),new IndexView());
+
+	}
+
+	// verifica che le credenziali inserite siano corrette
 	public boolean verificaCredenziali(String emailInput, String passwordInput) throws IOException {
-		ut = istanziaUtente(emailInput,emailInput,passwordInput);
-		return SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
+
+		UtenteAutenticato.getIstance().setEmail(emailInput);
+		UtenteAutenticato.getIstance().setPassword(passwordInput);
+
+		
+		return UtenteDao.getIstance().selectByEmailUser(UtenteAutenticato.getIstance());
+
+		// SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 	}
 
-	//getter and setters
+	// getter and setters
 	public UtenteAutenticato getUt() {
 		return ut;
 	}

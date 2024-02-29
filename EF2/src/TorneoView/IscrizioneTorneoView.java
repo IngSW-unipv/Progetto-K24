@@ -14,6 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import DataBase.TorneoDao;
 import Utente.SingletonGestione;
 
 
@@ -59,7 +60,7 @@ public class IscrizioneTorneoView extends JFrame {
 		
 		
 		
-		lista=SingletonGestione.getInstance().getTorneodao().selezionalistatorneo();
+		lista=TorneoDao.getIstance().selezionalistatorneo();
 		
 		options=lista.toArray(options);
 		

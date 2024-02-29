@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Autenticazione.Autenticazionecontroller.RegistrazioneController;
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.BigFrameController;
+import Autenticazione.Autenticazioneview.BigFrameModel;
 import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import GestioneAccount.ModificaAccountView;
@@ -17,23 +18,28 @@ import Minesweeper.MinesweeperView.MinesweeperView;
 import TorneoController.CreaTorneoController;
 import TorneoController.IscrizioneTorneoController;
 import TorneoView.CreaTorneoView;
-
+import Utente.FactoryGestioneTorneo;
+import Utente.FactoryGestioneUtente;
 
 public class Engine {
+
+	
+
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		//IscrizioneTorneoController c = new IscrizioneTorneoController();
+		 
+		FactoryGestioneTorneo.getInstance().creaTorneoDao();
+		FactoryGestioneUtente.getInstance().creaUtentedao();
 		
-		//IndexController i = new IndexController();
-		//
-		//CreaTorneoController c = new CreaTorneoController();
-		
-        //MinesweeperController ctrl = new MinesweeperController();
-      
-        BigFrameController c=new BigFrameController();
-		
+		BigFrameModel model = new BigFrameModel();
+
+		BigFrameView view = new BigFrameView();
+
+		BigFrameController c = new BigFrameController(view, model);
+
 	}
 
 }

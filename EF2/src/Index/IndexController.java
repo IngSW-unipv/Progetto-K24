@@ -9,6 +9,9 @@ import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import GestioneAccount.EliminaAccountController;
+import GestioneAccount.EliminaAccountView;
+import GestioneAccount.GestioneAccountModel;
+import GestioneAccount.ModificaAccountView;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
@@ -25,10 +28,10 @@ public class IndexController {
 	private LoginModel loginModel;
 	private LoginView loginView;
 	
-	public IndexController() {
+	public IndexController(IndexModel model,IndexView view) {
 		
-		this.model=new IndexModel();
-		this.view=new IndexView();
+		this.model=model;		
+		this.view=view ;
 		addListeners();
 	}
 	
@@ -39,14 +42,14 @@ public class IndexController {
 		view.getEliminaButton().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	EliminaAccountController m = new EliminaAccountController();
+		    	EliminaAccountController m = new EliminaAccountController(new GestioneAccountModel(),new EliminaAccountView());
 			}
 		});
 		
 		view.getModificaButton().addActionListener(new ActionListener() {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
-		    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController();
+		    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController(new GestioneAccountModel(),new ModificaAccountView());
 			}
 		});
 		

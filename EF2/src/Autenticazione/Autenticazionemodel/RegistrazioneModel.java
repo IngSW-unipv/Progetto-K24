@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import DataBase.UtenteDao;
 import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
@@ -75,19 +76,24 @@ public class RegistrazioneModel {
 
 	// verifica se la mail è già presente nel database
 	public boolean isEmailInesistente(String email) {
-		return !(SingletonGestione.getInstance().getUtentedao().selectByEmail(email));
+		return !(UtenteDao.getIstance().selectByEmail(email));
 	}
 
 	//registra le credenziali nel database
 	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
-		SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
+		UtenteDao.getIstance().insertSchemaUtente(u);
 	}
 
 	// istanzia un nuovo utente di tipo UtenteAutenticato
-	public UtenteAutenticato istanziautente(String nome, String emailutente, String password) {
-		SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password));
-		UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
-		return utente;
+	public void istanziautente(String nome, String emailutente, String password) {
+		//SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password));
+		
+		//UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
+		
+		UtenteAutenticato.getIstance().setUsername(nome);
+		UtenteAutenticato.getIstance().setEmail(emailutente);
+		UtenteAutenticato.getIstance().setPassword(password);
+		
 	}
 	
 	//metodo che verifica se i dati inseriti sono corretti, esso restituisce un intero in funzione dell'errore presente

@@ -13,16 +13,26 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 
 public class TorneoDao implements ITorneoDao {
-
+    
+	private static TorneoDao istance;
 	private Connection conn;
 	private String schema;
 	private int count;
 
-	public TorneoDao() {
+	private TorneoDao() {
 
 		super();
 		this.schema = "prova";
 
+	}
+	
+	public static TorneoDao getIstance() {
+
+		if (istance == null) {
+			istance = new TorneoDao();
+		}
+
+		return istance;
 	}
 
 	public boolean insertpartecipante(String emailutente, String nometorneo, int punteggio) {

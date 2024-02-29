@@ -6,7 +6,9 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import Autenticazione.Autenticazionemodel.LoginModel;
+import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Index.IndexController;
 
 /*
@@ -18,6 +20,7 @@ public class LoginController  {
 
 	private LoginModel model;
 	private LoginView view;
+	
 
 	public LoginController(LoginModel model, LoginView view) {
 		this.model = model;
@@ -42,7 +45,7 @@ public class LoginController  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.dispose();
-                new RegistrazioneController();
+                new RegistrazioneController(new RegistrazioneModel(), new RegistrazioneView());
             }
         });
 
@@ -57,7 +60,7 @@ public class LoginController  {
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
     					model.istanziaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
-                        new IndexController();
+                        model.indexController();
                         
                         
     				} else {

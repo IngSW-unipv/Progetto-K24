@@ -8,8 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
+import Autenticazione.Autenticazionemodel.LoginModel;
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
 /*
  * RegistrazioneController è la classe che completa, insieme a RegistrazioneModel e RegistrazioneView,
@@ -25,7 +28,7 @@ public class RegistrazioneController {
 	private char[] password;
 	private RegistrazioneModel model;
 	private RegistrazioneView view;
-
+	
 	private UtenteAutenticato utente;
 
 	public RegistrazioneController(RegistrazioneModel model, RegistrazioneView view) {
@@ -40,7 +43,8 @@ public class RegistrazioneController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
-				new LoginController();
+				
+				new LoginController(new LoginModel(),new LoginView());
 			}
 		});
 
@@ -83,12 +87,10 @@ public class RegistrazioneController {
 		        	if (model.isEmailInesistente(view.getEmailText().getText())) {
 		        		try {
 
-							utente = model.istanziautente(view.getUsernameText().getText(),
+							model.istanziautente(view.getUsernameText().getText(),
 									view.getEmailText().getText(), paswrd);
-							model.registrazioneCredenziali(utente);
-							// utente.registrazioneCredenziali(utente, view.getNomeText().getText(),
-							// view.getEmailText().getText(),
-							// view.getPassword1Text().getPassword().toString());
+							model.registrazioneCredenziali(UtenteAutenticato.getIstance());
+							
 						} catch (SQLException e1) {
 							view.getErroreLabel().setText("Errore nella registrazione, riprova");
 							e1.printStackTrace();

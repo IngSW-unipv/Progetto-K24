@@ -17,14 +17,17 @@ import java.awt.Window;
 public class BigFrameController{
 
 	private BigFrameView view;
+	private BigFrameModel model;
 	private RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
 	private LoginModel loginModel;
 	private LoginView loginView;
 	
 	
-	public BigFrameController () {
-		this.view=new BigFrameView();
+	public BigFrameController (BigFrameView view,BigFrameModel model ) {
+		this.view=view;
+		this.model=model;
+		
 		addListeners();
 	}
 	
@@ -34,7 +37,8 @@ public class BigFrameController{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	view.dispose();
-				new RegistrazioneController();
+		    	model.registrazioneController();
+				
 			}
 		});
 		
@@ -42,7 +46,7 @@ public class BigFrameController{
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		        view.dispose();
-		        new LoginController();
+		       model.loginController();
 			}
 		});
 	}	

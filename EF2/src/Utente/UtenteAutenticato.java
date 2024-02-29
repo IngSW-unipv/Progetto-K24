@@ -13,70 +13,69 @@ import TorneoView.CreaTorneoView;
 
 public class UtenteAutenticato extends Utente {
 
+	private static UtenteAutenticato istance;
+
 	// costruttore da istanziare per utetne vuoto
 
-	public UtenteAutenticato() {
+	private UtenteAutenticato() {
 
 		super("", "", "");
 
-		
 	}
 
-	public UtenteAutenticato(String userName, String email, String password) {
-		super(userName, email, password);
-		
+	public static UtenteAutenticato getIstance() {
+
+		if (istance == null) {
+
+			istance = new UtenteAutenticato();
+
+		}
+
+		return istance;
 	}
 
 	public void cambiaUsername(String newUsername) {
-		 this.setUsername(newUsername);
-		 SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(this);
+		this.setUsername(newUsername);
+		SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(this);
 	}
 
-	public void registrazioneCredenziali(UtenteAutenticato u, String username, String email, String password)
-			throws SQLException {
+	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
 
-		SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
+		// SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
+		UtenteDao.getIstance().insertSchemaUtente(u);
 
 	}
 
 	public void eliminaAccount() {
-		SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(this);
+		// SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(this);
+		UtenteDao.getIstance().eliminaSchemaUtente(this);
 	}
-	
+
 	public boolean ricercaUtente(String email) {
-		
 
-		return SingletonGestione.getInstance().getUtentedao().selectByEmail(email);
-
-	}
-	
-    public boolean ricercaTorneo(String nometorneo) {
-		
-
-		return SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo);
+		// return SingletonGestione.getInstance().getUtentedao().selectByEmail(email);
+		return UtenteDao.getIstance().selectByEmail(email);
 
 	}
-    
-    public boolean ricercaIscritto(String nometorneo,String emailUtente) {
-		
 
-		return SingletonGestione.getInstance().getTorneodao().ricercaIscritto(nometorneo,emailUtente);
+	public boolean ricercaTorneo(String nometorneo) {
 
-	}
-    
-    
-    public  ArrayList<String> ricercaDatiTorneo(String nometorneo) {
+		// return
+		// SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo);
 
-		return SingletonGestione.getInstance().getTorneodao().selectAllByTorneo(nometorneo);
-		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
-		// list.get(3), list.get(4), list.get(5));
+		return TorneoDao.getIstance().ricercaTorneo(nometorneo);
 
 	}
-    
 
-	public void istanziaTorneo(String nometorneo) {
+	public boolean ricercaIscritto(String nometorneo, String emailUtente) {
 
-		var list = SingletonGestione.getInstance().getTorneodao().selectAllByTorneo(nometorneo);
+		return TorneoDao.getIstance().ricercaIscritto(nometorneo, emailUtente);
+
+	}
+
+	public ArrayList<String> ricercaDatiTorneo(String nometorneo) {
+
+		return TorneoDao.getIstance().selectAllByTorneo(nometorneo);
 		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
 		// list.get(3), list.get(4), list.get(5));
 
@@ -85,35 +84,23 @@ public class UtenteAutenticato extends Utente {
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_) {
 
-		
-		
 		try {
-			if (SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)) 
-					{
-				SingletonGestione.getInstance().getTorneodao().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
-				
+			if (TorneoDao.getIstance().ricercaTorneo(nometorneo)) {
+				TorneoDao.getIstance().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
+
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			creazioneControllerTorneo();
+			// creazioneControllerTorneo();
 
 		}
 	}
 
-	public void creazioneControllerTorneo() {
-
-		CreaTorneoController c = new CreaTorneoController();
-
-	}
-
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
-			
-		
-	
+
 		try {
-			if (SingletonGestione.getInstance().getTorneodao().ricercaCreatore(emailutente)) 
-			{
-				SingletonGestione.getInstance().getTorneodao().insertpartecipante(emailutente, nometorneo, 0);
+			if (TorneoDao.getIstance().ricercaCreatore(emailutente)) {
+				TorneoDao.getIstance().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,10 +109,9 @@ public class UtenteAutenticato extends Utente {
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
-		
 		try {
-			if (!(SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo)))
-				SingletonGestione.getInstance().getTorneodao().deletePartecipante(emailutente);
+			if (!(TorneoDao.getIstance().ricercaTorneo(nometorneo)))
+				TorneoDao.getIstance().deletePartecipante(emailutente);
 		}
 
 		catch (Exception e) {
@@ -135,18 +121,12 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaTorneo(String nometorneo,String nomeutente) { // va aggiunto un controllo che a eliminare il torneo può essere solo
-				
-		
+	public void eliminaTorneo(String nometorneo, String nomeutente) { // va aggiunto un controllo che a eliminare il
+																		// torneo può essere solo
+
 		// il creatore
-        if(SingletonGestione.getInstance().getTorneodao().ricercaCreatore(nomeutente))
-        	SingletonGestione.getInstance().getTorneodao().deleteTorneo(nometorneo);
-
-	}
-
-	public void visualizzaLista() {
-
-	//	SingletonGestione.getInstance().getTorneodao().selectbyuser();
+		if (TorneoDao.getIstance().ricercaCreatore(nomeutente))
+			TorneoDao.getIstance().deleteTorneo(nometorneo);
 
 	}
 
