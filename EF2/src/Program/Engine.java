@@ -25,17 +25,12 @@ import Utente.FactoryGestioneUtente;
 
 public class Engine {
 
-	
-
-	
-
 	public static void main(String[] args) {
-		 
+
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
-	
-		
+
 		BigFrameModel model = new BigFrameModel();
 
 		BigFrameView view = new BigFrameView();

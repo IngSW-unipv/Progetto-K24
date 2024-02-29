@@ -91,7 +91,14 @@ public class IndexController {
 			public void actionPerformed(ActionEvent e) {
 				model.clear();
 				view.dispose();
-				new BigFrameController(new BigFrameModel(), new BigFrameView());
+				new BigFrameController(new BigFrameView(), new BigFrameModel());
+			}
+		});
+		
+		view.getMinesweeper().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.minesweeperPlay();
 			}
 		});
 		
