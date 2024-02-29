@@ -3,6 +3,8 @@ package GestioneAccount;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Autenticazionemodel.GestioneAccountModel;
+
 
 
 public class EliminaAccountController {

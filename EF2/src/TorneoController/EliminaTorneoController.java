@@ -33,7 +33,7 @@ public class EliminaTorneoController {
 			if (e.getSource() == view.getEliminaTorneo()) {
 				
 				
-				UtenteAutenticato.getIstance().eliminaTorneo(view.getNomeText().getText(),utente.getUsername());
+				UtenteAutenticato.getInstance().eliminaTorneo(view.getNomeText().getText(),utente.getUsername());
 
 			}
 

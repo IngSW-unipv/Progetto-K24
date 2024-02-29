@@ -2,8 +2,9 @@ package Autenticazione.Autenticazioneview;
 
 import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazione.Autenticazionecontroller.RegistrazioneController;
-import Autenticazione.Autenticazionemodel.LoginModel;
+
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazionemodel.GestioneAccountModel;
 
 public class BigFrameModel {
 
@@ -19,7 +20,7 @@ public class BigFrameModel {
 
 	public void loginController() {
 
-		new LoginController(new LoginModel(), new LoginView());
+		new LoginController(new GestioneAccountModel(), new LoginView());
 
 	}
 

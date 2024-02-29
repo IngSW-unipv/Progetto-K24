@@ -8,10 +8,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import Autenticazione.Autenticazionemodel.LoginModel;
+
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.GestioneAccountModel;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
 /*
@@ -29,7 +30,6 @@ public class RegistrazioneController {
 	private RegistrazioneModel model;
 	private RegistrazioneView view;
 	
-	private UtenteAutenticato utente;
 
 	public RegistrazioneController(RegistrazioneModel model, RegistrazioneView view) {
 		this.model = model;
@@ -44,7 +44,7 @@ public class RegistrazioneController {
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
 				
-				new LoginController(new LoginModel(),new LoginView());
+				new LoginController(new GestioneAccountModel(),new LoginView());
 			}
 		});
 

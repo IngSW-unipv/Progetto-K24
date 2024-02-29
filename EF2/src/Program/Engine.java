@@ -32,11 +32,11 @@ public class Engine {
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
-		//BigFrameModel model = new BigFrameModel();
+		BigFrameModel model = new BigFrameModel();
 
-		//BigFrameView view = new BigFrameView();
+		BigFrameView view = new BigFrameView();
 
-		//BigFrameController c = new BigFrameController(view, model);
+		BigFrameController c = new BigFrameController(view, model);
 
 	}
 

@@ -4,13 +4,14 @@ package Index;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import Autenticazione.Autenticazionemodel.LoginModel;
+
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.EliminaAccountController;
 import GestioneAccount.EliminaAccountView;
-import GestioneAccount.GestioneAccountModel;
+
 import GestioneAccount.ModificaAccountView;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
@@ -25,7 +26,7 @@ public class IndexController {
 	
 	private RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
-	private LoginModel loginModel;
+	private GestioneAccountModel loginModel;
 	private LoginView loginView;
 	
 	public IndexController(IndexModel model,IndexView view) {

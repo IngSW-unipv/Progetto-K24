@@ -5,10 +5,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Autenticazione.Autenticazionemodel.LoginModel;
+
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.GestioneAccountModel;
 import Index.IndexController;
 
 /*
@@ -18,11 +19,11 @@ import Index.IndexController;
 
 public class LoginController  {
 
-	private LoginModel model;
+	private GestioneAccountModel model;
 	private LoginView view;
 	
 
-	public LoginController(LoginModel model, LoginView view) {
+	public LoginController(GestioneAccountModel model, LoginView view) {
 		this.model = model;
 		this.view = view;
         addListeners();
@@ -77,13 +78,6 @@ public class LoginController  {
     }
 
 
-	public Autenticazione.Autenticazionemodel.LoginModel getModel() {
-		return model;
-	}
-
-
-	public void setModel(Autenticazione.Autenticazionemodel.LoginModel model) {
-		this.model = model;
-	}
+	
 
 }

@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 import Autenticazione.Autenticazionecontroller.LoginController;
-import Autenticazione.Autenticazionemodel.LoginModel;
+
 import DataBase.TorneoDao;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
@@ -59,7 +59,7 @@ public class CreaTorneoController {
                 
 				
 				
-				UtenteAutenticato.getIstance().creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
+				UtenteAutenticato.getInstance().creazioneTorneo(view.getNomeText().getText(), utente.getEmail(), view.getComboText(), date, date_);
 				
 				}
 			}

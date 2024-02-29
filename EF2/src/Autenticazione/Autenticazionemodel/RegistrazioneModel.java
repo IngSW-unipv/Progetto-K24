@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import DataBase.UtenteDao;
-import Utente.SingletonGestione;
+
 import Utente.UtenteAutenticato;
 
 /*
