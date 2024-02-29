@@ -13,7 +13,7 @@ import Utente.UtenteAutenticato;
 
 public class UtenteDao implements IUtenteDao {
 
-	private static UtenteDao istance ;
+	private static UtenteDao instance ;
 	private String schema;
 	private Connection conn;
 	private ArrayList<UtenteAutenticato> utentelist;
@@ -27,12 +27,12 @@ public class UtenteDao implements IUtenteDao {
 	
 	public static UtenteDao getInstance() {
 
-		if (istance == null) {
+		if (instance == null) {
 
-			istance = new UtenteDao();
+			instance = new UtenteDao();
 
 		}
-		return istance;
+		return instance;
 	}
 
 
