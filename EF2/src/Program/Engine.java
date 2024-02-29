@@ -28,17 +28,15 @@ public class Engine {
 	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		 
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
-		
-		BigFrameModel model = new BigFrameModel();
+		FactoryGestioneUtente.getInstance().creaUtente();
+		//BigFrameModel model = new BigFrameModel();
 
-		BigFrameView view = new BigFrameView();
+		//BigFrameView view = new BigFrameView();
 
-		BigFrameController c = new BigFrameController(view, model);
+		//BigFrameController c = new BigFrameController(view, model);
 
 	}
 

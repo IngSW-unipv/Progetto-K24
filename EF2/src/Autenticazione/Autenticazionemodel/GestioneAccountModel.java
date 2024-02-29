@@ -1,4 +1,4 @@
-package Autenticazione.Autenticazionemodel;
+package Autenticazionemodel;
 
 import java.io.IOException;
 
@@ -11,26 +11,22 @@ import Utente.SingletonGestione;
 import Utente.UtenteAutenticato;
 
 /*
- * Classe model per il login
+ * Classe model per il login e la gestione dell'account
  * essa contiene alcuni metodi che, insieme alla view e al controller, implementa il login seguendo il pattern MVC
+ * e metodi per eseguire la modifica dei propri dati e l'eliminazione del proprio account
  */
-public class LoginModel {
+public class GestioneAccountModel {
 
-	private UtenteAutenticato ut;
-
-	public LoginModel() {
+	public GestioneAccountModel() {
 		// nothing
 
 	}
 
 	/// metodo per istanziare l'utente quando si autentica
-	public void istanziaUtente(String userName, String email, String password) {
-		// SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName,
-		// email, password));
+	public void impostaUtente(String userName, String email, String password) {
+
 		UtenteAutenticato.getInstance().setEmail(email);
 		UtenteAutenticato.getInstance().setPassword(password);
-
-		// ut = SingletonGestione.getInstance().getUtente();
 		
 	}
 
@@ -46,18 +42,20 @@ public class LoginModel {
 		UtenteAutenticato.getInstance().setEmail(emailInput);
 		UtenteAutenticato.getInstance().setPassword(passwordInput);
 
-		
 		return UtenteDao.getInstance().selectByEmailUser(UtenteAutenticato.getInstance());
 
-		// SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 	}
+	
+	//modifica a partire dall'input utente il suo username
+	public void modificaAccount(String newUsername) {	
+		UtenteAutenticato.getInstance().setUsername(newUsername);
+		UtenteDao.getInstance().updateSchemaUtente(UtenteAutenticato.getInstance());
+	}
+	
+	//elimina l'account dell'utente dal database
+	public void eliminaAccount() {
+		UtenteDao.getInstance().eliminaSchemaUtente(UtenteAutenticato.getInstance());
+ 	}
 
-	// getter and setters
-	public UtenteAutenticato getUt() {
-		return ut;
-	}
 
-	public void setUt(UtenteAutenticato ut) {
-		this.ut = ut;
-	}
 }

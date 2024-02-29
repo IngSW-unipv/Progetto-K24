@@ -85,7 +85,7 @@ public class RegistrazioneModel {
 	}
 
 	// istanzia un nuovo utente di tipo UtenteAutenticato
-	public void istanziautente(String nome, String emailutente, String password) {
+	public void impostaUtente(String nome, String emailutente, String password) {
 		//SingletonGestione.getInstance().setUtente(new UtenteAutenticato(nome, emailutente, password));
 		
 		//UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();

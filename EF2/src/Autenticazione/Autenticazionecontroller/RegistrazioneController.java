@@ -87,7 +87,7 @@ public class RegistrazioneController {
 		        	if (model.isEmailInesistente(view.getEmailText().getText())) {
 		        		try {
 
-							model.istanziautente(view.getUsernameText().getText(),
+							model.impostaUtente(view.getUsernameText().getText(),
 									view.getEmailText().getText(), paswrd);
 							model.registrazioneCredenziali(UtenteAutenticato.getInstance());
 							

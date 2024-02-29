@@ -33,7 +33,7 @@ public class EliminaAccountController {
 				view.dispose();
 				// Chiama effettivamente il model per cambiare i dati
 
-				model.eliminaUtente();
+				model.eliminaAccount();
 
 			}
 		});
