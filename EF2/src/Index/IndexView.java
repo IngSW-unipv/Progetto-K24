@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
 
+import javax.swing.AbstractButton;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -22,9 +23,10 @@ public class IndexView extends JFrame{
     private JPanel centerPanel;
     private JButton modificaButton;
     private JButton eliminaButton;
+    private JButton logoutButton;
     private JButton creaTorneo;
     private JButton iscrivitiTorneo;
-    private JButton EliminaTorneo;
+    private JButton eliminaTorneo;
     private JButton disiscrivitiTorneo;
     // Dimensioni fisse per i bottoni del centerPanel
     private static final int BUTTON_WIDTH = 150;
@@ -41,9 +43,10 @@ public class IndexView extends JFrame{
     	centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
     	modificaButton = new JButton("Modifica account");
     	eliminaButton = new JButton("Elimina account");
+    	logoutButton = new JButton("Logout");
     	creaTorneo = new JButton("Crea Torneo");
     	iscrivitiTorneo = new JButton("Iscriviti a Torneo");
-    	EliminaTorneo = new JButton("Elimina Torneo");
+    	eliminaTorneo = new JButton("Elimina Torneo");
     	disiscrivitiTorneo = new JButton("Disiscriviti Torneo");
     	
     	setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
@@ -61,12 +64,12 @@ public class IndexView extends JFrame{
 
         setButtonProperties(creaTorneo);
         setButtonProperties(iscrivitiTorneo);
-        setButtonProperties(EliminaTorneo);
+        setButtonProperties(eliminaTorneo);
         setButtonProperties(disiscrivitiTorneo);
         // Imposta l'allineamento orizzontale dei bottoni nel leftPanel
         creaTorneo.setAlignmentX(CENTER_ALIGNMENT);
         iscrivitiTorneo.setAlignmentX(CENTER_ALIGNMENT);
-        EliminaTorneo.setAlignmentX(CENTER_ALIGNMENT);
+        eliminaTorneo.setAlignmentX(CENTER_ALIGNMENT);
         disiscrivitiTorneo.setAlignmentX(CENTER_ALIGNMENT);
         // Aggiungi spazio tra i bottoni nel leftPanel
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
@@ -74,7 +77,7 @@ public class IndexView extends JFrame{
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
         leftPanel.add(iscrivitiTorneo);
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
-        leftPanel.add(EliminaTorneo);
+        leftPanel.add(eliminaTorneo);
         leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
         leftPanel.add(disiscrivitiTorneo);
         // topPanel
@@ -84,10 +87,12 @@ public class IndexView extends JFrame{
 
         modificaButton.setPreferredSize(new Dimension(150, 40));
         eliminaButton.setPreferredSize(new Dimension(150, 40));
+        logoutButton.setPreferredSize(new Dimension(150, 40));
 
         topPanel.add(Box.createHorizontalGlue());
         topPanel.add(modificaButton);
         topPanel.add(eliminaButton);
+        topPanel.add(logoutButton);
 
         // centerPanel
         centerPanel.setBackground(new Color(144, 238, 144));
@@ -154,12 +159,12 @@ public class IndexView extends JFrame{
 
 
 	public JButton getEliminaTorneo() {
-		return EliminaTorneo;
+		return eliminaTorneo;
 	}
 
 
 	public void setEliminaTorneo(JButton eliminaTorneo) {
-		EliminaTorneo = eliminaTorneo;
+		eliminaTorneo = eliminaTorneo;
 	}
 
 
@@ -176,6 +181,12 @@ public class IndexView extends JFrame{
 	public JButton getIscrivitiTorneo() {
 		return iscrivitiTorneo;
 	}
+
+
+	public JButton getLogoutButton() {
+		return logoutButton;
+	}
+
 	
 	
 	

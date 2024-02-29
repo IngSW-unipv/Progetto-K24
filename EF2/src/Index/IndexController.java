@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 
 import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazione.Autenticazioneview.BigFrameController;
+import Autenticazione.Autenticazioneview.BigFrameModel;
+import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
@@ -83,6 +86,14 @@ public class IndexController {
 			}
 		});
 		
+		view.getLogoutButton().addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				model.clear();
+				view.dispose();
+				new BigFrameController(new BigFrameModel(), new BigFrameView());
+			}
+		});
 		
 	}
 	

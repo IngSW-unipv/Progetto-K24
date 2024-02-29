@@ -9,6 +9,7 @@ import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
 import TorneoView.EliminaTorneoView;
 import TorneoView.IscrizioneTorneoView;
+import Utente.UtenteAutenticato;
 
 public class IndexModel {
 
@@ -49,6 +50,10 @@ public class IndexModel {
 		
 		creatorneoview=new CreaTorneoView();
 		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
+	}
+	
+	public void clear() {
+		UtenteAutenticato.getInstance().clear();
 	}
 
 }

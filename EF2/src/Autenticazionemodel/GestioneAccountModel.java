@@ -56,6 +56,6 @@ public class GestioneAccountModel {
 	public void eliminaAccount() {
 		UtenteDao.getInstance().eliminaSchemaUtente(UtenteAutenticato.getInstance());
  	}
-
+	
 
 }

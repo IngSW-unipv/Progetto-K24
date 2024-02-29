@@ -128,4 +128,11 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
+	public void clear() {
+		this.setUsername(null);
+		this.setEmail(null);
+		this.setPassword(null);
+		
+	}
+
 }
