@@ -1,9 +1,15 @@
 package GestioneAccount;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
+import Autenticazione.Autenticazioneview.BigFrameController;
+import Autenticazione.Autenticazioneview.BigFrameModel;
+import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazionemodel.GestioneAccountModel;
+import Utente.UtenteAutenticato;
 
 
 
@@ -28,14 +34,38 @@ public class EliminaAccountController {
 				}
 			}
 		});
-
+		
+		view.getIndietroButton().addActionListener(new ActionListener() {
+			@Override
+			public  void actionPerformed(ActionEvent e) {
+				view.dispose();
+			}
+		});
+		
+		
 		view.getEliminaButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
-				// Chiama effettivamente il model per cambiare i dati
-
-				model.eliminaAccount();
+				char[] password = view.getPasswordText().getPassword();
+    			String passwordString = new String(password);
+    			try {
+    				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getEmail(),passwordString))
+    				{
+    					view.getErroreText().setForeground(Color.green);
+    					view.getErroreText().setText("Eliminazione dell'account avvenuta con successo"); 
+    					model.eliminaAccount();
+    					view.dispose();
+    					new BigFrameController(new BigFrameModel(), new BigFrameView());
+                        
+    				} else {
+    					view.getErroreText().setForeground(Color.red);
+    					view.getErroreText().setText("Password errata");
+    				}
+    			} catch (IOException e1) {
+    				view.getErroreText().setText("Errore");
+    				e1.printStackTrace();
+    			}
 
 			}
 		});

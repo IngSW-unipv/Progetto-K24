@@ -1,7 +1,9 @@
 package GestioneAccount;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.ModificaAccountView;
@@ -29,14 +31,36 @@ public class ModificaAccountController {
             }
         });
 		
-		view.getModificaButton().addActionListener(new ActionListener() {
+		view.getIndietroButton().addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public  void actionPerformed(ActionEvent e) {
 				view.dispose();
-				//Chiama effettivamente il model per cambiare i dati
-				model.modificaAccount(view.getUsernameText().getText());
-				
 			}
 		});
+		
+	     view.getModificaButton().addActionListener(new ActionListener() {
+	          @Override
+	          public void actionPerformed(ActionEvent e) {
+	            	char[] password = view.getPasswordText().getPassword();
+	            	String passwordString = new String(password);
+	    			try {
+	    				//Usiamo lo stesso metodo di verifica credenziali del login, però non è necessario qui inserire il nome utente
+	    				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getUsername(),passwordString))
+	    				{ 
+	    					view.dispose();
+	    					model.modificaAccount(view.getUsernameText().getText());
+
+	                        
+	    				} else {
+	    					view.getErroreText().setForeground(Color.red);
+	    					view.getErroreText().setText("PASSWORD ERRATA");
+	    				}
+	    			} catch (IOException e1) {
+	    				view.getErroreText().setText("Errore");
+	    				e1.printStackTrace();
+	    			}
+	    			
+	            }
+	        });
 	}
 }

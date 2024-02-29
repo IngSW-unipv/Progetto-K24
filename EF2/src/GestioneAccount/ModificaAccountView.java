@@ -19,6 +19,7 @@ public class ModificaAccountView extends JFrame{
 	private JButton modificaButton = new JButton("Modifica");
 	private JCheckBox passwordCheckBox = new JCheckBox("Mostra password");
 	private JLabel erroreText = new JLabel();
+	private JButton indietroButton = new JButton("Indietro");
 	
 	// costruttore
 	public ModificaAccountView() {
@@ -42,6 +43,7 @@ public class ModificaAccountView extends JFrame{
 		usernameText.setSize(150, 30);
 		passwordText.setSize(150, 30);
 		modificaButton.setBounds(200, 240, 100, 30);
+		indietroButton.setBounds(350, 240, 100, 30); ////////////////
 		passwordCheckBox.setBounds(480, 150, 150, 30);
 		erroreText.setBounds(200,  195, 500, 35);
 		
@@ -52,6 +54,7 @@ public class ModificaAccountView extends JFrame{
 		panel.add(usernameText);
 		panel.add(passwordText);
 		panel.add(modificaButton);
+		panel.add(indietroButton);
 		panel.add(passwordCheckBox);
 		panel.add(erroreText);
 
@@ -74,6 +77,10 @@ public class ModificaAccountView extends JFrame{
 
 	public JButton getModificaButton() {
 		return modificaButton;
+	}
+	
+	public JButton getIndietroButton() {
+		return indietroButton;
 	}
 
 	public JLabel getErroreText() {

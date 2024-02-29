@@ -17,6 +17,8 @@ public class EliminaAccountView extends JFrame{
 	private JButton eliminaButton = new JButton("Elimina");
 	private JCheckBox passwordCheckBox = new JCheckBox("Mostra password");
 	private JLabel erroreText = new JLabel();
+	private JButton indietroButton = new JButton("Indietro");
+
 	
 	// costruttore
 	public EliminaAccountView() {
@@ -37,6 +39,7 @@ public class EliminaAccountView extends JFrame{
 		passwordText.setBounds(300, 120, 100, 30);
 		passwordText.setSize(150, 30);
 		eliminaButton.setBounds(200, 240, 100, 30);
+		indietroButton.setBounds(350, 240, 100, 30);
 		passwordCheckBox.setBounds(480, 120, 150, 30);
 		erroreText.setBounds(200,  195, 500, 35);
 		
@@ -45,6 +48,7 @@ public class EliminaAccountView extends JFrame{
 		panel.add(passwordLabel);
 		panel.add(passwordText);
 		panel.add(eliminaButton);
+		panel.add(indietroButton);
 		panel.add(passwordCheckBox);
 		panel.add(erroreText);
 
@@ -67,6 +71,10 @@ public class EliminaAccountView extends JFrame{
 
 	public JButton getEliminaButton() {
 		return eliminaButton;
+	}
+	
+	public JButton getIndietroButton() {
+		return indietroButton;
 	}
 
 	public JLabel getErroreText() {

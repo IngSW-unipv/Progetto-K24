@@ -8,9 +8,11 @@ import Autenticazione.Autenticazioneview.BigFrameController;
 import Autenticazione.Autenticazioneview.BigFrameModel;
 import Autenticazione.Autenticazioneview.BigFrameView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.ModificaAccountView;
 import GestioneAccount.EliminaAccountController;
-
+import GestioneAccount.EliminaAccountView;
+import GestioneAccount.ModificaAccountController;
 import Index.IndexController;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
@@ -32,11 +34,16 @@ public class Engine {
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
-		BigFrameModel model = new BigFrameModel();
+		EliminaAccountView v = new EliminaAccountView();
+		GestioneAccountModel m = new GestioneAccountModel();
+		EliminaAccountController c = new EliminaAccountController(m, v);
+		ModificaAccountView v1 = new ModificaAccountView();
+		ModificaAccountController c1 = new ModificaAccountController(m, v1);
+		//BigFrameModel model = new BigFrameModel();
 
-		BigFrameView view = new BigFrameView();
+		//BigFrameView view = new BigFrameView();
 
-		BigFrameController c = new BigFrameController(view, model);
+		//BigFrameController c = new BigFrameController(view, model);
 
 	}
 
