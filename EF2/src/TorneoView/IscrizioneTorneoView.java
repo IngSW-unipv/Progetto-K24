@@ -60,7 +60,7 @@ public class IscrizioneTorneoView extends JFrame {
 		
 		
 		
-		lista=TorneoDao.getIstance().selezionalistatorneo();
+		lista=TorneoDao.getInstance().selezionalistatorneo();
 		
 		options=lista.toArray(options);
 		

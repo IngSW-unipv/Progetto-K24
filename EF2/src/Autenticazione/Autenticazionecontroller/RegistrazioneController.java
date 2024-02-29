@@ -89,7 +89,7 @@ public class RegistrazioneController {
 
 							model.istanziautente(view.getUsernameText().getText(),
 									view.getEmailText().getText(), paswrd);
-							model.registrazioneCredenziali(UtenteAutenticato.getIstance());
+							model.registrazioneCredenziali(UtenteAutenticato.getInstance());
 							
 						} catch (SQLException e1) {
 							view.getErroreLabel().setText("Errore nella registrazione, riprova");

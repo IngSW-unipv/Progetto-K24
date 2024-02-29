@@ -21,7 +21,7 @@ public class FactoryGestioneTorneo {
 
 	public TorneoDao creaTorneoDao() {
 
-		return TorneoDao.getIstance();
+		return TorneoDao.getInstance();
 		
 
 	}

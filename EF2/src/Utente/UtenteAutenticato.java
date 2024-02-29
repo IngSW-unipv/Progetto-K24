@@ -13,7 +13,7 @@ import TorneoView.CreaTorneoView;
 
 public class UtenteAutenticato extends Utente {
 
-	private static UtenteAutenticato istance;
+	private static UtenteAutenticato instance;
 
 	// costruttore da istanziare per utetne vuoto
 
@@ -23,38 +23,38 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public static UtenteAutenticato getIstance() {
+	public static UtenteAutenticato getInstance() {
 
-		if (istance == null) {
+		if (instance == null) {
 
-			istance = new UtenteAutenticato();
+			instance = new UtenteAutenticato();
 
 		}
 
-		return istance;
+		return instance;
 	}
 
 	public void cambiaUsername(String newUsername) {
 		this.setUsername(newUsername);
-		SingletonGestione.getInstance().getUtentedao().updateSchemaUtente(this);
+		UtenteDao.getInstance().updateSchemaUtente(this);
 	}
 
 	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
 
 		// SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
-		UtenteDao.getIstance().insertSchemaUtente(u);
+		UtenteDao.getInstance().insertSchemaUtente(u);
 
 	}
 
 	public void eliminaAccount() {
 		// SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(this);
-		UtenteDao.getIstance().eliminaSchemaUtente(this);
+		UtenteDao.getInstance().eliminaSchemaUtente(this);
 	}
 
 	public boolean ricercaUtente(String email) {
 
 		// return SingletonGestione.getInstance().getUtentedao().selectByEmail(email);
-		return UtenteDao.getIstance().selectByEmail(email);
+		return UtenteDao.getInstance().selectByEmail(email);
 
 	}
 
@@ -63,19 +63,19 @@ public class UtenteAutenticato extends Utente {
 		// return
 		// SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo);
 
-		return TorneoDao.getIstance().ricercaTorneo(nometorneo);
+		return TorneoDao.getInstance().ricercaTorneo(nometorneo);
 
 	}
 
 	public boolean ricercaIscritto(String nometorneo, String emailUtente) {
 
-		return TorneoDao.getIstance().ricercaIscritto(nometorneo, emailUtente);
+		return TorneoDao.getInstance().ricercaIscritto(nometorneo, emailUtente);
 
 	}
 
 	public ArrayList<String> ricercaDatiTorneo(String nometorneo) {
 
-		return TorneoDao.getIstance().selectAllByTorneo(nometorneo);
+		return TorneoDao.getInstance().selectAllByTorneo(nometorneo);
 		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
 		// list.get(3), list.get(4), list.get(5));
 
@@ -85,8 +85,8 @@ public class UtenteAutenticato extends Utente {
 			java.util.Date date_) {
 
 		try {
-			if (TorneoDao.getIstance().ricercaTorneo(nometorneo)) {
-				TorneoDao.getIstance().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
+			if (TorneoDao.getInstance().ricercaTorneo(nometorneo)) {
+				TorneoDao.getInstance().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
 
 			}
 		} catch (Exception e) {
@@ -99,8 +99,8 @@ public class UtenteAutenticato extends Utente {
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
 
 		try {
-			if (TorneoDao.getIstance().ricercaCreatore(emailutente)) {
-				TorneoDao.getIstance().insertpartecipante(emailutente, nometorneo, 0);
+			if (TorneoDao.getInstance().ricercaCreatore(emailutente)) {
+				TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -110,8 +110,8 @@ public class UtenteAutenticato extends Utente {
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
 
 		try {
-			if (!(TorneoDao.getIstance().ricercaTorneo(nometorneo)))
-				TorneoDao.getIstance().deletePartecipante(emailutente);
+			if (!(TorneoDao.getInstance().ricercaTorneo(nometorneo)))
+				TorneoDao.getInstance().deletePartecipante(emailutente);
 		}
 
 		catch (Exception e) {
@@ -125,8 +125,8 @@ public class UtenteAutenticato extends Utente {
 																		// torneo può essere solo
 
 		// il creatore
-		if (TorneoDao.getIstance().ricercaCreatore(nomeutente))
-			TorneoDao.getIstance().deleteTorneo(nometorneo);
+		if (TorneoDao.getInstance().ricercaCreatore(nomeutente))
+			TorneoDao.getInstance().deleteTorneo(nometorneo);
 
 	}
 

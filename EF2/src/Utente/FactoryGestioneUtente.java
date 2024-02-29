@@ -22,7 +22,7 @@ public class FactoryGestioneUtente {
 
 	public UtenteAutenticato creaUtente() {
 
-		utente = UtenteAutenticato.getIstance();
+		utente = UtenteAutenticato.getInstance();
 
 		return utente;
 
@@ -30,7 +30,7 @@ public class FactoryGestioneUtente {
 
 	public UtenteDao creaUtentedao() {
 
-		utentedao = UtenteDao.getIstance();
+		utentedao = UtenteDao.getInstance();
 
 		return utentedao;
 

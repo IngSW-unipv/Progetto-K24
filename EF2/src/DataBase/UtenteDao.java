@@ -25,7 +25,7 @@ public class UtenteDao implements IUtenteDao {
        
 	}
 	
-	public static UtenteDao getIstance() {
+	public static UtenteDao getInstance() {
 
 		if (istance == null) {
 

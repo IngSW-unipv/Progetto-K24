@@ -76,12 +76,12 @@ public class RegistrazioneModel {
 
 	// verifica se la mail è già presente nel database
 	public boolean isEmailInesistente(String email) {
-		return !(UtenteDao.getIstance().selectByEmail(email));
+		return !(UtenteDao.getInstance().selectByEmail(email));
 	}
 
 	//registra le credenziali nel database
 	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
-		UtenteDao.getIstance().insertSchemaUtente(u);
+		UtenteDao.getInstance().insertSchemaUtente(u);
 	}
 
 	// istanzia un nuovo utente di tipo UtenteAutenticato
@@ -90,9 +90,9 @@ public class RegistrazioneModel {
 		
 		//UtenteAutenticato utente = SingletonGestione.getInstance().getUtente();
 		
-		UtenteAutenticato.getIstance().setUsername(nome);
-		UtenteAutenticato.getIstance().setEmail(emailutente);
-		UtenteAutenticato.getIstance().setPassword(password);
+		UtenteAutenticato.getInstance().setUsername(nome);
+		UtenteAutenticato.getInstance().setEmail(emailutente);
+		UtenteAutenticato.getInstance().setPassword(password);
 		
 	}
 	

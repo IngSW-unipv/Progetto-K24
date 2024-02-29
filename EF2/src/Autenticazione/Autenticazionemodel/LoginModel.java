@@ -27,8 +27,8 @@ public class LoginModel {
 	public void istanziaUtente(String userName, String email, String password) {
 		// SingletonGestione.getInstance().setUtente(new UtenteAutenticato(userName,
 		// email, password));
-		UtenteAutenticato.getIstance().setEmail(email);
-		UtenteAutenticato.getIstance().setPassword(password);
+		UtenteAutenticato.getInstance().setEmail(email);
+		UtenteAutenticato.getInstance().setPassword(password);
 
 		// ut = SingletonGestione.getInstance().getUtente();
 		
@@ -43,11 +43,11 @@ public class LoginModel {
 	// verifica che le credenziali inserite siano corrette
 	public boolean verificaCredenziali(String emailInput, String passwordInput) throws IOException {
 
-		UtenteAutenticato.getIstance().setEmail(emailInput);
-		UtenteAutenticato.getIstance().setPassword(passwordInput);
+		UtenteAutenticato.getInstance().setEmail(emailInput);
+		UtenteAutenticato.getInstance().setPassword(passwordInput);
 
 		
-		return UtenteDao.getIstance().selectByEmailUser(UtenteAutenticato.getIstance());
+		return UtenteDao.getInstance().selectByEmailUser(UtenteAutenticato.getInstance());
 
 		// SingletonGestione.getInstance().getUtentedao().selectByEmailUser(ut);
 	}

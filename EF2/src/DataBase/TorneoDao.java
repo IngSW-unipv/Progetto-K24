@@ -26,7 +26,7 @@ public class TorneoDao implements ITorneoDao {
 
 	}
 	
-	public static TorneoDao getIstance() {
+	public static TorneoDao getInstance() {
 
 		if (istance == null) {
 			istance = new TorneoDao();
