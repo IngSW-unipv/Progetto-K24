@@ -15,7 +15,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import DataBase.TorneoDao;
-import Utente.SingletonGestione;
+
 
 
 public class IscrizioneTorneoView extends JFrame {

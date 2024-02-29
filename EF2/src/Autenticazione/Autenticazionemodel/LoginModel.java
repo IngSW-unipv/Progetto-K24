@@ -7,7 +7,7 @@ import Index.IndexController;
 import Index.IndexModel;
 import Index.IndexView;
 import Utente.FactoryGestioneUtente;
-import Utente.SingletonGestione;
+
 import Utente.UtenteAutenticato;
 
 /*
