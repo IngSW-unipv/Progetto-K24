@@ -13,7 +13,7 @@ public class UtenteAutenticato extends Utente {
 
 	private static UtenteAutenticato instance;
 
-	// costruttore da istanziare per utetne vuoto
+	
 
 	private UtenteAutenticato() {
 
@@ -39,27 +39,24 @@ public class UtenteAutenticato extends Utente {
 
 	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
 
-		// SingletonGestione.getInstance().getUtentedao().insertSchemaUtente(u);
+		
 		UtenteDao.getInstance().insertSchemaUtente(u);
 
 	}
 
 	public void eliminaAccount() {
-		// SingletonGestione.getInstance().getUtentedao().eliminaSchemaUtente(this);
+		
 		UtenteDao.getInstance().eliminaSchemaUtente(this);
 	}
 
 	public boolean ricercaUtente(String email) {
 
-		// return SingletonGestione.getInstance().getUtentedao().selectByEmail(email);
+		
 		return UtenteDao.getInstance().selectByEmail(email);
 
 	}
 
 	public boolean ricercaTorneo(String nometorneo) {
-
-		// return
-		// SingletonGestione.getInstance().getTorneodao().ricercaTorneo(nometorneo);
 
 		return TorneoDao.getInstance().ricercaTorneo(nometorneo);
 
@@ -74,8 +71,7 @@ public class UtenteAutenticato extends Utente {
 	public ArrayList<String> ricercaDatiTorneo(String nometorneo) {
 
 		return TorneoDao.getInstance().selectAllByTorneo(nometorneo);
-		// Torneo Torneo = new Torneo(list.get(0), list.get(1), list.get(2),
-		// list.get(3), list.get(4), list.get(5));
+		
 
 	}
 
@@ -89,15 +85,14 @@ public class UtenteAutenticato extends Utente {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			// creazioneControllerTorneo();
-
+			
 		}
 	}
 
-	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
+	public void iscrizioneTorneo(String emailutente, String nometorneo) { 
 
 		try {
-			if (true)//TorneoDao.getInstance().ricercaCreatore(emailutente)) {
+			if (TorneoDao.getInstance().ricercaCreatore(emailutente))   {
 				{TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
@@ -119,10 +114,8 @@ public class UtenteAutenticato extends Utente {
 
 	}
 
-	public void eliminaTorneo(String nometorneo, String nomeutente) { // va aggiunto un controllo che a eliminare il
-																		// torneo può essere solo
-
-		// il creatore
+	public void eliminaTorneo(String nometorneo, String nomeutente) { 
+		
 		if (TorneoDao.getInstance().ricercaCreatore(nomeutente)) {
 			TorneoDao.getInstance().deleteTorneo(nometorneo);
 		}
