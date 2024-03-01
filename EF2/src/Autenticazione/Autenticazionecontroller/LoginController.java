@@ -47,7 +47,7 @@ public class LoginController  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.dispose();
-                new RegistrazioneController(new RegistrazioneModel(), new RegistrazioneView());
+                model.istanziaRegistration();
             }
         });
 
