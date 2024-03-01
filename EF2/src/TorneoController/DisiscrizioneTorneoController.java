@@ -2,9 +2,6 @@ package TorneoController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import TorneoModel.TorneoModel;
 

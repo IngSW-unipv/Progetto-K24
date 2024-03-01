@@ -2,19 +2,16 @@ package TorneoController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import TorneoModel.TorneoModel;
-import TorneoView.CreaTorneoView;
+
 import TorneoView.EliminaTorneoView;
 import Utente.UtenteAutenticato;
 
 public class EliminaTorneoController {
 
 	private EliminaTorneoView view;
-	private UtenteAutenticato utente;
+	
 	private TorneoModel model;
 
 	public EliminaTorneoController(EliminaTorneoView view, TorneoModel model) {
