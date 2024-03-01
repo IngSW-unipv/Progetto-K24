@@ -21,7 +21,7 @@ public class TorneoDao implements ITorneoDao {
 	private TorneoDao() {
 
 		super();
-		this.schema = "prova";
+		this.schema = "prova"; 
 
 	}
 	

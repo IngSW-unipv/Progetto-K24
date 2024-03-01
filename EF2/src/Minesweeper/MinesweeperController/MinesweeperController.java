@@ -19,9 +19,9 @@ public class MinesweeperController {
 	MouseAdapter al;
 
 	// MineTile tile;
-	public MinesweeperController() {
-		this.view = new MinesweeperView();
-		this.model = new MinesweeperModel();
+	public MinesweeperController(MinesweeperModel model,MinesweeperView view) {
+		this.view = view;
+		this.model = model;
 		// view.setMineList(mineList);
 		mineList = new ArrayList<MineTile>();
 

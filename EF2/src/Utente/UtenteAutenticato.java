@@ -97,8 +97,8 @@ public class UtenteAutenticato extends Utente {
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { // manca controllo che il torneo sia iniziato
 
 		try {
-			if (TorneoDao.getInstance().ricercaCreatore(emailutente)) {
-				TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
+			if (true)//TorneoDao.getInstance().ricercaCreatore(emailutente)) {
+				{TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -123,9 +123,9 @@ public class UtenteAutenticato extends Utente {
 																		// torneo può essere solo
 
 		// il creatore
-		if (TorneoDao.getInstance().ricercaCreatore(nomeutente))
+		if (TorneoDao.getInstance().ricercaCreatore(nomeutente)) {
 			TorneoDao.getInstance().deleteTorneo(nometorneo);
-
+		}
 	}
 
 	public void clear() {

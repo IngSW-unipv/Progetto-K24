@@ -34,7 +34,7 @@ public class MinesweeperView {
 		frame.setSize(boardWidth, boardHeight);
 		frame.setLocationRelativeTo(null); // posiziona la finestra al centro dello schermo
 		frame.setResizable(false); // impedisce di cambiare la dimensione
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE); // chiusura del frame quando si clicca la croce di chiusura
+		frame.setDefaultCloseOperation(frame.DISPOSE_ON_CLOSE); // chiusura del frame quando si clicca la croce di chiusura
 		frame.setLayout(new BorderLayout());
 
 		textLabel = new JLabel("Prato Fiorito: " + Integer.toString(mineCount));

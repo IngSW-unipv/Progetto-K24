@@ -117,7 +117,7 @@ public class UtenteDao implements IUtenteDao {
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, Input.getEmail());
 			st1.setString(2, Input.getHashedPassword());
-			rs1 = st1.executeQuery();
+			rs1 = st1.executeQuery(); 
 
 			while (rs1.next()) {
 				// UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1),
@@ -130,6 +130,8 @@ public class UtenteDao implements IUtenteDao {
 				// System.out.println(f.getPassword().toString());
 				if (count == 1) {
 					esito = true;
+					
+					
 				} else {
 
 					esito = false;

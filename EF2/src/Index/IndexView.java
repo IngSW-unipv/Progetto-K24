@@ -28,6 +28,8 @@ public class IndexView extends JFrame{
     private JButton iscrivitiTorneo;
     private JButton eliminaTorneo;
     private JButton disiscrivitiTorneo;
+    private JButton minesweeper;
+    private JButton Minesweeper;
     // Dimensioni fisse per i bottoni del centerPanel
     private static final int BUTTON_WIDTH = 150;
     private static final int BUTTON_HEIGHT = 150;
@@ -48,6 +50,7 @@ public class IndexView extends JFrame{
     	iscrivitiTorneo = new JButton("Iscriviti a Torneo");
     	eliminaTorneo = new JButton("Elimina Torneo");
     	disiscrivitiTorneo = new JButton("Disiscriviti Torneo");
+        Minesweeper = new JButton("Minesweeper");
     	
     	setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -87,7 +90,7 @@ public class IndexView extends JFrame{
 
         modificaButton.setPreferredSize(new Dimension(150, 40));
         eliminaButton.setPreferredSize(new Dimension(150, 40));
-        logoutButton.setPreferredSize(new Dimension(150, 40));
+        logoutButton.setPreferredSize(new Dimension(200, 40));
 
         topPanel.add(Box.createHorizontalGlue());
         topPanel.add(modificaButton);
@@ -98,8 +101,8 @@ public class IndexView extends JFrame{
         centerPanel.setBackground(new Color(144, 238, 144));
 
         // Aggiungi bottoni al centerPanel
-        addCenterButton("Minesweeper",new ImageIcon("/documentazione_progetto/minesweeper.jpeg")); //ricorda di modificare
-        addCenterButton("Tris",new ImageIcon("/documentazione_progetto/tris.jpeg"));
+        addCenterButton("Minesweeper"); //ricorda di modificare
+       
         
         // add
         add(panelLayout);
@@ -132,15 +135,25 @@ public class IndexView extends JFrame{
 
 
 	// Metodo per aggiungere bottoni al centerPanel con dimensioni fisse
-    private void addCenterButton(String name,ImageIcon imageIcon) {
-        JButton button = new JButton(name,resizeIcon(imageIcon, BUTTON_WIDTH, BUTTON_HEIGHT));
-        setButtonProperties(button);
-        button.setSize(100, 100);
-        centerPanel.add(button);
+    private void addCenterButton(String name) {
+        minesweeper = new JButton(name);
+        setButtonProperties(minesweeper);
+        minesweeper.setSize(300, 300);
+        centerPanel.add(minesweeper);
         
     }
 
-    // Metodo per ridimensionare l'icona mantenendo le proporzioni
+    public JButton getMinesweeper() {
+		return minesweeper;
+	}
+
+
+	public void setMinesweeper(JButton minesweeper) {
+		this.minesweeper = minesweeper;
+	}
+
+
+	// Metodo per ridimensionare l'icona mantenendo le proporzioni
     private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {
         return new ImageIcon(icon.getImage().getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH));
     }

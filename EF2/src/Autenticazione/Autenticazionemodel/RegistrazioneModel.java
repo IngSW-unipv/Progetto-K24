@@ -93,7 +93,7 @@ public class RegistrazioneModel {
 
 		UtenteAutenticato.getInstance().setUsername(nome);
 		UtenteAutenticato.getInstance().setEmail(emailutente);
-		UtenteAutenticato.getInstance().setPassword(password);
+		UtenteAutenticato.getInstance().setPassword(password.toCharArray());
 
 	}
 
@@ -108,7 +108,7 @@ public class RegistrazioneModel {
 		} else if (!isUsernameValido(username)) {
 			return USERNAME_NON_VALIDO;
 		} else if (!isEmailValida(email)) {
-			return EMAIL_NON_VALIDA;
+			return EMAIL_NON_VALIDA; 
 		} else if (!isPasswordUguali(passwordChars1, passwordChars2)) {
 			return PASSWORD_NON_UGUALI;
 		} else if (!isPasswordValida(passwordChars1)) {

@@ -50,7 +50,7 @@ public class EliminaAccountController {
 				char[] password = view.getPasswordText().getPassword();
     			String passwordString = new String(password);
     			try {
-    				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getEmail(),passwordString))
+    				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getEmail(),password))
     				{
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("Eliminazione dell'account avvenuta con successo"); 
