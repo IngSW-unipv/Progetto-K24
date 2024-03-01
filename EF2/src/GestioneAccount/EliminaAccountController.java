@@ -56,6 +56,7 @@ public class EliminaAccountController {
     					view.getErroreText().setText("Eliminazione dell'account avvenuta con successo"); 
     					model.eliminaAccount();
     					view.dispose();
+    					//IL MODEL DEVE CHIAMARE
     					new BigFrameController(new BigFrameView(), new BigFrameModel());
                         
     				} else {
