@@ -52,12 +52,11 @@ public class EliminaAccountController {
     			try {
     				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getEmail(),password))
     				{
-    					view.getErroreText().setForeground(Color.green);
-    					view.getErroreText().setText("Eliminazione dell'account avvenuta con successo"); 
+ 
     					model.eliminaAccount();
     					view.dispose();
     					model.istanziaBigFrame();
-                        
+                         
     				} else {
     					view.getErroreText().setForeground(Color.red); 
     					view.getErroreText().setText("Password errata");

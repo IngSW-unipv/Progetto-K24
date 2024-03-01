@@ -17,8 +17,7 @@ import Utente.UtenteAutenticato;
 public class DisiscrizioneTorneoController {
 
 	private DisiscrizioneTorneoView view;
-	private UtenteAutenticato utente;
-	private GestioneAccountModel loginmodel;
+	
 	private TorneoModel model;
 
 	public DisiscrizioneTorneoController(DisiscrizioneTorneoView view, TorneoModel model) {

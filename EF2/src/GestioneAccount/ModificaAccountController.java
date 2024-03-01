@@ -27,7 +27,7 @@ public class ModificaAccountController {
                     view.setPasswordFieldsEchochar((char) 0);
                 } else {
                     view.setPasswordFieldsEchochar('•');
-                }
+                } 
             }
         });
 		
@@ -49,8 +49,7 @@ public class ModificaAccountController {
 	    				{ 
 
 	    					model.modificaAccount(view.getUsernameText().getText());
-	    					view.getErroreText().setForeground(Color.green);
-	    					view.getErroreText().setText("Modifica dello username avvenuta con successo"); 
+
 	    					view.dispose();
 	                        
 	    				} else {

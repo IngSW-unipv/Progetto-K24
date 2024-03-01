@@ -19,13 +19,9 @@ import Utente.UtenteAutenticato;
 public class CreaTorneoController {
 
 	private CreaTorneoView view;
-	private UtenteAutenticato utente;
-	private boolean istrue;
+
 	private TorneoModel model;
 
-	public void setIstrue(boolean istrue) {
-		this.istrue = istrue;
-	}
 
 	public CreaTorneoController(CreaTorneoView view, TorneoModel model) {
 		this.view = view;
@@ -41,7 +37,7 @@ public class CreaTorneoController {
 				model.creaTorneo(view.getNomeText().getText(), UtenteAutenticato.getInstance().getEmail(), view.getComboText(),
 						view.getDatainzioText().getText(), view.getDatafineText().getText());
 
-			}
+			} 
 		});
 	}
 
