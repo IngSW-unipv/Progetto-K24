@@ -6,7 +6,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Autenticazione.Autenticazionecontroller.LoginController;
 import TorneoModel.TorneoModel;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
@@ -14,8 +13,9 @@ import Utente.UtenteAutenticato;
 public class IscrizioneTorneoController {
 
 	private IscrizioneTorneoView view;
-	private UtenteAutenticato utente;
 	private TorneoModel model;
+	
+	
 	public IscrizioneTorneoController(IscrizioneTorneoView view, TorneoModel model) {
 		this.view = view;
 		this.model=model;
@@ -27,7 +27,7 @@ public class IscrizioneTorneoController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			
 
 			if (e.getSource() == view.getIscrivitiTorneo()) { 
 

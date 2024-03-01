@@ -6,10 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Autenticazione.Autenticazionecontroller.LoginController;
-import Autenticazionemodel.GestioneAccountModel;
 import TorneoModel.TorneoModel;
-import TorneoView.CreaTorneoView;
+
 import TorneoView.DisiscrizioneTorneoView;
 
 import Utente.UtenteAutenticato;
@@ -25,7 +23,7 @@ public class DisiscrizioneTorneoController {
 		this.view = view;
 		this.model = model;
 		addListeners();
-		// modelcontroller=new LoginController();
+		
 	}
 
 	private void addListeners() {
@@ -33,8 +31,7 @@ public class DisiscrizioneTorneoController {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-
+				
 				if (e.getSource() == view.getDisiscrizioneTorneo()) {
 
 					
