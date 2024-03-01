@@ -101,12 +101,5 @@ public class UtenteAutenticatoTest {
 	}
 
 	
-	/*@Test
-	public void testVisualizzaLista() {
-		// In questo test, possiamo controllare solo che il metodo non lanci eccezioni
-		// Potresti aggiungere ulteriori controlli se il metodo ha un output specifico
-		// da verificare
-		utente.visualizzaLista();
-		assertTrue(true);
-	}*/
+	
 }
