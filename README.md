@@ -1,4 +1,4 @@
-Sistema di Gioco con Tornei e Giochi
+GaumeLauncher: Sistema di Gioco con Tornei
 
  Descrizione del Progetto
 Questo progetto è stato sviluppato come parte del corso di Ingegneria del Software e Programmazione a Oggetti. Il software implementa un sistema di gioco che gestisce vari giochi e tornei.
