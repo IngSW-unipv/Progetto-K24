@@ -2,6 +2,12 @@ package Autenticazionemodel;
 
 import java.io.IOException;
 
+import Autenticazione.Autenticazioneview.BigFrameController;
+import Autenticazione.Autenticazioneview.BigFrameModel;
+import Autenticazione.Autenticazioneview.BigFrameView;
+import Autenticazionecontroller.RegistrazioneController;
+import Autenticazionecontroller.RegistrazioneModel;
+import Autenticazionecontroller.RegistrazioneView;
 import DataBase.UtenteDao;
 import Index.IndexController;
 import Index.IndexModel;
@@ -30,10 +36,14 @@ public class GestioneAccountModel {
 		
 	}
 
-	public void indexController() {
+	public void istanziaIndex() {
 
-		new IndexController(new IndexModel(),new IndexView());
+		IndexController i = new IndexController(new IndexModel(),new IndexView());
 
+	}
+	
+	public void istanziaBigFrame() {
+		BigFrameController c = new BigFrameController(new BigFrameView(), new BigFrameModel())
 	}
 
 	// verifica che le credenziali inserite siano corrette
@@ -54,8 +64,13 @@ public class GestioneAccountModel {
 	
 	//elimina l'account dell'utente dal database
 	public void eliminaAccount() {
+		UtenteAutenticato.getInstance().clear();
 		UtenteDao.getInstance().eliminaSchemaUtente(UtenteAutenticato.getInstance());
  	}
+
+	public void istanziaRegistration() {
+		RegistrazioneController r = new RegistrazioneController(new RegistrazioneModel(), new RegistrazioneView());		
+	}
 	
 
 }

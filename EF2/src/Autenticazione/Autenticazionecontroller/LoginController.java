@@ -69,7 +69,7 @@ public class LoginController  {
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
     					model.impostaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
-                        model.indexController();
+                        model.istanziaIndex();
                         
                         
     				} else {
