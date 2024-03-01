@@ -1,4 +1,4 @@
-package Torneo;
+package TorneoModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +16,9 @@ public class TorneoModel {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
+		
+		
+		
 		Date date1 = null;
 		try {
 			date1 = dateFormat.parse(date);
@@ -33,19 +36,19 @@ public class TorneoModel {
 
 	}
 
-	public void DisiscrizioneTorneo(String email, String nome) {
+	public void disiscrizioneTorneo(String email, String nome) {
 
 		UtenteAutenticato.getInstance().disiscrizioneTorneo(email,nome);
 
 	}
 
-	public void EliminaTorneo(String email, String nome) {
+	public void eliminaTorneo(String email, String nome) {
 
-		UtenteAutenticato.getInstance().eliminaTorneo(email,nome);
+		UtenteAutenticato.getInstance().eliminaTorneo(email,nome); 
 
 	}
 
-	public void IscrizioneTorneo(String email, String nome) {
+	public void iscrizioneTorneo(String email, String nome) {
 
 		UtenteAutenticato.getInstance().iscrizioneTorneo(email,nome);
 

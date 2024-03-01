@@ -3,11 +3,11 @@ package Index;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
-import Torneo.TorneoModel;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
 import TorneoController.IscrizioneTorneoController;
+import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
 import TorneoView.EliminaTorneoView;
@@ -57,7 +57,7 @@ public class IndexModel {
 		creatorneoview=new CreaTorneoView();
 		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
 	}
-	
+	 
 	public void minesweeperPlay() {
 
 		modelm=new MinesweeperModel();

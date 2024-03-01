@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import Torneo.TorneoModel;
+import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.EliminaTorneoView;
 import Utente.UtenteAutenticato;
@@ -33,7 +33,7 @@ public class EliminaTorneoController {
 
 				if (e.getSource() == view.getEliminaTorneo()) {
 
-					model.EliminaTorneo(view.getNomeText().getText(), UtenteAutenticato.getInstance().getUsername());
+					model.eliminaTorneo(view.getNomeText().getText(), UtenteAutenticato.getInstance().getUsername());
 				}
 
 			}

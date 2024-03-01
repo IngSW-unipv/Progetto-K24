@@ -22,7 +22,7 @@ public class ModificaAccountView extends JFrame{
 	private JButton indietroButton = new JButton("Indietro");
 	
 	// costruttore
-	public ModificaAccountView() {
+	public ModificaAccountView() { 
 		JPanel panel = new JPanel();
 		panel.setLayout(null);
 

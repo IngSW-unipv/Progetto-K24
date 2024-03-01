@@ -12,7 +12,7 @@ import java.util.Locale;
 import Autenticazione.Autenticazionecontroller.LoginController;
 
 import DataBase.TorneoDao;
-import Torneo.TorneoModel;
+import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
 
@@ -30,7 +30,7 @@ public class CreaTorneoController {
 	public CreaTorneoController(CreaTorneoView view, TorneoModel model) {
 		this.view = view;
 		this.model = model;
-		addListeners();
+		addListeners(); 
 	}
 
 	private void addListeners() {

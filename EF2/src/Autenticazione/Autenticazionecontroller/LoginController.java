@@ -70,7 +70,7 @@ public class LoginController  {
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
     					model.impostaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
                         model.istanziaIndex();
-                        
+                        view.dispose();                        
                         
     				} else {
     					view.getErroreText().setForeground(Color.red);
@@ -79,7 +79,7 @@ public class LoginController  {
     			} catch (IOException e1) {
     				view.getErroreText().setText("Errore, riprova a registrarti");
     				e1.printStackTrace();
-    			}
+    			}  
     			
             }
         });

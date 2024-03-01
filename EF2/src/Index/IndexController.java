@@ -14,12 +14,8 @@ import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.EliminaAccountController;
 import GestioneAccount.EliminaAccountView;
-
 import GestioneAccount.ModificaAccountView;
-import TorneoController.CreaTorneoController;
-import TorneoController.DisiscrizioneTorneoController;
-import TorneoController.EliminaTorneoController;
-import TorneoController.IscrizioneTorneoController;
+
 
 public class IndexController {
 
@@ -47,6 +43,7 @@ public class IndexController {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	EliminaAccountController m = new EliminaAccountController(new GestioneAccountModel(),new EliminaAccountView());
+		    	
 			}
 		});
 		
@@ -83,13 +80,14 @@ public class IndexController {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	model.eliminatorneoController();
+		    	
 			}
 		});
 		
 		view.getLogoutButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				model.clear();
+				//model.clear();
 				view.dispose();
 				new BigFrameController(new BigFrameView(), new BigFrameModel());
 			}
@@ -99,7 +97,7 @@ public class IndexController {
 		    @Override
 		    public void actionPerformed(ActionEvent e) {
 		    	model.minesweeperPlay();
-			}
+			} 
 		});
 		
 	}

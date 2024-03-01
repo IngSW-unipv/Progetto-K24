@@ -43,7 +43,7 @@ public class EliminaAccountController {
 		});
 		
 		
-		view.getEliminaButton().addActionListener(new ActionListener() {
+		view.getEliminaButton().addActionListener(new ActionListener() { 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
@@ -59,7 +59,7 @@ public class EliminaAccountController {
     					model.istanziaBigFrame();
                         
     				} else {
-    					view.getErroreText().setForeground(Color.red);
+    					view.getErroreText().setForeground(Color.red); 
     					view.getErroreText().setText("Password errata");
     				}
     			} catch (IOException e1) {

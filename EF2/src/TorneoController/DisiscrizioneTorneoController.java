@@ -8,7 +8,7 @@ import java.util.Date;
 
 import Autenticazione.Autenticazionecontroller.LoginController;
 import Autenticazionemodel.GestioneAccountModel;
-import Torneo.TorneoModel;
+import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
 
@@ -39,7 +39,7 @@ public class DisiscrizioneTorneoController {
 				if (e.getSource() == view.getDisiscrizioneTorneo()) {
 
 					
-					model.DisiscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText());
+					model.disiscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText());
 
 				}
 

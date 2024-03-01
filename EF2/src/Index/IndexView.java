@@ -151,7 +151,7 @@ public class IndexView extends JFrame{
 	public void setMinesweeper(JButton minesweeper) {
 		this.minesweeper = minesweeper;
 	}
-
+ 
 
 	// Metodo per ridimensionare l'icona mantenendo le proporzioni
     private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {

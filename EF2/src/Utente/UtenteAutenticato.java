@@ -93,7 +93,7 @@ public class UtenteAutenticato extends Utente {
 
 		try {
 			if (TorneoDao.getInstance().ricercaCreatore(emailutente))   {
-				{TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
+				TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,11 +120,11 @@ public class UtenteAutenticato extends Utente {
 			TorneoDao.getInstance().deleteTorneo(nometorneo);
 		}
 	}
-
+ 
 	public void clear() {
 		this.setUsername(null);
 		this.setEmail(null);
-		this.setPassword(null);
+		this.setPassword(null); 
 		
 	}
 
