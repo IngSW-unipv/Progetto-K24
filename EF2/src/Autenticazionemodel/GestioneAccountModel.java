@@ -26,7 +26,7 @@ public class GestioneAccountModel {
 	public void impostaUtente(String userName, String email, String password) {
 
 		UtenteAutenticato.getInstance().setEmail(email);
-		UtenteAutenticato.getInstance().setPassword(password);
+		UtenteAutenticato.getInstance().setPassword(password.toCharArray());
 		
 	}
 
@@ -37,7 +37,7 @@ public class GestioneAccountModel {
 	}
 
 	// verifica che le credenziali inserite siano corrette
-	public boolean verificaCredenziali(String emailInput, String passwordInput) throws IOException {
+	public boolean verificaCredenziali(String emailInput, char[] passwordInput) throws IOException {
 
 		UtenteAutenticato.getInstance().setEmail(emailInput);
 		UtenteAutenticato.getInstance().setPassword(passwordInput);

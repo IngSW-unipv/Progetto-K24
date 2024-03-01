@@ -11,6 +11,7 @@ import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazione.Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import Index.IndexController;
+import Utente.UtenteAutenticato;
 
 /*
  * LoginController è la classe che completa, insieme a LoginModel e LoginView, il caso d'uso del login,
@@ -55,9 +56,16 @@ public class LoginController  {
             public void actionPerformed(ActionEvent e) {
             	char[] password = view.getPasswordText().getPassword();
     			String passwordString = new String(password);
+    			System.out.println(password);
+    			System.out.println(UtenteAutenticato.getInstance().getHashedPassword());
     			try {
-    				if (model.verificaCredenziali( view.getUsernameText().getText(),passwordString))
+    				if (model.verificaCredenziali( view.getUsernameText().getText(),password))
     				{
+    					System.out.println(password);
+    					
+    					System.out.println(UtenteAutenticato.getInstance().getHashedPassword());
+    					System.out.println(model.verificaCredenziali( view.getUsernameText().getText(),password));
+    					
     					view.getErroreText().setForeground(Color.green);
     					view.getErroreText().setText("ACCESSO CORRETTO"); 
     					model.impostaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());

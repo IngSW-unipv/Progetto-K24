@@ -29,11 +29,9 @@ public abstract class Utente {
 
 	
 
-	public void setPassword(String password) {
-		// this.password = password;
-
-		var pswrd = this.password.toString();
-		pswrd = password;
+	public void setPassword(char[] passwordInput) {
+		
+		password = new Password(passwordInput);
 	}
 
 	public void setEmail(String email) {
