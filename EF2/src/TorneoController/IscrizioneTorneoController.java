@@ -32,7 +32,7 @@ public class IscrizioneTorneoController {
 			if (e.getSource() == view.getIscrivitiTorneo()) { 
 
 				
-				model.iscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText() );
+				model.iscrizioneTorneo(model.getEmail(), view.getNomeText().getText() );
 				
 			}
 

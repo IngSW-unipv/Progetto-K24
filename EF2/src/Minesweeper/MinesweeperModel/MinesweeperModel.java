@@ -9,8 +9,9 @@ import javax.swing.JLabel;
 
 import Minesweeper.MinesweeperView.MineTile;
 import Minesweeper.MinesweeperView.MinesweeperView;
+import TorneoController.IGame;
 
-public class MinesweeperModel {
+public class MinesweeperModel implements IGame{
 	private int numRighe;
 	private int numColonne;
 	private int mineCount;
@@ -144,6 +145,12 @@ public class MinesweeperModel {
 		}
 		setGameOver(true);
 		textLabel.setText("Hai perso");
+	}
+
+	@Override
+	public int punteggio() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

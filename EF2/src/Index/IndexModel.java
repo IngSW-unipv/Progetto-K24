@@ -27,7 +27,7 @@ public class IndexModel {
 	 private TorneoModel model=new TorneoModel();
 	 
 	 private MinesweeperModel modelm;
-	 private MinesweeperView viewm;
+	 private MinesweeperView view;
 	 
 	 
 	public void eliminatorneoController() {
@@ -61,9 +61,9 @@ public class IndexModel {
 	public void minesweeperPlay() {
 
 		modelm=new MinesweeperModel();
-		viewm=new MinesweeperView();
+		view=new MinesweeperView();
 		
-		MinesweeperController c=new MinesweeperController(modelm ,viewm );
+		MinesweeperController c=new MinesweeperController(modelm ,view );
 		
 	}
 	

@@ -22,6 +22,7 @@ public class CreaTorneoView extends JFrame {
 		this.nomeText = nomeText;
 	}
 
+	
 	private JLabel datainizioLabel = new JLabel("DATA INIZIO: ");
 	private JLabel datafineLabel = new JLabel("DATA FINE: ");
 	private JLabel nomeLabel = new JLabel("NOME TORNEO: ");

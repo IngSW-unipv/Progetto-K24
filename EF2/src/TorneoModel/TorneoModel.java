@@ -53,5 +53,19 @@ public class TorneoModel {
 		UtenteAutenticato.getInstance().iscrizioneTorneo(email,nome);
 
 	}
+	
+	public String getEmail() {
+		
+		
+		return UtenteAutenticato.getInstance().getEmail();
+		
+	}
+	
+	public String getUsername() {
+		
+		
+		return UtenteAutenticato.getInstance().getUsername();
+		
+	}
 
 }

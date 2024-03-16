@@ -29,8 +29,10 @@ public class IndexView extends JFrame{
     private JButton eliminaTorneo;
     private JButton disiscrivitiTorneo;
     private JButton minesweeper;
-    private JButton Minesweeper;
-    // Dimensioni fisse per i bottoni del centerPanel
+    private JButton snake;
+   
+
+	// Dimensioni fisse per i bottoni del centerPanel
     private static final int BUTTON_WIDTH = 150;
     private static final int BUTTON_HEIGHT = 150;
     // Spazio tra i bottoni nel leftPanel
@@ -50,7 +52,8 @@ public class IndexView extends JFrame{
     	iscrivitiTorneo = new JButton("Iscriviti a Torneo");
     	eliminaTorneo = new JButton("Elimina Torneo");
     	disiscrivitiTorneo = new JButton("Disiscriviti Torneo");
-        Minesweeper = new JButton("Minesweeper");
+        new JButton("Minesweeper");
+    	new JButton("Snake");
     	
     	setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -102,7 +105,7 @@ public class IndexView extends JFrame{
 
         // Aggiungi bottoni al centerPanel
         addCenterButton("Minesweeper"); //ricorda di modificare
-       
+        addCenterButton("Snake");
         
         // add
         add(panelLayout);
@@ -134,12 +137,20 @@ public class IndexView extends JFrame{
 	}
 
 
-	// Metodo per aggiungere bottoni al centerPanel con dimensioni fisse
+	// Metodo per aggiungere bottoni al centerPanel con dimensioni fisse si potrebbe mettere nel model?? teoricamente si 
     private void addCenterButton(String name) {
         minesweeper = new JButton(name);
         setButtonProperties(minesweeper);
         minesweeper.setSize(300, 300);
         centerPanel.add(minesweeper);
+        
+    }
+    
+    private void addCenterButtonS(String name) {
+        snake = new JButton(name);
+        setButtonProperties(snake);
+        snake.setSize(300, 300);
+        centerPanel.add(snake);
         
     }
 
@@ -151,7 +162,16 @@ public class IndexView extends JFrame{
 	public void setMinesweeper(JButton minesweeper) {
 		this.minesweeper = minesweeper;
 	}
- 
+	
+    public JButton getSnake() {
+		return snake;
+	}
+
+
+	public void setSnake(JButton snake) {
+		this.snake = snake;
+	}
+
 
 	// Metodo per ridimensionare l'icona mantenendo le proporzioni
     private ImageIcon resizeIcon(ImageIcon icon, int width, int height) {

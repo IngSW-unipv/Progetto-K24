@@ -34,7 +34,7 @@ public class CreaTorneoController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				model.creaTorneo(view.getNomeText().getText(), UtenteAutenticato.getInstance().getEmail(), view.getComboText(),
+				model.creaTorneo(view.getNomeText().getText(), model.getEmail(), view.getComboText(),
 						view.getDatainzioText().getText(), view.getDatafineText().getText());
 
 			} 

@@ -32,7 +32,7 @@ public class DisiscrizioneTorneoController {
 				if (e.getSource() == view.getDisiscrizioneTorneo()) {
 
 					
-					model.disiscrizioneTorneo(UtenteAutenticato.getInstance().getEmail(), view.getNomeText().getText());
+					model.disiscrizioneTorneo(model.getEmail(), view.getNomeText().getText());
 
 				}
 
