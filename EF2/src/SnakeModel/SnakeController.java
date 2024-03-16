@@ -13,11 +13,11 @@ import javax.swing.Timer;
  *
  * @author Justin Beringer
  */
-public class SnakeController extends JPanel implements ActionListener {
+public class SnakeController implements ActionListener {
 
 	private SnakeGame model;
 	private GameFrame panel;
-
+	private Timer timer;
 	//private char direction;
 
 	public SnakeController(GameFrame panel, SnakeGame model) {
@@ -26,31 +26,25 @@ public class SnakeController extends JPanel implements ActionListener {
 		this.panel = panel;
 
 		Init();
-		panel.setVisible(true);
+		panel.setVisible();
 
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		model.ActionPerformed(panel.getPanel());
+		model.ActionPerformed();
 
 	}
 
 	public void Init() {
 
-	//addKeyListener(new MyKeyAdapter());
-		startGame1();
+		
+		// addKeyListener(new MyKeyAdapter());
+		//model.startGame();
+		//model.timer=new Timer(model.DELAY,this);
+		//model.timer.start();
 
 	}
-	
-	public void startGame1() {
-		model.newApple();
-		 model.running = true;
-		model.timer = new Timer(model.DELAY,this);
-		model.timer.start();
-		System.out.print("cccccc");		
-	}
 
-	
 }

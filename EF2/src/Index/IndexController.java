@@ -100,6 +100,17 @@ public class IndexController {
 			} 
 		});
 		
+		
+		view.getPartecipaTorneo().addActionListener(new ActionListener() {
+			 @Override
+			    public void actionPerformed(ActionEvent e) {
+			    	model.partecipaTorneocontroller();
+				} 
+			 
+			 
+			
+			
+		});
 	}
 	
 	

@@ -5,18 +5,16 @@ import java.awt.event.KeyEvent;
 
 public class MyKeyAdapter extends KeyAdapter {
 
-	//private SnakeGame model;
+	private SnakeGame model;
 	private char direction;
+
 	public MyKeyAdapter() {
-		
-		
-		
-		//direction = model.direction;
-		
-		
+
+		model = new SnakeGame();
+		direction = model.direction;
+
 	}
-	
-	
+
 	@Override
 	public void keyPressed(KeyEvent e) {
 		switch (e.getKeyCode()) {
@@ -44,4 +42,3 @@ public class MyKeyAdapter extends KeyAdapter {
 	}
 
 }
-

@@ -10,7 +10,7 @@ public class GamePanel extends JPanel {
 
 	static final int SCREEN_WIDTH = 1300;
 	static final int SCREEN_HEIGHT = 750;
-
+	
 	public GamePanel() {
 
 		this.addKeyListener(new MyKeyAdapter());
@@ -18,6 +18,10 @@ public class GamePanel extends JPanel {
 		this.setBackground(Color.black);
 		this.setFocusable(true);
 
+		
 	}
+	
+	
+	
 
 }

@@ -31,7 +31,7 @@ public class Engine {
 
 	public static void main(String[] args) {
 
-		/*
+		
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
@@ -42,13 +42,14 @@ public class Engine {
 
 		BigFrameController c = new BigFrameController(view, model);
 
-		*/
+		
+		/*
 		GameFrame frame =new GameFrame();
 		SnakeGame model=new SnakeGame();
-		//GamePanel view=new GamePanel();
+		
 		
 		SnakeController c=new SnakeController(frame,model);
-		
+		*/
 		
 	}
 

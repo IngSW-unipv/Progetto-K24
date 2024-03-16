@@ -7,11 +7,13 @@ import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
 import TorneoController.IscrizioneTorneoController;
+import TorneoController.PartecipaTorneoController;
 import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import TorneoView.DisiscrizioneTorneoView;
 import TorneoView.EliminaTorneoView;
 import TorneoView.IscrizioneTorneoView;
+import TorneoView.PartecipaTorneoView;
 import Utente.UtenteAutenticato;
 
 public class IndexModel {
@@ -25,7 +27,8 @@ public class IndexModel {
 	 private IscrizioneTorneoView iscrizioneview;
 	 private CreaTorneoView creatorneoview;
 	 private TorneoModel model=new TorneoModel();
-	 
+	 private PartecipaTorneoController partecipatorneoc;
+	 private PartecipaTorneoView partecipatorneoview;
 	 private MinesweeperModel modelm;
 	 private MinesweeperView view;
 	 
@@ -56,6 +59,12 @@ public class IndexModel {
 		
 		creatorneoview=new CreaTorneoView();
 		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
+	}
+
+	public void partecipaTorneocontroller() {
+
+		partecipatorneoview = new PartecipaTorneoView();
+		partecipatorneoc = new PartecipaTorneoController(partecipatorneoview, model);
 	}
 	 
 	public void minesweeperPlay() {
