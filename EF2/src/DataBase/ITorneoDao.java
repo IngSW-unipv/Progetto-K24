@@ -2,7 +2,7 @@ package DataBase;
 
 import java.util.ArrayList;
 import java.util.Date;
-
+import java.util.HashMap;
 import java.time.LocalDate;
 
 public interface ITorneoDao {
@@ -24,6 +24,8 @@ public interface ITorneoDao {
 	public void modificapunteggiobyuser();
 
 	public ArrayList<String> selezionalistatorneo();
+	
+	public HashMap<String,Integer> selezionaclassifica(String nometorneo);
 
 	public boolean selectbyuser(String id, String emailUtente);
 

@@ -7,6 +7,9 @@ public class PartecipaTorneoController {
 
 	public PartecipaTorneoController(PartecipaTorneoView partecipatorneoview, TorneoModel model) {
 		// TODO Auto-generated constructor stub
+		
+		
+		
 	}
 
 }

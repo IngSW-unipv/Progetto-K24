@@ -4,6 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 import javax.swing.JLabel;
 
@@ -148,8 +149,13 @@ public class MinesweeperModel implements IGame{
 	}
 
 	@Override
-	public int punteggio() {
+	public int punteggio(JLabel textLabel, boolean timerend) {
 		// TODO Auto-generated method stub
+		if (textLabel.getText() == "Hai vinto!" && timerend) {
+
+			return 10;
+
+		}
 		return 0;
 	}
 

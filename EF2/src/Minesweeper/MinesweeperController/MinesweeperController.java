@@ -6,7 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.Time;
 import java.util.ArrayList;
+import java.util.TimerTask;
+import java.util.Timer;
 
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MineTile;
@@ -16,13 +19,31 @@ public class MinesweeperController {
 	private MinesweeperView view;
 	private MinesweeperModel model;
 	private ArrayList<MineTile> mineList;
+	private Timer timer;
 	MouseAdapter al;
 
 	// MineTile tile;
-	public MinesweeperController(MinesweeperModel model,MinesweeperView view) {
+	public MinesweeperController(MinesweeperModel model, MinesweeperView view) {
 		this.view = view;
 		this.model = model;
 		// view.setMineList(mineList);
+		timer = new Timer();
+		TimerTask task = new TimerTask() {
+
+			int counter = 10;
+
+			@Override
+			public void run() {
+				if (counter > 0) {
+					System.out.println(counter + " seconds");
+					counter--;
+				} else {
+					System.out.println("-----");
+					timer.cancel();
+				}
+			}
+		};
+		timer.scheduleAtFixedRate(task, 0, 100);
 		mineList = new ArrayList<MineTile>();
 
 		model.initializeBoard(view.board);

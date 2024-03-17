@@ -3,6 +3,8 @@ package DataBase;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+
 import Utente.UtenteAutenticato;
 
 import java.sql.PreparedStatement;
@@ -303,6 +305,39 @@ public class TorneoDao implements ITorneoDao {
 		DBconnection.closeConnection(conn);
 		return result;
 	}
+	
+	
+	@Override
+	public HashMap<String,Integer> selezionaclassifica(String nometorneo) {
+		// TODO Auto-generated method stub
+		HashMap<String,Integer> result = new HashMap<>();
+
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+
+		try {
+
+			String query = "select emailUtente , punteggio from partecipazioni where nometorneo=?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, nometorneo);
+			st1.executeUpdate();
+			//st1.executeUpdate();
+
+			rs1 = st1.executeQuery(query);
+
+			while (rs1.next()) {
+
+				result.put(rs1.getString("emailUtente"),rs1.getInt(1));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		DBconnection.closeConnection(conn);
+		return result;
+	}
+	
 	
 
 	@Override

@@ -2,8 +2,16 @@ package TorneoModel;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import DataBase.TorneoDao;
 import Utente.UtenteAutenticato;
 
 public class TorneoModel {
@@ -52,6 +60,25 @@ public class TorneoModel {
 
 		UtenteAutenticato.getInstance().iscrizioneTorneo(email,nome);
 
+	}
+	
+	public HashMap<String,Integer> classificaTorneo(String Torneo) {
+		
+		
+		var arraylist=TorneoDao.getInstance().selezionaclassifica(Torneo);
+		List<Map.Entry<String,Integer>> list =new ArrayList(arraylist.entrySet());
+		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+
+			public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
+
+				return e1.getValue() - e2.getValue();
+
+			}
+
+		});
+		
+		return arraylist;
+		
 	}
 	
 	public String getEmail() {

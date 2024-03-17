@@ -13,12 +13,12 @@ import javax.swing.JTextField;
 public class PartecipaTorneoView extends JFrame {
 
 	private JPanel panel = new JPanel();
-
 	private JLabel GiocoLabel = new JLabel("GIOCA:");
 	private JLabel ClassificaLabel = new JLabel("Classifica:");
 	private JButton PartecipaTorneo = new JButton("Gioca Torneo");
 	private JButton ClassificaTorneo = new JButton("Classifica Torneo");
 	private JLabel erroreLabel = new JLabel();
+
 	// inizio costruttore
 	public PartecipaTorneoView() {
 		panel.setLayout(null);
@@ -31,7 +31,7 @@ public class PartecipaTorneoView extends JFrame {
 		add(panel);
 
 		// Creazione e aggiunta della JComboBox al pannello
-		
+
 		GiocoLabel.setBounds(200, 120, 150, 25);
 		ClassificaLabel.setBounds(200, 150, 150, 25);
 		PartecipaTorneo.setBounds(370, 120, 150, 25);
@@ -44,11 +44,11 @@ public class PartecipaTorneoView extends JFrame {
 		panel.add(ClassificaTorneo);
 		panel.add(ClassificaLabel);
 		panel.add(GiocoLabel);
-	
+
 		panel.add(erroreLabel);
 
 		// rendo il frame e il label visibili
 		setVisible(true);
 	}
-	
+
 }

@@ -1,9 +1,7 @@
 package Minesweeper.MinesweeperView;
 
 import javax.swing.*;
-
 import Minesweeper.MinesweeperModel.MinesweeperModel;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -28,6 +26,7 @@ public class MinesweeperView {
 	public MineTile tile;
 
 	public MinesweeperView() {
+		
 		this.random = new Random();
 
 		frame = new JFrame("Prato Fiorito");
