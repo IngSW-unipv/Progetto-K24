@@ -1,4 +1,5 @@
 /bin/
+/.classpath
 /.gitignore
 /.project
 /Autenticazione/
@@ -14,4 +15,3 @@
 /TorneoModel/
 /TorneoView/
 /Utente/
-/module-info.class

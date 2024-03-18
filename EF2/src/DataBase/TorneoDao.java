@@ -306,6 +306,35 @@ public class TorneoDao implements ITorneoDao {
 		return result;
 	}
 	
+	public ArrayList<String> selezionalistatorneobypartecipante(String emailUtente) {
+		// TODO Auto-generated method stub
+		ArrayList<String> result = new ArrayList<>();
+
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+
+		try {
+
+			String query = "select nometorneo from partecipazioni where emailUtente =" +"'" +emailUtente + "'";
+			st1 = conn.prepareStatement(query);
+			
+			// st1.executeUpdate();
+
+			rs1 = st1.executeQuery(query);
+
+			while (rs1.next()) {
+
+				result.add(rs1.getString("nometorneo"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		DBconnection.closeConnection(conn);
+		return result;
+	}
+	
 	
 	@Override
 	public HashMap<String,Integer> selezionaclassifica(String nometorneo) {
@@ -318,17 +347,17 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select emailUtente , punteggio from partecipazioni where nometorneo=?";
+			String query = "select emailUtente , punteggio from partecipazioni where nometorneo=" + "'" + nometorneo + "'";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1, nometorneo);
-			st1.executeUpdate();
+			//st1.setString(1, nometorneo);			
 			//st1.executeUpdate();
-
+			//st1.executeUpdate();
+            
 			rs1 = st1.executeQuery(query);
 
 			while (rs1.next()) {
 
-				result.put(rs1.getString("emailUtente"),rs1.getInt(1));
+				result.put(rs1.getString("emailUtente"),rs1.getInt(2));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

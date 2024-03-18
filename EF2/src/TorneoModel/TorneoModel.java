@@ -81,6 +81,12 @@ public class TorneoModel {
 		
 	}
 	
+	public void partecipaToreno() {
+		
+		System.out.print("Partecipa al Torneo"+  TorneoDao.getInstance().selezionalistatorneobypartecipante(getEmail()).toString());
+		
+	}
+	
 	public String getEmail() {
 		
 		

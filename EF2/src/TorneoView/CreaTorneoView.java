@@ -81,7 +81,8 @@ public class CreaTorneoView extends JFrame {
 		panel.add(CreaTorneo);
         panel.add(comboBox);
 		panel.add(erroreLabel);
-
+        
+		
 		// rendo il frame e il label visibili
 		setVisible(true);
 	}

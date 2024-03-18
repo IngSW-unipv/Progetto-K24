@@ -32,5 +32,7 @@ public interface ITorneoDao {
 	public boolean ricercaCreatore(String nomeutente);
 
 	public boolean selezionaUtenteTorneo(String emailUtente);
+	
+	public ArrayList<String> selezionalistatorneobypartecipante(String emailUtente);
 
 }
