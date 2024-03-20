@@ -4,7 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
-
+/*
 public class GameFrame {
 
 	GamePanel gamepanel;
@@ -19,7 +19,7 @@ public class GameFrame {
 		frame.setResizable(false);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
-
+       frame.setVisible(true);
 	}
 
 	public GamePanel getPanel() {
@@ -27,16 +27,15 @@ public class GameFrame {
 		return gamepanel;
 
 	}
-	public void setVisible() {
-		
-		frame.setVisible(true);
-		
-	}
+	
+
+	
 
 }
+*/
 
+import SnakeModel.serpente;
 
-/*
 import javax.swing.JFrame;
 
 public class GameFrame extends JFrame{
@@ -53,4 +52,3 @@ public class GameFrame extends JFrame{
 		
 	}
 }
-*/

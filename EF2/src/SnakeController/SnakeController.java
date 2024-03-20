@@ -8,6 +8,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import SnakeModel.MyKeyAdapter;
 import SnakeModel.SnakeGame;
 import SnakeView.GameFrame;
 import SnakeView.SnakeView;
@@ -30,8 +31,9 @@ public class SnakeController implements ActionListener {
 		this.view = view;
 
 		Init();
-		//panel.setVisible();
+		//();
 
+		
 	}
 
 	@Override
@@ -43,10 +45,12 @@ public class SnakeController implements ActionListener {
 
 	public void Init() {
 
-		// addKeyListener(new MyKeyAdapter());
-		// model.startGame();
-		// model.timer=new Timer(model.DELAY,this);
-		// model.timer.start();
+		
+		
+		model.setTimer(new Timer(model.DELAY, this));
+		model.getTimer().start();
+		view.getPanel().addKeyListener(new MyKeyAdapter());
+		model.startGame(this);
 
 	}
 

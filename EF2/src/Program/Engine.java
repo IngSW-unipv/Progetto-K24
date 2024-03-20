@@ -21,6 +21,7 @@ import SnakeController.SnakeController;
 import SnakeModel.SnakeGame;
 import SnakeView.GameFrame;
 import SnakeView.GamePanel;
+import SnakeView.SnakeView;
 import TorneoController.CreaTorneoController;
 import TorneoController.IscrizioneTorneoController;
 import TorneoView.CreaTorneoView;
@@ -41,16 +42,12 @@ public class Engine {
 		BigFrameView view = new BigFrameView();
 
 		BigFrameController c = new BigFrameController(view, model);
+/*
+		SnakeGame model = new SnakeGame();
+		SnakeView view = new SnakeView();
 
-		
-		/*
-		GameFrame frame =new GameFrame();
-		SnakeGame model=new SnakeGame();
-		
-		
-		SnakeController c=new SnakeController(frame,model);
+		 new SnakeController(view, model);
 		*/
-		
 	}
 
 }

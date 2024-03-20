@@ -23,7 +23,7 @@ public class serpente extends JPanel implements ActionListener {
 	Timer timer;
 	Random random;
 
-	serpente() {
+	public serpente() {
 		random = new Random();
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);

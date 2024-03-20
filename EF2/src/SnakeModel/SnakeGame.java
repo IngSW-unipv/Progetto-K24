@@ -20,7 +20,7 @@ public class SnakeGame extends JPanel {
 	static final int SCREEN_HEIGHT = 750;
 	static final int UNIT_SIZE = 50;
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
-	static final int DELAY = 175;
+	public static final int DELAY = 175;
 	final int x[] = new int[GAME_UNITS];
 	final int y[] = new int[GAME_UNITS];
 	int bodyParts = 6;
@@ -29,26 +29,25 @@ public class SnakeGame extends JPanel {
 	int appleY;
 	char direction = 'R';
 	boolean running = false;
-	Timer timer;
+	 private Timer timer;
 	Random random;
 
 	public SnakeGame() {
 
 		random = new Random();
 		
-		
-		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
-		this.setBackground(Color.black);
-		this.setFocusable(true);
-		this.addKeyListener(new MyKeyAdapter());
-		startGame();
+		//this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
+		//this.setBackground(Color.black);
+		//this.setFocusable(true);
+		//this.addKeyListener(new MyKeyAdapter());
+		//startGame();
 	}
 
-	public void startGame() {
+	public void startGame(ActionListener al) {
 		newApple();
 		running = true;
-		// timer = new Timer(DELAY,al);
-		// timer.start();
+		 timer = new Timer(DELAY,al);
+		 timer.start();
 		System.out.print("cccccc" + running);
 	}
 
@@ -152,7 +151,7 @@ public class SnakeGame extends JPanel {
 		}
 
 		if (!running) {
-			timer.stop();
+			getTimer().stop();
 		}
 	}
 
@@ -182,6 +181,14 @@ public class SnakeGame extends JPanel {
 
 		repaint();
 
+	}
+
+	public Timer getTimer() {
+		return timer;
+	}
+
+	public void setTimer(Timer timer) {
+		this.timer = timer;
 	}
 
 }
