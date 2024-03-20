@@ -22,7 +22,7 @@ import DataBase.TorneoDao;
 
 public class PartecipaTorneoView extends JFrame {
 
-	private JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+	private JPanel panel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 	private JPanel panel_ = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 	private JLabel GiocoLabel = new JLabel("Gioca:");
 	private JLabel ClassificaLabel = new JLabel("Classifica:");
@@ -50,7 +50,7 @@ public class PartecipaTorneoView extends JFrame {
 		add(panelLayout);
 		panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 		
 		// Creazione e aggiunta della JComboBox al pannello
 		
@@ -60,12 +60,12 @@ public class PartecipaTorneoView extends JFrame {
 		ClassificaLabel.setBounds(200, 150, 150, 25);
 		PartecipaTorneo.setBounds(370, 120, 150, 25);
 		ClassificaTorneo.setBounds(370, 150, 150, 25);
-		Torneo.setBounds(200, 90, 150, 25);
+		Torneo.setPreferredSize(new Dimension(300, 20));
 		TorneiLabel.setBounds(370, 90, 200, 25);
 		erroreLabel.setBounds(200, 240, 500, 50);
 		erroreLabel.setForeground(Color.RED);
         
-		Torneo.setAlignmentX(CENTER_ALIGNMENT);
+		//----Torneo.setAlignmentX(CENTER_ALIGNMENT);
 		//Torneo.setAlignmentY(TOP_ALIGNMENT);
 		TorneiLabel.setAlignmentX(CENTER_ALIGNMENT);
 		//TorneiLabel.setAlignmentY(TOP_ALIGNMENT);

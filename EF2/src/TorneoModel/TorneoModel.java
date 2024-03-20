@@ -12,10 +12,15 @@ import java.util.List;
 import java.util.Map;
 
 import DataBase.TorneoDao;
+import TorneoController.FactoryGame;
+import TorneoController.IStrategyGame;
+import TorneoController.MinesweeperStrategy;
 import Utente.UtenteAutenticato;
 
 public class TorneoModel {
 
+	private IStrategyGame strategy;
+	
 	public TorneoModel() {
 
 	}
@@ -81,9 +86,17 @@ public class TorneoModel {
 		
 	}
 	
-	public void partecipaToreno() {
+	public void partecipaToreno(String nomeTorneo) {
 		
-		System.out.print("Partecipa al Torneo"+  TorneoDao.getInstance().selezionalistatorneobypartecipante(getEmail()).toString());
+		
+		System.out.print("Partecipa al Torneo"+  TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
+		
+        FactoryGame factory =new FactoryGame(); 
+        strategy =factory.getGameStrategy(nomeTorneo);
+        strategy.getGameController();
+		
+		//StrategyGame sgame=new StrategyGame(); 
+		//sgame.getGameController(nomeTorneo);
 		
 	}
 	

@@ -30,6 +30,14 @@ public class IscrizioneTorneoView extends JFrame {
 
 	private JButton IscrivitiTorneo = new JButton("Iscrizione Torneo");
 	private String[] options = {};
+	public String[] getOptions() {
+		return options;
+	}
+
+	public void setOptions(String[] options) {
+		this.options = options;
+	}
+
 	private ArrayList<String> lista = new ArrayList<String>();
 	private JComboBox<String> comboBox;
 

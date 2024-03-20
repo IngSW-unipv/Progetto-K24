@@ -442,16 +442,16 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select * from tornei where nometorneo=?";
+			String query = "select nometorneo , gioco from tornei where nometorneo= "+ "'" + nometorneo + "'";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1, nometorneo);
+			//st1.setString(1, nometorneo);
 			// st1.executeUpdate();
 
 			rs1 = st1.executeQuery(query);
 
 			while (rs1.next()) {
 
-				result.add(rs1.getString(query));
+				result.add(rs1.getString("gioco"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

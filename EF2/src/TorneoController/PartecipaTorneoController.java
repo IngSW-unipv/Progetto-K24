@@ -26,19 +26,22 @@ public class PartecipaTorneoController {
 		this.model = model;
 		addListeners();
 		inserisciTornei();
-		
 
 	}
 
 	private void inserisciTornei() {
-		
+
 		view.getPanel().remove(view.getTorneo());
-		view.setOptions(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).toArray(view.getOptions()));
-		view.setTorneo(new JComboBox<>(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).toArray(view.getOptions())));
+		view.setOptions(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+				.toArray(view.getOptions()));
+		view.setTorneo(new JComboBox<>(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+				.toArray(view.getOptions())));
 		view.getPanel().add(view.getTorneo());
-		
+		// for(int
+		// i=0;i<TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).size();i++)
+		// view.getTorneo().addItem(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).get(i));;
 	}
-	
+
 	private void addListeners() {
 		view.getClassificaTorneo().addActionListener(new ActionListener() {
 
@@ -47,9 +50,11 @@ public class PartecipaTorneoController {
 
 				if (e.getSource() == view.getClassificaTorneo()) {
 
-					//DefaultTableModel modelclassifica = (DefaultTableModel) view.getTable().getModel();
+					// DefaultTableModel modelclassifica = (DefaultTableModel)
+					// view.getTable().getModel();
 					System.out.print(view.getOptions()[0]);
-					List<Integer> arrayList = new ArrayList<Integer>(model.classificaTorneo(view.getOptions()[0]).values());
+					List<Integer> arrayList = new ArrayList<Integer>(
+							model.classificaTorneo(view.getOptions()[0]).values());
 					List<String> key = new ArrayList<String>(model.classificaTorneo(view.getOptions()[0]).keySet());
 					// modelclassifica.addRow();
 					System.out.print(arrayList);
@@ -71,7 +76,8 @@ public class PartecipaTorneoController {
 
 				if (e.getSource() == view.getPartecipaTorneo()) {
 
-					model.partecipaToreno();
+					System.out.print(view.getOptions()[0]);
+					model.partecipaToreno(view.getOptions()[0]);
 
 				}
 
