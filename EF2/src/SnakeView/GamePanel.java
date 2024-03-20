@@ -1,8 +1,10 @@
-package SnakeModel;
+package SnakeView;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import SnakeModel.MyKeyAdapter;
 
 import java.util.Random;
 

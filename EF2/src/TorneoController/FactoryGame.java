@@ -17,11 +17,12 @@ public class FactoryGame {
 			String GameClassName;
 
 			try {
-				File file = new File("C:\\Users\\Daniela Parrino\\Desktop\\Strategy.txt");
+				File file = new File("properties/Strategy.txt");
 				FileInputStream ph = new FileInputStream(file);
-
+				PROPERTYNAME=PROPERTYNAME.replaceAll("\\s","");
+				System.out.print(PROPERTYNAME);
 				p.load(ph);
-				ph.close();
+				
 				GameClassName = p.getProperty(PROPERTYNAME);
 
 				Constructor c = Class.forName(GameClassName).getConstructor();

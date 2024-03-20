@@ -1,15 +1,20 @@
 package TorneoController;
 
-import SnakeModel.SnakeController;
+import SnakeController.SnakeController;
+import SnakeModel.SnakeGame;
+import SnakeView.SnakeView;
 
 public class SnakeStrategy implements IStrategyGame{
 
 	@Override
 	public Object getGameController() {
 		// TODO Auto-generated method stub
-		
-			return new SnakeController(null, null);
-		
+
+		SnakeGame model = new SnakeGame();
+		SnakeView view = new SnakeView();
+
+		return new SnakeController(view, model);
+
 	}
 
 }

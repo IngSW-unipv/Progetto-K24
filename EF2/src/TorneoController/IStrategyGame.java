@@ -1,7 +1,7 @@
 package TorneoController;
 
 import Minesweeper.MinesweeperController.MinesweeperController;
-import SnakeModel.SnakeController;
+import SnakeController.SnakeController;
 
 public interface IStrategyGame {
 

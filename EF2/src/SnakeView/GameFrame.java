@@ -1,4 +1,4 @@
-package SnakeModel;
+package SnakeView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
