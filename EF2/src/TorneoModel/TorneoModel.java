@@ -92,11 +92,8 @@ public class TorneoModel {
 		System.out.print("Partecipa al Torneo"+  TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
 		
         FactoryGame factory =new FactoryGame(); 
-        strategy =factory.getGameStrategy("Snake2");//TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
+        strategy =factory.getGameStrategy(TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
         strategy.getGameController();
-		
-		//StrategyGame sgame=new StrategyGame(); 
-		//sgame.getGameController(nomeTorneo);
 		
 	}
 	

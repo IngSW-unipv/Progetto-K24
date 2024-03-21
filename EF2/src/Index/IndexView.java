@@ -108,7 +108,7 @@ public class IndexView extends JFrame {
 
 		// Aggiungi bottoni al centerPanel
 		addCenterButton("Minesweeper"); // ricorda di modificare
-		addCenterButton("Snake");
+		addCenterButtonS("Snake");
 
 		// add
 		add(panelLayout);

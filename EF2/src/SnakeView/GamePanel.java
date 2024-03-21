@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import SnakeModel.MyKeyAdapter;
+
 
 import java.util.Random;
 
@@ -15,10 +15,11 @@ public class GamePanel extends JPanel {
 	
 	public GamePanel() {
 
-		this.addKeyListener(new MyKeyAdapter());
+		
 		this.setPreferredSize(new Dimension(SCREEN_WIDTH, SCREEN_HEIGHT));
 		this.setBackground(Color.black);
 		this.setFocusable(true);
+		
 
 		
 	}

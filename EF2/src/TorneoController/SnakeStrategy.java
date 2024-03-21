@@ -11,10 +11,10 @@ public class SnakeStrategy implements IStrategyGame{
 	public Object getGameController() {
 		// TODO Auto-generated method stub
 
-		//SnakeGame model = new SnakeGame();
-		//SnakeView view = new SnakeView();
+		SnakeGame model = new SnakeGame();
+		SnakeView view = new SnakeView(model);
 
-		return new GameFrame();
+		 return new SnakeController();
 
 	}
 

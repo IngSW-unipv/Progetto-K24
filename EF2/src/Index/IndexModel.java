@@ -3,6 +3,9 @@ package Index;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
+import SnakeController.SnakeController;
+import SnakeModel.SnakeGame;
+import SnakeView.SnakeView;
 import TorneoController.CreaTorneoController;
 import TorneoController.DisiscrizioneTorneoController;
 import TorneoController.EliminaTorneoController;
@@ -74,6 +77,15 @@ public class IndexModel {
 		
 		MinesweeperController c=new MinesweeperController(modelm ,view );
 		
+	}
+	
+	public void snakePlay() {
+
+		SnakeGame model = new SnakeGame();
+		SnakeView view = new SnakeView(model);
+
+		  new SnakeController();
+
 	}
 	
 	public void clear() {

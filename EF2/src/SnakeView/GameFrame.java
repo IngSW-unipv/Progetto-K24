@@ -40,15 +40,32 @@ import javax.swing.JFrame;
 
 public class GameFrame extends JFrame{
 
+	
+	
 	public GameFrame(){
 			
-		this.add(new serpente());
+		
 		this.setTitle("Snake");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.pack();
-		this.setVisible(true);
+		
 		this.setLocationRelativeTo(null);
 		
 	}
+	 
+	public void add() {
+		
+		this.add(getPanel());
+		
+		
+	}
+	public GamePanel getPanel() {
+
+		return new GamePanel();
+
+	}
+	
+	
+	
 }

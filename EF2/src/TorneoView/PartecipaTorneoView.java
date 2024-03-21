@@ -60,15 +60,15 @@ public class PartecipaTorneoView extends JFrame {
 		ClassificaLabel.setBounds(200, 150, 150, 25);
 		PartecipaTorneo.setBounds(370, 120, 150, 25);
 		ClassificaTorneo.setBounds(370, 150, 150, 25);
-		Torneo.setPreferredSize(new Dimension(300, 20));
-		TorneiLabel.setBounds(370, 90, 200, 25);
+		Torneo.setBounds(370,90,150,25);
+		TorneiLabel.setBounds(150, 90, 150, 25);
 		erroreLabel.setBounds(200, 240, 500, 50);
 		erroreLabel.setForeground(Color.RED);
         
-		//----Torneo.setAlignmentX(CENTER_ALIGNMENT);
-		//Torneo.setAlignmentY(TOP_ALIGNMENT);
-		TorneiLabel.setAlignmentX(CENTER_ALIGNMENT);
-		//TorneiLabel.setAlignmentY(TOP_ALIGNMENT);
+		Torneo.setAlignmentX(CENTER_ALIGNMENT);
+		Torneo.setAlignmentY(TOP_ALIGNMENT);
+		//TorneiLabel.setAlignmentX(CENTER_ALIGNMENT);
+		TorneiLabel.setAlignmentY(TOP_ALIGNMENT);
 		//PartecipaTorneo.setAlignmentY(CENTER_ALIGNMENT);
 		PartecipaTorneo.setAlignmentX(CENTER_ALIGNMENT);
 		//ClassificaTorneo.setAlignmentY(BOTTOM_ALIGNMENT);
@@ -89,9 +89,9 @@ public class PartecipaTorneoView extends JFrame {
 		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
 		panel.add(ClassificaTorneo);
 		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
-		panel.add(TorneiLabel);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
 		panel.add(Torneo);
+		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(TorneiLabel);
 		panel.add(erroreLabel);
 		panel_.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));

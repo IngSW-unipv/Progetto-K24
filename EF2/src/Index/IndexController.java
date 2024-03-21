@@ -100,6 +100,13 @@ public class IndexController {
 			} 
 		});
 		
+		view.getSnake().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.snakePlay();
+			} 
+		});
+		
 		
 		view.getPartecipaTorneo().addActionListener(new ActionListener() {
 			 @Override
