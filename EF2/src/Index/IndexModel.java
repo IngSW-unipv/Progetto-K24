@@ -43,14 +43,16 @@ public class IndexModel {
 	 private MinesweeperModel modelm;
 	 private MinesweeperView view;
 	 
+	 // Relativi alla gestione account
 	 public void modificaAccount() {
 	    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController(new GestioneAccountModel(),new ModificaAccountView());
 	 }
 	 
-	public void eliminaAccount(IndexView lastView) {
+	 public void eliminaAccount(IndexView lastView) {
 			new EliminaAccountController(new GestioneAccountModel(),new EliminaAccountView(), lastView);		
-	}
+	 }
 	 
+	 // Relativi ai tornei
 	 public void eliminatorneoController() {
 
 		eliminaview=new EliminaTorneoView();
@@ -85,6 +87,7 @@ public class IndexModel {
 		partecipatorneoc = new PartecipaTorneoController(partecipatorneoview, model);
 	 }
 	 
+	 // Relativi ai giochi
 	 public void minesweeperPlay() {
 
 		modelm=new MinesweeperModel();
@@ -116,13 +119,25 @@ public class IndexModel {
 		new SolitarioPlaceholder();
 	 }
 	
-	 public void clear() {
-		UtenteAutenticato.getInstance().clear();
+	 // Relativi alle preferenze
+	 // Mancano alcune cose erronamente messe nel controller
+	 public void insertPreferiti(GiochiEnum gioco) {
+		 UtenteAutenticato.getInstance().insertPreferiti(gioco);
 	 }
+	 
+	 public void deletePreferiti(GiochiEnum gioco) {
+		 UtenteAutenticato.getInstance().deletePreferiti(gioco);
 
+	 }
+	 
+	 // Altro
 	public void createBigFrame() {
 		new BigFrameController(new BigFrameView(), new BigFrameModel());		
 	}
+	
+	 public void clear() {
+		UtenteAutenticato.getInstance().clear();
+	 }
 
 
 

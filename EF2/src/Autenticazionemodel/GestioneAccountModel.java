@@ -56,9 +56,13 @@ public class GestioneAccountModel {
 
 	}
 	
-	//modifica a partire dall'input utente il suo username
+	//Ha senso avere wuesto metodo? Non è uguale ad aver il controller che chiama setUsernsme direttamente da UtAut?
+	public void setUsername(String username) {
+		UtenteAutenticato.getInstance().setUsername(username);
+		}
+	//modifica a partire dall'input utente il suo username (prima è chiamato il metodo di sopra)
 	public void modificaAccount() {	
-		UtenteDao.getInstance().updateSchemaUtente(UtenteAutenticato.getInstance());
+		UtenteAutenticato.getInstance().cambiaUsername();
 	}
 	
 	//elimina l'account dell'utente dal database
@@ -72,10 +76,7 @@ public class GestioneAccountModel {
 		 new RegistrazioneController(new RegistrazioneModel(), new RegistrazioneView());		
 	}
 
-	//Ha senso avere wuesto metodo? Non è uguale ad aver il controller che chiama setUsernsme direttamente da UtAut?
-	public void setUsername(String username) {
-		UtenteAutenticato.getInstance().setUsername(username);
-		}
+
 	
 
 }

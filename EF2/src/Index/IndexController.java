@@ -145,7 +145,7 @@ public class IndexController {
 		
 		
 		for (GameButton b : view.getGameButtonList()) {
-			addMouseListenerPreferiti(b);
+			addMouseListenerGiochi(b);
 		}
 		
 		
@@ -154,13 +154,12 @@ public class IndexController {
 			public void actionPerformed(ActionEvent e) {
 				//Si deve aprire fienstra coi preferiti direi attraverso UtenteDAO e un arraylist con is preferiti dell'utente
 				//Questo dopo va tolto e solo prova
-				if (UtenteDao.getInstance().insertPreferiti(UtenteAutenticato.getInstance())) System.out.println("UAAAAA");
 			}
 		});
 		
 	}
 	
-	private void addMouseListenerPreferiti(GameButton button) {
+	private void addMouseListenerGiochi(GameButton button) {
 		button.addMouseListener(new MouseAdapter() {
 	        @Override
 	        public void mouseClicked(MouseEvent e) {
@@ -179,6 +178,7 @@ public class IndexController {
 		                    System.out.println("Operazione eseguita!");
 		                    button.aggiungiPreferito();
 		                    //Tutto da fare dentro il model con tanto di chiamata del DAO
+		                    model.insertPreferiti(button.getGioco());
 		                }
 		                
 	            	} else {
@@ -192,6 +192,8 @@ public class IndexController {
 		                    // Esegui l'operazione desiderata
 		                    System.out.println("Operazione eseguita!");
 		                    button.rimuoviPreferito();
+		                    //Tutto da fare nel model
+		                    model.deletePreferiti(button.getGioco());
 	            	}
 	            	
 

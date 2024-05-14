@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Index.GiochiEnum;
 import TorneoController.IGame;
 import Utente.UtenteAutenticato;
 
@@ -287,7 +288,7 @@ public class UtenteDao implements IUtenteDao {
 		
 	}
 	
-	public boolean insertPreferiti(UtenteAutenticato f) { /////COS'ALTRO PASSARE COME PARAMETRO
+	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco) { /////COS'ALTRO PASSARE COME PARAMETRO
 		conn=DBconnection.startConnection(conn,schema);
 		PreparedStatement st1;
 		boolean esito=true;
@@ -296,7 +297,7 @@ public class UtenteDao implements IUtenteDao {
 			String query="INSERT INTO preferenze(emailUtente, gioco) VALUES(?,?)";
 			st1 = conn.prepareStatement(query);	
 			st1.setString(1, f.getEmail());
-			st1.setString(2, "Minesweeper"); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.setString(2, gioco.toString()); ////////////////////////////////COSA DEVE ANDARE QUI
 			st1.executeUpdate();
 			
 		} catch (Exception e){
@@ -308,16 +309,16 @@ public class UtenteDao implements IUtenteDao {
 		return esito;
 	}
 	
-	public boolean deletePreferiti(UtenteAutenticato f) { /////COS'ALTRO PASSARE COME PARAMETRO
+	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco) { /////COS'ALTRO PASSARE COME PARAMETRO
 		conn=DBconnection.startConnection(conn,schema);
 		PreparedStatement st1;
 		boolean esito=true;
 
 		try {
-			String query="DELETE FROM preferenze WHERE emailUtente=? AND gioco=?)";
+			String query="DELETE FROM preferenze WHERE emailUtente=? AND gioco=?";
 			st1 = conn.prepareStatement(query);	
 			st1.setString(1, f.getEmail());
-			st1.setString(2, "Minesweeper"); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.setString(2, gioco.toString()); ////////////////////////////////COSA DEVE ANDARE QUI
 			st1.executeUpdate();
 			
 		} catch (Exception e){
@@ -328,9 +329,13 @@ public class UtenteDao implements IUtenteDao {
 		DBconnection.closeConnection(conn);
 		return esito;
 	}
-	
-	public ArrayList<String> selectPreferiti(UtenteAutenticato u) {
+
+	@Override
+	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f) {
 		return null;
+	}
+	
+	
 		/*ArrayList<String> result = new ArrayList<>();
 
 		conn=DBconnection.startConnection(conn,schema);
@@ -362,5 +367,7 @@ public class UtenteDao implements IUtenteDao {
 		return result;
 	}*/
 	}
+
+
 	
-}
+

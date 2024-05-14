@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import DataBase.TorneoDao;
 import DataBase.UtenteDao;
+import Index.GiochiEnum;
 import TorneoController.CreaTorneoController;
 import TorneoView.CreaTorneoView;
 
@@ -31,16 +32,16 @@ public class UtenteAutenticato extends Utente {
 
 		return instance;
 	}
-
-	public void cambiaUsername(String newUsername) {
-		this.setUsername(newUsername);
+	
+	//MI SEMBRA VAda BENE cosi ( e non CHE HA IN INGRESSO STRINGA e set avviene qui. set avviene nel facade model )
+	public void cambiaUsername() {
 		UtenteDao.getInstance().updateSchemaUtente(this);
 	}
 
-	public void registrazioneCredenziali(UtenteAutenticato u) throws SQLException {
+	public void registrazioneCredenziali() throws SQLException {
 
 		
-		UtenteDao.getInstance().insertSchemaUtente(u);
+		UtenteDao.getInstance().insertSchemaUtente(this);
 
 	}
 
@@ -55,7 +56,8 @@ public class UtenteAutenticato extends Utente {
 		return UtenteDao.getInstance().selectByEmail(email);
 
 	}
-
+	
+	// Relativi ai tornei
 	public boolean ricercaTorneo(String nometorneo) {
 
 		return TorneoDao.getInstance().ricercaTorneo(nometorneo);
@@ -70,11 +72,9 @@ public class UtenteAutenticato extends Utente {
 
 	public ArrayList<String> ricercaDatiTorneo(String nometorneo) {
 
-		return TorneoDao.getInstance().selectAllByTorneo(nometorneo);
-		
+		return TorneoDao.getInstance().selectAllByTorneo(nometorneo);		
 
 	}
-	
 	
 
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
@@ -128,7 +128,21 @@ public class UtenteAutenticato extends Utente {
 		return TorneoDao.getInstance().selezionalistatorneobypartecipante(f);
 		
 	}
- 
+	
+	// Relative ai preferiti
+	public void insertPreferiti(GiochiEnum gioco) {
+		UtenteDao.getInstance().insertPreferiti(this, gioco);
+	}
+	
+	public void deletePreferiti(GiochiEnum gioco) {
+		UtenteDao.getInstance().deletePreferiti(this, gioco);
+	}
+	
+	// Ricorda che manca la parte di query del DAO per questoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo
+	public ArrayList<GiochiEnum> selectPreferiti() {
+		return UtenteDao.getInstance().selectPreferiti(this);
+	}
+	
 	public void clear() {
 		this.setUsername(null);
 		this.setEmail(null);

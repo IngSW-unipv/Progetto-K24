@@ -3,6 +3,7 @@ package DataBase;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Index.GiochiEnum;
 import Utente.UtenteAutenticato;
 
 public interface IUtenteDao {
@@ -11,8 +12,8 @@ public interface IUtenteDao {
 	public ArrayList<UtenteAutenticato> selectByUsername(UtenteAutenticato fornInput);
 	public boolean insertSchemaUtente(UtenteAutenticato f) throws SQLException;
 	public boolean selectByEmail(String email);
-	public boolean insertPreferiti(UtenteAutenticato f); ////CHE ALTRO PARAMETRO
-	public boolean deletePreferiti(UtenteAutenticato f); ////CHE ALTRO PARAMETRO
-	public ArrayList<String> selectPreferiti(UtenteAutenticato f); ///NON STRINGHE
+	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco); ////CHE ALTRO PARAMETRO
+	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco); ////CHE ALTRO PARAMETRO
+	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f); ///NON STRINGHE
 
 }

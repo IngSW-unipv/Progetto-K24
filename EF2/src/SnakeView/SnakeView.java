@@ -21,16 +21,16 @@ public class SnakeView extends JPanel implements ActionListener {
 	static final int UNIT_SIZE = 50;
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
 	static final int DELAY = 175;
-	final int x[] = new int[GAME_UNITS];
-	final int y[] = new int[GAME_UNITS];
-	int bodyParts = 6;
-	int applesEaten;
-	int appleX;
-	int appleY;
-	char direction = 'R';
-	boolean running = false;
+	private final int x[] = new int[GAME_UNITS];
+	private final int y[] = new int[GAME_UNITS];
+	private int bodyParts = 6;
+	private int applesEaten;
+	private int appleX;
+	private int appleY;
+	private char direction = 'R';
+	private boolean running = false;
 	
-	Random random;
+	private Random random;
 
     public SnakeView(SnakeGame gameModel) {
         this.gameModel = gameModel;
@@ -40,9 +40,13 @@ public class SnakeView extends JPanel implements ActionListener {
         setBackground(Color.BLACK);
         setFocusable(true);
 
-        timer = new Timer(100, this);
+        timer = new Timer(120, this);
         timer.start();
+        
+        random = new Random();
 
+        newApple();
+        
         addKeyListener(new KeyAdapter() {
        
             @Override
