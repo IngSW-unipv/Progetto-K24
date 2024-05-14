@@ -1,14 +1,14 @@
-package Autenticazione.Autenticazionecontroller;
+package Autenticazionecontroller;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
 
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.LoginView;
-import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.RegistrazioneModel;
+import Autenticazioneview.LoginView;
+import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import Index.IndexController;
 import Utente.UtenteAutenticato;
@@ -21,10 +21,10 @@ import Utente.UtenteAutenticato;
 public class LoginController  {
 
 	private GestioneAccountModel model;
-	private LoginView view;
+	private Autenticazioneview.LoginView view;
 	
 
-	public LoginController(GestioneAccountModel model, LoginView view) {
+	public LoginController(GestioneAccountModel model, Autenticazioneview.LoginView view) {
 		this.model = model;
 		this.view = view;
         addListeners();

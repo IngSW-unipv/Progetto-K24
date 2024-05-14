@@ -1,4 +1,4 @@
-package Autenticazione.Autenticazionemodel;
+package Autenticazionemodel;
 
 import java.sql.SQLException;
 import java.util.regex.Matcher;

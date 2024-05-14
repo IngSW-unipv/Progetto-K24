@@ -1,10 +1,11 @@
 package Index;
 
-import java.awt.BorderLayout;
+import java.awt.BorderLayout; 
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 
 import javax.swing.AbstractButton;
@@ -13,7 +14,11 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import java.util.ArrayList;
+import java.util.Random;
 
 public class IndexView extends JFrame {
 
@@ -21,6 +26,7 @@ public class IndexView extends JFrame {
 	private JPanel leftPanel;
 	private JPanel topPanel;
 	private JPanel centerPanel;
+	private JLabel infoLabel;
 	private JButton modificaButton;
 	private JButton eliminaButton;
 	private JButton logoutButton;
@@ -28,9 +34,15 @@ public class IndexView extends JFrame {
 	private JButton iscrivitiTorneo;
 	private JButton eliminaTorneo;
 	private JButton disiscrivitiTorneo;
-	private JButton minesweeper;
-	private JButton snake;
 	private JButton partecipaTorneo;
+	private JButton preferitiButton;
+	private GameButton minesweeperButton;
+	private GameButton snakeButton;
+	private GameButton spaceInvadersButton;
+	private GameButton tetrisButton;
+	private GameButton solitarioButton;
+	private ArrayList<GameButton> gameButtonList = new ArrayList<GameButton>();
+	// Contiene tutti i bottoni realtivi ai giochi
 
 	// Dimensioni fisse per i bottoni del centerPanel
 	private static final int BUTTON_WIDTH = 150;
@@ -43,19 +55,30 @@ public class IndexView extends JFrame {
 		panelLayout = new JPanel(new BorderLayout());
 		leftPanel = new JPanel();
 		topPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		//centerPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		centerPanel = new JPanel (new GridLayout(2, 3));
 		modificaButton = new JButton("Modifica account");
 		eliminaButton = new JButton("Elimina account");
 		logoutButton = new JButton("Logout");
-		partecipaTorneo = new JButton("patecipaToreno");
-		creaTorneo = new JButton("Crea Torneo");
-		iscrivitiTorneo = new JButton("Iscriviti a Torneo");
+		partecipaTorneo = new JButton("Partecipa a un torneo");
+		creaTorneo = new JButton("Crea torneo");
+		iscrivitiTorneo = new JButton("Iscriviti a un torneo");
 		eliminaTorneo = new JButton("Elimina Torneo");
-		disiscrivitiTorneo = new JButton("Disiscriviti Torneo");
-		new JButton("Minesweeper");
-		new JButton("Snake");
+		disiscrivitiTorneo = new JButton("Disiscriviti da un torneo");
+		preferitiButton = new JButton("Giochi preferiti");
+		infoLabel = new JLabel("Clicca il tasto destro per aggiungere ai preferiti il gioco!");
+		
+		gameButtonList.add(minesweeperButton = new GameButton(GiochiEnum.Minesweeper));
+		gameButtonList.add(snakeButton = new GameButton(GiochiEnum.Snake));
+		gameButtonList.add(spaceInvadersButton = new GameButton(GiochiEnum.SpaceInvaders));
+		gameButtonList.add(tetrisButton = new GameButton(GiochiEnum.Tetris));
+		gameButtonList.add(solitarioButton = new GameButton(GiochiEnum.Solitario));
 
-		setSize(Toolkit.getDefaultToolkit().getScreenSize().width, Toolkit.getDefaultToolkit().getScreenSize().height);
+		
+		// creazione oggetto random per randomizzare i colori a ogni nuova apertura (non va nel model vero?)
+		Random random = new Random();
+		
+		setSize(Toolkit.getDefaultToolkit().getScreenSize().width*3/4, Toolkit.getDefaultToolkit().getScreenSize().height*3/4);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setLocation(0, 0);
 
@@ -66,7 +89,9 @@ public class IndexView extends JFrame {
 		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
 		leftPanel.setPreferredSize(new Dimension((Toolkit.getDefaultToolkit().getScreenSize().width) / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height));
-		leftPanel.setBackground(new Color(230, 230, 230));
+		// Se si vuole togliere il random color
+		//leftPanel.setBackground(new Color(230, 230, 230));
+		leftPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		setButtonProperties(creaTorneo);
 		setButtonProperties(iscrivitiTorneo);
@@ -84,6 +109,7 @@ public class IndexView extends JFrame {
 		leftPanel.add(creaTorneo);
 		leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		leftPanel.add(iscrivitiTorneo);
+		leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		leftPanel.add(partecipaTorneo);
 		leftPanel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		leftPanel.add(eliminaTorneo);
@@ -92,30 +118,41 @@ public class IndexView extends JFrame {
 		// topPanel
 		topPanel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
-		topPanel.setBackground(new Color(135, 206, 250));
+		//topPanel.setBackground(new Color(135, 206, 250));
+		topPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		
 
+		preferitiButton.setPreferredSize(new Dimension(150, 40));
 		modificaButton.setPreferredSize(new Dimension(150, 40));
 		eliminaButton.setPreferredSize(new Dimension(150, 40));
-		logoutButton.setPreferredSize(new Dimension(200, 40));
-
-		topPanel.add(Box.createHorizontalGlue());
+		logoutButton.setPreferredSize(new Dimension(150, 40));
+ 
+		
+		topPanel.add(preferitiButton);
+		topPanel.add(Box.createHorizontalStrut(Toolkit.getDefaultToolkit().getScreenSize().width/4));
 		topPanel.add(modificaButton);
 		topPanel.add(eliminaButton);
 		topPanel.add(logoutButton);
-
+		
 		// centerPanel
-		centerPanel.setBackground(new Color(144, 238, 144));
+		//centerPanel.setBackground(new Color(144, 238, 144));
+		centerPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		// Aggiungi bottoni al centerPanel
-		addCenterButton("Minesweeper"); // ricorda di modificare
-		addCenterButtonS("Snake");
-
+		for (GameButton button : gameButtonList) {
+			addToCenterPanel(button);
+		}
+		
+		// Non è necessario un bottomPanel perché c'è solo da gestire questa etichetta
+		infoLabel.setVisible(false);
+		
 		// add
 		add(panelLayout);
 
 		panelLayout.add(leftPanel, BorderLayout.WEST);
 		panelLayout.add(topPanel, BorderLayout.NORTH);
 		panelLayout.add(centerPanel, BorderLayout.CENTER);
+		panelLayout.add(infoLabel, BorderLayout.SOUTH);
 		setVisible(true);
 	}
 
@@ -151,38 +188,52 @@ public class IndexView extends JFrame {
 		this.eliminaButton = eliminaButton;
 	}
 
-	// Metodo per aggiungere bottoni al centerPanel con dimensioni fisse si potrebbe
-	// mettere nel model?? teoricamente si
-	private void addCenterButton(String name) {
-		minesweeper = new JButton(name);
-		setButtonProperties(minesweeper);
-		minesweeper.setSize(300, 300);
-		centerPanel.add(minesweeper);
-
+	public GameButton getMinesweeperButton() {
+		return minesweeperButton;
 	}
 
-	private void addCenterButtonS(String name) {
-		snake = new JButton(name);
-		setButtonProperties(snake);
-		snake.setSize(300, 300);
-		centerPanel.add(snake);
-
+	public void setMinesweeperButton(GameButton minesweeperButton) {
+		this.minesweeperButton = minesweeperButton;
 	}
 
-	public JButton getMinesweeper() {
-		return minesweeper;
+	public GameButton getSnakeButton() {
+		return snakeButton;
 	}
 
-	public void setMinesweeper(JButton minesweeper) {
-		this.minesweeper = minesweeper;
+	public void setSnakeButton(GameButton snakeButton) {
+		this.snakeButton = snakeButton;
+	}
+	
+	public GameButton getSpaceInvadersButton() {
+		return spaceInvadersButton;
 	}
 
-	public JButton getSnake() {
-		return snake;
+	public void setSpaceInvadersButton(GameButton spaceInvadersButton) {
+		this.spaceInvadersButton = spaceInvadersButton;
+	}
+	public GameButton getTetrisButton() {
+		return tetrisButton;
 	}
 
-	public void setSnake(JButton snake) {
-		this.snake = snake;
+	public void setTetrisButton(GameButton tetrisButton) {
+		this.tetrisButton = tetrisButton;
+	}
+	public GameButton getSolitarioButton() {
+		return solitarioButton;
+	}
+
+	public void setSolitarioButton(GameButton solitarioButton) {
+		this.solitarioButton = solitarioButton;
+	}
+	
+	public ArrayList<GameButton> getGameButtonList() {
+		return gameButtonList;
+	}
+	
+	public void addToCenterPanel(GameButton button) {
+		setButtonProperties(button);
+		button.setSize(300, 300);
+		centerPanel.add(button);
 	}
 
 	// Metodo per ridimensionare l'icona mantenendo le proporzioni
@@ -206,7 +257,7 @@ public class IndexView extends JFrame {
 	}
 
 	public void setEliminaTorneo(JButton eliminaTorneo) {
-		eliminaTorneo = eliminaTorneo;
+		this.eliminaTorneo = eliminaTorneo;
 	}
 
 	public JButton getDisiscrivitiTorneo() {
@@ -224,5 +275,12 @@ public class IndexView extends JFrame {
 	public JButton getLogoutButton() {
 		return logoutButton;
 	}
-
+	
+	public JButton getPreferitiButton() {
+		return preferitiButton;
+	}
+	
+	public JLabel getInfoLabel() {
+		return infoLabel;
+	}
 }

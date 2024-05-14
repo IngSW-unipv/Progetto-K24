@@ -47,8 +47,8 @@ public class ModificaAccountController {
 	    				//Usiamo lo stesso metodo di verifica credenziali del login, però non è necessario qui inserire il nome utente
 	    				if (model.verificaCredenziali(UtenteAutenticato.getInstance().getEmail(),password))
 	    				{ 
-
-	    					model.modificaAccount(view.getUsernameText().getText());
+	    					model.setUsername(view.getUsernameText().getText());
+	    					model.modificaAccount();
 
 	    					view.dispose();
 	                        

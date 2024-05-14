@@ -1,5 +1,13 @@
 package Index;
 
+import Autenticazionemodel.GestioneAccountModel;
+import Autenticazioneview.BigFrameController;
+import Autenticazioneview.BigFrameModel;
+import Autenticazioneview.BigFrameView;
+import GestioneAccount.EliminaAccountController;
+import GestioneAccount.EliminaAccountView;
+import GestioneAccount.ModificaAccountView;
+import GiochiPlaceholder.*;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
@@ -35,61 +43,87 @@ public class IndexModel {
 	 private MinesweeperModel modelm;
 	 private MinesweeperView view;
 	 
+	 public void modificaAccount() {
+	    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController(new GestioneAccountModel(),new ModificaAccountView());
+	 }
 	 
-	public void eliminatorneoController() {
+	public void eliminaAccount(IndexView lastView) {
+			new EliminaAccountController(new GestioneAccountModel(),new EliminaAccountView(), lastView);		
+	}
+	 
+	 public void eliminatorneoController() {
 
 		eliminaview=new EliminaTorneoView();
 		
 		eliminatorneocontroller=new EliminaTorneoController(eliminaview,model);
 		
-	}
+	 }
 
-	public void disiscrivitiTorneocontroller() {
+	 public void disiscrivitiTorneocontroller() {
 
 		disiscrizione=new DisiscrizioneTorneoView();
 		
         disicrizionetorneocontroller=new DisiscrizioneTorneoController(disiscrizione,model);
-	}
+	 }
 
-	public void iscrivitiTorneocontroller() {
+	 public void iscrivitiTorneocontroller() {
 
 		iscrizioneview=new IscrizioneTorneoView();
         iscrizionetorneocontroller=new IscrizioneTorneoController(iscrizioneview,model);
-	}
+	 }
 
-	public void creaTorneoontroller() {
-
+	 public void creaTorneocontroller() {
+ 
 		
 		creatorneoview=new CreaTorneoView();
 		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
-	}
+	 }
 
-	public void partecipaTorneocontroller() {
+	 public void partecipaTorneocontroller() {
 
 		partecipatorneoview = new PartecipaTorneoView();
 		partecipatorneoc = new PartecipaTorneoController(partecipatorneoview, model);
-	}
+	 }
 	 
-	public void minesweeperPlay() {
+	 public void minesweeperPlay() {
 
 		modelm=new MinesweeperModel();
 		view=new MinesweeperView();
 		
 		MinesweeperController c=new MinesweeperController(modelm ,view );
 		
-	}
+	 }
 	
-	public void snakePlay() {
+	 public void snakePlay() {
 
 		SnakeGame model = new SnakeGame();
 		SnakeView view = new SnakeView(model);
 
 		  new SnakeController();
 
-	}
+	 }
 	
-	public void clear() {
+	 //Serie di metodi placeholder
+	 public void spaceInvadersPlay() {
+		new SpaceInvadersPlaceholder();
+	 }
+	
+	 public void tetrisPlay() {
+		new TetrisPlaceholder();
+	 }
+	
+	 public void solitarioPlay() {
+		new SolitarioPlaceholder();
+	 }
+	
+	 public void clear() {
 		UtenteAutenticato.getInstance().clear();
+	 }
+
+	public void createBigFrame() {
+		new BigFrameController(new BigFrameView(), new BigFrameModel());		
 	}
+
+
 
 }

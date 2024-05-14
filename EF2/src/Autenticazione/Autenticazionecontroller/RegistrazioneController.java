@@ -1,6 +1,6 @@
-package Autenticazione.Autenticazionecontroller;
+package Autenticazionecontroller;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -9,9 +9,9 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.LoginView;
-import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazionemodel.RegistrazioneModel;
+import Autenticazioneview.LoginView;
+import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
@@ -27,11 +27,11 @@ public class RegistrazioneController {
 	private String cognome;
 	private String email;
 	private char[] password;
-	private RegistrazioneModel model;
-	private RegistrazioneView view;
+	private Autenticazionemodel.RegistrazioneModel model;
+	private Autenticazioneview.RegistrazioneView view;
 	
 
-	public RegistrazioneController(RegistrazioneModel model, RegistrazioneView view) {
+	public RegistrazioneController(Autenticazionemodel.RegistrazioneModel model, Autenticazioneview.RegistrazioneView view) {
 		this.model = model;
 		this.view = view;
 		addListeners();
@@ -44,7 +44,7 @@ public class RegistrazioneController {
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
 				
-				new LoginController(new GestioneAccountModel(),new LoginView());
+				new LoginController(new GestioneAccountModel(),new Autenticazioneview.LoginView());
 			}
 		});
 
@@ -63,13 +63,13 @@ public class RegistrazioneController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				Map<Integer, Supplier<String>> errorMessages = new HashMap<>();
-		        errorMessages.put(RegistrazioneModel.getNomeNonValido(), () -> "Nome non valido.");
-		        errorMessages.put(RegistrazioneModel.getCognomeNonValido(), () -> "Cognome non valido.");
-		        errorMessages.put(RegistrazioneModel.getUsernameNonValido(), () -> "Username non valido.");
-		        errorMessages.put(RegistrazioneModel.getEmailNonValida(), () -> "Email non valida.");
-		        errorMessages.put(RegistrazioneModel.getPasswordNonUguali(), () -> "Password diverse");
-		        errorMessages.put(RegistrazioneModel.getPasswordNonValida(), () -> "Password non valida.");
-		        errorMessages.put(RegistrazioneModel.getTuttoCorretto(), () -> "Registrazione eseguita");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getNomeNonValido(), () -> "Nome non valido.");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getCognomeNonValido(), () -> "Cognome non valido.");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getUsernameNonValido(), () -> "Username non valido.");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getEmailNonValida(), () -> "Email non valida.");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getPasswordNonUguali(), () -> "Password diverse");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getPasswordNonValida(), () -> "Password non valida.");
+		        errorMessages.put(Autenticazionemodel.RegistrazioneModel.getTuttoCorretto(), () -> "Registrazione eseguita");
 		        char[] passwordChars1 = view.getPassword1Text().getPassword();
 		        char[] passwordChars2 = view.getPassword2Text().getPassword();
 				String paswrd = new String(passwordChars1);

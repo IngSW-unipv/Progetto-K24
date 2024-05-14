@@ -1,6 +1,6 @@
 package Utente;
 
-import java.sql.Date;
+import java.sql.Date; 
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -124,8 +124,13 @@ public class UtenteAutenticato extends Utente {
 	public void clear() {
 		this.setUsername(null);
 		this.setEmail(null);
-		this.setPassword(null); 
+		this.setPassword("".toCharArray()); 
 		
 	}
 
 }
+
+//Non andavano accoppiati torneo e utente, serviva un facade che li prendesse a coppia
+//Passare dal controller al model della modifica utente una stringa è sbagliatissimo, non c'è incapsulamento. 
+//Non importa che l'utente fosse singleton, andava comunque passato come paramtero al metodo modificaAccount
+//perché non possiamo passare una Stringa, accoppia troppo

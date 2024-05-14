@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import TorneoController.IGame;
 import Utente.UtenteAutenticato;
 
 public class UtenteDao implements IUtenteDao {
@@ -210,8 +211,7 @@ public class UtenteDao implements IUtenteDao {
 		
 		boolean esito=true;
 
-		try
-		{
+		try {
 			String query="INSERT INTO utenti(email,username,pswrd) VALUES(?,?,?)";
 			st1 = conn.prepareStatement(query);
 			System.out.println(f.getEmail());
@@ -219,9 +219,7 @@ public class UtenteDao implements IUtenteDao {
 			st1.setString(2,f.getUsername());
 			st1.setString(3,f.getHashedPassword());
 			
-			st1.executeUpdate();
-
-			
+			st1.executeUpdate();	
 			
 		}catch (Exception e){
 			e.printStackTrace();
@@ -241,16 +239,13 @@ public class UtenteDao implements IUtenteDao {
 		
 		boolean esito=true;
 
-		try
-		{
+		try {
 			String query="Delete from utenti where email = ?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1,f.getEmail());	
 			st1.executeUpdate();
-
 			
-			
-		}catch (Exception e){
+		} catch (Exception e){
 			e.printStackTrace();
 			esito=false;
 		}
@@ -275,16 +270,14 @@ public class UtenteDao implements IUtenteDao {
 		
 		boolean esito=true;
 
-		try
-		{
-			
+		try {
 			String query="update utenti set username=? where email=?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getUsername());	
 			st1.setString(2, f.getEmail());
 			st1.executeUpdate();
 			
-		}catch (Exception e){
+		} catch (Exception e){
 			e.printStackTrace();
 			esito=false;
 		}
@@ -292,6 +285,82 @@ public class UtenteDao implements IUtenteDao {
 		DBconnection.closeConnection(conn);
 		return esito;
 		
+	}
+	
+	public boolean insertPreferiti(UtenteAutenticato f) { /////COS'ALTRO PASSARE COME PARAMETRO
+		conn=DBconnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		boolean esito=true;
+
+		try {
+			String query="INSERT INTO preferenze(emailUtente, gioco) VALUES(?,?)";
+			st1 = conn.prepareStatement(query);	
+			st1.setString(1, f.getEmail());
+			st1.setString(2, "Minesweeper"); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.executeUpdate();
+			
+		} catch (Exception e){
+			e.printStackTrace();
+			esito=false;
+		}
+
+		DBconnection.closeConnection(conn);
+		return esito;
+	}
+	
+	public boolean deletePreferiti(UtenteAutenticato f) { /////COS'ALTRO PASSARE COME PARAMETRO
+		conn=DBconnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		boolean esito=true;
+
+		try {
+			String query="DELETE FROM preferenze WHERE emailUtente=? AND gioco=?)";
+			st1 = conn.prepareStatement(query);	
+			st1.setString(1, f.getEmail());
+			st1.setString(2, "Minesweeper"); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.executeUpdate();
+			
+		} catch (Exception e){
+			e.printStackTrace();
+			esito=false;
+		}
+
+		DBconnection.closeConnection(conn);
+		return esito;
+	}
+	
+	public ArrayList<String> selectPreferiti(UtenteAutenticato u) {
+		return null;
+		/*ArrayList<String> result = new ArrayList<>();
+
+		conn=DBconnection.startConnection(conn,schema);
+		PreparedStatement st1;
+		ResultSet rs1;
+
+		try
+		{
+			String query="SELECT gioco FROM preferenze WHERE emailUtente=?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, f.getEmail());
+			rs1=st1.executeQuery(query);
+
+			while(rs1.next())
+			{
+				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+
+				
+				result.add(rs1.getString(1));
+				result.add(rs1.getString(2));
+				result.add(rs1.getString(3));
+				
+				
+				
+			}
+		}catch (Exception e){e.printStackTrace();}
+
+		DBconnection.closeConnection(conn);
+		return result;
+	}*/
 	}
 	
 }

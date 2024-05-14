@@ -1,9 +1,9 @@
-package Autenticazione.Autenticazioneview;
+package Autenticazioneview;
 
-import Autenticazione.Autenticazionecontroller.LoginController;
-import Autenticazione.Autenticazionecontroller.RegistrazioneController;
+import Autenticazionecontroller.LoginController;
+import Autenticazionecontroller.RegistrazioneController;
 
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazionemodel.RegistrazioneModel;
 import Autenticazionemodel.GestioneAccountModel;
 
 public class BigFrameModel {

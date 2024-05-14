@@ -27,13 +27,11 @@ public class IscrizioneTorneoController {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
-
+	
 			if (e.getSource() == view.getIscrivitiTorneo()) { 
 
-				
 				model.iscrizioneTorneo(model.getEmail(), view.getNomeText().getText() );
-				
+				view.dispose();
 			}
 
 		}

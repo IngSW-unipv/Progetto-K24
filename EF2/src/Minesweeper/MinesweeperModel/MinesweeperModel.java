@@ -44,7 +44,7 @@ public class MinesweeperModel implements IGame{
 			tile = board[r][c];
 			if (!mineList.contains(tile)) {
 				mineList.add(tile);
-				System.out.print("Aggiungi tile");
+				//System.out.print("Aggiungi tile");
 				mineRimaste--;
 
 			}

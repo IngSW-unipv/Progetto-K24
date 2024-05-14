@@ -1,6 +1,6 @@
 package TorneoController;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.text.ParseException;
@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import Autenticazione.Autenticazionecontroller.LoginController;
+import Autenticazionecontroller.LoginController;
 
 import DataBase.TorneoDao;
 import TorneoModel.TorneoModel;
@@ -36,7 +36,7 @@ public class CreaTorneoController {
 
 				model.creaTorneo(view.getNomeText().getText(), model.getEmail(), view.getComboText(),
 						view.getDatainzioText().getText(), view.getDatafineText().getText());
-
+				view.dispose();
 			} 
 		});
 	}

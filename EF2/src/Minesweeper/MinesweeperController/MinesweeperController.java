@@ -35,10 +35,10 @@ public class MinesweeperController {
 			@Override
 			public void run() {
 				if (counter > 0) {
-					System.out.println(counter + " seconds");
+					//System.out.println(counter + " seconds");
 					counter--;
 				} else {
-					System.out.println("-----");
+					//System.out.println("-----");
 					timer.cancel();
 				}
 			}
@@ -50,11 +50,11 @@ public class MinesweeperController {
 
 		initcomponents();
 
-		System.out.print(mineList.toString());
+		//System.out.print(mineList.toString());
 
 		view.Instanciate();
 
-		System.out.print(mineList.toString());
+		//System.out.print(mineList.toString());
 
 		model.setMines(view.board, mineList, view.tile);// view.getMineList());
 
@@ -83,8 +83,8 @@ public class MinesweeperController {
 
 							model.checkMine(view.tile.getRig(), view.tile.getCol(), view.board, view.textLabel,
 									mineList, view.tile);
-							System.out.println("CheckMine");
-							System.out.println(mineList.contains(view.tile));
+							//System.out.println("CheckMine");
+							//System.out.println(mineList.contains(view.tile));
 
 						}
 					}
@@ -109,11 +109,11 @@ public class MinesweeperController {
 				view.tile.setFont(new Font("Arial Unicode MS", Font.PLAIN, 45));
 				view.tile.addMouseListener(al);
 				view.boardPanel.add(view.tile);
-				System.out.println("test");
+				//System.out.println("test");
 
 			}
 		}
-		System.out.println(view.getNumRighe());
+		//System.out.println(view.getNumRighe());
 
 	}
 

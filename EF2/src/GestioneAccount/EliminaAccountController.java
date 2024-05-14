@@ -1,13 +1,14 @@
 package GestioneAccount;
 
-import java.awt.Color;
+import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Autenticazione.Autenticazioneview.BigFrameController;
-import Autenticazione.Autenticazioneview.BigFrameModel;
-import Autenticazione.Autenticazioneview.BigFrameView;
+import Autenticazioneview.BigFrameController;
+import Autenticazioneview.BigFrameModel;
+import Autenticazioneview.BigFrameView;
+import Index.IndexView;
 import Autenticazionemodel.GestioneAccountModel;
 import Utente.UtenteAutenticato;
 
@@ -16,10 +17,14 @@ import Utente.UtenteAutenticato;
 public class EliminaAccountController {
 	private GestioneAccountModel model;
 	private EliminaAccountView view;
+	private IndexView lastView;
 
-	public EliminaAccountController(GestioneAccountModel model, EliminaAccountView view) {
+		//E' giusto passare questa indexview? o è meglio fare in modo che se si apre questanuova view
+	// in automatico la index si chiude, e se si decide di non eliminare account viene riaperto?
+	public EliminaAccountController(GestioneAccountModel model, EliminaAccountView view, IndexView lastView) {
 		this.model = model;
 		this.view = view;
+		this.lastView = lastView;
 		addListeners();
 	}
 
@@ -55,6 +60,7 @@ public class EliminaAccountController {
  
     					model.eliminaAccount();
     					view.dispose();
+    					lastView.dispose();
     					model.istanziaBigFrame();
                          
     				} else {

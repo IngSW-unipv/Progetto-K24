@@ -1,4 +1,4 @@
-package Autenticazione.Autenticazioneview;
+package Autenticazioneview;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;

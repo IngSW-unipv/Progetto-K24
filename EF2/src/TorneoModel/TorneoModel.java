@@ -42,6 +42,7 @@ public class TorneoModel {
 		try {
 			date_1 = dateFormat.parse(date_);
 		} catch (ParseException e1) {
+
 			e1.printStackTrace();
 		}
 

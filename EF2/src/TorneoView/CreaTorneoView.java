@@ -33,7 +33,7 @@ public class CreaTorneoView extends JFrame {
 	private JTextField datafineText = new JTextField();
 	private JButton CreaTorneo = new JButton("Crea Torneo");
 	private JLabel erroreLabel = new JLabel();
-    private String[] options = { "Minesweeper 1", "Snake 2" };
+    private String[] options = { "Minesweeper", "Snake", "Space Invaders", "Tetris", "Solitario" };
     private JComboBox<String> comboBox = new JComboBox<>(options);
 	// inizio costruttore
 	public CreaTorneoView() {

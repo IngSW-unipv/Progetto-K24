@@ -2,18 +2,20 @@ package Program;
 
 import java.util.ArrayList;
 
-import Autenticazione.Autenticazionecontroller.RegistrazioneController;
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.BigFrameController;
-import Autenticazione.Autenticazioneview.BigFrameModel;
-import Autenticazione.Autenticazioneview.BigFrameView;
-import Autenticazione.Autenticazioneview.RegistrazioneView;
+
+import Autenticazionemodel.RegistrazioneModel;
+import Autenticazioneview.BigFrameController;
+import Autenticazioneview.BigFrameModel;
+import Autenticazioneview.BigFrameView;
+import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.ModificaAccountView;
 import GestioneAccount.EliminaAccountController;
 import GestioneAccount.EliminaAccountView;
 import GestioneAccount.ModificaAccountController;
 import Index.IndexController;
+import Index.IndexModel;
+import Index.IndexView;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
@@ -27,6 +29,7 @@ import TorneoController.IscrizioneTorneoController;
 import TorneoView.CreaTorneoView;
 import Utente.FactoryGestioneTorneo;
 import Utente.FactoryGestioneUtente;
+import Utente.Password;
 
 public class Engine {
 
@@ -36,15 +39,13 @@ public class Engine {
 		FactoryGestioneTorneo.getInstance().creaTorneoDao();
 		FactoryGestioneUtente.getInstance().creaUtentedao();
 		FactoryGestioneUtente.getInstance().creaUtente();
-
-		BigFrameModel model = new BigFrameModel();
-
-		BigFrameView view = new BigFrameView();
-
-		BigFrameController c = new BigFrameController(view, model);
-
 		
 		
+		//new BigFrameController(new BigFrameView(), new BigFrameModel());
+
+		new IndexController(new IndexModel(), new IndexView()); 
+		//Password p = new Password("D".toCharArray());
+		//System.out.println(p.getHashedPassword()+1);
 		
 	}
 

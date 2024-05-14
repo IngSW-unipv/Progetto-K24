@@ -1,14 +1,14 @@
-package Autenticazione.Autenticazioneview;
+package Autenticazioneview;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 
-import Autenticazione.Autenticazionecontroller.LoginController;
-import Autenticazione.Autenticazionecontroller.RegistrazioneController;
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
+import Autenticazionecontroller.LoginController;
+import Autenticazionecontroller.RegistrazioneController;
+import Autenticazionemodel.RegistrazioneModel;
 import Autenticazionemodel.GestioneAccountModel;
-import Autenticazione.Autenticazionecontroller.*;
-import Autenticazione.Autenticazionemodel.*;
+import Autenticazionecontroller.*;
+import Autenticazionemodel.*;
 
 import java.awt.Window;
 
@@ -16,7 +16,7 @@ public class BigFrameController {
 
 	private BigFrameView view;
 	private BigFrameModel model;
-	private RegistrazioneModel registrazioneModel;
+	private Autenticazionemodel.RegistrazioneModel registrazioneModel;
 	private RegistrazioneView registrazioneView;
 	private GestioneAccountModel loginModel;
 	private LoginView loginView;

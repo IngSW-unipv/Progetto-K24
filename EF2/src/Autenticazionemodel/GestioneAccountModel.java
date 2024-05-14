@@ -1,13 +1,13 @@
 package Autenticazionemodel;
 
-import java.io.IOException;
+import java.io.IOException; 
 
-import Autenticazione.Autenticazioneview.BigFrameController;
-import Autenticazione.Autenticazioneview.BigFrameModel;
-import Autenticazione.Autenticazioneview.BigFrameView;
-import Autenticazione.Autenticazionecontroller.RegistrazioneController;
-import Autenticazione.Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.RegistrazioneView;
+import Autenticazioneview.BigFrameController;
+import Autenticazioneview.BigFrameModel;
+import Autenticazioneview.BigFrameView;
+import Autenticazionecontroller.RegistrazioneController;
+import Autenticazionemodel.RegistrazioneModel;
+import Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Index.IndexController;
 import Index.IndexModel;
@@ -57,22 +57,25 @@ public class GestioneAccountModel {
 	}
 	
 	//modifica a partire dall'input utente il suo username
-	public void modificaAccount(String newUsername) {	
-		UtenteAutenticato.getInstance().setUsername(newUsername);
+	public void modificaAccount() {	
 		UtenteDao.getInstance().updateSchemaUtente(UtenteAutenticato.getInstance());
 	}
 	
 	//elimina l'account dell'utente dal database
 	public void eliminaAccount() {
 		
-		UtenteDao.getInstance().eliminaSchemaUtente(UtenteAutenticato.getInstance());
-		
+		UtenteAutenticato.getInstance().eliminaAccount();
 		UtenteAutenticato.getInstance().clear();
  	}
 
 	public void istanziaRegistration() {
 		 new RegistrazioneController(new RegistrazioneModel(), new RegistrazioneView());		
 	}
+
+	//Ha senso avere wuesto metodo? Non è uguale ad aver il controller che chiama setUsernsme direttamente da UtAut?
+	public void setUsername(String username) {
+		UtenteAutenticato.getInstance().setUsername(username);
+		}
 	
 
 }
