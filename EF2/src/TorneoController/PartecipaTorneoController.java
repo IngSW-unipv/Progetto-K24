@@ -14,6 +14,7 @@ import DataBase.TorneoDao;
 import TorneoModel.TorneoModel;
 import TorneoView.IscrizioneTorneoView;
 import TorneoView.PartecipaTorneoView;
+import Utente.UtenteAutenticato;
 
 public class PartecipaTorneoController {
 
@@ -32,9 +33,9 @@ public class PartecipaTorneoController {
 	private void inserisciTornei() {
 
 		view.getPanel().remove(view.getTorneo());
-		view.setOptions(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+		view.setOptions(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
 				.toArray(view.getOptions()));
-		view.setTorneo(new JComboBox<>(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+		view.setTorneo(new JComboBox<>(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
 				.toArray(view.getOptions())));
 		view.getPanel().add(view.getTorneo());
 		// for(int
@@ -54,7 +55,7 @@ public class PartecipaTorneoController {
 					// view.getTable().getModel();
 					System.out.print(view.getOptions()[0]);
 					List<Integer> arrayList = new ArrayList<Integer>(
-							model.classificaTorneo(view.getOptions()[0]).values());
+			        model.classificaTorneo(view.getOptions()[0]).values());
 					List<String> key = new ArrayList<String>(model.classificaTorneo(view.getOptions()[0]).keySet());
 					// modelclassifica.addRow();
 					System.out.print(arrayList);

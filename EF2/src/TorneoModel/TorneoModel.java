@@ -20,6 +20,8 @@ import Utente.UtenteAutenticato;
 public class TorneoModel {
 
 	private IStrategyGame strategy;
+	private FactoryGame factory;
+	
 	
 	public TorneoModel() {
 
@@ -90,10 +92,11 @@ public class TorneoModel {
 	public void partecipaToreno(String nomeTorneo) {
 		
 		
-		System.out.print("Partecipa al Torneo"+  TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
+		System.out.print("Partecipa al Torneo"+  UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
 		
-        FactoryGame factory =new FactoryGame(); 
-        strategy =factory.getGameStrategy(TorneoDao.getInstance().selectAllByTorneo(nomeTorneo).get(0));
+        factory =new FactoryGame(); 
+        
+        strategy =factory.getGameStrategy(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
         strategy.getGameController();
 		
 	}

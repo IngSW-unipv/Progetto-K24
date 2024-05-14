@@ -74,6 +74,8 @@ public class UtenteAutenticato extends Utente {
 		
 
 	}
+	
+	
 
 	public void creazioneTorneo(String nometorneo, String nomecreatore, String gioco, java.util.Date date,
 			java.util.Date date_) {
@@ -119,6 +121,12 @@ public class UtenteAutenticato extends Utente {
 		if (TorneoDao.getInstance().ricercaCreatore(nomeutente)) {
 			TorneoDao.getInstance().deleteTorneo(nometorneo);
 		}
+	}
+	
+	public ArrayList<String> selezionalistatorneobypartecipante(String f) {
+		
+		return TorneoDao.getInstance().selezionalistatorneobypartecipante(f);
+		
 	}
  
 	public void clear() {
