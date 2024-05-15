@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,6 +28,7 @@ public class IndexView extends JFrame {
 	private JPanel topPanel;
 	private JPanel centerPanel;
 	private JLabel infoLabel;
+	private JPopupMenu menuPreferiti;
 	private JButton modificaButton;
 	private JButton eliminaButton;
 	private JButton logoutButton;
@@ -41,7 +43,14 @@ public class IndexView extends JFrame {
 	private GameButton spaceInvadersButton;
 	private GameButton tetrisButton;
 	private GameButton solitarioButton;
-	private ArrayList<GameButton> gameButtonList = new ArrayList<GameButton>();
+	private ArrayList<GameButton> gameButtonList;
+	private GameButton minesweeperOption;
+	private GameButton snakeOption;
+	private GameButton spaceInvadersOption;
+	private GameButton tetrisOption;
+	private GameButton solitarioOption;
+	private ArrayList<GameButton> menuOptionList;
+	
 	// Contiene tutti i bottoni realtivi ai giochi
 
 	// Dimensioni fisse per i bottoni del centerPanel
@@ -67,12 +76,22 @@ public class IndexView extends JFrame {
 		disiscrivitiTorneo = new JButton("Disiscriviti da un torneo");
 		preferitiButton = new JButton("Giochi preferiti");
 		infoLabel = new JLabel("Clicca il tasto destro per aggiungere ai preferiti il gioco!");
+		menuPreferiti = new JPopupMenu();
 		
+		menuOptionList = new ArrayList<GameButton>();
+		menuOptionList.add(minesweeperOption = new GameButton(GiochiEnum.Minesweeper));
+		menuOptionList.add(snakeOption = new GameButton(GiochiEnum.Snake));
+		menuOptionList.add(spaceInvadersOption = new GameButton(GiochiEnum.SpaceInvaders));
+		menuOptionList.add(tetrisOption = new GameButton(GiochiEnum.Tetris));
+		menuOptionList.add(solitarioOption = new GameButton(GiochiEnum.Solitario));
+		
+		gameButtonList = new ArrayList<GameButton>();
 		gameButtonList.add(minesweeperButton = new GameButton(GiochiEnum.Minesweeper));
 		gameButtonList.add(snakeButton = new GameButton(GiochiEnum.Snake));
 		gameButtonList.add(spaceInvadersButton = new GameButton(GiochiEnum.SpaceInvaders));
 		gameButtonList.add(tetrisButton = new GameButton(GiochiEnum.Tetris));
 		gameButtonList.add(solitarioButton = new GameButton(GiochiEnum.Solitario));
+		
 
 		
 		// creazione oggetto random per randomizzare i colori a ogni nuova apertura (non va nel model vero?)
@@ -278,6 +297,36 @@ public class IndexView extends JFrame {
 	
 	public JButton getPreferitiButton() {
 		return preferitiButton;
+	}
+	
+	public ArrayList<GameButton> getMenuOptionList() {
+		return menuOptionList;
+	}
+	
+	public JPopupMenu getMenuPreferiti() {
+		return menuPreferiti;
+	}
+	
+	// Getter delle opzioni
+
+	public GameButton getMinesweeperOption() {
+		return minesweeperOption;
+	}
+
+	public GameButton getSnakeOption() {
+		return snakeOption;
+	}
+	
+	public GameButton getSpaceInvadersOption() {
+		return spaceInvadersOption;
+	}
+
+	public GameButton getTetrisOption() {
+		return tetrisOption;
+	}
+
+	public GameButton getSolitarioOption() {
+		return solitarioOption;
 	}
 	
 	public JLabel getInfoLabel() {

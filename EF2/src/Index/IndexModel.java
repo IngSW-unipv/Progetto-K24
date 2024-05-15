@@ -1,5 +1,7 @@
 package Index;
 
+import java.util.ArrayList;
+
 import Autenticazionemodel.GestioneAccountModel;
 import Autenticazioneview.BigFrameController;
 import Autenticazioneview.BigFrameModel;
@@ -54,56 +56,42 @@ public class IndexModel {
 	 
 	 // Relativi ai tornei
 	 public void eliminatorneoController() {
-
 		eliminaview=new EliminaTorneoView();
-		
 		eliminatorneocontroller=new EliminaTorneoController(eliminaview,model);
 		
 	 }
 
 	 public void disiscrivitiTorneocontroller() {
-
 		disiscrizione=new DisiscrizioneTorneoView();
-		
         disicrizionetorneocontroller=new DisiscrizioneTorneoController(disiscrizione,model);
 	 }
 
 	 public void iscrivitiTorneocontroller() {
-
 		iscrizioneview=new IscrizioneTorneoView();
         iscrizionetorneocontroller=new IscrizioneTorneoController(iscrizioneview,model);
 	 }
 
 	 public void creaTorneocontroller() {
- 
-		
 		creatorneoview=new CreaTorneoView();
 		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
 	 }
 
 	 public void partecipaTorneocontroller() {
-
 		partecipatorneoview = new PartecipaTorneoView();
 		partecipatorneoc = new PartecipaTorneoController(partecipatorneoview, model);
 	 }
 	 
 	 // Relativi ai giochi
 	 public void minesweeperPlay() {
-
 		modelm=new MinesweeperModel();
 		view=new MinesweeperView();
-		
 		MinesweeperController c=new MinesweeperController(modelm ,view );
-		
 	 }
 	
 	 public void snakePlay() {
-
 		SnakeGame model = new SnakeGame();
 		SnakeView view = new SnakeView(model);
-
 		  new SnakeController();
-
 	 }
 	
 	 //Serie di metodi placeholder
@@ -127,7 +115,26 @@ public class IndexModel {
 	 
 	 public void deletePreferiti(GiochiEnum gioco) {
 		 UtenteAutenticato.getInstance().deletePreferiti(gioco);
-
+	 }
+	 
+	 // Chiamato quando serve aggiornare o inizializzare l'elenco
+	 public ArrayList<GiochiEnum> getPreferitiFromDB() {
+		 // UtAut legge dal db i preferiti
+		 UtenteAutenticato.getInstance().selectPreferiti();
+		 return UtenteAutenticato.getInstance().getPreferiti();
+	 }
+	 
+	 // Chiamato solo al momento dell'inizializzazione dei GameButton in modo da non dover continuare a 
+	 // leggere dal db ad ogni iterazione
+	 public ArrayList<GiochiEnum> getPreferiti() {
+		 return UtenteAutenticato.getInstance().getPreferiti();
+	 }
+	 
+	 // A partire dai dati di UtenteAutenticato (che comunica con db chiedendo la lista di preferti attraverso dao)
+	 // possiamo impostare nell'interfaccia grafica i preferiti
+	 // Lista di UtenteAut è diversa da quella di bottoni della view. Il set è riferito a questi, non utente
+	 public void setPreferiti() {
+		 UtenteAutenticato.getInstance().selectPreferiti();
 	 }
 	 
 	 // Altro

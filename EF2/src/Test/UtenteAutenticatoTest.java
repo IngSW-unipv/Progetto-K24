@@ -42,7 +42,8 @@ public class UtenteAutenticatoTest {
 	@Test
 	public void testCambiaUsername() {
 		String nuovoNome = "nuovoNome";
-		UtenteAutenticato.getInstance().cambiaUsername(nuovoNome);
+		UtenteAutenticato.getInstance().setUsername(nuovoNome);
+		UtenteAutenticato.getInstance().cambiaUsername();
 		// Qui ci vuole un metodo che vada a leggere nel database il nome di un utente a
 		// partire dalla sua mail
 		// assertEquals(nuovoNome, SingletonGestione.getInstance().getUtentedao().);

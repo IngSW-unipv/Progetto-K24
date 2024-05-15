@@ -13,23 +13,17 @@ import TorneoView.CreaTorneoView;
 public class UtenteAutenticato extends Utente {
 
 	private static UtenteAutenticato instance;
+	private ArrayList<GiochiEnum> preferiti;
 
 	
-
 	private UtenteAutenticato() {
-
 		super("", "", "");
-
 	}
 
 	public static UtenteAutenticato getInstance() {
-
 		if (instance == null) {
-
 			instance = new UtenteAutenticato();
-
 		}
-
 		return instance;
 	}
 	
@@ -38,42 +32,29 @@ public class UtenteAutenticato extends Utente {
 		UtenteDao.getInstance().updateSchemaUtente(this);
 	}
 
-	public void registrazioneCredenziali() throws SQLException {
-
-		
+	public void registrazioneCredenziali() throws SQLException {		
 		UtenteDao.getInstance().insertSchemaUtente(this);
-
 	}
 
-	public void eliminaAccount() {
-		
+	public void eliminaAccount() {	
 		UtenteDao.getInstance().eliminaSchemaUtente(this);
 	}
 
 	public boolean ricercaUtente(String email) {
-
-		
 		return UtenteDao.getInstance().selectByEmail(email);
-
 	}
 	
 	// Relativi ai tornei
 	public boolean ricercaTorneo(String nometorneo) {
-
 		return TorneoDao.getInstance().ricercaTorneo(nometorneo);
-
 	}
 
 	public boolean ricercaIscritto(String nometorneo, String emailUtente) {
-
 		return TorneoDao.getInstance().ricercaIscritto(nometorneo, emailUtente);
-
 	}
 
 	public ArrayList<String> ricercaDatiTorneo(String nometorneo) {
-
 		return TorneoDao.getInstance().selectAllByTorneo(nometorneo);		
-
 	}
 	
 
@@ -83,16 +64,13 @@ public class UtenteAutenticato extends Utente {
 		try {
 			if (TorneoDao.getInstance().ricercaTorneo(nometorneo)) {
 				TorneoDao.getInstance().insertTorneo(nometorneo, nomecreatore, gioco, date, date_);
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 		}
 	}
 
 	public void iscrizioneTorneo(String emailutente, String nometorneo) { 
-
 		try {
 			if (TorneoDao.getInstance().ricercaCreatore(emailutente))   {
 				TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
@@ -103,30 +81,23 @@ public class UtenteAutenticato extends Utente {
 	}
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
-
 		try {
 			if (!(TorneoDao.getInstance().ricercaTorneo(nometorneo)))
 				TorneoDao.getInstance().deletePartecipante(emailutente);
 		}
-
 		catch (Exception e) {
 			e.printStackTrace();
-
 		}
-
 	}
 
 	public void eliminaTorneo(String nometorneo, String nomeutente) { 
-		
 		if (TorneoDao.getInstance().ricercaCreatore(nomeutente)) {
 			TorneoDao.getInstance().deleteTorneo(nometorneo);
 		}
 	}
 	
 	public ArrayList<String> selezionalistatorneobypartecipante(String f) {
-		
 		return TorneoDao.getInstance().selezionalistatorneobypartecipante(f);
-		
 	}
 	
 	// Relative ai preferiti
@@ -138,16 +109,19 @@ public class UtenteAutenticato extends Utente {
 		UtenteDao.getInstance().deletePreferiti(this, gioco);
 	}
 	
-	// Ricorda che manca la parte di query del DAO per questoOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOo
-	public ArrayList<GiochiEnum> selectPreferiti() {
-		return UtenteDao.getInstance().selectPreferiti(this);
+	// Equivale a un setter dei preferiti mz avviene esclusivamente attraverso il dao con info dal db
+	public void selectPreferiti() {
+		preferiti = UtenteDao.getInstance().selectPreferiti(this);
+	}
+	
+	public ArrayList<GiochiEnum> getPreferiti() {
+		return preferiti;
 	}
 	
 	public void clear() {
 		this.setUsername(null);
 		this.setEmail(null);
 		this.setPassword("".toCharArray()); 
-		
 	}
 
 }

@@ -1,6 +1,6 @@
 package Program;
 
-import java.util.ArrayList;
+import java.util.ArrayList;  
 
 
 import Autenticazionemodel.RegistrazioneModel;
@@ -30,6 +30,7 @@ import TorneoView.CreaTorneoView;
 import Utente.FactoryGestioneTorneo;
 import Utente.FactoryGestioneUtente;
 import Utente.Password;
+import Utente.UtenteAutenticato;
 
 public class Engine {
 
@@ -42,10 +43,10 @@ public class Engine {
 		
 		
 		//new BigFrameController(new BigFrameView(), new BigFrameModel());
-
+		
+		UtenteAutenticato.getInstance().setEmail("luca@luca.luca");
+		
 		new IndexController(new IndexModel(), new IndexView()); 
-		//Password p = new Password("D".toCharArray());
-		//System.out.println(p.getHashedPassword()+1);
 		
 	}
 

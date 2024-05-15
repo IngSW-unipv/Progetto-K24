@@ -332,41 +332,30 @@ public class UtenteDao implements IUtenteDao {
 
 	@Override
 	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f) {
-		return null;
+	    ArrayList<GiochiEnum> result = new ArrayList<GiochiEnum>();
+
+	    conn = DBconnection.startConnection(conn, schema);
+	    PreparedStatement st1;
+	    ResultSet rs1;
+
+	    try {
+	        String query = "SELECT gioco FROM preferenze WHERE emailUtente=?";
+	        st1 = conn.prepareStatement(query);
+	        st1.setString(1, f.getEmail());
+	        rs1 = st1.executeQuery(); // Non è necessario passare la query qui
+
+	        while (rs1.next()) {
+	            result.add(GiochiEnum.valueOf(rs1.getString("gioco")));
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    DBconnection.closeConnection(conn);
+	    return result;
 	}
-	
-	
-		/*ArrayList<String> result = new ArrayList<>();
 
-		conn=DBconnection.startConnection(conn,schema);
-		PreparedStatement st1;
-		ResultSet rs1;
-
-		try
-		{
-			String query="SELECT gioco FROM preferenze WHERE emailUtente=?";
-			st1 = conn.prepareStatement(query);
-			st1.setString(1, f.getEmail());
-			rs1=st1.executeQuery(query);
-
-			while(rs1.next())
-			{
-				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
-
-				
-				result.add(rs1.getString(1));
-				result.add(rs1.getString(2));
-				result.add(rs1.getString(3));
-				
-				
-				
-			}
-		}catch (Exception e){e.printStackTrace();}
-
-		DBconnection.closeConnection(conn);
-		return result;
-	}*/
-	}
+}
 
 
 	

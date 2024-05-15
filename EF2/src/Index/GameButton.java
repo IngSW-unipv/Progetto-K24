@@ -9,7 +9,7 @@ public class GameButton extends JButton {
 	public GameButton(GiochiEnum gioco) {
 		super(gioco.toString());
 		this.gioco = gioco;
-		
+		preferito = false;
 	}
 	
 	public GiochiEnum getGioco() {
@@ -27,4 +27,6 @@ public class GameButton extends JButton {
 	public void rimuoviPreferito() {
 		preferito = false;
 	}
+	
+	
 }

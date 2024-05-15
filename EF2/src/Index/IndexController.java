@@ -5,8 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPopupMenu;
 import javax.swing.SwingUtilities;
 
 import Autenticazionemodel.RegistrazioneModel;
@@ -142,21 +144,96 @@ public class IndexController {
 			} 
 		});
 		
-		
-		
 		for (GameButton b : view.getGameButtonList()) {
 			addMouseListenerGiochi(b);
 		}
 		
+		inizializzaBottoniPreferiti();
+		
+		inizializzaMenuPreferiti();
+		
+		// Relativi ai bottoni nel menu dei preferiti
+		view.getMinesweeperOption().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.minesweeperPlay();
+			} 
+		});
+		
+		view.getSnakeOption().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.snakePlay();
+			} 
+		});
+		
+		view.getTetrisOption().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.tetrisPlay();
+			} 
+		});
+		view.getSpaceInvadersOption().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.spaceInvadersPlay();
+			} 
+		});
+		view.getSolitarioOption().addActionListener(new ActionListener() {
+		    @Override
+		    public void actionPerformed(ActionEvent e) {
+		    	model.solitarioPlay();
+			} 
+		});
 		
 		view.getPreferitiButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//Si deve aprire fienstra coi preferiti direi attraverso UtenteDAO e un arraylist con is preferiti dell'utente
-				//Questo dopo va tolto e solo prova
+				System.out.println(model.getPreferitiFromDB());
+				// Per ogni bottone di opzione, controlla se il gioco è nei preferiti
+				//NOTA QUI SI PUO USARE getPreferiti e non getPreferitiFromDB SOLO SE TUTTE LE OPERAZIONI DI MODIFICA DEI PREFERITI SUBITO DOPO AVER AGGIORNATO
+				// IL DB CHIAMANO LA SELECT DELL'UTENTEAUTENTICATO PER AGGIORNARE ANCHE L'ARRAYLIST LOCALE CONTENENTE I PREFERITI
+//SPostato in InizializzaMenuPreferiti
+				// Dopo aver scelto solo i bottoni dei giochi, fa apparire le opzioni
+			    view.getMenuPreferiti().show(view.getPreferitiButton(), 0, view.getPreferitiButton().getHeight());
 			}
 		});
 		
+	}
+	
+	// Data la lista di bottoni ciasucno legato a un gioco, se sono presenti nella lista li setta come preferiti o meno
+	private void inizializzaBottoniPreferiti() {
+		model.getPreferitiFromDB();
+		for (GameButton g : view.getGameButtonList()) {
+			if (model.getPreferiti().contains(g.getGioco())) {
+				g.aggiungiPreferito();
+			}
+		}
+	}
+	
+	private void inizializzaMenuPreferiti() {
+		for (GameButton g : view.getMenuOptionList()) {
+			if (model.getPreferitiFromDB().contains(g.getGioco())) {
+				view.getMenuPreferiti().add(g);
+			}
+		}
+	}
+	
+	// Prende come ingresso il bottone princpiale del gioco (NON quello nel menu a tendina) che è appena stato
+	// messo preferito e cerca il bottone corrispondente fra quelli del menu a tendina per poi aggiungerlo 
+	private void addOptionToMenu(GameButton button) {
+		for (GameButton g : view.getMenuOptionList()) {
+        	if (g.getGioco() == button.getGioco()) {
+        		view.getMenuPreferiti().add(g);		                    	}
+        }	
+	}
+	
+	private void removeOptionFromMenu(GameButton button) {
+		for (GameButton g : view.getMenuOptionList()) {
+        	if (g.getGioco() == button.getGioco()) {
+        		view.getMenuPreferiti().remove(g);
+        	}
+        }
 	}
 	
 	private void addMouseListenerGiochi(GameButton button) {
@@ -165,7 +242,7 @@ public class IndexController {
 	        public void mouseClicked(MouseEvent e) {
 	            if (SwingUtilities.isRightMouseButton(e)) {
 	            	// A seconda che il gioco sia già nei preferiti o no
-	            	if (!button.isPreferito()) {
+	            	if (!model.getPreferitiFromDB().contains(button.getGioco())) { //Oppure è meglio usare metodo del bottone isPreferito
 	            		
 		                int scelta = JOptionPane.showConfirmDialog(
 		                        null,
@@ -176,9 +253,14 @@ public class IndexController {
 		                if (scelta == JOptionPane.YES_OPTION) {
 		                    // Esegui l'operazione desiderata
 		                    System.out.println("Operazione eseguita!");
-		                    button.aggiungiPreferito();
-		                    //Tutto da fare dentro il model con tanto di chiamata del DAO
+		                    //button.aggiungiPreferito();
 		                    model.insertPreferiti(button.getGioco());
+		                    addOptionToMenu(button);
+		                    
+		                    //Potrei chiamare il metodo del model che ritorna ArrayList dei Giochi ma solo per fargli conusltare unitariamente il DB
+		                    // in modo da poter usare nell'if che decide se gioco è gia o meno nei preferii il metodo che NON consulta il DB
+		                    // if (model.getPreferiti().contains(button.getGioco())) ...... model.insertPreferiti(button.getGioco); model.selectPreferiti();
+		                    // Stesso cosa giu
 		                }
 		                
 	            	} else {
@@ -191,9 +273,9 @@ public class IndexController {
 		                if (scelta == JOptionPane.YES_OPTION) {
 		                    // Esegui l'operazione desiderata
 		                    System.out.println("Operazione eseguita!");
-		                    button.rimuoviPreferito();
-		                    //Tutto da fare nel model
+		                    //button.rimuoviPreferito();
 		                    model.deletePreferiti(button.getGioco());
+		                    removeOptionFromMenu(button);
 	            	}
 	            	
 
