@@ -31,7 +31,7 @@ public class UtenteAutenticatoTest {
 		 UtenteAutenticato.getInstance().setPassword(passwrod);
 
 		try {
-			UtenteAutenticato.getInstance().registrazioneCredenziali(UtenteAutenticato.getInstance());
+			UtenteAutenticato.getInstance().registrazioneCredenziali();
 
 			assertTrue(UtenteAutenticato.getInstance().ricercaUtente(UtenteAutenticato.getInstance().getEmail()));
 		} catch (SQLException e) {
