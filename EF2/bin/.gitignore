@@ -2,10 +2,12 @@
 /.classpath
 /.gitignore
 /.project
-/Autenticazione/
+/Autenticazionecontroller/
 /Autenticazionemodel/
+/Autenticazioneview/
 /DataBase/
 /GestioneAccount/
+/GiochiPlaceholder/
 /Index/
 /Minesweeper/
 /Program/
@@ -17,3 +19,5 @@
 /TorneoModel/
 /TorneoView/
 /Utente/
+/module-info.class
+/Autenticazione/

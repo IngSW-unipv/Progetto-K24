@@ -5,6 +5,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -35,6 +37,9 @@ public class PartecipaTorneoView extends JFrame {
 	private JLabel erroreLabel = new JLabel();
 	private JPanel panelLayout = new JPanel(new BorderLayout());
 	private static final int BUTTON_SPACING = 15;
+    private List<Integer> arrayList;
+	private List<String> key;
+	
 
 	// inizio costruttore
 	public PartecipaTorneoView() {
@@ -160,5 +165,20 @@ public class PartecipaTorneoView extends JFrame {
 	public void setPartecipaTorneo(JButton partecipaTorneo) {
 		PartecipaTorneo = partecipaTorneo;
 	}
+	
+	public List<Integer> getArrayList() {
+		return arrayList;
+	}
 
+	public void setArrayList(List<Integer> arrayList) {
+		this.arrayList = arrayList;
+	}
+
+	public List<String> getKey() {
+		return key;
+	}
+
+	public void setKey(List<String> key) {
+		this.key = key;
+	}
 }

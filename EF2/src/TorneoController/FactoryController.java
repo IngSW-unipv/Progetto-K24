@@ -5,11 +5,11 @@ import java.io.FileInputStream;
 import java.lang.reflect.Constructor;
 import java.util.Properties;
 
-public class FactoryGame {
+public class FactoryController {
 
 	private IStrategyGame type;
 
-	public IStrategyGame getGameStrategy(String PROPERTYNAME) {
+	public IStrategyGame getGameStrategyController(String PROPERTYNAME) {
 
 		if (type == null) {
 
@@ -23,7 +23,8 @@ public class FactoryGame {
 				System.out.print(PROPERTYNAME);
 				p.load(ph);
 				
-				GameClassName = p.getProperty(PROPERTYNAME);
+				GameClassName = "TorneoController."+PROPERTYNAME.substring(0, PROPERTYNAME.length()-1) +"Strategy";
+						//p.getProperty(PROPERTYNAME); da togliere 
 
 				Constructor c = Class.forName(GameClassName).getConstructor();
 				type = (IStrategyGame) c.newInstance();

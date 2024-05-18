@@ -10,11 +10,9 @@ public class MinesweeperStrategy implements IStrategyGame {
 
 	private MinesweeperModel modelm;
 	private MinesweeperView view;
-	
+
 	public MinesweeperStrategy() {
 
-		
-		
 	}
 
 	@Override

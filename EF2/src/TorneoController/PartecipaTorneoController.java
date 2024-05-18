@@ -54,16 +54,16 @@ public class PartecipaTorneoController {
 					// DefaultTableModel modelclassifica = (DefaultTableModel)
 					// view.getTable().getModel();
 					System.out.print(view.getOptions()[0]);
-					List<Integer> arrayList = new ArrayList<Integer>(
-			        model.classificaTorneo(view.getOptions()[0]).values());
-					List<String> key = new ArrayList<String>(model.classificaTorneo(view.getOptions()[0]).keySet());
+					view.setArrayList( new ArrayList<Integer>(
+			        model.classificaTorneo(view.getOptions()[0]).values()));
+					view.setKey(new ArrayList<String>(model.classificaTorneo(view.getOptions()[0]).keySet()));
 					// modelclassifica.addRow();
-					System.out.print(arrayList);
+					System.out.print(view.getArrayList());
 					// modelclassifica.addRow();
-					view.getTable().setValueAt(arrayList.get(1), 0, 0);
-					view.getTable().setValueAt(key.get(1), 0, 1);
-					view.getTable().setValueAt(arrayList.get(0), 1, 0);
-					view.getTable().setValueAt(key.get(0), 1, 1);
+					view.getTable().setValueAt(view.getArrayList().get(1), 0, 0);
+					view.getTable().setValueAt(view.getKey().get(1), 0, 1);
+					view.getTable().setValueAt(view.getArrayList().get(0), 1, 0);
+					view.getTable().setValueAt(view.getKey().get(0), 1, 1);
 
 				}
 

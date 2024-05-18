@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import DataBase.TorneoDao;
-import TorneoController.FactoryGame;
+import TorneoController.FactoryController;
 import TorneoController.IStrategyGame;
 import TorneoController.MinesweeperStrategy;
 import Utente.UtenteAutenticato;
@@ -20,7 +20,7 @@ import Utente.UtenteAutenticato;
 public class TorneoModel {
 
 	private IStrategyGame strategy;
-	private FactoryGame factory;
+	private FactoryController factory;
 	
 	
 	public TorneoModel() {
@@ -31,8 +31,6 @@ public class TorneoModel {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-		
-		
 		
 		Date date1 = null;
 		try {
@@ -94,9 +92,10 @@ public class TorneoModel {
 		
 		System.out.print("Partecipa al Torneo"+  UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
 		
-        factory =new FactoryGame(); 
+        factory =new FactoryController(); 
         
-        strategy =factory.getGameStrategy(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
+        strategy =factory.getGameStrategyController(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
+        
         strategy.getGameController();
 		
 	}
