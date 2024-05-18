@@ -1,5 +1,6 @@
 package GestioneAccount;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 
 import javax.swing.JButton;
@@ -66,8 +67,12 @@ public class ModificaAccountView extends JFrame{
 		return passwordCheckBox.isSelected();
 	}
 	
-	public void setPasswordFieldsEchochar(char echoChar) {
-		passwordText.setEchoChar(echoChar);
+	public void setPasswordFieldsEchocharNull() {
+		passwordText.setEchoChar((char) 0);
+	}
+	
+	public void setPasswordFieldsEchocharPoint() {
+		passwordText.setEchoChar('•');
 	}
 
 	public JCheckBox getPasswordCheckBox() {
@@ -82,7 +87,12 @@ public class ModificaAccountView extends JFrame{
 	public JButton getIndietroButton() {
 		return indietroButton;
 	}
-
+	
+	public void displayErrore() {
+		erroreText.setForeground(Color.red);
+		erroreText.setText("Password errata");
+	}
+	
 	public JLabel getErroreText() {
 		return erroreText;
 	}

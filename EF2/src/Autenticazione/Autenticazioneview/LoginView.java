@@ -1,5 +1,6 @@
 package Autenticazioneview;
 
+import java.awt.Color; 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -108,8 +109,12 @@ public class LoginView extends JFrame {
 		return passwordsCheckBox.isSelected();
 	}
 
-	public void setPasswordFieldsEchochar(char echoChar) {
-		passwordText.setEchoChar(echoChar);
+	public void setPasswordFieldsEchocharNull() {
+		passwordText.setEchoChar((char) 0);
+	}
+	
+	public void setPasswordFieldsEchocharPoint() {
+		passwordText.setEchoChar('•');
 	}
 
 	public JButton getRegistratiButton() {
@@ -131,7 +136,21 @@ public class LoginView extends JFrame {
 	public JPasswordField getPasswordText() {
 		return passwordText;
 	}
+	
+	public void displayText(int i) {
+		if (i==0) {
+			erroreText.setForeground(Color.green);
+			erroreText.setText("ACCESSO CORRETTO"); 
+		} else if (i==1){
+			erroreText.setForeground(Color.red);
+			erroreText.setText("Password errata");
+		} else {
+			erroreText.setForeground(Color.orange);
+			erroreText.setText("Errore, riprova a registrarti");
+		}
 
+	}
+	
 	public void setErroreText(JLabel erroreText) {
 		this.erroreText = erroreText;
 	}

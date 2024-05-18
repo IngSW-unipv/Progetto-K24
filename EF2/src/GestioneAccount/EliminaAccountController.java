@@ -1,6 +1,5 @@
 package GestioneAccount;
 
-import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -33,9 +32,9 @@ public class EliminaAccountController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				if (view.isPasswordCheckBoxSelected()) {
-					view.setPasswordFieldsEchochar((char) 0);
+					view.setPasswordFieldsEchocharNull();
 				} else {
-					view.setPasswordFieldsEchochar('•');
+					view.setPasswordFieldsEchocharPoint();
 				}
 			}
 		});
@@ -64,8 +63,7 @@ public class EliminaAccountController {
     					model.istanziaBigFrame();
                          
     				} else {
-    					view.getErroreText().setForeground(Color.red); 
-    					view.getErroreText().setText("Password errata");
+    					view.displayErrore();
     				}
     			} catch (IOException e1) {
     				view.getErroreText().setText("Errore");

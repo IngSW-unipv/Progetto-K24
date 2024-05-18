@@ -148,10 +148,8 @@ public class IndexController {
 			addMouseListenerGiochi(b);
 		}
 		
-		inizializzaBottoniPreferiti();
-		
-		inizializzaMenuPreferiti();
-		
+		inizializzaPreferiti();
+				
 		// Relativi ai bottoni nel menu dei preferiti
 		view.getMinesweeperOption().addActionListener(new ActionListener() {
 		    @Override
@@ -189,7 +187,7 @@ public class IndexController {
 		view.getPreferitiButton().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(model.getPreferitiFromDB());
+				model.setPreferiti();
 				// Per ogni bottone di opzione, controlla se il gioco è nei preferiti
 				//NOTA QUI SI PUO USARE getPreferiti e non getPreferitiFromDB SOLO SE TUTTE LE OPERAZIONI DI MODIFICA DEI PREFERITI SUBITO DOPO AVER AGGIORNATO
 				// IL DB CHIAMANO LA SELECT DELL'UTENTEAUTENTICATO PER AGGIORNARE ANCHE L'ARRAYLIST LOCALE CONTENENTE I PREFERITI
@@ -201,19 +199,19 @@ public class IndexController {
 		
 	}
 	
-	// Data la lista di bottoni ciasucno legato a un gioco, se sono presenti nella lista li setta come preferiti o meno
-	private void inizializzaBottoniPreferiti() {
-		model.getPreferitiFromDB();
-		for (GameButton g : view.getGameButtonList()) {
-			if (model.getPreferiti().contains(g.getGioco())) {
-				g.aggiungiPreferito();
-			}
-		}
-	}
-	
-	private void inizializzaMenuPreferiti() {
+	/* Al posto del metodo sotto si può fare nel main questo ciclo in modo da non dover usare l'informaizone che i bottoni sono GameButton
+	 * for (int i=0; i<view.getMenuOptionList(); i++) {
+	 * 		if (model.getPreferiti().contains(view.getMenuOptionList(i).getGioco) { //getGioco qui è un po'critico, forse view ha metodo che restituisce un gioco che chima agetGioco?
+	 * 			view.getMenuPreferiti().add(view.getMenuOptionList(i);
+	 * 		}
+	 * }
+	 * 
+	 */
+	// Chiama (dal DB) i preferiti, quindi inizializza il menu popup
+	private void inizializzaPreferiti() {
+		model.setPreferiti();
 		for (GameButton g : view.getMenuOptionList()) {
-			if (model.getPreferitiFromDB().contains(g.getGioco())) {
+			if (model.getPreferiti().contains(g.getGioco())) {
 				view.getMenuPreferiti().add(g);
 			}
 		}
@@ -242,7 +240,7 @@ public class IndexController {
 	        public void mouseClicked(MouseEvent e) {
 	            if (SwingUtilities.isRightMouseButton(e)) {
 	            	// A seconda che il gioco sia già nei preferiti o no
-	            	if (!model.getPreferitiFromDB().contains(button.getGioco())) { //Oppure è meglio usare metodo del bottone isPreferito
+	            	if (!model.getPreferiti().contains(button.getGioco())) { //Oppure è meglio usare metodo del bottone isPreferito
 	            		
 		                int scelta = JOptionPane.showConfirmDialog(
 		                        null,
@@ -251,16 +249,15 @@ public class IndexController {
 		                        JOptionPane.YES_NO_OPTION
 		                );
 		                if (scelta == JOptionPane.YES_OPTION) {
-		                    // Esegui l'operazione desiderata
 		                    System.out.println("Operazione eseguita!");
 		                    //button.aggiungiPreferito();
+		                    // Aggiunta al db
 		                    model.insertPreferiti(button.getGioco());
+		                    // Aggiornamento lista preferiti utente
+		                    model.setPreferiti();
+		                    // AGgiunta al menu preferiti
 		                    addOptionToMenu(button);
-		                    
-		                    //Potrei chiamare il metodo del model che ritorna ArrayList dei Giochi ma solo per fargli conusltare unitariamente il DB
-		                    // in modo da poter usare nell'if che decide se gioco è gia o meno nei preferii il metodo che NON consulta il DB
-		                    // if (model.getPreferiti().contains(button.getGioco())) ...... model.insertPreferiti(button.getGioco); model.selectPreferiti();
-		                    // Stesso cosa giu
+		                   
 		                }
 		                
 	            	} else {
@@ -271,10 +268,13 @@ public class IndexController {
 		                        JOptionPane.YES_NO_OPTION
 		                );
 		                if (scelta == JOptionPane.YES_OPTION) {
-		                    // Esegui l'operazione desiderata
 		                    System.out.println("Operazione eseguita!");
 		                    //button.rimuoviPreferito();
+		                    // Rimozione dal db
 		                    model.deletePreferiti(button.getGioco());
+		                    // Aggiornamento lista preferiti utente
+		                    model.setPreferiti();
+		                    // Rimozione dal menù preferiti
 		                    removeOptionFromMenu(button);
 	            	}
 	            	

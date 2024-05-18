@@ -1,6 +1,5 @@
 package Autenticazionecontroller;
 
-import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -36,9 +35,9 @@ public class LoginController  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (view.isPasswordsCheckBoxSelected()) {
-                    view.setPasswordFieldsEchochar((char) 0);
+                    view.setPasswordFieldsEchocharNull();
                 } else {
-                    view.setPasswordFieldsEchochar('•');
+                    view.setPasswordFieldsEchocharPoint();
                 }
             }
         });
@@ -66,18 +65,16 @@ public class LoginController  {
     					System.out.println(UtenteAutenticato.getInstance().getHashedPassword());
     					System.out.println(model.verificaCredenziali( view.getUsernameText().getText(),password));
     					
-    					view.getErroreText().setForeground(Color.green);
-    					view.getErroreText().setText("ACCESSO CORRETTO"); 
+    					view.displayText(0);
     					model.impostaUtente(view.getUsernameText().getText(),view.getUsernameText().getText(),view.getPasswordText().getPassword().toString());
                         model.istanziaIndex();
                         view.dispose();                        
                         
     				} else {
-    					view.getErroreText().setForeground(Color.red);
-    					view.getErroreText().setText("EMAIL O PASSWORD ERRATI");
+    					view.displayText(1);
     				}
     			} catch (IOException e1) {
-    				view.getErroreText().setText("Errore, riprova a registrarti");
+    				view.displayText(2);
     				e1.printStackTrace();
     			}  
     			
