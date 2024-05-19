@@ -9,6 +9,10 @@ import java.awt.event.MouseEvent;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.TimerTask;
+
+import Index.IndexModel;
+import Index.IndexView;
+
 import java.util.Timer;
 
 import Minesweeper.MinesweeperModel.MinesweeperModel;
@@ -59,6 +63,33 @@ public class MinesweeperController {
 		model.setMines(view.board, mineList, view.tile);// view.getMineList());
 
 	}
+	
+	 public static void addListenersindex(IndexModel m,IndexView view) {
+			
+			
+			ActionListener mines=new ActionListener() {@Override
+				
+			public void actionPerformed(ActionEvent e) {
+				
+				manageAction();
+				
+			}
+			
+			private void manageAction() {
+				
+				
+				m.minesweeperPlay();
+				
+				
+			}
+			
+			};
+			
+			view.getMinesweeperButton().addActionListener(mines);
+			
+		}
+	
+	
 
 	private void initcomponents() {
 

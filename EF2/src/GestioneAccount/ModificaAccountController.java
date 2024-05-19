@@ -6,6 +6,8 @@ import java.io.IOException;
 
 import Autenticazionemodel.GestioneAccountModel;
 import GestioneAccount.ModificaAccountView;
+import Index.IndexModel;
+import Index.IndexView;
 import Utente.UtenteAutenticato;
 
 public class ModificaAccountController {
@@ -16,6 +18,31 @@ public class ModificaAccountController {
 		this.model = model;
 		this.view = view;
 		addListeners();
+	}
+	
+    public static void addListenersindex(IndexModel m,IndexView view) {
+		
+		
+		ActionListener modificaaccount=new ActionListener() {@Override
+			
+		public void actionPerformed(ActionEvent e) {
+			
+			manageAction();
+			
+		}
+		
+		private void manageAction() {
+			
+			
+			
+			m.modificaAccount();
+			
+		}
+		
+		};
+		
+		view.getModificaButton().addActionListener(modificaaccount);
+		
 	}
 	
 	private void addListeners() {

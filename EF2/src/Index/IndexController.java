@@ -15,7 +15,7 @@ import Autenticazionemodel.RegistrazioneModel;
 import Autenticazioneview.BigFrameController;
 import Autenticazioneview.BigFrameModel;
 import Autenticazioneview.BigFrameView;
-import Autenticazioneview.LoginView;
+import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Autenticazionemodel.GestioneAccountModel;
@@ -34,7 +34,7 @@ public class IndexController {
 	private Autenticazionemodel.RegistrazioneModel registrazioneModel;
 	private Autenticazionemodel.RegistrazioneModel registrazioneView;
 	private GestioneAccountModel loginModel;
-	private Autenticazioneview.LoginView loginView;
+	private LoginView loginView;
 	
 	public IndexController(IndexModel model,IndexView view) {
 		

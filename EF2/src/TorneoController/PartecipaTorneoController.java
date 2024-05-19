@@ -11,6 +11,8 @@ import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
 
 import DataBase.TorneoDao;
+import Index.IndexModel;
+import Index.IndexView;
 import TorneoModel.TorneoModel;
 import TorneoView.IscrizioneTorneoView;
 import TorneoView.PartecipaTorneoView;
@@ -30,6 +32,30 @@ public class PartecipaTorneoController {
 
 	}
 
+	 public static void addListenersindex(IndexModel m,IndexView view) {
+			
+			
+			ActionListener partecipatorneo=new ActionListener() {@Override
+				
+			public void actionPerformed(ActionEvent e) {
+				
+				manageAction();
+				
+			}
+			
+			private void manageAction() {
+				
+				
+				m.partecipaTorneocontroller();
+				
+				
+			}
+			
+			};
+			
+			view.getPartecipaTorneo().addActionListener(partecipatorneo);
+			
+		}
 	private void inserisciTornei() {
 
 		view.getPanel().remove(view.getTorneo());

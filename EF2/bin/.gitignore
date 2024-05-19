@@ -2,6 +2,7 @@
 /.classpath
 /.gitignore
 /.project
+/Autenticazione/
 /Autenticazionecontroller/
 /Autenticazionemodel/
 /Autenticazioneview/
@@ -20,4 +21,3 @@
 /TorneoView/
 /Utente/
 /module-info.class
-/Autenticazione/

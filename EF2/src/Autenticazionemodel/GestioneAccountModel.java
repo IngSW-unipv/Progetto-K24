@@ -10,6 +10,7 @@ import Autenticazionemodel.RegistrazioneModel;
 import Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Index.IndexController;
+import Index.IndexFacadeController;
 import Index.IndexModel;
 import Index.IndexView;
 
@@ -38,8 +39,8 @@ public class GestioneAccountModel {
 
 	public void istanziaIndex() {
 
-	  new IndexController(new IndexModel(),new IndexView());
-
+	  //new IndexController(new IndexModel(),new IndexView());
+       new IndexFacadeController(new IndexModel(),new IndexView());
 	}
 	
 	public void istanziaBigFrame() {

@@ -2,8 +2,7 @@ package Autenticazioneview;
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
-
-import Autenticazionecontroller.LoginController;
+import Autenticazione.Autenticazioneview.*;
 import Autenticazionecontroller.RegistrazioneController;
 import Autenticazionemodel.RegistrazioneModel;
 import Autenticazionemodel.GestioneAccountModel;

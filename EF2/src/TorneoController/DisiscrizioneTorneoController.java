@@ -3,6 +3,8 @@ package TorneoController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Index.IndexModel;
+import Index.IndexView;
 import TorneoModel.TorneoModel;
 
 import TorneoView.DisiscrizioneTorneoView;
@@ -22,6 +24,30 @@ public class DisiscrizioneTorneoController {
 		addListeners();
 		
 	}
+	 public static void addListenersindex(IndexModel m,IndexView view) {
+			
+			
+			ActionListener disiscrivititorneo=new ActionListener() {@Override
+				
+			public void actionPerformed(ActionEvent e) {
+				
+				manageAction();
+				
+			}
+			
+			private void manageAction() {
+				
+				
+				m.disiscrivitiTorneocontroller();
+				
+				
+			}
+			
+			};
+			
+			view.getDisiscrivitiTorneo().addActionListener(disiscrivititorneo);
+			
+		}
 
 	private void addListeners() {
 		view.getDisiscrizioneTorneo().addActionListener(new ActionListener() {

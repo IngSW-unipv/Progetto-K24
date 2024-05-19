@@ -42,11 +42,11 @@ public class Engine {
 		FactoryGestioneUtente.getInstance().creaUtente();
 		
 		
-		//new BigFrameController(new BigFrameView(), new BigFrameModel());
+		new BigFrameController(new BigFrameView(), new BigFrameModel());
 		
 		UtenteAutenticato.getInstance().setEmail("luca@luca.luca");
 		
-		new IndexController(new IndexModel(), new IndexView()); 
+		//new IndexController(new IndexModel(), new IndexView()); 
 		
 	}
 

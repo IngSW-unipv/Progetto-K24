@@ -8,6 +8,7 @@ import Autenticazioneview.BigFrameModel;
 import Autenticazioneview.BigFrameView;
 import GestioneAccount.EliminaAccountController;
 import GestioneAccount.EliminaAccountView;
+import GestioneAccount.ModificaAccountController;
 import GestioneAccount.ModificaAccountView;
 import GiochiPlaceholder.*;
 import Minesweeper.MinesweeperController.MinesweeperController;
@@ -31,121 +32,108 @@ import Utente.UtenteAutenticato;
 
 public class IndexModel {
 
-	 private CreaTorneoController creatorneocontroller;
-	 private DisiscrizioneTorneoController disicrizionetorneocontroller;
-	 private EliminaTorneoController eliminatorneocontroller;
-	 private IscrizioneTorneoController iscrizionetorneocontroller;
-	 private EliminaTorneoView eliminaview;
-	 private DisiscrizioneTorneoView disiscrizione;
-	 private IscrizioneTorneoView iscrizioneview;
-	 private CreaTorneoView creatorneoview;
-	 private TorneoModel model=new TorneoModel();
-	 private PartecipaTorneoController partecipatorneoc;
-	 private PartecipaTorneoView partecipatorneoview;
-	 private MinesweeperModel modelm;
-	 private MinesweeperView view;
-	 
-	 // Relativi alla gestione account
-	 public void modificaAccount() {
-	    	GestioneAccount.ModificaAccountController n = new GestioneAccount.ModificaAccountController(new GestioneAccountModel(),new ModificaAccountView());
-	 }
-	 
-	 public void eliminaAccount(IndexView lastView) {
-			new EliminaAccountController(new GestioneAccountModel(),new EliminaAccountView(), lastView);		
-	 }
-	 
-	 // Relativi ai tornei
-	 public void eliminatorneoController() {
-		eliminaview=new EliminaTorneoView();
-		eliminatorneocontroller=new EliminaTorneoController(eliminaview,model);
-		
-	 }
+	private TorneoModel model = new TorneoModel();
 
-	 public void disiscrivitiTorneocontroller() {
-		disiscrizione=new DisiscrizioneTorneoView();
-        disicrizionetorneocontroller=new DisiscrizioneTorneoController(disiscrizione,model);
-	 }
+	// Relativi alla gestione account
+	public void modificaAccount() {
+		new ModificaAccountController(new GestioneAccountModel(), new ModificaAccountView());
+	}
 
-	 public void iscrivitiTorneocontroller() {
-		iscrizioneview=new IscrizioneTorneoView();
-        iscrizionetorneocontroller=new IscrizioneTorneoController(iscrizioneview,model);
-	 }
+	public void eliminaAccount(IndexView lastView) {
+		new EliminaAccountController(new GestioneAccountModel(), new EliminaAccountView(), lastView);
+	}
 
-	 public void creaTorneocontroller() {
-		creatorneoview=new CreaTorneoView();
-		creatorneocontroller=new CreaTorneoController(creatorneoview,model);
-	 }
+	// Relativi ai tornei
+	public void eliminatorneoController() {
 
-	 public void partecipaTorneocontroller() {
-		partecipatorneoview = new PartecipaTorneoView();
-		partecipatorneoc = new PartecipaTorneoController(partecipatorneoview, model);
-	 }
-	 
-	 // Relativi ai giochi
-	 public void minesweeperPlay() {
-		modelm=new MinesweeperModel();
-		view=new MinesweeperView();
-		MinesweeperController c=new MinesweeperController(modelm ,view );
-	 }
-	
-	 public void snakePlay() {
+		new EliminaTorneoController(new EliminaTorneoView(), model);
+
+	}
+
+	public void disiscrivitiTorneocontroller() {
+		new DisiscrizioneTorneoController(new DisiscrizioneTorneoView(), model);
+	}
+
+	public void iscrivitiTorneocontroller() {
+
+		new IscrizioneTorneoController(new IscrizioneTorneoView(), model);
+	}
+
+	public void creaTorneocontroller() {
+
+		new CreaTorneoController(new CreaTorneoView(), model);
+	}
+
+	public void partecipaTorneocontroller() {
+
+		new PartecipaTorneoController(new PartecipaTorneoView(), model);
+	}
+
+	// Relativi ai giochi
+	public void minesweeperPlay() {
+
+		new MinesweeperController(new MinesweeperModel(), new MinesweeperView());
+	}
+
+	public void snakePlay() {
 		SnakeGame model = new SnakeGame();
 		SnakeView view = new SnakeView(model);
-		  new SnakeController();
-	 }
-	
-	 //Serie di metodi placeholder
-	 public void spaceInvadersPlay() {
-		new SpaceInvadersPlaceholder();
-	 }
-	
-	 public void tetrisPlay() {
-		new TetrisPlaceholder();
-	 }
-	
-	 public void solitarioPlay() {
-		new SolitarioPlaceholder();
-	 }
-	
-	 // Relativi alle preferenze
-	 // Mancano alcune cose erronamente messe nel controller
-	 public void insertPreferiti(GiochiEnum gioco) {
-		 UtenteAutenticato.getInstance().insertPreferiti(gioco);
-	 }
-	 
-	 public void deletePreferiti(GiochiEnum gioco) {
-		 UtenteAutenticato.getInstance().deletePreferiti(gioco);
-	 }
-	 
-	 // Chiamato quando serve aggiornare o inizializzare l'elenco
-	 public ArrayList<GiochiEnum> getPreferitiFromDB() {
-		 // UtAut legge dal db i preferiti
-		 UtenteAutenticato.getInstance().selectPreferiti();
-		 return UtenteAutenticato.getInstance().getPreferiti();
-	 }
-	 
-	 // Chiamato solo al momento dell'inizializzazione dei GameButton in modo da non dover continuare a 
-	 // leggere dal db ad ogni iterazione
-	 public ArrayList<GiochiEnum> getPreferiti() {
-		 return UtenteAutenticato.getInstance().getPreferiti();
-	 }
-	 
-	 // A partire dai dati di UtenteAutenticato (che comunica con db chiedendo la lista di preferti attraverso dao)
-	 // possiamo impostare nell'interfaccia grafica i preferiti
-	 // Lista di UtenteAut è diversa da quella di bottoni della view. Il set è riferito a questi, non utente
-	 public void setPreferiti() {
-		 UtenteAutenticato.getInstance().selectPreferiti();
-	 }
-	 
-	 // Altro
-	public void createBigFrame() {
-		new BigFrameController(new BigFrameView(), new BigFrameModel());		
+		new SnakeController();
 	}
-	
-	 public void clear() {
+
+	// Serie di metodi placeholder
+	public void spaceInvadersPlay() {
+		new SpaceInvadersPlaceholder();
+	}
+
+	public void tetrisPlay() {
+		new TetrisPlaceholder();
+	}
+
+	public void solitarioPlay() {
+		new SolitarioPlaceholder();
+	}
+
+	// Relativi alle preferenze
+	// Mancano alcune cose erronamente messe nel controller
+	public void insertPreferiti(GiochiEnum gioco) {
+		UtenteAutenticato.getInstance().insertPreferiti(gioco);
+	}
+
+	public void deletePreferiti(GiochiEnum gioco) {
+		UtenteAutenticato.getInstance().deletePreferiti(gioco);
+	}
+
+	// Chiamato quando serve aggiornare o inizializzare l'elenco
+	public ArrayList<GiochiEnum> getPreferitiFromDB() {
+		// UtAut legge dal db i preferiti
+		UtenteAutenticato.getInstance().selectPreferiti();
+		return UtenteAutenticato.getInstance().getPreferiti();
+	}
+
+	// Chiamato solo al momento dell'inizializzazione dei GameButton in modo da non
+	// dover continuare a
+	// leggere dal db ad ogni iterazione
+	public ArrayList<GiochiEnum> getPreferiti() {
+		return UtenteAutenticato.getInstance().getPreferiti();
+	}
+
+	// A partire dai dati di UtenteAutenticato (che comunica con db chiedendo la
+	// lista di preferti attraverso dao)
+	// possiamo impostare nell'interfaccia grafica i preferiti
+	// Lista di UtenteAut è diversa da quella di bottoni della view. Il set è
+	// riferito a questi, non utente
+	public void setPreferiti() {
+		UtenteAutenticato.getInstance().selectPreferiti();
+	}
+
+	// Altro
+	public void createBigFrame() {
+		new BigFrameController(new BigFrameView(), new BigFrameModel());
+	}
+
+	public void clear() {
 		UtenteAutenticato.getInstance().clear();
-	 }
-
-
+	}
 
 }

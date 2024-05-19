@@ -7,6 +7,7 @@ import java.io.IOException;
 import Autenticazioneview.BigFrameController;
 import Autenticazioneview.BigFrameModel;
 import Autenticazioneview.BigFrameView;
+import Index.IndexModel;
 import Index.IndexView;
 import Autenticazionemodel.GestioneAccountModel;
 import Utente.UtenteAutenticato;
@@ -27,6 +28,31 @@ public class EliminaAccountController {
 		addListeners();
 	}
 
+	public static void addListenersindex(IndexModel m,IndexView view) {
+		
+		
+		ActionListener eliminaccount=new ActionListener() {@Override
+			
+		public void actionPerformed(ActionEvent e) {
+			
+			manageAction();
+			
+		}
+		
+		private void manageAction() {
+			
+			
+			m.eliminaAccount(view);
+			
+			
+		}
+		
+		};
+		
+		view.getEliminaButton().addActionListener(eliminaccount);
+		
+	};
+	
 	private void addListeners() {
 		view.getPasswordCheckBox().addActionListener(new ActionListener() {
 			@Override

@@ -10,7 +10,8 @@ import java.util.function.Supplier;
 
 
 import Autenticazionemodel.RegistrazioneModel;
-import Autenticazioneview.LoginView;
+import Autenticazione.Autenticazionecontroller.LoginController;
+import Autenticazione.Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import DataBase.UtenteDao;
@@ -44,7 +45,7 @@ public class RegistrazioneController {
 			public void actionPerformed(ActionEvent e) {
 				view.dispose();
 				
-				new LoginController(new GestioneAccountModel(),new Autenticazioneview.LoginView());
+				new LoginController(new GestioneAccountModel(),new LoginView());
 			}
 		});
 

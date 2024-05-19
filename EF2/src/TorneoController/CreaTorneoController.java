@@ -9,9 +9,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import Autenticazionecontroller.LoginController;
-
 import DataBase.TorneoDao;
+import Index.IndexModel;
+import Index.IndexView;
 import TorneoModel.TorneoModel;
 import TorneoView.CreaTorneoView;
 import Utente.UtenteAutenticato;
@@ -28,7 +28,30 @@ public class CreaTorneoController {
 		this.model = model;
 		addListeners(); 
 	}
-
+	 public static void addListenersindex(IndexModel m,IndexView view) {
+			
+			
+			ActionListener creatorneo=new ActionListener() {@Override
+				
+			public void actionPerformed(ActionEvent e) {
+				
+				manageAction();
+				
+			}
+			
+			private void manageAction() {
+				
+				
+				m.creaTorneocontroller();
+				
+				
+			}
+			
+			};
+			
+			view.getCreaTorneo().addActionListener(creatorneo);
+			
+		}
 	private void addListeners() {
 		view.getCreaTorneo().addActionListener(new ActionListener() {
 			@Override

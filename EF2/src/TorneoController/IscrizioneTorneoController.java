@@ -6,6 +6,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import Index.IndexModel;
+import Index.IndexView;
 import TorneoModel.TorneoModel;
 import TorneoView.IscrizioneTorneoView;
 import Utente.UtenteAutenticato;
@@ -21,6 +23,31 @@ public class IscrizioneTorneoController {
 		this.model=model;
 		addListeners();
 	}
+	
+	 public static void addListenersindex(IndexModel m,IndexView view) {
+			
+			
+			ActionListener Iscrizionetorneo=new ActionListener() {@Override
+				
+			public void actionPerformed(ActionEvent e) {
+				
+				manageAction();
+				
+			}
+			
+			private void manageAction() {
+				
+				
+				
+				m.iscrivitiTorneocontroller();
+				
+			}
+			
+			};
+			
+			view.getIscrivitiTorneo().addActionListener(Iscrizionetorneo);
+			
+		}
 	
 	private void addListeners() {
 		view.getIscrivitiTorneo().addActionListener(new ActionListener() {
