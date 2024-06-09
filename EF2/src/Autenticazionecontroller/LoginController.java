@@ -1,12 +1,12 @@
-package Autenticazione.Autenticazionecontroller;
+package Autenticazionecontroller;
 
-import java.awt.event.ActionEvent;
+import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
 
 import Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import Index.IndexController;

@@ -16,7 +16,7 @@ import javax.swing.Timer;
 import Index.GiochiEnum;
 
 public class GiocoPlaceholder extends JFrame {
-	private final int MILLI = 1500;
+	private final int MILLI = 1000;
 	private JPanel panel;
 	private JLabel label;
 	private JPanel namePanel;

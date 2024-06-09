@@ -1,6 +1,5 @@
 package Autenticazionecontroller;
 
-import java.awt.Color; 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -10,13 +9,13 @@ import java.util.function.Supplier;
 
 
 import Autenticazionemodel.RegistrazioneModel;
-import Autenticazione.Autenticazionecontroller.LoginController;
-import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazionecontroller.LoginController;
+import Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import Autenticazionemodel.GestioneAccountModel;
 import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
-/*
+/* 
  * RegistrazioneController è la classe che completa, insieme a RegistrazioneModel e RegistrazioneView,
  * il caso d'uso del login,seguendo il pattern MVC
  */
@@ -96,17 +95,14 @@ public class RegistrazioneController {
 							view.getErroreLabel().setText("Errore nella registrazione, riprova");
 							e1.printStackTrace();
 						}
-						view.getErroreLabel().setForeground(Color.green);
-						view.getErroreLabel().setText("REGISTRAZIONE CORRETTA");
+		        		view.displayText(0);
 
 					} else {
-						view.getErroreLabel().setForeground(Color.red);
-						view.getErroreLabel().setText("Email già esistente.");
+						view.displayText(1);
 					}
 		        }
 		        else {
-		        	view.getErroreLabel().setForeground(Color.RED);
-			        view.getErroreLabel().setText(errore);
+		        	view.displayText(2);
 		        }
 			}
 		});

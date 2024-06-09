@@ -15,7 +15,7 @@ import Autenticazionemodel.RegistrazioneModel;
 import Autenticazioneview.BigFrameController;
 import Autenticazioneview.BigFrameModel;
 import Autenticazioneview.BigFrameView;
-import Autenticazione.Autenticazioneview.LoginView;
+import Autenticazioneview.LoginView;
 import Autenticazioneview.RegistrazioneView;
 import DataBase.UtenteDao;
 import Autenticazionemodel.GestioneAccountModel;
@@ -240,8 +240,7 @@ public class IndexController {
 	        public void mouseClicked(MouseEvent e) {
 	            if (SwingUtilities.isRightMouseButton(e)) {
 	            	// A seconda che il gioco sia già nei preferiti o no
-	            	if (!model.getPreferiti().contains(button.getGioco())) { //Oppure è meglio usare metodo del bottone isPreferito
-	            		
+	            	if (!model.getPreferiti().contains(button.getGioco())) { 
 		                int scelta = JOptionPane.showConfirmDialog(
 		                        null,
 		                        "Vuoi aggiungere questo gioco ai preferiti?",

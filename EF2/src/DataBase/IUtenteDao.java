@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Index.GiochiEnum;
+import Messaggi.Messaggio;
 import Utente.UtenteAutenticato;
 
 public interface IUtenteDao {
@@ -15,5 +16,7 @@ public interface IUtenteDao {
 	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco); ////CHE ALTRO PARAMETRO
 	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco); ////CHE ALTRO PARAMETRO
 	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f); ///NON STRINGHE
+	public boolean insertMessaggio(UtenteAutenticato f, Messaggio m);
+	public ArrayList<Messaggio> selectMessaggio(UtenteAutenticato f);
 
 }

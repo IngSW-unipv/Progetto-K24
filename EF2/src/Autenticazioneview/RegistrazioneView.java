@@ -1,5 +1,6 @@
 package Autenticazioneview;
 
+import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -150,7 +151,10 @@ public class RegistrazioneView extends JFrame {
 
 		setVisible(true);
 	}
-
+	
+	// per cambiare colori delle label
+	
+	
 	// getters and setters
 	public JTextField getUsernameText() {
 		return usernameText;
@@ -203,5 +207,24 @@ public class RegistrazioneView extends JFrame {
 
 	public JButton getAccediButton() {
 		return accediButton;
+	}
+
+	public void displayText(int i) {
+		if (i==0) {
+			erroreLabel.setForeground(Color.green);
+			erroreLabel.setText("REGISTRAZIONE CORRETTA");
+		} else if (i==1) {
+			erroreLabel.setForeground(Color.red);
+			erroreLabel.setText("Email già esistente.");
+		} else {
+        	erroreLabel.setForeground(Color.RED);
+	        erroreLabel.setText("Errore");
+	        /* Prima era nel controller come
+        	view.getErroreLabel().setForeground(Color.RED);
+	        view.getErroreLabel().setText(errore);
+	        Sistemare RegistrazioneController 
+	        */ 
+		}
+		
 	}
 }

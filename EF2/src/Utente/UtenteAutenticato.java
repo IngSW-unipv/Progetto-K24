@@ -109,7 +109,7 @@ public class UtenteAutenticato extends Utente {
 		UtenteDao.getInstance().deletePreferiti(this, gioco);
 	}
 	
-	// Equivale a un setter dei preferiti mz avviene esclusivamente attraverso il dao con info dal db
+	// Equivale a un setter dei preferiti ma avviene esclusivamente attraverso il dao con info dal db
 	public void selectPreferiti() {
 		preferiti = UtenteDao.getInstance().selectPreferiti(this);
 	}

@@ -1,4 +1,4 @@
-package Autenticazione.Autenticazioneview;
+package Autenticazioneview;
 
 import java.awt.Color; 
 import java.awt.GridBagConstraints;

@@ -13,16 +13,16 @@ public class FactoryController {
 
 		if (type == null) {
 
-			Properties p = new Properties(System.getProperties());
+			//Properties p = new Properties(System.getProperties());
 			String GameClassName;
 
 			try {
-				File file = new File("properties/Strategy.txt");
+				/*File file = new File("properties/Strategy.txt");
 				FileInputStream ph = new FileInputStream(file);
 				PROPERTYNAME=PROPERTYNAME.replaceAll("\\s","");
 				System.out.print(PROPERTYNAME);
 				p.load(ph);
-				
+				*/
 				GameClassName = "TorneoController."+PROPERTYNAME.substring(0, PROPERTYNAME.length()-1) +"Strategy";
 						//p.getProperty(PROPERTYNAME); da togliere 
 
