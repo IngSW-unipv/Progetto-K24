@@ -11,6 +11,7 @@ public class LogoutController {
 
 	}
 
+	
 	public static void addListenersindex(IndexModel m, IndexView view) {
 
 		ActionListener loguot = new ActionListener() {
