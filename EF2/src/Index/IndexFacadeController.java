@@ -6,7 +6,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import Autenticazioneview.LogoutController;
+
+import Autenticazionecontroller.LogoutController;
 import GestioneAccount.EliminaAccountController;
 import GestioneAccount.ModificaAccountController;
 import GiochiPlaceholder.OptionController;

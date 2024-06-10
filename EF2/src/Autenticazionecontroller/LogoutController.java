@@ -1,4 +1,4 @@
-package Autenticazioneview;
+package Autenticazionecontroller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

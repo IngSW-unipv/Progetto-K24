@@ -11,6 +11,9 @@ public class SnakeStrategy implements IStrategyGame{
 	public Object getGameController() {
 		// TODO Auto-generated method stub
 
+		
+		//gorse da mettere nello snake controller idrettamente 
+		
 		SnakeGame model = new SnakeGame();
 		SnakeView view = new SnakeView(model);
 

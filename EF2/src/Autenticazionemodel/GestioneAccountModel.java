@@ -1,10 +1,9 @@
 package Autenticazionemodel;
 
-import java.io.IOException; 
+import java.io.IOException;
 
-import Autenticazioneview.BigFrameController;
-import Autenticazioneview.BigFrameModel;
 import Autenticazioneview.BigFrameView;
+import Autenticazionecontroller.BigFrameController;
 import Autenticazionecontroller.RegistrazioneController;
 import Autenticazionemodel.RegistrazioneModel;
 import Autenticazioneview.RegistrazioneView;

@@ -3,18 +3,10 @@ package TorneoController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Vector;
-
 import javax.swing.JComboBox;
-import javax.swing.table.DefaultTableModel;
-
-import DataBase.TorneoDao;
 import Index.IndexModel;
 import Index.IndexView;
 import TorneoModel.TorneoModel;
-import TorneoView.IscrizioneTorneoView;
 import TorneoView.PartecipaTorneoView;
 import Utente.UtenteAutenticato;
 

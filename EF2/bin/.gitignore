@@ -1,7 +1,4 @@
 /bin/
-/.classpath
-/.gitignore
-/.project
 /Autenticazione/
 /Autenticazionecontroller/
 /Autenticazionemodel/
@@ -21,3 +18,5 @@
 /TorneoView/
 /Utente/
 /module-info.class
+/.classpath
+/.project
