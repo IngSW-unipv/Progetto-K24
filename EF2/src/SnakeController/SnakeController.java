@@ -12,6 +12,8 @@ import SnakeView.SnakeView;
 
 public class SnakeController {
 
+	public SnakeController(SnakeGame m,SnakeView v)
+	
 	{
 		JFrame frame = new JFrame("Snake Game");
 		SnakeGame gameModel = new SnakeGame();

@@ -14,7 +14,7 @@ import java.util.Random;
 public class SnakeView extends JPanel implements ActionListener {
     private static final int GRID_SIZE = SnakeGame.GRID_SIZE;
     private static final int CELL_SIZE = 20;
-    private SnakeGame gameModel;
+    //private SnakeGame gameModel;
     private Timer timer;
     static final int SCREEN_WIDTH = 1300;
 	static final int SCREEN_HEIGHT = 750;
@@ -32,8 +32,8 @@ public class SnakeView extends JPanel implements ActionListener {
 	
 	private Random random;
 
-    public SnakeView(SnakeGame gameModel) {
-        this.gameModel = gameModel;
+    public SnakeView() {
+        //this.gameModel = gameModel;
         
         running=true;
         setPreferredSize(new Dimension(GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE));
