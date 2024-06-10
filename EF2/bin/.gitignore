@@ -1,5 +1,7 @@
 /bin/
-/Autenticazione/
+/.classpath
+/.gitignore
+/.project
 /Autenticazionecontroller/
 /Autenticazionemodel/
 /Autenticazioneview/
@@ -7,6 +9,7 @@
 /GestioneAccount/
 /GiochiPlaceholder/
 /Index/
+/Messaggi/
 /Minesweeper/
 /Program/
 /SnakeController/
@@ -17,6 +20,3 @@
 /TorneoModel/
 /TorneoView/
 /Utente/
-/module-info.class
-/.classpath
-/.project

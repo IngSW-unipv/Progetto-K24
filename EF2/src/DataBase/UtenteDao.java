@@ -10,6 +10,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import Index.GiochiEnum;
+import Messaggi.Messaggio;
 import TorneoController.IGame;
 import Utente.UtenteAutenticato;
 
@@ -353,6 +354,18 @@ public class UtenteDao implements IUtenteDao {
 
 	    DBconnection.closeConnection(conn);
 	    return result;
+	}
+
+	@Override
+	public boolean insertMessaggio(UtenteAutenticato f, Messaggio m) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public ArrayList<Messaggio> selectMessaggio(UtenteAutenticato f) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

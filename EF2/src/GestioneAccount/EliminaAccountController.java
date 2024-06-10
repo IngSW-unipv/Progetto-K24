@@ -4,11 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-import Autenticazionecontroller.BigFrameController;
+import Autenticazioneview.BigFrameController;
 import Autenticazioneview.BigFrameView;
 import Index.IndexModel;
 import Index.IndexView;
-import Autenticazionemodel.BigFrameModel;
+import Autenticazioneview.BigFrameModel;
 import Autenticazionemodel.GestioneAccountModel;
 import Utente.UtenteAutenticato;
 
