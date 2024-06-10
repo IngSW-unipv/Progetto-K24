@@ -2,14 +2,11 @@ package TorneoController;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import Index.IndexModel;
 import Index.IndexView;
 import TorneoModel.TorneoModel;
-
 import TorneoView.DisiscrizioneTorneoView;
 
-import Utente.UtenteAutenticato;
 
 public class DisiscrizioneTorneoController {
 

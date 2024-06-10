@@ -2,7 +2,6 @@ package TorneoController;
 
 import SnakeController.SnakeController;
 import SnakeModel.SnakeGame;
-import SnakeView.GameFrame;
 import SnakeView.SnakeView;
 
 public class SnakeStrategy implements IStrategyGame{

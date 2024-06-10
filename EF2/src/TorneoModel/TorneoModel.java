@@ -3,18 +3,17 @@ package TorneoModel;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import DataBase.TorneoDao;
 import TorneoController.FactoryController;
 import TorneoController.IStrategyGame;
-import TorneoController.MinesweeperStrategy;
 import Utente.UtenteAutenticato;
 
 public class TorneoModel {
@@ -72,7 +71,8 @@ public class TorneoModel {
 		
 		
 		var arraylist=TorneoDao.getInstance().selezionaclassifica(Torneo);
-		List<Map.Entry<String,Integer>> list =new ArrayList(arraylist.entrySet());
+		//??? controllare !!!!!!!!!
+		List<Map.Entry<String,Integer>> list =new ArrayList<Entry<String, Integer>>(arraylist.entrySet());
 		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
 
 			public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {

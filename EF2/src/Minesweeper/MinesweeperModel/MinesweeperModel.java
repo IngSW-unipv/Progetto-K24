@@ -1,18 +1,11 @@
 package Minesweeper.MinesweeperModel;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Timer;
-
 import javax.swing.JLabel;
-
 import Minesweeper.MinesweeperView.MineTile;
-import Minesweeper.MinesweeperView.MinesweeperView;
-import TorneoController.IGame;
 
-public class MinesweeperModel implements IGame{
+public class MinesweeperModel {
 	private int numRighe;
 	private int numColonne;
 	private int mineCount;
@@ -44,7 +37,7 @@ public class MinesweeperModel implements IGame{
 			tile = board[r][c];
 			if (!mineList.contains(tile)) {
 				mineList.add(tile);
-				//System.out.print("Aggiungi tile");
+				// System.out.print("Aggiungi tile");
 				mineRimaste--;
 
 			}
@@ -146,17 +139,6 @@ public class MinesweeperModel implements IGame{
 		}
 		setGameOver(true);
 		textLabel.setText("Hai perso");
-	}
-
-	@Override
-	public int punteggio(JLabel textLabel, boolean timerend) {
-		// TODO Auto-generated method stub
-		if (textLabel.getText() == "Hai vinto!" && timerend) {
-
-			return 10;
-
-		}
-		return 0;
 	}
 
 }

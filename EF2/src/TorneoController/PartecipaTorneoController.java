@@ -38,7 +38,7 @@ public class PartecipaTorneoController {
 			private void manageAction() {
 				
 				
-				m.partecipaTorneocontroller();
+	        m.partecipaTorneocontroller();
 				
 				
 			}

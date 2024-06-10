@@ -1,33 +1,30 @@
 package DataBase;
 
 import java.sql.Connection;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
 import Index.GiochiEnum;
 import Messaggi.Messaggio;
-import TorneoController.IGame;
+
 import Utente.UtenteAutenticato;
 
 public class UtenteDao implements IUtenteDao {
 
-	private static UtenteDao instance ;
+	private static UtenteDao instance;
 	private String schema;
 	private Connection conn;
 	private ArrayList<UtenteAutenticato> utentelist;
-    public int count;
-	
+	public int count;
+
 	private UtenteDao() {
 		super();
 		this.schema = "prova";
-       
+
 	}
-	
+
 	public static UtenteDao getInstance() {
 
 		if (instance == null) {
@@ -38,76 +35,69 @@ public class UtenteDao implements IUtenteDao {
 		return instance;
 	}
 
-
 	@Override
-	public ArrayList<String> selectAll()
-	{
+	public ArrayList<String> selectAll() {
 		ArrayList<String> result = new ArrayList<>();
 
-		conn=DBconnection.startConnection(conn,schema);
+		conn = DBconnection.startConnection(conn, schema);
 		Statement st1;
 		ResultSet rs1;
 
-		try
-		{
+		try {
 			st1 = conn.createStatement();
-			String query="select * from utenti ";
-			rs1=st1.executeQuery(query);
+			String query = "select * from utenti ";
+			rs1 = st1.executeQuery(query);
 
-			while(rs1.next())
-			{
-				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+			while (rs1.next()) {
+				// UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1),
+				// rs1.getString(2),rs1.getString(3),rs1.getString(4));
 
-				
 				result.add(rs1.getString(1));
 				result.add(rs1.getString(2));
 				result.add(rs1.getString(3));
-				
-				
-				
+
 			}
-		}catch (Exception e){e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		DBconnection.closeConnection(conn);
 		return result;
 	}
 
-	public ArrayList<UtenteAutenticato> selectByUsername (UtenteAutenticato fornInput)
-	{
+	public ArrayList<UtenteAutenticato> selectByUsername(UtenteAutenticato fornInput) {
 		ArrayList<UtenteAutenticato> result = new ArrayList<>();
 
-		conn=DBconnection.startConnection(conn,schema);
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
 		ResultSet rs1;
 
-		try
-		{
-			String query="SELECT COUNT(username and pswrd) FROM utenti WHERE username = ? AND pswrd = ?";
-			
-			
+		try {
+			String query = "SELECT COUNT(username and pswrd) FROM utenti WHERE username = ? AND pswrd = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, fornInput.getUsername());
 			st1.setString(2, fornInput.getHashedPassword());
-			rs1=st1.executeQuery();
+			rs1 = st1.executeQuery();
 
-			while(rs1.next())
-			{
-				//SchemaUtente f=new SchemaUtente(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+			while (rs1.next()) {
+				// SchemaUtente f=new SchemaUtente(rs1.getInt(1),
+				// rs1.getString(2),rs1.getString(3),rs1.getString(4));
 
-				//result.add(f);
-				
+				// result.add(f);
+
 				count = rs1.getInt(1);
 			}
-		}catch (Exception e){e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		DBconnection.closeConnection(conn);
 		return result;
 	}
-	
-	//selecttorneo by user
-	
-	
+
+	// selecttorneo by user
+
 	public boolean selectByEmailUser(UtenteAutenticato Input) {
 
 		conn = DBconnection.startConnection(conn, schema);
@@ -120,7 +110,7 @@ public class UtenteDao implements IUtenteDao {
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, Input.getEmail());
 			st1.setString(2, Input.getHashedPassword());
-			rs1 = st1.executeQuery(); 
+			rs1 = st1.executeQuery();
 
 			while (rs1.next()) {
 				// UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1),
@@ -133,8 +123,7 @@ public class UtenteDao implements IUtenteDao {
 				// System.out.println(f.getPassword().toString());
 				if (count == 1) {
 					esito = true;
-					
-					
+
 				} else {
 
 					esito = false;
@@ -152,179 +141,166 @@ public class UtenteDao implements IUtenteDao {
 
 	}
 
-	public boolean selectByEmail(String email)
-	{
-		
-		conn=DBconnection.startConnection(conn,schema);
+	public boolean selectByEmail(String email) {
+
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
 		ResultSet rs1;
-       boolean esito =true;
-		try
-		{
-			String query="SELECT COUNT(email) FROM utenti WHERE email = ?";
-			
+		boolean esito = true;
+		try {
+			String query = "SELECT COUNT(email) FROM utenti WHERE email = ?";
 
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, email);
-			
-			rs1=st1.executeQuery();
 
-			while(rs1.next())
-			{
-				//UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1), rs1.getString(2),rs1.getString(3),rs1.getString(4));
+			rs1 = st1.executeQuery();
 
-				//result.add(f);
-				
+			while (rs1.next()) {
+				// UtenteAutenticato f=new UtenteAutenticato(rs1.getInt(1),
+				// rs1.getString(2),rs1.getString(3),rs1.getString(4));
+
+				// result.add(f);
+
 				count = rs1.getInt(1);
-				//System.out.println(Input.getPassword().toString());
-				//System.out.println(f.getPassword().toString());
-				if(	count== 1 ) {
-					
-				esito=true;
-			}else {
-				
-				esito= false;
+				// System.out.println(Input.getPassword().toString());
+				// System.out.println(f.getPassword().toString());
+				if (count == 1) {
+
+					esito = true;
+				} else {
+
+					esito = false;
+				}
 			}
-			}
-			
-			
-			
-		}catch (Exception e)
-		{
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito= false;
+			esito = false;
 		}
-           
+
 		DBconnection.closeConnection(conn);
-		
+
 		return esito;
-		
+
 	}
 
-	
-	
-	
-	
-	
-	public boolean insertSchemaUtente(UtenteAutenticato f)throws SQLException {
+	public boolean insertSchemaUtente(UtenteAutenticato f) throws SQLException {
 
-		conn=DBconnection.startConnection(conn,schema);
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
-		
-		boolean esito=true;
+
+		boolean esito = true;
 
 		try {
-			String query="INSERT INTO utenti(email,username,pswrd) VALUES(?,?,?)";
+			String query = "INSERT INTO utenti(email,username,pswrd) VALUES(?,?,?)";
 			st1 = conn.prepareStatement(query);
 			System.out.println(f.getEmail());
-			st1.setString(1,f.getEmail() );
-			st1.setString(2,f.getUsername());
-			st1.setString(3,f.getHashedPassword());
-			
-			st1.executeUpdate();	
-			
-		}catch (Exception e){
+			st1.setString(1, f.getEmail());
+			st1.setString(2, f.getUsername());
+			st1.setString(3, f.getHashedPassword());
+
+			st1.executeUpdate();
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito=false;
+			esito = false;
 		}
 
-		
 		DBconnection.closeConnection(conn);
 		return esito;
 
 	}
-	
+
 	public boolean eliminaSchemaUtente(UtenteAutenticato f) {
 
-		conn=DBconnection.startConnection(conn,schema);
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
-		
-		boolean esito=true;
+
+		boolean esito = true;
 
 		try {
-			String query="Delete from utenti where email = ?";
+			String query = "Delete from utenti where email = ?";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1,f.getEmail());	
+			st1.setString(1, f.getEmail());
 			st1.executeUpdate();
-			
-		} catch (Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito=false;
+			esito = false;
 		}
 
-		
 		DBconnection.closeConnection(conn);
 		return esito;
 
 	}
-	
+
 	public void Arraylist(UtenteAutenticato utente) {
-		
+
 		utentelist = new ArrayList<UtenteAutenticato>();
 		utentelist.add(utente);
-		
+
 	}
-    
+
 	public boolean updateSchemaUtente(UtenteAutenticato f) {
-	
-		conn=DBconnection.startConnection(conn,schema);
+
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
-		
-		boolean esito=true;
+
+		boolean esito = true;
 
 		try {
-			String query="update utenti set username=? where email=?";
+			String query = "update utenti set username=? where email=?";
 			st1 = conn.prepareStatement(query);
-			st1.setString(1, f.getUsername());	
+			st1.setString(1, f.getUsername());
 			st1.setString(2, f.getEmail());
 			st1.executeUpdate();
-			
-		} catch (Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito=false;
+			esito = false;
 		}
 
 		DBconnection.closeConnection(conn);
 		return esito;
-		
+
 	}
-	
-	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco) { /////COS'ALTRO PASSARE COME PARAMETRO
-		conn=DBconnection.startConnection(conn,schema);
+
+	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco) { ///// COS'ALTRO PASSARE COME PARAMETRO
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
-		boolean esito=true;
+		boolean esito = true;
 
 		try {
-			String query="INSERT INTO preferenze(emailUtente, gioco) VALUES(?,?)";
-			st1 = conn.prepareStatement(query);	
+			String query = "INSERT INTO preferenze(emailUtente, gioco) VALUES(?,?)";
+			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getEmail());
-			st1.setString(2, gioco.toString()); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.setString(2, gioco.toString()); //////////////////////////////// COSA DEVE ANDARE QUI
 			st1.executeUpdate();
-			
-		} catch (Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito=false;
+			esito = false;
 		}
 
 		DBconnection.closeConnection(conn);
 		return esito;
 	}
-	
-	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco) { /////COS'ALTRO PASSARE COME PARAMETRO
-		conn=DBconnection.startConnection(conn,schema);
+
+	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco) { ///// COS'ALTRO PASSARE COME PARAMETRO
+		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
-		boolean esito=true;
+		boolean esito = true;
 
 		try {
-			String query="DELETE FROM preferenze WHERE emailUtente=? AND gioco=?";
-			st1 = conn.prepareStatement(query);	
+			String query = "DELETE FROM preferenze WHERE emailUtente=? AND gioco=?";
+			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getEmail());
-			st1.setString(2, gioco.toString()); ////////////////////////////////COSA DEVE ANDARE QUI
+			st1.setString(2, gioco.toString()); //////////////////////////////// COSA DEVE ANDARE QUI
 			st1.executeUpdate();
-			
-		} catch (Exception e){
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			esito=false;
+			esito = false;
 		}
 
 		DBconnection.closeConnection(conn);
@@ -333,27 +309,27 @@ public class UtenteDao implements IUtenteDao {
 
 	@Override
 	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f) {
-	    ArrayList<GiochiEnum> result = new ArrayList<GiochiEnum>();
+		ArrayList<GiochiEnum> result = new ArrayList<GiochiEnum>();
 
-	    conn = DBconnection.startConnection(conn, schema);
-	    PreparedStatement st1;
-	    ResultSet rs1;
+		conn = DBconnection.startConnection(conn, schema);
+		PreparedStatement st1;
+		ResultSet rs1;
 
-	    try {
-	        String query = "SELECT gioco FROM preferenze WHERE emailUtente=?";
-	        st1 = conn.prepareStatement(query);
-	        st1.setString(1, f.getEmail());
-	        rs1 = st1.executeQuery(); // Non è necessario passare la query qui
+		try {
+			String query = "SELECT gioco FROM preferenze WHERE emailUtente=?";
+			st1 = conn.prepareStatement(query);
+			st1.setString(1, f.getEmail());
+			rs1 = st1.executeQuery(); // Non è necessario passare la query qui
 
-	        while (rs1.next()) {
-	            result.add(GiochiEnum.valueOf(rs1.getString("gioco")));
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
+			while (rs1.next()) {
+				result.add(GiochiEnum.valueOf(rs1.getString("gioco")));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
-	    DBconnection.closeConnection(conn);
-	    return result;
+		DBconnection.closeConnection(conn);
+		return result;
 	}
 
 	@Override
@@ -369,7 +345,3 @@ public class UtenteDao implements IUtenteDao {
 	}
 
 }
-
-
-	
-

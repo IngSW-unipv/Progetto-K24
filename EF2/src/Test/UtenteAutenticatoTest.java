@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
-
-import DataBase.UtenteDao;
 import Utente.UtenteAutenticato;
 
 public class UtenteAutenticatoTest {

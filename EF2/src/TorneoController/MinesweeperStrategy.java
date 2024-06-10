@@ -1,10 +1,9 @@
 package TorneoController;
 
-import DataBase.TorneoDao;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
-import SnakeController.SnakeController;
+
 
 public class MinesweeperStrategy implements IStrategyGame {
 

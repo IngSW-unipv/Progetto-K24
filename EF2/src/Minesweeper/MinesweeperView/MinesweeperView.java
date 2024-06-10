@@ -1,7 +1,6 @@
 package Minesweeper.MinesweeperView;
 
 import javax.swing.*;
-import Minesweeper.MinesweeperModel.MinesweeperModel;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -15,9 +14,9 @@ public class MinesweeperView {
 	private int boardWidth = getDimCella() * getNumColonne();
 	private int boardHeight = getDimCella() * getNumRighe();
 	private JPanel textPanel;
-	private int tilesClicked;
+	
 	int mineCount = 10;
-	private boolean gameOver;
+	
 	public JLabel textLabel;
 	public JPanel boardPanel;
 

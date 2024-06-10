@@ -6,13 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.TimerTask;
-
 import Index.IndexModel;
 import Index.IndexView;
-
 import java.util.Timer;
 
 import Minesweeper.MinesweeperModel.MinesweeperModel;
