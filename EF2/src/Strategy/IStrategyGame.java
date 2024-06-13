@@ -1,4 +1,4 @@
-package TorneoController;
+package Strategy;
 
 
 public interface IStrategyGame {

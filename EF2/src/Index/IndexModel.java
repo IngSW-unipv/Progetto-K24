@@ -77,8 +77,8 @@ public class IndexModel {
 
 	public void snakePlay() {
 		SnakeGame model = new SnakeGame();
-		SnakeView view = new SnakeView(model);
-		new SnakeController();
+		SnakeView view = new SnakeView();
+		new SnakeController(model, view);
 	}
 
 	// Serie di metodi placeholder

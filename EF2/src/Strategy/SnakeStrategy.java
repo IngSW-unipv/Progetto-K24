@@ -1,4 +1,4 @@
-package TorneoController;
+package Strategy;
 
 import SnakeController.SnakeController;
 import SnakeModel.SnakeGame;

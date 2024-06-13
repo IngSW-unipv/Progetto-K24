@@ -1,4 +1,4 @@
-package TorneoController;
+package Strategy;
 
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;

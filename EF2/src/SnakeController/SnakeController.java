@@ -17,7 +17,7 @@ public class SnakeController {
 	{
 		JFrame frame = new JFrame("Snake Game");
 		SnakeGame gameModel = new SnakeGame();
-		SnakeView gameView = new SnakeView(gameModel);
+		SnakeView gameView = new SnakeView();
 		frame.add(gameView);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

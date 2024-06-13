@@ -2,6 +2,8 @@ package TorneoController;
 
 import java.lang.reflect.Constructor;
 
+import Strategy.IStrategyGame;
+
 
 public class FactoryController {
 

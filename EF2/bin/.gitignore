@@ -1,7 +1,4 @@
 /bin/
-/.classpath
-/.gitignore
-/.project
 /Autenticazionecontroller/
 /Autenticazionemodel/
 /Autenticazioneview/
@@ -15,8 +12,10 @@
 /SnakeController/
 /SnakeModel/
 /SnakeView/
+/Strategy/
 /Test/
 /TorneoController/
 /TorneoModel/
 /TorneoView/
 /Utente/
+/module-info.class

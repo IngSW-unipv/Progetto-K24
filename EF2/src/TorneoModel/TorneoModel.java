@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import DataBase.TorneoDao;
+import Strategy.IStrategyGame;
 import TorneoController.FactoryController;
-import TorneoController.IStrategyGame;
 import Utente.UtenteAutenticato;
 
 public class TorneoModel {
