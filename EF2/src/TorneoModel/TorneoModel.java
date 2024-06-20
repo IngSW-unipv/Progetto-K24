@@ -20,17 +20,15 @@ public class TorneoModel {
 
 	private IStrategyGame strategy;
 	private FactoryController factory;
-	
-	
+
 	public TorneoModel() {
 
 	}
 
-	public void creaTorneo(String nome,String email ,String gioco,String date,String date_) {
+	public void creaTorneo(String nome, String email, String gioco, String date, String date_) {
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-		
 		Date date1 = null;
 		try {
 			date1 = dateFormat.parse(date);
@@ -45,73 +43,73 @@ public class TorneoModel {
 			e1.printStackTrace();
 		}
 
-		UtenteAutenticato.getInstance().creazioneTorneo(nome,email,gioco,date1,date_1);
+		UtenteAutenticato.getInstance().creazioneTorneo(nome, email, gioco, date1, date_1);
 
 	}
 
 	public void disiscrizioneTorneo(String email, String nome) {
 
-		UtenteAutenticato.getInstance().disiscrizioneTorneo(email,nome);
+		UtenteAutenticato.getInstance().disiscrizioneTorneo(email, nome);
 
 	}
 
 	public void eliminaTorneo(String email, String nome) {
 
-		UtenteAutenticato.getInstance().eliminaTorneo(email,nome); 
+		UtenteAutenticato.getInstance().eliminaTorneo(email, nome);
 
 	}
 
 	public void iscrizioneTorneo(String email, String nome) {
 
-		UtenteAutenticato.getInstance().iscrizioneTorneo(email,nome);
+		UtenteAutenticato.getInstance().iscrizioneTorneo(email, nome);
 
 	}
-	
-	public HashMap<String,Integer> classificaTorneo(String Torneo) {
-		
-		
-		var arraylist=TorneoDao.getInstance().selezionaclassifica(Torneo);
-		//??? controllare !!!!!!!!!
-		List<Map.Entry<String,Integer>> list =new ArrayList<Entry<String, Integer>>(arraylist.entrySet());
-		Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
 
-			public int compare(Map.Entry<String, Integer> e1, Map.Entry<String, Integer> e2) {
+	public HashMap<String, Integer> classificaTorneo(String Torneo) {
 
-				return e1.getValue() - e2.getValue();
+		var arraylist = TorneoDao.getInstance().selezionaclassifica(Torneo);
+		System.out.print(arraylist);
 
-			}
+		List<Entry<String, Integer>> list = new ArrayList<Entry<String, Integer>>(arraylist.entrySet());
+		/*
+		 * Collections.sort(list, new Comparator<Entry<String, Integer>>() {
+		 * 
+		 * public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) {
+		 * 
+		 * return e1.getValue() - e2.getValue();
+		 * 
+		 * }
+		 * 
+		 * });
+		 */
 
-		});
-		
 		return arraylist;
-		
+
 	}
-	
+
 	public void partecipaToreno(String nomeTorneo) {
-		
-		
-		System.out.print("Partecipa al Torneo"+  UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
-		
-        factory =new FactoryController(); 
-        
-        strategy =factory.getGameStrategyController(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
-        
-        strategy.getGameController();
-		
+
+		System.out.print("Partecipa al Torneo" + UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
+
+		factory = new FactoryController();
+
+		strategy = factory
+				.getGameStrategyController(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
+
+		strategy.getGameController();
+
 	}
-	
+
 	public String getEmail() {
-		
-		
+
 		return UtenteAutenticato.getInstance().getEmail();
-		
+
 	}
-	
+
 	public String getUsername() {
-		
-		
+
 		return UtenteAutenticato.getInstance().getUsername();
-		
+
 	}
 
 }

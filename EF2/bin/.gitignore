@@ -1,4 +1,6 @@
 /bin/
+/Minesweeper/
+/.project
 /Autenticazionecontroller/
 /Autenticazionemodel/
 /Autenticazioneview/
@@ -7,7 +9,6 @@
 /GiochiPlaceholder/
 /Index/
 /Messaggi/
-/Minesweeper/
 /Program/
 /SnakeController/
 /SnakeModel/

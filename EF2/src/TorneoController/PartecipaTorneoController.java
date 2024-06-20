@@ -12,91 +12,87 @@ import Utente.UtenteAutenticato;
 
 public class PartecipaTorneoController {
 
-	private PartecipaTorneoView view;
+	private PartecipaTorneoView v;
 	private TorneoModel model;
 
-	public PartecipaTorneoController(PartecipaTorneoView view, TorneoModel model) {
+	public PartecipaTorneoController(PartecipaTorneoView v, TorneoModel model) {
 		// TODO Auto-generated constructor stub
-		this.view = view;
+		this.v = v;
 		this.model = model;
 		addListeners();
 		inserisciTornei();
 
 	}
 
-	 public static void addListenersindex(IndexModel m,IndexView view) {
-			
-			
-			ActionListener partecipatorneo=new ActionListener() {@Override
-				
+	public static void addListenersindex(IndexModel m, IndexView view) {
+
+		ActionListener partecipatorneo = new ActionListener() {
+			@Override
+
 			public void actionPerformed(ActionEvent e) {
-				
+
 				manageAction();
-				
+
 			}
-			
+
 			private void manageAction() {
-				
-				
-	        m.partecipaTorneocontroller();
-				
-				
+
+				m.partecipaTorneocontroller();
+
 			}
-			
-			};
-			
-			view.getPartecipaTorneo().addActionListener(partecipatorneo);
-			
-		}
+
+		};
+
+		view.getPartecipaTorneo().addActionListener(partecipatorneo);
+
+	}
+
 	private void inserisciTornei() {
 
-		view.getPanel().remove(view.getTorneo());
-		view.setOptions(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
-				.toArray(view.getOptions()));
-		view.setTorneo(new JComboBox<>(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
-				.toArray(view.getOptions())));
-		view.getPanel().add(view.getTorneo());
-		// for(int
-		// i=0;i<TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).size();i++)
-		// view.getTorneo().addItem(TorneoDao.getInstance().selezionalistatorneobypartecipante(model.getEmail()).get(i));;
+		v.getPanel().remove(v.getTorneo());
+		v.setOptions(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+				.toArray(v.getOptions()));
+		v.setTorneo(new JComboBox<>(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+				.toArray(v.getOptions())));
+		v.getPanel().add(v.getTorneo());
+
 	}
 
 	private void addListeners() {
-		view.getClassificaTorneo().addActionListener(new ActionListener() {
+		v.getClassificaTorneo().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (e.getSource() == view.getClassificaTorneo()) {
+				if (e.getSource() == v.getClassificaTorneo()) {
 
-					// DefaultTableModel modelclassifica = (DefaultTableModel)
-					// view.getTable().getModel();
-					System.out.print(view.getOptions()[0]);
-					view.setArrayList( new ArrayList<Integer>(
-			        model.classificaTorneo(view.getOptions()[0]).values()));
-					view.setKey(new ArrayList<String>(model.classificaTorneo(view.getOptions()[0]).keySet()));
-					// modelclassifica.addRow();
-					System.out.print(view.getArrayList());
-					// modelclassifica.addRow();
-					view.getTable().setValueAt(view.getArrayList().get(1), 0, 0);
-					view.getTable().setValueAt(view.getKey().get(1), 0, 1);
-					view.getTable().setValueAt(view.getArrayList().get(0), 1, 0);
-					view.getTable().setValueAt(view.getKey().get(0), 1, 1);
+					System.out.print(v.getOptions()[0]);
+					v.setArrayList(new ArrayList<Integer>(model.classificaTorneo(v.getOptions()[0]).values()));
+					System.out.print(v.getOptions()[0]);
+					v.setKey(new ArrayList<String>(model.classificaTorneo(v.getOptions()[0]).keySet()));
+
+					System.out.print(v.getArrayList());
+
+					v.getTable().setValueAt(v.getArrayList().get(0), 0, 0);
+					v.getTable().setValueAt(v.getKey().get(0), 0, 1);
+					// da mettere quando ci sono più righe
+					// v.getTable().setValueAt(v.getArrayList().get(0), 1, 0);
+					// v.getTable().setValueAt(v.getKey().get(0), 1, 1);
 
 				}
 
 			}
 		});
 
-		view.getPartecipaTorneo().addActionListener(new ActionListener() {
+		v.getPartecipaTorneo().addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (e.getSource() == view.getPartecipaTorneo()) {
+				if (e.getSource() == v.getPartecipaTorneo()) {
 
-					System.out.print(view.getOptions()[0]);
-					model.partecipaToreno(view.getOptions()[0]);
+					System.out.print(v.getOptions()[0]);
+					model.partecipaToreno(v.getOptions()[0]);
 
 				}
 
