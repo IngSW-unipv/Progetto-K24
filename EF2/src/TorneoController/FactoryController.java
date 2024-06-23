@@ -1,6 +1,7 @@
 package TorneoController;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import Strategy.IStrategyGame;
 
@@ -15,8 +16,7 @@ public class FactoryController {
 
 		if (type == null) {
 
-			String gameClassName = "Strategy." + PROPERTYNAME
-					+ "Strategy";
+			String gameClassName = "Strategy." + PROPERTYNAME + "Strategy";
 			try {
 				Constructor c = Class.forName(gameClassName).getConstructor();
 				type = (IStrategyGame) c.newInstance();
@@ -28,7 +28,7 @@ public class FactoryController {
 				System.err.println("No suitable constructor found for class: " + gameClassName);
 				e.printStackTrace();
 				type = null;
-			} catch (InstantiationException | IllegalAccessException | java.lang.reflect.InvocationTargetException e) {
+			} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
 				System.err.println("Error instantiating class: " + gameClassName);
 				e.printStackTrace();
 				type = null;

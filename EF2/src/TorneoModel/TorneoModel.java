@@ -67,9 +67,11 @@ public class TorneoModel {
 
 	public HashMap<String, Integer> classificaTorneo(String Torneo) {
 
-		var arraylist = TorneoDao.getInstance().selezionaclassifica(Torneo);
+		var arraylist = UtenteAutenticato.getInstance().selezionaclassifica(Torneo);
+		
 		System.out.print(arraylist);
 
+		//ha senso implementare metodo qui per riordino
 		List<Entry<String, Integer>> list = new ArrayList<Entry<String, Integer>>(arraylist.entrySet());
 		/*
 		 * Collections.sort(list, new Comparator<Entry<String, Integer>>() {
@@ -93,8 +95,7 @@ public class TorneoModel {
 
 		factory = new FactoryController();
 
-		strategy = factory
-				.getGameStrategyController(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
+		strategy = factory.getGameStrategyController(UtenteAutenticato.getInstance().ricercaDatiTorneo(nomeTorneo).get(0));
 
 		strategy.getGameController();
 
@@ -105,6 +106,14 @@ public class TorneoModel {
 		return UtenteAutenticato.getInstance().getEmail();
 
 	}
+	
+	
+	public ArrayList<String> selezionalistatorneobypartecipante(String s){
+		
+		return UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(s);
+		
+	}
+	
 
 	public String getUsername() {
 

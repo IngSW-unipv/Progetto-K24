@@ -50,9 +50,9 @@ public class PartecipaTorneoController {
 	private void inserisciTornei() {
 
 		v.getPanel().remove(v.getTorneo());
-		v.setOptions(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+		v.setOptions(model.selezionalistatorneobypartecipante(model.getEmail())
 				.toArray(v.getOptions()));
-		v.setTorneo(new JComboBox<>(UtenteAutenticato.getInstance().selezionalistatorneobypartecipante(model.getEmail())
+		v.setTorneo(new JComboBox<>(model.selezionalistatorneobypartecipante(model.getEmail())
 				.toArray(v.getOptions())));
 		v.getPanel().add(v.getTorneo());
 
