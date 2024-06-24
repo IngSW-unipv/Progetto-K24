@@ -30,21 +30,19 @@ public class PartecipaTorneoView extends JFrame {
 	private JLabel ClassificaLabel = new JLabel("Classifica:");
 	private JButton PartecipaTorneo = new JButton("Gioca Torneo");
 	private String[] options = {};
-	private JComboBox<String> Torneo ;
+	private JComboBox<String> Torneo;
 	private JLabel TorneiLabel = new JLabel("Tornei disponibili:");
 	private JTable table = new JTable(2, 2);
 	private JButton ClassificaTorneo = new JButton("Classifica Torneo");
 	private JLabel erroreLabel = new JLabel();
 	private JPanel panelLayout = new JPanel(new BorderLayout());
 	private static final int BUTTON_SPACING = 15;
-    private List<Integer> arrayList;
+	private List<Integer> arrayList;
 	private List<String> key;
-	
 
 	// inizio costruttore
 	public PartecipaTorneoView() {
-		// panel.setLayout(null);
-		// panel_.setLayout(null);
+
 		// lavoro sul frame
 		setSize(Toolkit.getDefaultToolkit().getScreenSize().width / 2,
 				Toolkit.getDefaultToolkit().getScreenSize().height / 2);
@@ -56,64 +54,55 @@ public class PartecipaTorneoView extends JFrame {
 		panel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
 		panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-		
+
 		// Creazione e aggiunta della JComboBox al pannello
-		
-		Torneo=new JComboBox<>(options);
-		
+
+		Torneo = new JComboBox<>(options);
+
 		GiocoLabel.setBounds(200, 120, 150, 25);
 		ClassificaLabel.setBounds(200, 150, 150, 25);
 		PartecipaTorneo.setBounds(370, 120, 150, 25);
 		ClassificaTorneo.setBounds(370, 150, 150, 25);
-		Torneo.setBounds(370,90,150,25);
+		Torneo.setBounds(370, 90, 150, 25);
 		TorneiLabel.setBounds(150, 90, 150, 25);
 		erroreLabel.setBounds(200, 240, 500, 50);
 		erroreLabel.setForeground(Color.RED);
-        
 		Torneo.setAlignmentX(CENTER_ALIGNMENT);
 		Torneo.setAlignmentY(TOP_ALIGNMENT);
-		//TorneiLabel.setAlignmentX(CENTER_ALIGNMENT);
 		TorneiLabel.setAlignmentY(TOP_ALIGNMENT);
-		//PartecipaTorneo.setAlignmentY(CENTER_ALIGNMENT);
 		PartecipaTorneo.setAlignmentX(CENTER_ALIGNMENT);
-		//ClassificaTorneo.setAlignmentY(BOTTOM_ALIGNMENT);
-		//ClassificaLabel.setAlignmentY(BOTTOM_ALIGNMENT);
 		ClassificaTorneo.setAlignmentX(CENTER_ALIGNMENT);
 		ClassificaLabel.setAlignmentX(CENTER_ALIGNMENT);
-		
-		//GiocoLabel.setAlignmentY(CENTER_ALIGNMENT);
 		GiocoLabel.setAlignmentX(CENTER_ALIGNMENT);
-		
+
 		// aggiungo i label al pannello
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(GiocoLabel);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(PartecipaTorneo);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(ClassificaLabel);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(ClassificaTorneo);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(Torneo);
-		panel.add(Box.createRigidArea(new Dimension( 0,BUTTON_SPACING)));
+		panel.add(Box.createRigidArea(new Dimension(0, BUTTON_SPACING)));
 		panel.add(TorneiLabel);
 		panel.add(erroreLabel);
 		panel_.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
-		
+
 		panel_.setLayout(new BoxLayout(panel_, BoxLayout.X_AXIS));
-		panel_.add(Box.createRigidArea(new Dimension( 0,0)));
-		
+		panel_.add(Box.createRigidArea(new Dimension(0, 0)));
+
 		table.setAlignmentX(CENTER_ALIGNMENT);
-		
+
 		panel_.add(new JScrollPane(table));
 		panelLayout.add(panel, BorderLayout.CENTER);
 		panelLayout.add(panel_, BorderLayout.SOUTH);
 		// aggiungo tabella
 
 		// rendo il frame e il label visibili
-
-		
 
 		setVisible(true);
 	}
@@ -165,7 +154,7 @@ public class PartecipaTorneoView extends JFrame {
 	public void setPartecipaTorneo(JButton partecipaTorneo) {
 		PartecipaTorneo = partecipaTorneo;
 	}
-	
+
 	public List<Integer> getArrayList() {
 		return arrayList;
 	}

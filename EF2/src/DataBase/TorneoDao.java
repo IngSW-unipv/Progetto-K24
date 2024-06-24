@@ -341,7 +341,7 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select emailUtente , punteggio from partecipazioni where nometorneo=" + "'" + nometorneo + "'";
+			String query = "select emailUtente , punteggio from partecipazioni where nometorneo =" + "'" + nometorneo + "'";
 			st1 = conn.prepareStatement(query);
 			//st1.setString(1, nometorneo);			
 			//st1.executeUpdate();

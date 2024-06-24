@@ -1,35 +1,40 @@
 package TorneoController;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import Strategy.IStrategyGame;
-
 
 public class FactoryController {
 
 	private IStrategyGame type;
 
 	public IStrategyGame getGameStrategyController(String PROPERTYNAME) {
+		if (PROPERTYNAME == null || PROPERTYNAME.isEmpty()) {
+			throw new IllegalArgumentException("PROPERTYNAME cannot be null or empty");
+		}
 
 		if (type == null) {
 
-			String GameClassName;
-
+			String gameClassName = "Strategy." + PROPERTYNAME + "Strategy";
 			try {
-
-				GameClassName = "TorneoController." + PROPERTYNAME.substring(0, PROPERTYNAME.length() - 1) + "Strategy";
-
-				Constructor<?> c = Class.forName(GameClassName).getConstructor();
+				Constructor c = Class.forName(gameClassName).getConstructor();
 				type = (IStrategyGame) c.newInstance();
-
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
+			} catch (ClassNotFoundException e) {
+				System.err.println("Class not found: " + gameClassName);
+				e.printStackTrace();
+				type = null;
+			} catch (NoSuchMethodException e) {
+				System.err.println("No suitable constructor found for class: " + gameClassName);
+				e.printStackTrace();
+				type = null;
+			} catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+				System.err.println("Error instantiating class: " + gameClassName);
 				e.printStackTrace();
 				type = null;
 			}
-
 		}
+
 		return type;
 	}
-
 }

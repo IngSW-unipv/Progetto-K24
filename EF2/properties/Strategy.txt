@@ -1,2 +1,0 @@
-Minesweeper1 = TorneoController.MinesweeperStrategy
-Snake2 = TorneoController.SnakeStrategy
