@@ -2,7 +2,6 @@ package Autenticazioneview;
 
 import Autenticazionecontroller.LoginController;
 import Autenticazionecontroller.RegistrazioneController;
-import Autenticazioneview.*;
 import Autenticazionemodel.RegistrazioneModel;
 import Autenticazionemodel.GestioneAccountModel;
 

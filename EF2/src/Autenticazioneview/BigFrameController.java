@@ -2,14 +2,7 @@ package Autenticazioneview;
 
 import java.awt.event.ActionEvent; 
 import java.awt.event.ActionListener;
-import Autenticazioneview.*;
-import Autenticazionecontroller.RegistrazioneController;
-import Autenticazionemodel.RegistrazioneModel;
 import Autenticazionemodel.GestioneAccountModel;
-import Autenticazionecontroller.*;
-import Autenticazionemodel.*;
-
-import java.awt.Window;
 
 public class BigFrameController {
 
