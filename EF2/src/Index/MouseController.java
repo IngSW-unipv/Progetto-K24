@@ -7,57 +7,48 @@ import javax.swing.SwingUtilities;
 
 public class MouseController {
 
-	private static void addOptionToMenu(GameButton button, IndexView view) {
-		for (GameButton g : view.getMenuOptionList()) {
-			if (g.getGioco() == button.getGioco()) {
-				view.getMenuPreferiti().add(g);
-			}
-		}
-	}
+//	private static void addOptionToMenu(GiochiEnum gioco, IndexView view) {
+//		for (GameButton g : view.getMenuOptionList()) {
+//			if (g.getGioco() == gioco) {
+//				view.getMenuPreferiti().add(g);
+//			}
+//		}
+//	}
+//
+//	private static void removeOptionFromMenu(GiochiEnum gioco, IndexView view) {
+//		for (GameButton g : view.getMenuOptionList()) {
+//			if (g.getGioco() == gioco) {
+//				view.getMenuPreferiti().remove(g);
+//			}
+//		}
+//	}
 
-	private static void removeOptionFromMenu(GameButton button, IndexView view) {
-		for (GameButton g : view.getMenuOptionList()) {
-			if (g.getGioco() == button.getGioco()) {
-				view.getMenuPreferiti().remove(g);
-			}
-		}
-	}
-
-	public static void addMouseListenerGiochi(GameButton button, IndexModel model, IndexView view) {
+	public static void addMouseListenerGiochi(GameButton button, GameButton option, GiochiEnum gioco, IndexModel model, IndexView view) {
 		button.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (SwingUtilities.isRightMouseButton(e)) {
 					// A seconda che il gioco sia già nei preferiti o no
-					if (!model.getPreferiti().contains(button.getGioco())) { // Oppure è meglio usare metodo del bottone
-																				// isPreferito
+					if (!model.getPreferiti().contains(gioco)) { 
 
-						int scelta = JOptionPane.showConfirmDialog(null, "Vuoi aggiungere questo gioco ai preferiti?",
-								"Conferma", JOptionPane.YES_NO_OPTION);
-						if (scelta == JOptionPane.YES_OPTION) {
-							System.out.println("Operazione eseguita!");
-							// button.aggiungiPreferito();
-							// Aggiunta al db
-							model.insertPreferiti(button.getGioco());
-							// Aggiornamento lista preferiti utente
-							model.setPreferiti();
+						if (view.confermaSceltaPreferiti(0)) {
+							// Aggiunta al db e aggiornamento dei preferiti di UtAut
+							model.insertPreferiti(gioco);
 							// AGgiunta al menu preferiti
-							addOptionToMenu(button, view);
-
+							/////////addOptionToMenu(gioco, view);
+							view.getMenuPreferiti().add(option);
+							System.out.println("Operazione eseguita!");
 						}
 
 					} else {
-						int scelta = JOptionPane.showConfirmDialog(null, "Vuoi rimuovere questo gioco dai preferiti?",
-								"Conferma", JOptionPane.YES_NO_OPTION);
-						if (scelta == JOptionPane.YES_OPTION) {
-							System.out.println("Operazione eseguita!");
-							// button.rimuoviPreferito();
-							// Rimozione dal db
-							model.deletePreferiti(button.getGioco());
-							// Aggiornamento lista preferiti utente
-							model.setPreferiti();
+						
+						if (view.confermaSceltaPreferiti(1)) {
+							// Rimozione dal db e rimozione dai preferiti di UtAUt
+							model.deletePreferiti(gioco);
 							// Rimozione dal menù preferiti
-							removeOptionFromMenu(button, view);
+							/////////////////removeOptionFromMenu(gioco, view);
+							view.getMenuPreferiti().remove(option);
+							System.out.println("Operazione eseguita!");
 						}
 
 					}

@@ -46,11 +46,21 @@ public class IndexFacadeController {
 		SpaceInvadersController.addListenersindex(model, view);
 		SolitarioController.addListenersindex(model, view);
 
-		for (GameButton b : view.getGameButtonList()) {
-			MouseController.addMouseListenerGiochi(b, model, view);
+//		for (GameButton b : view.getGameButtonList()) {
+//			MouseController.addMouseListenerGiochi(b, null, model, view);
+//		}
+		
+		model.setPreferiti();
+		int i=0;
+		for (GiochiEnum gioco : GiochiEnum.values()) {
+			MouseController.addMouseListenerGiochi(view.getGameButtonList().get(i), view.getMenuOptionList().get(i), gioco, model, view);
+			if (model.getPreferiti().contains(gioco)) {
+				  view.getMenuPreferiti().add(view.getMenuOptionList().get(i)); 
+			}
+			i++;
 		}
-
-		inizializzaPreferiti();
+		
+//		inizializzaPreferiti();
 
 		// Relativi ai bottoni nel menu dei preferiti
 		OptionController.addListenersindex(model, view);
@@ -58,25 +68,25 @@ public class IndexFacadeController {
 
 	}
 
-	/*
-	 * Al posto del metodo sotto si può fare nel main questo ciclo in modo da non
-	 * dover usare l'informaizone che i bottoni sono GameButton for (int i=0;
-	 * i<view.getMenuOptionList(); i++) { if
-	 * (model.getPreferiti().contains(view.getMenuOptionList(i).getGioco) {
-	 * //getGioco qui è un po'critico, forse view ha metodo che restituisce un gioco
-	 * che chima agetGioco? view.getMenuPreferiti().add(view.getMenuOptionList(i); }
-	 * }
-	 * 
-	 */
+
 	// Chiama (dal DB) i preferiti, quindi inizializza il menu popup
-	private void inizializzaPreferiti() {
-		model.setPreferiti();
-		for (GameButton g : view.getMenuOptionList()) {
-			if (model.getPreferiti().contains(g.getGioco())) {
-				view.getMenuPreferiti().add(g);
-			}
-		}
-	}
+//	private void inizializzaPreferiti() {
+//		model.setPreferiti();
+//		
+////		for (GameButton g : view.getMenuOptionList()) {
+////			if (model.getPreferiti().contains(g.getGioco())) {
+////				view.getMenuPreferiti().add(g);
+////			}
+////		}
+//		
+//		for (int i=0; i<view.getMenuOptionList().size(); i++) { 
+//			if (model.getPreferiti().contains(view.getMenuOptionList().get(i).getGioco())) {
+//				  //getGioco qui è un po'critico, forse view ha metodo che restituisce un gioco
+//				  view.getMenuPreferiti().add(view.getMenuOptionList().get(i)); }
+//				  }
+//		
+//		
+//	}
 
 	// Prende come ingresso il bottone princpiale del gioco (NON quello nel menu a
 	// tendina) che è appena stato

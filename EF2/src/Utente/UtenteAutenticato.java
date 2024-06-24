@@ -102,11 +102,13 @@ public class UtenteAutenticato extends Utente {
 	
 	// Relative ai preferiti
 	public void insertPreferiti(GiochiEnum gioco) {
-		UtenteDao.getInstance().insertPreferiti(this, gioco);
+		UtenteDao.getInstance().insertPreferiti(this, gioco.toString());
+		preferiti.add(gioco);
 	}
 	
 	public void deletePreferiti(GiochiEnum gioco) {
-		UtenteDao.getInstance().deletePreferiti(this, gioco);
+		UtenteDao.getInstance().deletePreferiti(this, gioco.toString());
+		preferiti.remove(gioco);
 	}
 	
 	// Equivale a un setter dei preferiti ma avviene esclusivamente attraverso il dao con info dal db

@@ -104,13 +104,6 @@ public class IndexModel {
 		UtenteAutenticato.getInstance().deletePreferiti(gioco);
 	}
 
-	// Chiamato quando serve aggiornare o inizializzare l'elenco
-	public ArrayList<GiochiEnum> getPreferitiFromDB() {
-		// UtAut legge dal db i preferiti
-		UtenteAutenticato.getInstance().selectPreferiti();
-		return UtenteAutenticato.getInstance().getPreferiti();
-	}
-
 	// Chiamato solo al momento dell'inizializzazione dei GameButton in modo da non
 	// dover continuare a leggere dal db ad ogni iterazione
 	public ArrayList<GiochiEnum> getPreferiti() {

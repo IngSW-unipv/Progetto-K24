@@ -105,5 +105,5 @@ public class OptionController {
 		view.getTetrisOption().addActionListener(tetris);
 
 	}
-
+	
 }

@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 
@@ -28,6 +29,7 @@ public class IndexView extends JFrame {
 	private JPanel topPanel;
 	private JPanel centerPanel;
 	private JLabel infoLabel;
+	private JLabel errorLabel;
 	private JPopupMenu menuPreferiti;
 	private JButton modificaButton;
 	private JButton eliminaButton;
@@ -76,21 +78,22 @@ public class IndexView extends JFrame {
 		disiscrivitiTorneo = new JButton("Disiscriviti da un torneo");
 		preferitiButton = new JButton("Giochi preferiti");
 		infoLabel = new JLabel("Clicca il tasto destro per aggiungere ai preferiti il gioco!");
+		errorLabel = new JLabel();
 		menuPreferiti = new JPopupMenu();
 		
 		menuOptionList = new ArrayList<GameButton>();
-		menuOptionList.add(minesweeperOption = new GameButton(GiochiEnum.Minesweeper));
-		menuOptionList.add(snakeOption = new GameButton(GiochiEnum.Snake));
-		menuOptionList.add(spaceInvadersOption = new GameButton(GiochiEnum.SpaceInvaders));
-		menuOptionList.add(tetrisOption = new GameButton(GiochiEnum.Tetris));
-		menuOptionList.add(solitarioOption = new GameButton(GiochiEnum.Solitario));
+		menuOptionList.add(minesweeperOption = new GameButton("Minesweeper"));
+		menuOptionList.add(snakeOption = new GameButton("Snake"));
+		menuOptionList.add(spaceInvadersOption = new GameButton("Space Invaders"));
+		menuOptionList.add(tetrisOption = new GameButton("Tetris"));
+		menuOptionList.add(solitarioOption = new GameButton("Solitario"));
 		
 		gameButtonList = new ArrayList<GameButton>();
-		gameButtonList.add(minesweeperButton = new GameButton(GiochiEnum.Minesweeper));
-		gameButtonList.add(snakeButton = new GameButton(GiochiEnum.Snake));
-		gameButtonList.add(spaceInvadersButton = new GameButton(GiochiEnum.SpaceInvaders));
-		gameButtonList.add(tetrisButton = new GameButton(GiochiEnum.Tetris));
-		gameButtonList.add(solitarioButton = new GameButton(GiochiEnum.Solitario));
+		gameButtonList.add(minesweeperButton = new GameButton("Minesweeper"));
+		gameButtonList.add(snakeButton = new GameButton("Snake"));
+		gameButtonList.add(spaceInvadersButton = new GameButton("Space Invaders"));
+		gameButtonList.add(tetrisButton = new GameButton("Tetris"));
+		gameButtonList.add(solitarioButton = new GameButton("Solitario"));
 		
 
 		
@@ -109,8 +112,8 @@ public class IndexView extends JFrame {
 		leftPanel.setPreferredSize(new Dimension((Toolkit.getDefaultToolkit().getScreenSize().width) / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height));
 		// Se si vuole togliere il random color
-		//leftPanel.setBackground(new Color(230, 230, 230));
-		leftPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		leftPanel.setBackground(new Color(230, 230, 230));
+		//////////////////////////////////////////////////leftPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		setButtonProperties(creaTorneo);
 		setButtonProperties(iscrivitiTorneo);
@@ -137,8 +140,8 @@ public class IndexView extends JFrame {
 		// topPanel
 		topPanel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
-		//topPanel.setBackground(new Color(135, 206, 250));
-		topPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		topPanel.setBackground(new Color(135, 206, 250));
+		//////////////////////////topPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 		
 
 		preferitiButton.setPreferredSize(new Dimension(150, 40));
@@ -154,8 +157,8 @@ public class IndexView extends JFrame {
 		topPanel.add(logoutButton);
 		
 		// centerPanel
-		//centerPanel.setBackground(new Color(144, 238, 144));
-		centerPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		centerPanel.setBackground(new Color(190, 128, 144));
+		//////////////////////////////////centerPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		// Aggiungi bottoni al centerPanel
 		for (GameButton button : gameButtonList) {
@@ -164,6 +167,7 @@ public class IndexView extends JFrame {
 		
 		// Non è necessario un bottomPanel perché c'è solo da gestire questa etichetta
 		infoLabel.setVisible(false);
+		errorLabel.setVisible(false);
 		
 		// add
 		add(panelLayout);
@@ -331,5 +335,28 @@ public class IndexView extends JFrame {
 	
 	public JLabel getInfoLabel() {
 		return infoLabel;
+	}
+	
+	/*public GiochiEnum getGioco(GameButton b) {
+		return b.getGioco();
+	} */
+	
+	public boolean confermaSceltaPreferiti(int i) {
+		String stringa;
+		int scelta;
+		if (i==0) {
+			stringa = new String("Vuoi aggiungere questo gioco ai preferiti?");
+		} else {
+			stringa = new String("Vuoi rimuovere questo gioco ai preferiti?");	
+		}
+		scelta = JOptionPane.showConfirmDialog(null, stringa,
+				"Conferma", JOptionPane.YES_NO_OPTION);
+		return scelta == JOptionPane.YES_OPTION;
+	}
+
+	public void displayErrorView(String string) {
+		errorLabel.setText(string);
+		errorLabel.setForeground(Color.red);
+		errorLabel.setVisible(true);
 	}
 }

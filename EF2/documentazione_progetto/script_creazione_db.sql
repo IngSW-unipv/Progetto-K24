@@ -41,7 +41,7 @@ CREATE TABLE preferenze (
     FOREIGN KEY (gioco) REFERENCES giochi(nomegioco) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-INSERT INTO giochi VALUES ('Minesweeper'), ('Snake'), ('Space Invaders'), ('Tetris'), ('Solitario');
+INSERT INTO giochi VALUES ('Minesweeper'), ('Snake'), ('SpaceInvaders'), ('Tetris'), ('Solitario');
 INSERT INTO utenti VALUES
 ('luca@luca.luca', 'Brucone', '�.\'�Ǝh�\'eï�j��Kx��U�>�d~��'),
 ('LaMiaPswdèA@A.it', 'Gbqhciò', 'U��Ђd�y]9	q���ԕr�O�U��������'),
