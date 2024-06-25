@@ -67,17 +67,15 @@ public class PartecipaTorneoController {
 				if (e.getSource() == v.getClassificaTorneo()) {
 
 					System.out.print(v.getOptions()[0]);
-					v.setArrayList(new ArrayList<Integer>(model.classificaTorneo(v.getOptions()[0]).values()));
+					v.setArrayList(new ArrayList<Integer>(model.classificaTorneo(v.getTorneo().getSelectedItem().toString()).values()));
 					System.out.print(v.getOptions()[0]);
-					v.setKey(new ArrayList<String>(model.classificaTorneo(v.getOptions()[0]).keySet()));
+					v.setKey(new ArrayList<String>(model.classificaTorneo(v.getTorneo().getSelectedItem().toString()).keySet()));
 
 					System.out.print(v.getArrayList());
 					System.out.print(v.getKey());
 					v.getTable().setValueAt(v.getArrayList().get(0), 0, 0);
 					v.getTable().setValueAt(v.getKey().get(0), 0, 1);
-					// da mettere quando ci sono più righe
-					// v.getTable().setValueAt(v.getArrayList().get(0), 1, 0);
-					// v.getTable().setValueAt(v.getKey().get(0), 1, 1);
+				
 
 				}
 
@@ -91,8 +89,9 @@ public class PartecipaTorneoController {
 
 				if (e.getSource() == v.getPartecipaTorneo()) {
 
-					System.out.print(v.getOptions()[0]);
-					model.partecipaToreno(v.getOptions()[0]);
+					System.out.println(v.getTorneo().getSelectedItem().toString()+"!!!!!!");
+					model.partecipaToreno(v.getTorneo().getSelectedItem().toString());
+							
 
 				}
 
