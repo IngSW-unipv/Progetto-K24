@@ -9,100 +9,47 @@ public class OptionController {
 
 	public static void addListenersindex(IndexModel m, IndexView view) {
 
-		ActionListener minesweeper = new ActionListener() {
+		view.getMinesweeperOption().addActionListener(new ActionListener() {
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-
-				manageAction();
-
-			}
-
-			private void manageAction() {
-
 				m.minesweeperPlay();
-
 			}
-
-		};
-
-		view.getMinesweeperOption().addActionListener(minesweeper);
-
-		ActionListener snake = new ActionListener() {
+		});
+		
+		view.getSnakeOption().addActionListener(new ActionListener() {
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-
-				manageAction();
-
-			}
-
-			private void manageAction() {
-
 				m.snakePlay();
-
 			}
+		});
+		
 
-		};
-
-		view.getSnakeOption().addActionListener(snake);
-
-		ActionListener solitario = new ActionListener() {
+		view.getSolitarioOption().addActionListener(new ActionListener() {
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-
-				manageAction();
-
-			}
-
-			private void manageAction() {
-
 				m.solitarioPlay();
-
 			}
+		});
 
-		};
-
-		view.getSolitarioOption().addActionListener(solitario);
-
-		ActionListener spaceinvaders = new ActionListener() {
+		view.getSpaceInvadersOption().addActionListener(new ActionListener() {
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-
-				manageAction();
-
-			}
-
-			private void manageAction() {
-
 				m.spaceInvadersPlay();
-
 			}
+		});
 
-		};
 
-		view.getSpaceInvadersOption().addActionListener(spaceinvaders);
-
-		ActionListener tetris = new ActionListener() {
+		view.getTetrisOption().addActionListener(new ActionListener() {
 			@Override
 
 			public void actionPerformed(ActionEvent e) {
-
-				manageAction();
-
+				m.tetrisPlay();
 			}
-
-			private void manageAction() {
-
-				m.solitarioPlay();
-
-			}
-
-		};
-
-		view.getTetrisOption().addActionListener(tetris);
+		});
 
 	}
 	

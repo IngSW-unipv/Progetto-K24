@@ -184,18 +184,18 @@ public class IndexController {
 			} 
 		});
 		
-		view.getPreferitiButton().addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				model.setPreferiti();
-				// Per ogni bottone di opzione, controlla se il gioco è nei preferiti
-				//NOTA QUI SI PUO USARE getPreferiti e non getPreferitiFromDB SOLO SE TUTTE LE OPERAZIONI DI MODIFICA DEI PREFERITI SUBITO DOPO AVER AGGIORNATO
-				// IL DB CHIAMANO LA SELECT DELL'UTENTEAUTENTICATO PER AGGIORNARE ANCHE L'ARRAYLIST LOCALE CONTENENTE I PREFERITI
-//SPostato in InizializzaMenuPreferiti
-				// Dopo aver scelto solo i bottoni dei giochi, fa apparire le opzioni
-			    view.getMenuPreferiti().show(view.getPreferitiButton(), 0, view.getPreferitiButton().getHeight());
-			}
-		});
+//		view.getPreferitiButton().addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				model.setPreferiti();
+//				// Per ogni bottone di opzione, controlla se il gioco è nei preferiti
+//				//NOTA QUI SI PUO USARE getPreferiti e non getPreferitiFromDB SOLO SE TUTTE LE OPERAZIONI DI MODIFICA DEI PREFERITI SUBITO DOPO AVER AGGIORNATO
+//				// IL DB CHIAMANO LA SELECT DELL'UTENTEAUTENTICATO PER AGGIORNARE ANCHE L'ARRAYLIST LOCALE CONTENENTE I PREFERITI
+////SPostato in InizializzaMenuPreferiti
+//				// Dopo aver scelto solo i bottoni dei giochi, fa apparire le opzioni
+//			    view.getMenuPreferiti().show(view.getPreferitiButton(), 0, view.getPreferitiButton().getHeight());
+//			}
+//		});
 		
 	}
 	
