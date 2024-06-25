@@ -1,5 +1,6 @@
 /bin/
-/Minesweeper/
+/.classpath
+/.gitignore
 /.project
 /Autenticazionecontroller/
 /Autenticazionemodel/
@@ -9,6 +10,7 @@
 /GiochiPlaceholder/
 /Index/
 /Messaggi/
+/Minesweeper/
 /Program/
 /SnakeController/
 /SnakeModel/

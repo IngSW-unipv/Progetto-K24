@@ -12,11 +12,13 @@ import java.awt.event.KeyEvent;
 import java.util.Random;
 
 public class SnakeView extends JPanel implements ActionListener {
-    private static final int GRID_SIZE = SnakeGame.GRID_SIZE;
-    private static final int CELL_SIZE = 20;
-    //private SnakeGame gameModel;
-    private Timer timer;
-    static final int SCREEN_WIDTH = 1300;
+	private static final int GRID_SIZE = SnakeGame.GRID_SIZE;
+	private static final int CELL_SIZE = 20;
+	// private SnakeGame gameModel;
+	JFrame frame = new JFrame("Snake Game");
+
+	private Timer timer;
+	static final int SCREEN_WIDTH = 1300;
 	static final int SCREEN_HEIGHT = 750;
 	static final int UNIT_SIZE = 50;
 	static final int GAME_UNITS = (SCREEN_WIDTH * SCREEN_HEIGHT) / (UNIT_SIZE * UNIT_SIZE);
@@ -29,58 +31,58 @@ public class SnakeView extends JPanel implements ActionListener {
 	private int appleY;
 	private char direction = 'R';
 	private boolean running = false;
-	
+
 	private Random random;
 
-    public SnakeView() {
-        //this.gameModel = gameModel;
-        
-        running=true;
-        setPreferredSize(new Dimension(GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE));
-        setBackground(Color.BLACK);
-        setFocusable(true);
+	public SnakeView() {
+		// this.gameModel = gameModel;
 
-        timer = new Timer(120, this);
-        timer.start();
-        
-        random = new Random();
+		running = true;
+		setPreferredSize(new Dimension(GRID_SIZE * CELL_SIZE, GRID_SIZE * CELL_SIZE));
+		setBackground(Color.BLACK);
+		setFocusable(true);
 
-        newApple();
-        
-        addKeyListener(new KeyAdapter() {
-       
-            @Override
-    		public void keyPressed(KeyEvent e) {
-    			switch (e.getKeyCode()) {
-    			case KeyEvent.VK_LEFT:
-    				if (direction != 'R') {
-    					direction = 'L';
-    				}
-    				break;
-    			case KeyEvent.VK_RIGHT:
-    				if (direction != 'L') {
-    					direction = 'R';
-    				}
-    				break;
-    			case KeyEvent.VK_UP:
-    				if (direction != 'D') {
-    					direction = 'U';
-    				}
-    				break;
-    			case KeyEvent.VK_DOWN:
-    				if (direction != 'U') {
-    					direction = 'D';
-    				}
-    				break;
-    			}
-    		}
-        });
-    }
+		timer = new Timer(120, this);
+		timer.start();
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        if (running) {
+		random = new Random();
+
+		newApple();
+
+		addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				switch (e.getKeyCode()) {
+				case KeyEvent.VK_LEFT:
+					if (direction != 'R') {
+						direction = 'L';
+					}
+					break;
+				case KeyEvent.VK_RIGHT:
+					if (direction != 'L') {
+						direction = 'R';
+					}
+					break;
+				case KeyEvent.VK_UP:
+					if (direction != 'D') {
+						direction = 'U';
+					}
+					break;
+				case KeyEvent.VK_DOWN:
+					if (direction != 'U') {
+						direction = 'D';
+					}
+					break;
+				}
+			}
+		});
+	}
+
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		if (running) {
 			/*
 			 * for(int i=0;i<SCREEN_HEIGHT/UNIT_SIZE;i++) { g.drawLine(i*UNIT_SIZE, 0,
 			 * i*UNIT_SIZE, SCREEN_HEIGHT); g.drawLine(0, i*UNIT_SIZE, SCREEN_WIDTH,
@@ -108,8 +110,9 @@ public class SnakeView extends JPanel implements ActionListener {
 		} else {
 			gameOver(g);
 		}
-    }
-    public void gameOver(Graphics g) {
+	}
+
+	public void gameOver(Graphics g) {
 		// Score
 		g.setColor(Color.red);
 		g.setFont(new Font("Ink Free", Font.BOLD, 40));
@@ -123,7 +126,7 @@ public class SnakeView extends JPanel implements ActionListener {
 		g.drawString("Game Over", (SCREEN_WIDTH - metrics2.stringWidth("Game Over")) / 2, SCREEN_HEIGHT / 2);
 	}
 
-    public void move() {
+	public void move() {
 		for (int i = bodyParts; i > 0; i--) {
 			x[i] = x[i - 1];
 			y[i] = y[i - 1];
@@ -153,12 +156,11 @@ public class SnakeView extends JPanel implements ActionListener {
 			newApple();
 		}
 	}
-	
+
 	public void newApple() {
 		appleX = random.nextInt((int) (SCREEN_WIDTH / UNIT_SIZE)) * UNIT_SIZE;
 		appleY = random.nextInt((int) (SCREEN_HEIGHT / UNIT_SIZE)) * UNIT_SIZE;
 	}
-	
 
 	public void checkCollisions() {
 		// checks if head collides with body
@@ -189,24 +191,28 @@ public class SnakeView extends JPanel implements ActionListener {
 		}
 	}
 
-    
-    
-    @Override
-    public void actionPerformed(ActionEvent e) {
-       // gameModel.move(SnakeGame.Direction.UP); // Auto move the snake to the right
-        
-        if (running) {
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// gameModel.move(SnakeGame.Direction.UP); // Auto move the snake to the right
+
+		if (running) {
 
 			move();
 			checkApple();
 			checkCollisions();
-			
+
 		}
 
+		repaint();
+	}
 
-        
-        repaint();
-    }
+	public JFrame getFrame() {
+		return frame;
+	}
+
+	public void setFrame(JFrame frame) {
+		this.frame = frame;
+	}
+
 }
-
 

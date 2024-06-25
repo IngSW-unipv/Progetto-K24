@@ -15,14 +15,14 @@ public class SnakeController {
 	public SnakeController(SnakeGame m,SnakeView v)
 	
 	{
-		JFrame frame = new JFrame("Snake Game");
+		//JFrame frame = new JFrame("Snake Game");
 		SnakeGame gameModel = new SnakeGame();
 		SnakeView gameView = new SnakeView();
-		frame.add(gameView);
-		frame.pack();
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
+		v.getFrame().add(gameView);
+		v.getFrame().pack();
+		v.getFrame().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		v.getFrame().setLocationRelativeTo(null);
+		v.getFrame().setVisible(true);
 
 	}
 
