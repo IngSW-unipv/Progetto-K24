@@ -72,7 +72,7 @@ public class PartecipaTorneoController {
 					v.setKey(new ArrayList<String>(model.classificaTorneo(v.getOptions()[0]).keySet()));
 
 					System.out.print(v.getArrayList());
-
+					System.out.print(v.getKey());
 					v.getTable().setValueAt(v.getArrayList().get(0), 0, 0);
 					v.getTable().setValueAt(v.getKey().get(0), 0, 1);
 					// da mettere quando ci sono più righe

@@ -21,7 +21,7 @@ public class UtenteDao implements IUtenteDao {
 
 	private UtenteDao() {
 		super();
-		this.schema = "java";
+		this.schema = "prova";
 
 	}
 
