@@ -37,7 +37,6 @@ public class MouseController {
 							// AGgiunta al menu preferiti
 							/////////addOptionToMenu(gioco, view);
 							view.getMenuPreferiti().add(option);
-							System.out.println("Operazione eseguita!");
 						}
 
 					} else {
@@ -48,7 +47,6 @@ public class MouseController {
 							// Rimozione dal menù preferiti
 							/////////////////removeOptionFromMenu(gioco, view);
 							view.getMenuPreferiti().remove(option);
-							System.out.println("Operazione eseguita!");
 						}
 
 					}

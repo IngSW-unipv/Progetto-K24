@@ -104,8 +104,7 @@ public class IndexModel {
 		UtenteAutenticato.getInstance().deletePreferiti(gioco);
 	}
 
-	// Chiamato solo al momento dell'inizializzazione dei GameButton in modo da non
-	// dover continuare a leggere dal db ad ogni iterazione
+	
 	public ArrayList<GiochiEnum> getPreferiti() {
 		return UtenteAutenticato.getInstance().getPreferiti();
 	}
