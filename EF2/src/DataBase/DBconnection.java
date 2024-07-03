@@ -22,9 +22,9 @@ public class DBconnection {
 		try {
 			// p.load(new FileInputStream("properties/properties"));
 			username = "root";
-			password = "1234";
+			password = "Viadoro7.";
 			dbDriver = "com.mysql.lib.jdbc.Driver";
-			dbURL = "jdbc:mysql://127.0.0.1:3307/";
+			dbURL = "jdbc:mysql://127.0.0.1:3306/";
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -33,7 +33,7 @@ public class DBconnection {
 
 	public static Connection startConnection(Connection conn, String schema) {
 
-		System.out.println("jdbc:mysql://127.0.0.1:3307/" + schema);
+		System.out.println("jdbc:mysql://127.0.0.1:3306/" + schema);
 
 		if (isOpen(conn))
 			closeConnection(conn);
@@ -44,9 +44,9 @@ public class DBconnection {
 			// System.out.println(dbURL);
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			conn = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + schema
+			conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + schema
 					+ "?user=root?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root", "1234");// Apertura connessione
+					"root", "Viadoro7.");// Apertura connessione
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -52,6 +52,7 @@ public class IndexView extends JFrame {
 	private GameButton tetrisOption;
 	private GameButton solitarioOption;
 	private ArrayList<GameButton> menuOptionList;
+	private JButton messaggiButton;
 	
 	// Contiene tutti i bottoni realtivi ai giochi
 
@@ -76,6 +77,7 @@ public class IndexView extends JFrame {
 		iscrivitiTorneo = new JButton("Iscriviti a un torneo");
 		eliminaTorneo = new JButton("Elimina Torneo");
 		disiscrivitiTorneo = new JButton("Disiscriviti da un torneo");
+		messaggiButton = new JButton("Messaggi");
 		preferitiButton = new JButton("Giochi preferiti");
 		infoLabel = new JLabel("Clicca il tasto destro per aggiungere ai preferiti il gioco!");
 		errorLabel = new JLabel();
@@ -112,8 +114,8 @@ public class IndexView extends JFrame {
 		leftPanel.setPreferredSize(new Dimension((Toolkit.getDefaultToolkit().getScreenSize().width) / 4,
 				Toolkit.getDefaultToolkit().getScreenSize().height));
 		// Se si vuole togliere il random color
-		leftPanel.setBackground(new Color(230, 230, 230));
-		//////////////////////////////////////////////////leftPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		//leftPanel.setBackground(new Color(230, 230, 230));
+		leftPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		setButtonProperties(creaTorneo);
 		setButtonProperties(iscrivitiTorneo);
@@ -140,25 +142,27 @@ public class IndexView extends JFrame {
 		// topPanel
 		topPanel.setPreferredSize(new Dimension(Toolkit.getDefaultToolkit().getScreenSize().width,
 				(Toolkit.getDefaultToolkit().getScreenSize().height) / 10));
-		topPanel.setBackground(new Color(135, 206, 250));
-		//////////////////////////topPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		//topPanel.setBackground(new Color(135, 206, 250));
+		topPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 		
 
 		preferitiButton.setPreferredSize(new Dimension(150, 40));
+		messaggiButton.setPreferredSize(new Dimension(150, 40));
 		modificaButton.setPreferredSize(new Dimension(150, 40));
 		eliminaButton.setPreferredSize(new Dimension(150, 40));
 		logoutButton.setPreferredSize(new Dimension(150, 40));
  
 		
 		topPanel.add(preferitiButton);
-		topPanel.add(Box.createHorizontalStrut(Toolkit.getDefaultToolkit().getScreenSize().width/4));
+		topPanel.add(messaggiButton);
+		topPanel.add(Box.createHorizontalStrut(Toolkit.getDefaultToolkit().getScreenSize().width/6));
 		topPanel.add(modificaButton);
 		topPanel.add(eliminaButton);
 		topPanel.add(logoutButton);
 		
 		// centerPanel
-		centerPanel.setBackground(new Color(190, 128, 144));
-		//////////////////////////////////centerPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
+		//centerPanel.setBackground(new Color(190, 128, 144));
+		centerPanel.setBackground(new Color(random.nextInt(256), random.nextInt(256), random.nextInt(256)));
 
 		// Aggiungi bottoni al centerPanel
 		for (GameButton button : gameButtonList) {
@@ -335,6 +339,10 @@ public class IndexView extends JFrame {
 	
 	public JLabel getInfoLabel() {
 		return infoLabel;
+	}
+	
+	public JButton getMessaggiButton() {
+		return messaggiButton;
 	}
 	
 	/*public GiochiEnum getGioco(GameButton b) {

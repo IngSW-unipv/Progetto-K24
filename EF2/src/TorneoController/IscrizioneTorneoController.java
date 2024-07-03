@@ -35,12 +35,16 @@ public class IscrizioneTorneoController {
 				m.iscrivitiTorneocontroller();
 
 			}
+			
 
 		};
-
 		view.getIscrivitiTorneo().addActionListener(Iscrizionetorneo);
 
 	}
+	
+	
+
+
 
 	private void addListeners() {
 		view.getIscrivitiTorneo().addActionListener(new ActionListener() {
@@ -49,9 +53,13 @@ public class IscrizioneTorneoController {
 			public void actionPerformed(ActionEvent e) {
 
 				if (e.getSource() == view.getIscrivitiTorneo()) {
-
-					model.iscrizioneTorneo(model.getEmail(), view.getNomeText().getText());
-					view.dispose();
+					int esito;
+					if ( (esito = model.iscrizioneTorneo(model.getEmail(), view.getNomeText().getText())) == 0) {
+						view.dispose();
+					} else {
+						System.out.println(esito);
+						view.setErroreLabel(esito);
+					}
 				}
 
 			}

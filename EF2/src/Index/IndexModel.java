@@ -11,6 +11,8 @@ import GestioneAccount.EliminaAccountView;
 import GestioneAccount.ModificaAccountController;
 import GestioneAccount.ModificaAccountView;
 import GiochiPlaceholder.*;
+import Messaggi.MessaggiController;
+import Messaggi.MessaggiView;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import Minesweeper.MinesweeperModel.MinesweeperModel;
 import Minesweeper.MinesweeperView.MinesweeperView;
@@ -92,6 +94,10 @@ public class IndexModel {
 
 	public void solitarioPlay() {
 		new SolitarioPlaceholder();
+	}
+	
+	public void messaggiView() {
+		new MessaggiView();
 	}
 
 	// Relativi alle preferenze

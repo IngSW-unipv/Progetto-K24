@@ -35,7 +35,7 @@ public class EliminaTorneoController {
 			private void manageAction() {
 				
 				
-				m.eliminaAccount(view);
+				m.eliminatorneoController();;
 				
 				
 			}

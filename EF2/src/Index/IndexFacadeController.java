@@ -8,6 +8,7 @@ import GiochiPlaceholder.PreferitiController;
 import GiochiPlaceholder.SolitarioController;
 import GiochiPlaceholder.SpaceInvadersController;
 import GiochiPlaceholder.TetrisController;
+import Messaggi.MessaggiController;
 import Minesweeper.MinesweeperController.MinesweeperController;
 import SnakeController.SnakeController;
 import TorneoController.CreaTorneoController;
@@ -45,10 +46,13 @@ public class IndexFacadeController {
 		TetrisController.addListenersindex(model, view);
 		SpaceInvadersController.addListenersindex(model, view);
 		SolitarioController.addListenersindex(model, view);
-
+		
+		MessaggiController.addListenersindex(model, view);
+		
 //		for (GameButton b : view.getGameButtonList()) {
 //			MouseController.addMouseListenerGiochi(b, null, model, view);
 //		}
+		
 		
 		model.setPreferiti();
 		int i=0;

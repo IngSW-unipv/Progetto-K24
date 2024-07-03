@@ -21,7 +21,7 @@ public class UtenteDao implements IUtenteDao {
 
 	private UtenteDao() {
 		super();
-		this.schema = "prova";
+		this.schema = "java";
 
 	}
 
@@ -265,7 +265,7 @@ public class UtenteDao implements IUtenteDao {
 
 	}
 
-	public boolean insertPreferiti(UtenteAutenticato f, String gioco) { 
+	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco) { 
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
 		boolean esito = true;
@@ -274,7 +274,7 @@ public class UtenteDao implements IUtenteDao {
 			String query = "INSERT INTO preferenze(emailUtente, gioco) VALUES(?,?)";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getEmail());
-			st1.setString(2, gioco); 
+			st1.setString(2, gioco.toString()); 
 			st1.executeUpdate();
 
 		} catch (Exception e) {
@@ -286,7 +286,7 @@ public class UtenteDao implements IUtenteDao {
 		return esito;
 	}
 
-	public boolean deletePreferiti(UtenteAutenticato f, String gioco) { 
+	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco) { 
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
 		boolean esito = true;
@@ -295,7 +295,7 @@ public class UtenteDao implements IUtenteDao {
 			String query = "DELETE FROM preferenze WHERE emailUtente=? AND gioco=?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, f.getEmail());
-			st1.setString(2, gioco); 
+			st1.setString(2, gioco.toString()); 
 			st1.executeUpdate();
 
 		} catch (Exception e) {

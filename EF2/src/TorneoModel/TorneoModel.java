@@ -59,9 +59,9 @@ public class TorneoModel {
 
 	}
 
-	public void iscrizioneTorneo(String email, String nome) {
+	public int iscrizioneTorneo(String email, String nome) {
 
-		UtenteAutenticato.getInstance().iscrizioneTorneo(email, nome);
+		return UtenteAutenticato.getInstance().iscrizioneTorneo(email, nome);
 
 	}
 
@@ -119,6 +119,10 @@ public class TorneoModel {
 
 		return UtenteAutenticato.getInstance().getUsername();
 
+	}
+	
+	public String getNomeCreatore(String nometorneo) {
+		return null;
 	}
 
 }

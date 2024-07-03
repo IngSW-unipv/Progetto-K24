@@ -13,8 +13,8 @@ public interface IUtenteDao {
 	public ArrayList<UtenteAutenticato> selectByUsername(UtenteAutenticato fornInput);
 	public boolean insertSchemaUtente(UtenteAutenticato f) throws SQLException;
 	public boolean selectByEmail(String email);
-	public boolean insertPreferiti(UtenteAutenticato f, String gioco); 
-	public boolean deletePreferiti(UtenteAutenticato f, String gioco); 
+	public boolean insertPreferiti(UtenteAutenticato f, GiochiEnum gioco); 
+	public boolean deletePreferiti(UtenteAutenticato f, GiochiEnum gioco); 
 	public ArrayList<GiochiEnum> selectPreferiti(UtenteAutenticato f); 
 	public boolean insertMessaggio(UtenteAutenticato f, Messaggio m);
 	public ArrayList<Messaggio> selectMessaggio(UtenteAutenticato f);

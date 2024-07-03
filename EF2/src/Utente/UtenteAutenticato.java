@@ -8,6 +8,7 @@ import java.util.HashMap;
 import DataBase.TorneoDao;
 import DataBase.UtenteDao;
 import Index.GiochiEnum;
+import Messaggi.Messaggio;
 import TorneoController.CreaTorneoController;
 import TorneoView.CreaTorneoView;
 
@@ -15,6 +16,7 @@ public class UtenteAutenticato extends Utente {
 
 	private static UtenteAutenticato instance;
 	private ArrayList<GiochiEnum> preferiti;
+	private ArrayList<Messaggio> messaggi;
 
 	private UtenteAutenticato() {
 		super("", "", "");
@@ -70,14 +72,17 @@ public class UtenteAutenticato extends Utente {
 		}
 	}
 
-	public void iscrizioneTorneo(String emailutente, String nometorneo) {
+	public int iscrizioneTorneo(String emailutente, String nometorneo) {
 		try {
-			if (TorneoDao.getInstance().ricercaCreatore(emailutente)) {
+			if (!TorneoDao.getInstance().selezionaUtenteTorneo(emailutente, nometorneo)) {
 				TorneoDao.getInstance().insertpartecipante(emailutente, nometorneo, 0);
+				return 0;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			return 1;
 		}
+		return 2;
 	}
 
 	public void disiscrizioneTorneo(String emailutente, String nometorneo) {
@@ -105,12 +110,12 @@ public class UtenteAutenticato extends Utente {
 
 	// Relative ai preferiti
 	public void insertPreferiti(GiochiEnum gioco) {
-		UtenteDao.getInstance().insertPreferiti(this, gioco.toString());
+		UtenteDao.getInstance().insertPreferiti(this, gioco);
 		preferiti.add(gioco);
 	}
 
 	public void deletePreferiti(GiochiEnum gioco) {
-		UtenteDao.getInstance().deletePreferiti(this, gioco.toString());
+		UtenteDao.getInstance().deletePreferiti(this, gioco);
 		preferiti.remove(gioco);
 	}
 

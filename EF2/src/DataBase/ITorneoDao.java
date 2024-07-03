@@ -29,10 +29,10 @@ public interface ITorneoDao {
 
 	public boolean selectbyuser(String id, String emailUtente);
 
-	public boolean ricercaCreatore(String nomeutente);
-
-	public boolean selezionaUtenteTorneo(String emailUtente);
+	public boolean ricercaCreatore(String nomeTorneo);
 	
 	public ArrayList<String> selezionalistatorneobypartecipante(String emailUtente);
+
+	boolean selezionaUtenteTorneo(String emailUtente, String nomeTorneo);
 
 }

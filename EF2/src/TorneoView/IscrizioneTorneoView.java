@@ -27,6 +27,7 @@ public class IscrizioneTorneoView extends JFrame {
 	private JLabel nomeLabel = new JLabel("NOME TORNEO: ");
 	private JLabel listaLabel = new JLabel("LISTA TORNEI: ");
 	private JTextField nomeText = new JTextField();
+	private JLabel erroreLabel = new JLabel();
 
 	private JButton IscrivitiTorneo = new JButton("Iscrizione Torneo");
 	private String[] options = {};
@@ -65,6 +66,7 @@ public class IscrizioneTorneoView extends JFrame {
 
 		nomeLabel.setBounds(200, 50, 100, 25);
 		nomeText.setBounds(300, 50, 100, 25);
+		erroreLabel.setBounds(200,80, 300, 25 );
 
 		IscrivitiTorneo.setBounds(200, 170, 150, 25);
 
@@ -76,6 +78,7 @@ public class IscrizioneTorneoView extends JFrame {
 
 		panel.add(IscrivitiTorneo);
 		panel.add(comboBox);
+		panel.add(erroreLabel);
 
 		// rendo il frame e il label visibili
 		setVisible(true);
@@ -110,6 +113,23 @@ public class IscrizioneTorneoView extends JFrame {
 
 	public JTextField getNomeText() {
 		return nomeText;
+	}
+	
+	public JLabel getErroreLabel() {
+		return erroreLabel;
+	}
+	
+	public void setErroreLabel(int i) {
+		if (i==1) {
+			erroreLabel.setForeground(Color.red);
+			erroreLabel.setText("Errore");
+		} else {
+			System.out.println(i+"nn");
+			erroreLabel.setForeground(Color.green);
+			erroreLabel.setText("Sei già iscritto a questo torneo!");
+		}
+		erroreLabel.setVisible(true);
+
 	}
 
 }

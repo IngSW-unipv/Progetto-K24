@@ -17,7 +17,7 @@ public class TorneoDao implements ITorneoDao {
 	private TorneoDao() {
 
 		super();
-		this.schema = "prova"; 
+		this.schema = "java"; 
 
 	}
 	
@@ -114,7 +114,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean ricercaCreatore(String nomeutente) {
+	public boolean ricercaTorneo(String nomeutente) {
 		// TODO Auto-generated method stub
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -124,7 +124,7 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = false;
 
 		try {
-			String query = "Select COUNT(creatore) from tornei where creatore =? ";
+			String query = "Select nometorneo from tornei where creatore =? ";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, nomeutente);
 			rs1 = st1.executeQuery();
@@ -156,8 +156,7 @@ public class TorneoDao implements ITorneoDao {
 	
 	//modifica nome
 	
-	@Override
-	public boolean ricercaTorneo(String nometorneo) {
+	public boolean ricercaCreatore(String nometorneo) {
 		// TODO Auto-generated method stub
 		conn = DBconnection.startConnection(conn, schema);
 		PreparedStatement st1;
@@ -167,7 +166,7 @@ public class TorneoDao implements ITorneoDao {
 		boolean esito = false;
 
 		try {
-			String query = "Select COUNT(nometorneo) from tornei where nometorneo =? ";
+			String query = "Select creatore from tornei where nometorneo =? ";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, nometorneo);
 			rs1 = st1.executeQuery();
@@ -388,7 +387,7 @@ public class TorneoDao implements ITorneoDao {
 	}
 
 	@Override
-	public boolean selezionaUtenteTorneo(String emailUtente) {
+	public boolean selezionaUtenteTorneo(String emailUtente, String nomeTorneo) {
 		// TODO Auto-generated method stub
 		boolean esito =true;
 
@@ -398,9 +397,10 @@ public class TorneoDao implements ITorneoDao {
 
 		try {
 
-			String query = "select COUNT(creatore) from tornei where creatore=?";
+			String query = "select COUNT(nometorneo) from partecipazioni where emailUtente=? and nometorneo=?";
 			st1 = conn.prepareStatement(query);
 			st1.setString(1, emailUtente);
+			st1.setString(2, nomeTorneo);
 			rs1 = st1.executeQuery();
 
 			while (rs1.next()) {
@@ -454,4 +454,5 @@ public class TorneoDao implements ITorneoDao {
 		DBconnection.closeConnection(conn);
 		return result;
 	}
+
 }
